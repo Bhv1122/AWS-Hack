@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en" class="light">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover"/>
+  <title>{% block title %}MedCoord Health - Unified Medication Coordination{% endblock %}</title>
+
+  <!-- Typography & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            primary: "#00685f",
+            "primary-container": "#008378",
+            "on-primary": "#ffffff",
+            "primary-fixed": "#89f5e7",
+            "on-primary-fixed-variant": "#005049",
+            secondary: "#0051d5",
+            "secondary-container": "#316bf3",
+            "secondary-fixed": "#dbe1ff",
+            tertiary: "#006947",
+            "tertiary-container": "#00855b",
+            "tertiary-fixed": "#6ffbbe",
+            surface: "#f8f9ff",
+            "surface-dim": "#cbdbf5",
+            "surface-container-lowest": "#ffffff",
+            "surface-container-low": "#eff4ff",
+            "surface-container": "#e5eeff",
+            "surface-container-high": "#dce9ff",
+            "surface-container-highest": "#d3e4fe",
+            "on-surface": "#0b1c30",
+            "on-surface-variant": "#3d4947",
+            error: "#ba1a1a",
+            "error-container": "#ffdad6",
+            "on-error-container": "#93000a",
+            "on-error": "#ffffff"
+          },
+          fontFamily: {
+            sans: ["Inter", "sans-serif"],
+            headline: ["Plus Jakarta Sans", "sans-serif"]
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    @layer base {
+      html, body {
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        background-color: #f8f9ff;
+        color: #0b1c30;
+      }
+      body {
+        -webkit-tap-highlight-color: transparent;
+      }
+    }
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      vertical-align: middle;
+    }
+    .material-symbols-outlined.fill-1 {
+      font-variation-settings: 'FILL' 1;
+    }
+  </style>
+  {% block extra_head %}{% endblock %}
+</head>
+<body class="bg-surface text-on-surface antialiased min-h-screen flex flex-col">
+
+  <!-- TOP APP HEADER -->
+  <header class="fixed top-0 w-full z-50 bg-surface/90 backdrop-blur-xl border-b border-surface-container-high/60 shadow-[0_1px_8px_rgba(0,0,0,0.03)]">
+    <div class="max-w-6xl mx-auto px-4 py-2.5 flex flex-col gap-2">
+      <!-- Main Branding & Status Bar -->
+      <div class="flex items-center justify-between gap-3">
+        <!-- Logo & Title -->
+        <a href="/" class="flex items-center gap-2.5 min-w-0">
+          <div class="w-9 h-9 rounded-xl bg-primary flex items-center justify-center text-white shadow-sm flex-shrink-0">
+            <span class="material-symbols-outlined text-[22px] fill-1">health_and_safety</span>
+          </div>
+          <div class="flex flex-col min-w-0">
+            <span class="font-headline font-bold text-lg text-primary tracking-tight leading-none">MedCoord</span>
+            <div class="flex items-center gap-1 mt-0.5 text-on-surface-variant">
+              <span class="material-symbols-outlined text-[12px] text-tertiary">lock</span>
+              <span class="text-[10px] tracking-wide font-semibold uppercase">FHIR R4 • HIPAA SECURED</span>
+            </div>
+          </div>
+        </a>
+
+        <!-- AWS Cloud & AI Engine Live Status Pill -->
+        <div class="flex items-center gap-2">
+          <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-surface-container-lowest border border-surface-container-high shadow-xs">
+            <span class="relative flex h-2 w-2 flex-shrink-0">
+              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-tertiary opacity-75"></span>
+              <span class="relative inline-flex rounded-full h-2 w-2 bg-tertiary"></span>
+            </span>
+            <span class="text-[11px] font-semibold text-on-surface truncate">
+              AWS Engine: <span class="text-tertiary font-bold">{{ aws_status.mode if aws_status else 'ACTIVE' }}</span>
+            </span>
+          </div>
+          <a href="/audit" class="hidden sm:inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-surface-container hover:bg-surface-container-high text-xs font-semibold text-on-surface-variant transition-colors" title="View CloudTrail Audit Feed">
+            <span class="material-symbols-outlined text-[15px]">security</span>
+            <span>Audit</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Unified Platform Role Switcher Bar -->
+      <div class="w-full">
+        <nav class="grid grid-cols-2 sm:grid-cols-5 p-1 bg-surface-container rounded-xl gap-1 text-xs font-semibold">
+          <a href="/doctor?doctor_id=DOC-201&patient_id=PAT-1001" class="py-1.5 px-2 rounded-lg text-center transition-all truncate flex items-center justify-center gap-1 {% if request.path == '/doctor' %}bg-white text-primary shadow-xs font-bold{% else %}text-on-surface-variant hover:text-on-surface{% endif %}">
+            <span class="material-symbols-outlined text-[16px]">stethoscope</span>
+            <span>Doctor Workspace</span>
+          </a>
+          <a href="/patient?patient_id=PAT-1001" class="py-1.5 px-2 rounded-lg text-center transition-all truncate flex items-center justify-center gap-1 {% if request.path == '/patient' %}bg-white text-primary shadow-xs font-bold{% else %}text-on-surface-variant hover:text-on-surface{% endif %}">
+            <span class="material-symbols-outlined text-[16px]">medication</span>
+            <span>Patient Portal</span>
+          </a>
+          <a href="/swasthya?patient_id=PAT-1001" class="py-1.5 px-2 rounded-lg text-center transition-all truncate flex items-center justify-center gap-1 {% if request.path in ('/swasthya', '/swasthyasetu') %}bg-white text-primary shadow-xs font-bold{% else %}text-on-surface-variant hover:text-on-surface{% endif %}">
+            <span class="material-symbols-outlined text-[16px] text-tertiary">qr_code_scanner</span>
+            <span>SwasthyaSetu Suite</span>
+          </a>
+          <a href="/pharmacy?patient_id=PAT-1001" class="py-1.5 px-2 rounded-lg text-center transition-all truncate flex items-center justify-center gap-1 {% if request.path == '/pharmacy' %}bg-white text-primary shadow-xs font-bold{% else %}text-on-surface-variant hover:text-on-surface{% endif %}">
+            <span class="material-symbols-outlined text-[16px]">local_pharmacy</span>
+            <span>Pharmacy Finder</span>
+          </a>
+          <a href="/audit" class="py-1.5 px-2 rounded-lg text-center transition-all truncate flex items-center justify-center gap-1 {% if request.path == '/audit' %}bg-white text-primary shadow-xs font-bold{% else %}text-on-surface-variant hover:text-on-surface{% endif %}">
+            <span class="material-symbols-outlined text-[16px]">verified_user</span>
+            <span>CloudTrail Logs</span>
+          </a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN BODY CONTAINER -->
+  <main class="flex-1 w-full max-w-6xl mx-auto px-4 pt-32 pb-24">
+    {% block content %}{% endblock %}
+  </main>
+
+  <!-- FLOATING TOAST NOTIFICATION -->
+  <div id="toast-container" class="fixed bottom-6 right-6 z-50 flex flex-col gap-2 pointer-events-none"></div>
+
+  <!-- SHARED CLIENT SCRIPTS -->
+  <script>
+    function showToast(message, type = 'success') {
+      const container = document.getElementById('toast-container');
+      const toast = document.createElement('div');
+      const bgClass = type === 'error' ? 'bg-error text-white' : (type === 'warning' ? 'bg-amber-600 text-white' : 'bg-primary text-white');
+      const icon = type === 'error' ? 'error' : (type === 'warning' ? 'warning' : 'check_circle');
+
+      toast.className = `${bgClass} px-4 py-3 rounded-xl shadow-lg flex items-center gap-2.5 text-sm font-semibold pointer-events-auto transform transition-all duration-300 translate-y-2 opacity-0`;
+      toast.innerHTML = `<span class="material-symbols-outlined text-[20px]">${icon}</span><span>${message}</span>`;
+      container.appendChild(toast);
+
+      setTimeout(() => {
+        toast.classList.remove('translate-y-2', 'opacity-0');
+      }, 10);
+
+      setTimeout(() => {
+        toast.classList.add('opacity-0', 'translate-y-2');
+        setTimeout(() => toast.remove(), 300);
+      }, 3500);
+    }
+  </script>
+  {% block scripts %}{% endblock %}
+</body>
+</html>

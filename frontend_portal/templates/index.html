@@ -1,0 +1,177 @@
+{% extends "base.html" %}
+
+{% block title %}Platform Hub | MedCoord Health{% endblock %}
+
+{% block content %}
+<div class="space-y-8">
+
+  <!-- ======================================================================= -->
+  <!-- 1. Platform Hero Banner -->
+  <!-- ======================================================================= -->
+  <div class="bg-surface-container-lowest rounded-3xl p-8 border border-surface-container-high/80 shadow-sm relative overflow-hidden">
+    <div class="max-w-2xl space-y-4 relative z-10">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary-fixed text-on-primary-fixed-variant text-xs font-bold uppercase tracking-wider">
+        <span class="material-symbols-outlined text-[16px]">verified</span>
+        <span>Dual-Layer AWS Cloud & AI Architecture</span>
+      </div>
+      <h1 class="font-headline font-extrabold text-3xl sm:text-4xl text-on-surface tracking-tight leading-tight">
+        Patient–Doctor Medication Coordination Platform
+      </h1>
+      <p class="text-sm sm:text-base text-on-surface-variant leading-relaxed">
+        Enterprise clinical safety gatekeeper powered by Amazon Comprehend Medical, Bedrock LLMs, Timestream adherence telemetry, and Amazon Location Service geo-fulfillment.
+      </p>
+
+      <div class="flex items-center gap-3 pt-2 flex-wrap">
+        <a href="/swasthya?patient_id=PAT-1001" class="h-12 px-6 rounded-2xl bg-primary hover:bg-primary-container text-white font-headline font-bold text-sm shadow-md flex items-center gap-2 transition-all active:scale-95">
+          <span class="material-symbols-outlined text-[20px] text-tertiary-fixed">qr_code_scanner</span>
+          <span>Open SwasthyaSetu Suite (Judge Demo)</span>
+        </a>
+        <a href="/doctor?doctor_id=DOC-201&patient_id=PAT-1001" class="h-12 px-6 rounded-2xl bg-surface-container hover:bg-surface-container-high text-on-surface font-headline font-bold text-sm flex items-center gap-2 transition-all">
+          <span class="material-symbols-outlined text-[20px] text-primary">stethoscope</span>
+          <span>Doctor Workspace</span>
+        </a>
+        <a href="/patient?patient_id=PAT-1001" class="h-12 px-6 rounded-2xl bg-surface-container hover:bg-surface-container-high text-on-surface font-headline font-bold text-sm flex items-center gap-2 transition-all">
+          <span class="material-symbols-outlined text-[20px] text-primary">medication</span>
+          <span>Patient Portal</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ======================================================================= -->
+  <!-- 2. Interactive Role Selection Cards -->
+  <!-- ======================================================================= -->
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+    <!-- Role 1: SwasthyaSetu Migrant Suite -->
+    <a href="/swasthya?patient_id=PAT-1001" class="group bg-surface-container-lowest rounded-2xl p-6 border-2 border-primary/30 hover:border-primary shadow-xs hover:shadow-md transition-all flex flex-col justify-between relative overflow-hidden">
+      <div class="absolute top-3 right-3">
+        <span class="text-[9px] font-extrabold px-2 py-0.5 rounded-md bg-tertiary-fixed text-on-tertiary-fixed-variant uppercase">1-Click Demo</span>
+      </div>
+      <div class="space-y-3">
+        <div class="w-12 h-12 rounded-2xl bg-primary-fixed text-primary flex items-center justify-center font-bold group-hover:scale-105 transition-transform">
+          <span class="material-symbols-outlined text-[26px]">qr_code_scanner</span>
+        </div>
+        <h2 class="font-headline font-bold text-lg text-on-surface group-hover:text-primary transition-colors">
+          SwasthyaSetu Suite
+        </h2>
+        <p class="text-xs text-on-surface-variant leading-relaxed">
+          Portable Digital Health Passport, BhashaSehat AI translator (Odia/Kannada), Document AI OCR digitizer, KaamSuraksha occupational risk, and SehatSetu ASHA coordination.
+        </p>
+      </div>
+      <div class="pt-4 flex items-center gap-1.5 text-xs font-bold text-primary">
+        <span>Launch Migrant Continuity Suite</span>
+        <span class="material-symbols-outlined text-[16px] group-hover:translate-x-1 transition-transform">arrow_forward</span>
+      </div>
+    </a>
+
+    <!-- Role 2: Doctor -->
+    <a href="/doctor?doctor_id=DOC-201&patient_id=PAT-1001" class="group bg-surface-container-lowest rounded-2xl p-6 border border-surface-container-high hover:border-primary/50 shadow-xs hover:shadow-md transition-all flex flex-col justify-between">
+      <div class="space-y-3">
+        <div class="w-12 h-12 rounded-2xl bg-secondary-fixed text-secondary flex items-center justify-center font-bold group-hover:scale-105 transition-transform">
+          <span class="material-symbols-outlined text-[26px]">stethoscope</span>
+        </div>
+        <h2 class="font-headline font-bold text-lg text-on-surface group-hover:text-primary transition-colors">
+          Doctor Clinical Workspace
+        </h2>
+        <p class="text-xs text-on-surface-variant leading-relaxed">
+          Multi-doctor cross-facility patient profiles, 3-stage AI safety check (Comprehend Medical + Bedrock), allergy cross-reactivity blocks, and 253k medicine catalog search menu.
+        </p>
+      </div>
+      <div class="pt-4 flex items-center gap-1.5 text-xs font-bold text-primary">
+        <span>Enter as Dr. Sarah Jenkins</span>
+        <span class="material-symbols-outlined text-[16px] group-hover:translate-x-1 transition-transform">arrow_forward</span>
+      </div>
+    </a>
+
+    <!-- Role 3: Patient -->
+    <a href="/patient?patient_id=PAT-1001" class="group bg-surface-container-lowest rounded-2xl p-6 border border-surface-container-high hover:border-primary/50 shadow-xs hover:shadow-md transition-all flex flex-col justify-between">
+      <div class="space-y-3">
+        <div class="w-12 h-12 rounded-2xl bg-primary-fixed text-primary flex items-center justify-center font-bold group-hover:scale-105 transition-transform">
+          <span class="material-symbols-outlined text-[26px]">medication</span>
+        </div>
+        <h2 class="font-headline font-bold text-lg text-on-surface group-hover:text-primary transition-colors">
+          Patient Medication Portal
+        </h2>
+        <p class="text-xs text-on-surface-variant leading-relaxed">
+          Chronological daily dose schedules (08:00, 14:00, 20:00), 1-click dose telemetry (TAKEN / MISSED), adherence scorecards, and real-time symptom triage with SNS physician alerts.
+        </p>
+      </div>
+      <div class="pt-4 flex items-center gap-1.5 text-xs font-bold text-primary">
+        <span>Enter as Ramesh Kumar</span>
+        <span class="material-symbols-outlined text-[16px] group-hover:translate-x-1 transition-transform">arrow_forward</span>
+      </div>
+    </a>
+
+    <!-- Role 4: Pharmacy -->
+    <a href="/pharmacy?patient_id=PAT-1001" class="group bg-surface-container-lowest rounded-2xl p-6 border border-surface-container-high hover:border-primary/50 shadow-xs hover:shadow-md transition-all flex flex-col justify-between">
+      <div class="space-y-3">
+        <div class="w-12 h-12 rounded-2xl bg-tertiary-fixed text-on-tertiary-fixed-variant flex items-center justify-center font-bold group-hover:scale-105 transition-transform">
+          <span class="material-symbols-outlined text-[26px]">local_pharmacy</span>
+        </div>
+        <h2 class="font-headline font-bold text-lg text-on-surface group-hover:text-primary transition-colors">
+          1-Stop Pharmacy Finder
+        </h2>
+        <p class="text-xs text-on-surface-variant leading-relaxed">
+          Geospatial route optimization powered by Amazon Location Service. Finds nearest pharmacies stocking 100% of patient medications and reserves inventory with pickup codes.
+        </p>
+      </div>
+      <div class="pt-4 flex items-center gap-1.5 text-xs font-bold text-primary">
+        <span>Search Nearby Pharmacies</span>
+        <span class="material-symbols-outlined text-[16px] group-hover:translate-x-1 transition-transform">arrow_forward</span>
+      </div>
+    </a>
+  </div>
+
+  <!-- ======================================================================= -->
+  <!-- 3. Enterprise Architecture & 19 AWS Services Status -->
+  <!-- ======================================================================= -->
+  <div class="bg-surface-container-lowest rounded-3xl p-6 border border-surface-container-high/80 shadow-xs space-y-4">
+    <div class="flex items-center justify-between">
+      <div>
+        <h2 class="font-headline font-bold text-base text-on-surface">Monitored AWS Cloud Infrastructure (19 Services)</h2>
+        <p class="text-xs text-on-surface-variant">Dual-Layer execution engine with automatic live credential detection and sandbox fallback</p>
+      </div>
+      <span class="text-xs font-bold text-tertiary bg-tertiary-fixed/30 px-3 py-1 rounded-full flex items-center gap-1">
+        <span class="material-symbols-outlined text-[14px]">check_circle</span>
+        <span>100% Operational</span>
+      </span>
+    </div>
+
+    <div class="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 gap-3">
+      {% set services = [
+        ('Amazon DynamoDB', 'NoSQL Database', 'database'),
+        ('AWS KMS', 'AES-256-GCM PHI', 'lock'),
+        ('AWS CloudTrail', 'HIPAA Audit Logs', 'security'),
+        ('AWS STS', 'IAM Tokens', 'key'),
+        ('Amazon S3', 'FHIR Document Store', 'folder'),
+        ('AWS HealthLake', 'FHIR R4 Bundles', 'medical_information'),
+        ('Comprehend Medical', 'NER & Rx Extraction', 'psychology'),
+        ('Amazon Bedrock', 'Safety LLM Engine', 'auto_awesome'),
+        ('Step Functions', 'Clinical State Machine', 'account_tree'),
+        ('Amazon Timestream', 'Dose Telemetry', 'timeline'),
+        ('AWS AppSync', 'GraphQL Realtime', 'sync'),
+        ('Amazon EventBridge', 'Adherence Cron Rule', 'schedule'),
+        ('Amazon Pinpoint', 'SMS Dose Nudges', 'sms'),
+        ('Amazon SNS', 'Critical Doctor Alert', 'notifications_active'),
+        ('Location Service', 'Geo Route & Places', 'location_on'),
+        ('OpenSearch Service', 'Inventory Index', 'search'),
+        ('Amazon Cognito', 'RBAC & Identity', 'badge'),
+        ('API Gateway', 'REST API Router', 'alt_route'),
+        ('AWS Lambda', 'Serverless Compute', 'memory')
+      ] %}
+
+      {% for name, desc, icon in services %}
+      <div class="p-3 rounded-xl bg-surface-container-low border border-surface-container-high/80 space-y-1">
+        <div class="flex items-center justify-between">
+          <span class="material-symbols-outlined text-primary text-[18px]">{{ icon }}</span>
+          <span class="w-2 h-2 rounded-full bg-tertiary"></span>
+        </div>
+        <p class="font-headline font-bold text-xs text-on-surface leading-tight mt-1">{{ name }}</p>
+        <p class="text-[10px] text-on-surface-variant leading-tight">{{ desc }}</p>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+
+</div>
+{% endblock %}

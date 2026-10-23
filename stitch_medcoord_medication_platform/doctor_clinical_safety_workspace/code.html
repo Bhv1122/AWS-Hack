@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="mobile_tab" name="shell-type"/><title>MedCoord Health</title><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { colors: { "on-secondary-fixed": "#00174b", "on-primary-container": "#f4fffc", "on-background": "#0b1c30", "primary-fixed-dim": "#6bd8cb", "on-tertiary-fixed-variant": "#005236", "on-error-container": "#93000a", "surface-container-low": "#eff4ff", "surface-variant": "#d3e4fe", "secondary-fixed-dim": "#b4c5ff", "on-tertiary-fixed": "#002113", "on-secondary-fixed-variant": "#003ea8", "on-secondary-container": "#fefcff", "inverse-primary": "#6bd8cb", "error": "#ba1a1a", "secondary-container": "#316bf3", "outline-variant": "#bcc9c6", "primary-fixed": "#89f5e7", "tertiary-container": "#00855b", "primary-container": "#008378", "on-tertiary": "#ffffff", "tertiary-fixed": "#6ffbbe", "surface": "#f8f9ff", "on-tertiary-container": "#f5fff6", "inverse-on-surface": "#eaf1ff", "secondary": "#0051d5", "primary": "#00685f", "error-container": "#ffdad6", "surface-container-high": "#dce9ff", "background": "#f8f9ff", "surface-dim": "#cbdbf5", "surface-container": "#e5eeff", "tertiary": "#006947", "on-primary": "#ffffff", "on-surface": "#0b1c30", "surface-container-highest": "#d3e4fe", "surface-container-lowest": "#ffffff", "inverse-surface": "#213145", "secondary-fixed": "#dbe1ff", "surface-tint": "#006a61", "on-primary-fixed-variant": "#005049", "on-error": "#ffffff", "on-primary-fixed": "#00201d", "outline": "#6d7a77", "surface-bright": "#f8f9ff", "on-surface-variant": "#3d4947", "tertiary-fixed-dim": "#4edea3", "on-secondary": "#ffffff" }, borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, spacing: { "space-xs": "0.25rem", "space-sm": "0.5rem", "margin": "1rem", "gutter": "1rem", "gutter-tablet": "1.5rem", "space-xl": "2rem", "space-md": "1rem", "space-lg": "1.5rem", "margin-tablet": "2rem" }, fontFamily: { "body-lg": ["Inter"], "body-sm": ["Inter"], "headline-xl-mobile": ["Plus Jakarta Sans"], "headline-lg": ["Plus Jakarta Sans"], "headline-md": ["Plus Jakarta Sans"], "headline-lg-mobile": ["Plus Jakarta Sans"], "headline-xl": ["Plus Jakarta Sans"], "body-md": ["Inter"], "label-md": ["Inter"], "label-lg": ["Inter"], "label-sm": ["Inter"], "headline-sm": ["Plus Jakarta Sans"] }, fontSize: { "body-lg": ["17px", { "lineHeight": "26px", "fontWeight": "400" }], "body-sm": ["13px", { "lineHeight": "18px", "fontWeight": "400" }], "headline-xl-mobile": ["30px", { "lineHeight": "38px", "fontWeight": "700" }], "headline-lg": ["28px", { "lineHeight": "36px", "fontWeight": "700" }], "headline-md": ["20px", { "lineHeight": "28px", "fontWeight": "600" }], "headline-lg-mobile": ["24px", { "lineHeight": "32px", "fontWeight": "700" }], "headline-xl": ["36px", { "lineHeight": "44px", "fontWeight": "700" }], "body-md": ["15px", { "lineHeight": "22px", "fontWeight": "400" }], "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600" }], "label-lg": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" }], "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.04em", "fontWeight": "700" }], "headline-sm": ["18px", { "lineHeight": "26px", "fontWeight": "600" }] } } } }</script><style>@layer base{html,body{width:100%;margin:0;padding:0;}body{overscroll-behavior-y:none;-webkit-tap-highlight-color:transparent;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}}::-webkit-scrollbar{display:none;}</style></head><body class="bg-surface text-on-surface antialiased min-h-screen flex flex-col"><header class="fixed top-0 w-full z-50 pt-safe bg-surface/85 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-40 px-gutter flex flex-col justify-between py-space-xs"><div class="flex items-center justify-between gap-space-sm"><div class="flex items-center gap-space-sm min-w-0"><img alt="MedCoord Health Logo" class="h-8 w-auto object-contain flex-shrink-0" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCWteSvWK-i5bgcPANcMzy2Nf3Cn3d7bYcx8XADNVer94eIcoZoGD9NjMtHWywsU44iNsFRIbuvlZWP6c6zZ1tUuqJaFivLR85ZV8Fbf-AKgFz5LFKP5jDRqMZIG43af2b9yLbEZ0ir_FeqSC1SMGjEvfnB0hglNyrMML35xoefU9LkNNq0G25mBZBOOJrmTjiOkTutseWOB_dEY3HOtMqCyS6hF94I2AraIciDUDWH6ka9yZQWHf4"/><div class="flex flex-col min-w-0"><span class="font-headline-sm text-headline-sm text-primary tracking-tight truncate leading-tight">MedCoord</span><div class="flex items-center gap-1 text-on-surface-variant"><span class="material-symbols-outlined text-[13px] text-tertiary">lock</span><span class="font-label-sm text-[10px] tracking-wide text-on-surface-variant font-medium">HIPAA &amp; FHIR R4 SECURED</span></div></div></div><div class="flex items-center gap-space-sm flex-shrink-0"><button aria-label="Notifications (2 unread)" class="relative w-11 h-11 rounded-full flex items-center justify-center text-on-surface-variant hover:text-primary hover:bg-surface-container-high transition-colors" type="button"><span class="material-symbols-outlined text-[22px]">notifications</span><span class="absolute top-2 right-2 flex items-center justify-center min-w-[18px] h-[18px] px-1 bg-error text-on-error rounded-full font-label-sm text-[10px] leading-none font-bold ring-2 ring-surface">2</span></button><img alt="Profile" class="w-8 h-8 rounded-full object-cover ring-2 ring-primary-container/20" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDBjluIs_Sel6nsC3kFYsC8wCU99l1aGvcmZdrIdJFRhvJHFP4zgnh1iZQd-dopl_vLvBSQAXDKANGM2h2DVP_0ahm1VQFomIa09lA7gBnnWmjsuMqze3phu49CU5AIpU_gtp8ZeRUYc48uom4A8KasEvfmB3MEPRslatxrSMcDIklWxwOOD2KNMy9DUFW4Cdh-T_bid8VkyCVm5RTUfIDj7g3bkm_JyqlHWgvF8BjOXqyfPlHoOU4"/></div></div><div class="flex items-center justify-between gap-space-xs"><div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-surface-container-lowest shadow-[0_1px_4px_rgba(15,23,42,0.04)] max-w-full"><span class="relative flex h-2 w-2 flex-shrink-0"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-tertiary opacity-75"></span><span class="relative inline-flex rounded-full h-2 w-2 bg-tertiary"></span></span><span class="font-label-sm text-[11px] text-on-surface font-medium truncate">AWS Cloud &amp; AI Safety Engine: Active</span></div><div class="font-headline-md text-headline-sm text-on-surface font-semibold truncate hidden sm:block">Doctor Workspace</div></div><div class="w-full"><div class="grid grid-cols-2 p-1 bg-surface-container rounded-lg gap-1"><button class="py-1.5 px-2 rounded-md font-label-md text-label-md text-center transition-all bg-surface-container-lowest text-primary shadow-[0_1px_2px_rgba(0,0,0,0.05)] truncate" type="button">Patient Portal (PAT-1001)</button><button class="py-1.5 px-2 rounded-md font-label-md text-label-md text-center transition-all text-on-surface-variant hover:text-on-surface truncate" type="button">Doctor Workspace (DOC-201)</button></div></div></div></header><main class="flex-1 flex flex-col relative w-full pt-40 pb-28 bg-surface px-gutter"><div class="flex flex-col w-full pb-8 space-y-space-md">
+<!-- Active Doctor Role & Patient Identification Card -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm space-y-space-sm">
+<!-- Practitioner Header -->
+<div class="flex items-center justify-between pb-space-xs">
+<div class="flex items-center gap-space-sm min-w-0">
+<div class="w-10 h-10 rounded-full bg-secondary-fixed flex items-center justify-center text-secondary font-headline-sm flex-shrink-0">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">stethoscope</span>
+</div>
+<div class="min-w-0">
+<div class="flex items-center gap-1.5 flex-wrap">
+<span class="font-headline-sm text-headline-sm text-on-surface truncate">Dr. Sarah Chen, MD</span>
+<span class="px-2 py-0.5 rounded-full bg-primary-fixed text-on-primary-fixed-variant font-label-sm text-[10px] uppercase tracking-wider font-bold">DOC-201</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant truncate">Chief of Cardiology • Metro Heart Institute</p>
+</div>
+</div>
+<button aria-label="Switch patient case" class="w-9 h-9 rounded-full bg-surface-container flex items-center justify-center text-on-surface-variant hover:text-primary transition-colors flex-shrink-0" type="button">
+<span class="material-symbols-outlined text-[20px]">swap_horiz</span>
+</button>
+</div>
+<!-- Active Patient Quick Bar -->
+<div class="p-space-sm rounded-lg bg-surface-container-low flex flex-col gap-1.5">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2 min-w-0">
+<span class="font-label-md text-label-md text-primary font-bold">ACTIVE PATIENT:</span>
+<span class="font-label-lg text-label-lg text-on-surface font-bold truncate">John Doe (68M)</span>
+</div>
+<span class="font-label-sm text-label-sm text-secondary bg-surface-container-lowest px-2 py-0.5 rounded-full font-medium">PAT-1001</span>
+</div>
+<div class="flex items-center gap-2 text-on-surface-variant font-body-sm text-[12px] flex-wrap">
+<span>DOB: 04/12/1956</span>
+<span>•</span>
+<span>Outpatient Cardiopulmonary Protocol</span>
+<span>•</span>
+<span class="text-tertiary font-semibold flex items-center gap-0.5"><span class="material-symbols-outlined text-[14px]">cell_tower</span> Telemetry Active</span>
+</div>
+</div>
+</div>
+<!-- Safety & Allergy Sentinel Bar -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm space-y-space-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-error text-[20px]" style="font-variation-settings: 'FILL' 1;">security</span>
+<span class="font-label-lg text-label-lg text-on-surface font-bold tracking-tight">Clinical Risk Sentinel</span>
+</div>
+<span class="font-label-sm text-label-sm px-2 py-0.5 rounded-full bg-surface-container-high text-on-surface-variant">FHIR R4 Verified</span>
+</div>
+<!-- Critical Allergy Badges -->
+<div class="flex flex-col gap-1.5">
+<div class="flex items-center gap-2 p-2 rounded-lg bg-error-container text-on-error-container">
+<span class="material-symbols-outlined text-[20px] text-error flex-shrink-0" style="font-variation-settings: 'FILL' 1;">block</span>
+<div class="min-w-0 flex-1">
+<p class="font-label-md text-label-md font-bold leading-tight truncate">ALLERGY: Penicillin Class Agents</p>
+<p class="font-body-sm text-[11px] leading-tight opacity-90 truncate">Severe Anaphylaxis / Airway Edema (Documented 2018)</p>
+</div>
+</div>
+<div class="flex items-center gap-2 p-2 rounded-lg bg-error-container text-on-error-container">
+<span class="material-symbols-outlined text-[20px] text-error flex-shrink-0" style="font-variation-settings: 'FILL' 1;">block</span>
+<div class="min-w-0 flex-1">
+<p class="font-label-md text-label-md font-bold leading-tight truncate">ALLERGY: Sulfonamides (Sulfa Drugs)</p>
+<p class="font-body-sm text-[11px] leading-tight opacity-90 truncate">Erythema Multiforme / Severe Cutaneous Reaction</p>
+</div>
+</div>
+</div>
+<!-- Adherence Summary & Missed Dose Alert -->
+<div class="pt-space-xs grid grid-cols-1 gap-2">
+<div class="flex items-center justify-between bg-surface-container-low p-2 rounded-lg">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-full bg-tertiary-fixed flex items-center justify-center text-on-tertiary-fixed">
+<span class="material-symbols-outlined text-[18px]">verified</span>
+</div>
+<div>
+<p class="font-label-sm text-[11px] text-on-surface-variant uppercase font-bold">Overall Adherence</p>
+<p class="font-headline-sm text-headline-sm text-tertiary font-bold leading-none">92.4%</p>
+</div>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">30-Day Mean</span>
+</div>
+<!-- Warning Pill -->
+<div class="flex items-start gap-2 p-2.5 rounded-lg bg-surface-container-highest text-on-surface">
+<span class="material-symbols-outlined text-secondary text-[20px] flex-shrink-0">crisis_alert</span>
+<div class="min-w-0 flex-1">
+<p class="font-label-md text-label-md text-secondary font-bold leading-tight">Adherence Gap Detected (Cardiology Regimen)</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-tight mt-0.5">Patient skipped evening Atorvastatin on Tuesday &amp; Friday (2 missed doses reported via Smart Dispenser).</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Unified Multi-Hospital Medication Profile -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm space-y-space-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2 min-w-0">
+<div class="w-8 h-8 rounded-lg bg-primary-container text-on-primary-container flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-[18px]">hub</span>
+</div>
+<div>
+<h2 class="font-headline-sm text-headline-sm text-on-surface font-bold leading-tight">Active Cross-System Medications</h2>
+<p class="font-body-sm text-[12px] text-on-surface-variant leading-tight">Unified across 3 Connected Health Systems</p>
+</div>
+</div>
+<span class="font-label-sm text-label-sm bg-surface-container text-on-surface font-bold px-2 py-0.5 rounded-full">4 Active</span>
+</div>
+<!-- Medication List Cards -->
+<div class="space-y-space-sm">
+<!-- Med 1: Warfarin -->
+<div class="p-3 rounded-xl bg-surface-container-low flex flex-col gap-2">
+<div class="flex items-start justify-between gap-2">
+<div class="min-w-0">
+<div class="flex items-center gap-1.5 flex-wrap">
+<span class="font-label-lg text-label-lg text-on-surface font-bold">Warfarin Sodium</span>
+<span class="px-2 py-0.5 rounded-md bg-surface-container-lowest text-primary font-label-sm text-[11px] font-bold">5 mg Oral Tablet</span>
+</div>
+<p class="font-body-sm text-[12px] text-on-surface-variant mt-0.5">Daily at 08:00 AM • Prescribed by Dr. Sarah Chen (City Heart Clinic)</p>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-tertiary-fixed text-on-tertiary-fixed-variant font-label-sm text-[11px] font-bold flex-shrink-0">96% Adherent</span>
+</div>
+<div class="flex items-center justify-end gap-2 pt-1">
+<button class="px-3 py-1.5 rounded-lg bg-surface-container-lowest text-primary font-label-md text-label-md font-semibold hover:bg-surface-container transition-colors" type="button">Modify Dose</button>
+<button class="px-3 py-1.5 rounded-lg bg-surface-container-lowest text-error font-label-md text-label-md font-semibold hover:bg-error-container transition-colors" type="button">Discontinue</button>
+</div>
+</div>
+<!-- Med 2: Lisinopril -->
+<div class="p-3 rounded-xl bg-surface-container-low flex flex-col gap-2">
+<div class="flex items-start justify-between gap-2">
+<div class="min-w-0">
+<div class="flex items-center gap-1.5 flex-wrap">
+<span class="font-label-lg text-label-lg text-on-surface font-bold">Lisinopril</span>
+<span class="px-2 py-0.5 rounded-md bg-surface-container-lowest text-primary font-label-sm text-[11px] font-bold">10 mg Oral Tablet</span>
+</div>
+<p class="font-body-sm text-[12px] text-on-surface-variant mt-0.5">Daily at 08:00 AM • Prescribed by Dr. Robert Evans (St. Jude Medical)</p>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-tertiary-fixed text-on-tertiary-fixed-variant font-label-sm text-[11px] font-bold flex-shrink-0">94% Adherent</span>
+</div>
+<div class="flex items-center justify-end gap-2 pt-1">
+<button class="px-3 py-1.5 rounded-lg bg-surface-container-lowest text-primary font-label-md text-label-md font-semibold hover:bg-surface-container transition-colors" type="button">Modify Dose</button>
+<button class="px-3 py-1.5 rounded-lg bg-surface-container-lowest text-error font-label-md text-label-md font-semibold hover:bg-error-container transition-colors" type="button">Discontinue</button>
+</div>
+</div>
+<!-- Med 3: Metformin -->
+<div class="p-3 rounded-xl bg-surface-container-low flex flex-col gap-2">
+<div class="flex items-start justify-between gap-2">
+<div class="min-w-0">
+<div class="flex items-center gap-1.5 flex-wrap">
+<span class="font-label-lg text-label-lg text-on-surface font-bold">Metformin HCl</span>
+<span class="px-2 py-0.5 rounded-md bg-surface-container-lowest text-primary font-label-sm text-[11px] font-bold">500 mg Tablet</span>
+</div>
+<p class="font-body-sm text-[12px] text-on-surface-variant mt-0.5">Twice Daily (Morning/Evening) • Prescribed by Dr. Amy Zhang (Endocrine)</p>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-surface-container-highest text-on-surface font-label-sm text-[11px] font-bold flex-shrink-0">88% Adherent</span>
+</div>
+<div class="flex items-center justify-end gap-2 pt-1">
+<button class="px-3 py-1.5 rounded-lg bg-surface-container-lowest text-primary font-label-md text-label-md font-semibold hover:bg-surface-container transition-colors" type="button">Modify Dose</button>
+<button class="px-3 py-1.5 rounded-lg bg-surface-container-lowest text-error font-label-md text-label-md font-semibold hover:bg-error-container transition-colors" type="button">Discontinue</button>
+</div>
+</div>
+<!-- Med 4: Atorvastatin -->
+<div class="p-3 rounded-xl bg-surface-container-low flex flex-col gap-2">
+<div class="flex items-start justify-between gap-2">
+<div class="min-w-0">
+<div class="flex items-center gap-1.5 flex-wrap">
+<span class="font-label-lg text-label-lg text-on-surface font-bold">Atorvastatin Calcium</span>
+<span class="px-2 py-0.5 rounded-md bg-surface-container-lowest text-primary font-label-sm text-[11px] font-bold">20 mg Tablet</span>
+</div>
+<p class="font-body-sm text-[12px] text-on-surface-variant mt-0.5">Nightly at 21:00 PM • Prescribed by Dr. Sarah Chen (City Heart Clinic)</p>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-error-container text-on-error-container font-label-sm text-[11px] font-bold flex-shrink-0">78% Low Adherence</span>
+</div>
+<div class="flex items-center justify-end gap-2 pt-1">
+<button class="px-3 py-1.5 rounded-lg bg-surface-container-lowest text-primary font-label-md text-label-md font-semibold hover:bg-surface-container transition-colors" type="button">Modify Dose</button>
+<button class="px-3 py-1.5 rounded-lg bg-surface-container-lowest text-error font-label-md text-label-md font-semibold hover:bg-error-container transition-colors" type="button">Discontinue</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Smart AI Prescription Composer & Clinical Safety Gate -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm space-y-space-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-lg bg-secondary-container text-on-secondary-container flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-[18px]">auto_fix_high</span>
+</div>
+<div>
+<h2 class="font-headline-sm text-headline-sm text-on-surface font-bold">AI Clinical Safety Gate</h2>
+<p class="font-body-sm text-[12px] text-on-surface-variant">Amazon Bedrock + Comprehend Medical Sentinel</p>
+</div>
+</div>
+<div class="flex items-center gap-1 px-2 py-0.5 rounded-full bg-tertiary-container text-on-tertiary-container font-label-sm text-[10px] font-bold">
+<span class="material-symbols-outlined text-[12px]">bolt</span> Real-time
+      </div>
+</div>
+<!-- Prescription Input Form -->
+<div class="space-y-space-sm">
+<label class="block font-label-md text-label-md text-on-surface font-semibold" for="rx-input">
+        Prescription Order / Draft
+      </label>
+<div class="relative">
+<input class="w-full h-12 px-4 rounded-lg bg-surface-container-low text-on-surface font-body-md text-body-md outline-none focus:bg-surface-container-lowest transition-colors pr-10" id="rx-input" type="text" value="Aspirin 81mg (Enteric Coated) - 1 tablet daily"/>
+<span class="material-symbols-outlined absolute right-3 top-3 text-primary text-[22px]">medication</span>
+</div>
+<button class="w-full h-12 rounded-full bg-primary text-on-primary font-label-lg text-label-lg font-bold flex items-center justify-center gap-2 shadow-md hover:bg-primary-container active:scale-[0.99] transition-all" id="btn-run-safety" type="button">
+<span class="material-symbols-outlined text-[20px]">verified_user</span>
+<span>Run AI Safety Check &amp; Prescribe</span>
+</button>
+</div>
+<!-- CRITICAL SAFETY BLOCK CARD -->
+<div class="rounded-xl bg-error-container p-4 space-y-3 relative shadow-md" id="safety-block-card">
+<!-- Header Banner -->
+<div class="flex items-start gap-2.5">
+<div class="w-8 h-8 rounded-full bg-error text-on-error flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">dangerous</span>
+</div>
+<div class="min-w-0 flex-1">
+<h3 class="font-label-lg text-label-lg text-on-error-container font-bold leading-snug">
+            CRITICAL SAFETY INTERACTION DETECTED
+          </h3>
+<p class="font-label-sm text-[11px] text-error font-bold uppercase tracking-wider">Bedrock Multi-Drug Contraindication Protocol</p>
+</div>
+</div>
+<!-- Conflict Summary -->
+<div class="bg-surface-container-lowest rounded-lg p-3 space-y-1.5 text-on-surface">
+<div class="flex items-center justify-between text-error font-label-md text-label-md font-bold">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">sync_problem</span> Active Conflict:</span>
+<span>Level 1: Lethal Risk</span>
+</div>
+<p class="font-body-md text-body-md font-semibold text-on-surface">
+          Warfarin Sodium 5mg (Active) + Aspirin 81mg (Proposed)
+        </p>
+<p class="font-body-sm text-[13px] text-on-surface-variant leading-relaxed">
+          Concurrent anticoagulant and antiplatelet therapy produces an estimated <span class="font-bold text-error">4.2x elevated incidence</span> of major gastrointestinal and intracerebral hemorrhage without concomitant gastroprotective therapy.
+        </p>
+</div>
+<!-- Suggested Alternatives Chips -->
+<div class="space-y-1.5">
+<span class="font-label-sm text-label-sm text-on-error-container font-bold uppercase tracking-wide">Safer Clinical Alternatives:</span>
+<div class="flex flex-col gap-1.5">
+<button class="alt-chip w-full text-left px-3 py-2 rounded-lg bg-surface-container-lowest text-primary hover:bg-primary-container hover:text-on-primary-container transition-all flex items-center justify-between font-label-md text-label-md shadow-sm" type="button">
+<span class="flex items-center gap-1.5 truncate">
+<span class="material-symbols-outlined text-[18px]">auto_awesome</span>
+              Clopidogrel 75mg (Alternative Antiplatelet)
+            </span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</button>
+<button class="alt-chip w-full text-left px-3 py-2 rounded-lg bg-surface-container-lowest text-primary hover:bg-primary-container hover:text-on-primary-container transition-all flex items-center justify-between font-label-md text-label-md shadow-sm" type="button">
+<span class="flex items-center gap-1.5 truncate">
+<span class="material-symbols-outlined text-[18px]">add_moderator</span>
+              Add PPI Gastroprotection (Omeprazole 20mg daily)
+            </span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</button>
+<button class="alt-chip w-full text-left px-3 py-2 rounded-lg bg-surface-container-lowest text-primary hover:bg-primary-container hover:text-on-primary-container transition-all flex items-center justify-between font-label-md text-label-md shadow-sm" type="button">
+<span class="flex items-center gap-1.5 truncate">
+<span class="material-symbols-outlined text-[18px]">tune</span>
+              Titrate Warfarin Target INR to 2.0 - 2.5
+            </span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Expandable Override Accordion -->
+<div class="pt-1">
+<button class="flex items-center justify-between w-full py-2 text-on-error-container font-label-md text-label-md font-bold" id="btn-toggle-override" type="button">
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[18px]">shield_person</span>
+            Doctor Clinical Override Options
+          </span>
+<span class="material-symbols-outlined text-[18px] transition-transform" id="override-chevron">expand_more</span>
+</button>
+<div class="space-y-3 pt-2" id="override-panel">
+<label class="flex items-start gap-2 cursor-pointer bg-surface-container-lowest p-2.5 rounded-lg">
+<input class="mt-1 w-4 h-4 text-error rounded focus:ring-error" id="override-check" type="checkbox"/>
+<span class="font-body-sm text-[12px] text-on-surface leading-tight">
+              I acknowledge the acute hemorrhage contraindication and assume medical-legal responsibility for overriding this safety directive.
+            </span>
+</label>
+<div>
+<label class="block font-label-sm text-[11px] text-on-error-container font-bold uppercase mb-1" for="override-notes">
+              Mandatory Clinical Rationale &amp; Hemorrhage Monitoring Protocol
+            </label>
+<textarea class="w-full p-2.5 rounded-lg bg-surface-container-lowest text-on-surface font-body-sm text-body-sm outline-none resize-none" id="override-notes" placeholder="Document specific clinical rationale, INR cadence, and gastroprotection..." rows="2"></textarea>
+</div>
+<div class="grid grid-cols-2 gap-2 pt-1">
+<button class="h-11 rounded-full bg-surface-container-lowest text-on-surface font-label-md text-label-md font-bold hover:bg-surface-container transition-colors shadow-sm" id="btn-cancel-rx" type="button">
+              Cancel Order (Safe)
+            </button>
+<button class="h-11 rounded-full bg-error text-on-error font-label-md text-label-md font-bold opacity-40 cursor-not-allowed transition-all flex items-center justify-center gap-1" disabled="" id="btn-authorize-override" type="button">
+<span class="material-symbols-outlined text-[16px]">warning</span>
+              Authorize Override
+            </button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Immutable Prescription Audit Timeline (FHIR R4) -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm space-y-space-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-lg bg-surface-container text-on-surface font-bold flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-[18px]">history</span>
+</div>
+<div>
+<h2 class="font-headline-sm text-headline-sm text-on-surface font-bold leading-tight">Immutable Audit Timeline</h2>
+<p class="font-body-sm text-[12px] text-on-surface-variant leading-tight">FHIR R4 Event Stream • Tamper-Evident</p>
+</div>
+</div>
+<span class="font-label-sm text-label-sm px-2 py-0.5 rounded-full bg-surface-container-low text-primary font-semibold">Ledger Sync</span>
+</div>
+<!-- Timeline Entries -->
+<div class="relative pl-6 space-y-4 before:content-[''] before:absolute before:left-2.5 before:top-2 before:bottom-2 before:w-0.5 before:bg-surface-container-high">
+<!-- Event 1 -->
+<div class="relative flex flex-col gap-0.5">
+<div class="absolute -left-6 top-1 w-3.5 h-3.5 rounded-full bg-primary ring-4 ring-surface-container-lowest"></div>
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-[11px] text-on-surface-variant font-bold">OCT 24, 2024 • 09:15 AM EDT</span>
+<span class="font-label-sm text-[10px] text-primary bg-primary-fixed px-1.5 py-0.2 rounded font-mono">ADJUSTMENT</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface font-medium leading-tight">
+          Warfarin dosage adjusted from 2.5mg to 5mg daily by Dr. Sarah Chen.
+        </p>
+<p class="font-body-sm text-[12px] text-on-surface-variant">
+          Clinical Note: Post-op Target INR measured 1.8 (Sub-therapeutic).
+        </p>
+</div>
+<!-- Event 2 -->
+<div class="relative flex flex-col gap-0.5">
+<div class="absolute -left-6 top-1 w-3.5 h-3.5 rounded-full bg-secondary ring-4 ring-surface-container-lowest"></div>
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-[11px] text-on-surface-variant font-bold">SEP 12, 2024 • 02:30 PM EDT</span>
+<span class="font-label-sm text-[10px] text-secondary bg-secondary-fixed px-1.5 py-0.2 rounded font-mono">RENEWAL</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface font-medium leading-tight">
+          Lisinopril 10mg renewed for 90 days by Dr. Robert Evans (St. Jude Medical).
+        </p>
+<p class="font-body-sm text-[12px] text-on-surface-variant">
+          BP Baseline stable at 126/82 mmHg. Serum creatinine 1.0 mg/dL.
+        </p>
+</div>
+<!-- Event 3 -->
+<div class="relative flex flex-col gap-0.5">
+<div class="absolute -left-6 top-1 w-3.5 h-3.5 rounded-full bg-error ring-4 ring-surface-container-lowest"></div>
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-[11px] text-on-surface-variant font-bold">AUG 04, 2024 • 11:00 AM EDT</span>
+<span class="font-label-sm text-[10px] text-error bg-error-container px-1.5 py-0.2 rounded font-mono">DISCONTINUED</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface font-medium leading-tight">
+          Hydrochlorothiazide 25mg discontinued due to mild recurrent hypokalemia.
+        </p>
+<p class="font-body-sm text-[12px] text-on-surface-variant">
+          Replaced with potassium-sparing regimen guidance by Dr. Sarah Chen.
+        </p>
+</div>
+</div>
+</div>
+</div>
+<script>
+  (function() {
+    const rxInput = document.getElementById('rx-input');
+    const runBtn = document.getElementById('btn-run-safety');
+    const safetyCard = document.getElementById('safety-block-card');
+    const toggleBtn = document.getElementById('btn-toggle-override');
+    const overridePanel = document.getElementById('override-panel');
+    const chevron = document.getElementById('override-chevron');
+    const overrideCheck = document.getElementById('override-check');
+    const overrideNotes = document.getElementById('override-notes');
+    const authBtn = document.getElementById('btn-authorize-override');
+    const cancelBtn = document.getElementById('btn-cancel-rx');
+    const altChips = document.querySelectorAll('.alt-chip');
+
+    let isExpanded = true;
+
+    // Toggle override details
+    toggleBtn.addEventListener('click', () => {
+      isExpanded = !isExpanded;
+      if (isExpanded) {
+        overridePanel.classList.remove('hidden');
+        chevron.style.transform = 'rotate(0deg)';
+      } else {
+        overridePanel.classList.add('hidden');
+        chevron.style.transform = 'rotate(180deg)';
+      }
+    });
+
+    // Checkbox & Note validation for Override button
+    function updateAuthStatus() {
+      const hasChecked = overrideCheck.checked;
+      const hasText = overrideNotes.value.trim().length >= 8;
+      if (hasChecked && hasText) {
+        authBtn.disabled = false;
+        authBtn.classList.remove('opacity-40', 'cursor-not-allowed');
+        authBtn.classList.add('shadow-md', 'active:scale-95');
+      } else {
+        authBtn.disabled = true;
+        authBtn.classList.add('opacity-40', 'cursor-not-allowed');
+        authBtn.classList.remove('shadow-md', 'active:scale-95');
+      }
+    }
+
+    overrideCheck.addEventListener('change', updateAuthStatus);
+    overrideNotes.addEventListener('input', updateAuthStatus);
+
+    // Alternative chip selection
+    altChips.forEach((chip) => {
+      chip.addEventListener('click', () => {
+        const text = chip.querySelector('span').innerText.trim();
+        rxInput.value = text;
+        safetyCard.classList.add('animate-pulse');
+        setTimeout(() => {
+          safetyCard.classList.remove('animate-pulse');
+        }, 600);
+      });
+    });
+
+    // Cancel order action
+    cancelBtn.addEventListener('click', () => {
+      rxInput.value = '';
+      rxInput.placeholder = 'Prescription cancelled. Draft a new order...';
+      safetyCard.classList.add('opacity-50');
+      setTimeout(() => {
+        safetyCard.classList.remove('opacity-50');
+      }, 500);
+    });
+
+    // Re-check trigger
+    runBtn.addEventListener('click', () => {
+      runBtn.innerHTML = '<span class="material-symbols-outlined text-[20px] animate-spin">refresh</span><span>Analyzing Pharmacogenomics...</span>';
+      setTimeout(() => {
+        runBtn.innerHTML = '<span class="material-symbols-outlined text-[20px]">verified_user</span><span>Run AI Safety Check & Prescribe</span>';
+        safetyCard.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }, 700);
+    });
+  })();
+</script></main><nav class="fixed bottom-0 w-full z-50 pb-safe bg-surface/90 backdrop-blur-xl shadow-[0_-2px_12px_rgba(15,23,42,0.04)]" data-active-classes="text-primary font-semibold"><div class="flex justify-around items-center h-16 px-space-xs"><a class="flex flex-col items-center justify-center gap-0.5 min-w-[64px] min-h-[48px] text-on-surface-variant hover:text-primary transition-colors" data-path="medications" href="#"><span class="material-symbols-outlined text-[24px]">medication</span><span class="font-label-sm text-label-sm leading-tight">Medications</span></a><a class="flex flex-col items-center justify-center gap-0.5 min-w-[64px] min-h-[48px] text-on-surface-variant hover:text-primary transition-colors" data-path="safety-alerts" href="#"><span class="material-symbols-outlined text-[24px]">verified_user</span><span class="font-label-sm text-label-sm leading-tight">Safety Alerts</span></a><a class="flex flex-col items-center justify-center gap-0.5 min-w-[64px] min-h-[48px] text-on-surface-variant hover:text-primary transition-colors" data-path="pharmacy-finder" href="#"><span class="material-symbols-outlined text-[24px]">local_pharmacy</span><span class="font-label-sm text-label-sm leading-tight">Pharmacy</span></a><a aria-current="page" class="flex flex-col items-center justify-center gap-0.5 min-w-[64px] min-h-[48px] transition-colors text-primary font-semibold" data-path="doctor-workspace" href="#"><span class="material-symbols-outlined text-[24px]">stethoscope</span><span class="font-label-sm text-label-sm leading-tight">Doctor</span></a></div></nav></body></html>

@@ -1,0 +1,1233 @@
+{% extends "base.html" %}
+
+{% block title %}Doctor Clinical Safety Workspace | MedCoord Health{% endblock %}
+
+{% block content %}
+<div class="space-y-6">
+
+  <!-- ======================================================================= -->
+  <!-- 1. Doctor & Patient Header Bar with Switchers -->
+  <!-- ======================================================================= -->
+  <div class="bg-surface-container-lowest rounded-2xl p-5 border border-surface-container-high/80 shadow-xs space-y-4">
+    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-surface-container-low">
+      <!-- Doctor Profile -->
+      <div class="flex items-center gap-3.5">
+        <div class="w-12 h-12 rounded-2xl bg-secondary-fixed text-secondary flex items-center justify-center font-bold shadow-xs flex-shrink-0">
+          <span class="material-symbols-outlined text-[26px] fill-1">stethoscope</span>
+        </div>
+        <div>
+          <div class="flex items-center gap-2 flex-wrap">
+            <h1 class="font-headline font-bold text-lg text-on-surface leading-tight">
+              {{ data.viewing_doctor.name if data.viewing_doctor else 'Dr. Sarah Jenkins, MD, FACC' }}
+            </h1>
+            <span class="px-2.5 py-0.5 rounded-full bg-primary-fixed text-on-primary-fixed-variant text-xs font-bold uppercase tracking-wider">
+              {{ data.viewing_doctor.doctor_id if data.viewing_doctor else doctor_id }}
+            </span>
+          </div>
+          <p class="text-xs text-on-surface-variant mt-0.5">
+            {{ data.viewing_doctor.specialty if data.viewing_doctor else 'Chief of Cardiology' }} • {{ data.viewing_doctor.hospital if data.viewing_doctor else 'City Heart Clinic' }}
+          </p>
+        </div>
+      </div>
+
+      <!-- Quick Role & Patient Case Switcher & PDF Download -->
+      <div class="flex items-center gap-2 flex-wrap">
+        <label class="text-xs font-semibold text-on-surface-variant">Switch Patient:</label>
+        <select id="patient-selector" onchange="switchPatient(this.value)" class="bg-surface-container-low text-on-surface text-xs font-bold px-3 py-2 rounded-xl border border-surface-container-high outline-none cursor-pointer">
+          <option value="PAT-1001" {% if patient_id == 'PAT-1001' %}selected{% endif %}>PAT-1001: Ramesh Kumar / John Doe (68M - Cardiology)</option>
+          <option value="PAT-1002" {% if patient_id == 'PAT-1002' %}selected{% endif %}>PAT-1002: Anita Patel (54F - Hypertension)</option>
+        </select>
+        <a href="/patient/{{ patient_id }}/prescription-pdf" target="_blank" id="btn-doctor-download-pdf" class="h-9 px-3 rounded-xl bg-primary text-white text-xs font-bold flex items-center gap-1.5 shadow-xs hover:bg-primary-container transition-colors" title="Download Official Prescription & Medication History PDF">
+          <span class="material-symbols-outlined text-[16px]">picture_as_pdf</span>
+          <span>Download PDF</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Active Patient Profile Details Bar -->
+    <div class="p-4 rounded-xl bg-surface-container-low/70 border border-surface-container-high flex flex-col md:flex-row md:items-center justify-between gap-3">
+      <div class="space-y-1">
+        <div class="flex items-center gap-2 flex-wrap">
+          <span class="text-xs font-bold text-primary uppercase tracking-wide">ACTIVE CLINICAL PROFILE:</span>
+          <span class="text-base font-bold text-on-surface">
+            {{ data.patient_demographics.name if data.patient_demographics else 'Ramesh Kumar (John Doe)' }}
+          </span>
+          <span class="text-xs font-semibold text-secondary bg-surface-container-lowest px-2 py-0.5 rounded-md border border-surface-container-high">
+            {{ patient_id }}
+          </span>
+          <span class="text-xs text-on-surface-variant font-medium">
+            ({{ data.patient_demographics.gender if data.patient_demographics else 'Male' }}, Age {{ data.patient_demographics.age if data.patient_demographics else '68' }})
+          </span>
+        </div>
+        <div class="flex items-center gap-2 text-xs text-on-surface-variant flex-wrap">
+          <span>DOB: 1956-04-12</span>
+          <span>•</span>
+          <span>Caregiver: {{ data.patient_demographics.caregiver_name if data.patient_demographics else 'Sunita Kumar' }} ({{ data.patient_demographics.caregiver_phone if data.patient_demographics else '+91-98765-43210' }})</span>
+          <span>•</span>
+          <span class="text-tertiary font-bold inline-flex items-center gap-1">
+            <span class="material-symbols-outlined text-[14px]">cell_tower</span>
+            AppSync Telemetry Stream Active
+          </span>
+        </div>
+      </div>
+
+      <!-- Quick Adherence Badge -->
+      <div class="flex items-center gap-3">
+        <div class="text-right">
+          <p class="text-[11px] font-bold text-on-surface-variant uppercase">30-Day Mean Adherence</p>
+          <p class="text-xl font-headline font-bold text-tertiary">
+            {{ data.adherence_summary.overall_adherence_rate if data.adherence_summary else '96.2%' }}
+          </p>
+        </div>
+        <div class="w-10 h-10 rounded-full bg-tertiary-fixed text-on-tertiary-fixed-variant flex items-center justify-center font-bold">
+          <span class="material-symbols-outlined text-[22px]">verified</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ======================================================================= -->
+  <!-- 2. Clinical Risk Sentinel (Allergies & Cross-Facility Alerts) -->
+  <!-- ======================================================================= -->
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+    <!-- Verified Allergies Card (Left 2 cols) -->
+    <div class="md:col-span-2 bg-surface-container-lowest rounded-2xl p-5 border border-surface-container-high/80 shadow-xs space-y-3.5">
+      <div class="flex items-center justify-between">
+        <div class="flex items-center gap-2">
+          <span class="material-symbols-outlined text-error text-[22px] fill-1">security</span>
+          <h2 class="font-headline font-bold text-base text-on-surface">Verified Clinical Allergies</h2>
+        </div>
+        <button onclick="toggleAllergyModal(true)" class="px-2.5 py-1 rounded-lg bg-surface-container text-xs font-bold text-primary hover:bg-surface-container-high transition-colors flex items-center gap-1">
+          <span class="material-symbols-outlined text-[16px]">add_circle</span>
+          <span>Add Allergy</span>
+        </button>
+      </div>
+
+      <!-- Allergy List -->
+      <div id="allergies-list" class="space-y-2">
+        {% if data.verified_allergies %}
+          {% for allergy in data.verified_allergies %}
+          <div class="p-3 rounded-xl bg-error-container/60 border border-error/20 flex items-start gap-2.5">
+            <span class="material-symbols-outlined text-error text-[20px] mt-0.5 fill-1">block</span>
+            <div class="flex-1 min-w-0">
+              <div class="flex items-center justify-between">
+                <p class="text-xs font-bold text-on-error-container uppercase">
+                  ALLERGY: {{ allergy.allergen if allergy.allergen else allergy.substance }}
+                </p>
+                <span class="text-[10px] font-bold px-1.5 py-0.5 rounded bg-error text-white uppercase">
+                  {{ allergy.severity if allergy.severity else 'SEVERE' }}
+                </span>
+              </div>
+              <p class="text-xs text-on-error-container/90 mt-0.5">
+                {{ allergy.reaction if allergy.reaction else 'Severe hypersensitivity reaction' }}
+              </p>
+            </div>
+          </div>
+          {% endfor %}
+        {% else %}
+          <div class="p-3 rounded-xl bg-surface-container-low text-xs text-on-surface-variant text-center">
+            No known drug allergies documented for this patient.
+          </div>
+        {% endif %}
+      </div>
+    </div>
+
+    <!-- Active Regimen Alert Pill (Right 1 col) -->
+    <div class="bg-surface-container-lowest rounded-2xl p-5 border border-surface-container-high/80 shadow-xs flex flex-col justify-between space-y-3">
+      <div>
+        <div class="flex items-center gap-1.5 text-secondary font-bold text-xs uppercase tracking-wide">
+          <span class="material-symbols-outlined text-[18px]">crisis_alert</span>
+          <span>Multi-Doctor Overlap Sentinel</span>
+        </div>
+        <h3 class="font-headline font-bold text-sm text-on-surface mt-2">Cross-Hospital Coordination</h3>
+        <p class="text-xs text-on-surface-variant leading-relaxed mt-1">
+          Platform automatically monitors co-prescriptions across Cardiology and Endocrinology to prevent dangerous polypharmacy.
+        </p>
+      </div>
+      <div class="p-2.5 rounded-xl bg-surface-container-low text-xs space-y-1">
+        <span class="font-bold text-on-surface">Co-Managing Physicians:</span>
+        <div class="text-on-surface-variant text-[11px]">
+          • Dr. Sarah Jenkins (Cardiology, City Heart)<br/>
+          • Dr. Rajesh Verma (Endocrinology, Aster CMI)
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ======================================================================= -->
+  <!-- 3. Unified Cross-System Medications Table -->
+  <!-- ======================================================================= -->
+  <div class="bg-surface-container-lowest rounded-2xl p-5 border border-surface-container-high/80 shadow-xs space-y-4">
+    {% set active_rx_list = data.active_prescriptions if data.active_prescriptions is defined and data.active_prescriptions else (data.activePrescriptions if data.activePrescriptions is defined and data.activePrescriptions else []) %}
+    {% set disc_rx_list = data.discontinued_prescriptions if data.discontinued_prescriptions is defined and data.discontinued_prescriptions else (data.discontinuedPrescriptions if data.discontinuedPrescriptions is defined and data.discontinuedPrescriptions else []) %}
+    <div class="flex items-center justify-between">
+      <div class="flex items-center gap-2.5">
+        <div class="w-8 h-8 rounded-xl bg-primary-container text-white flex items-center justify-center">
+          <span class="material-symbols-outlined text-[18px]">hub</span>
+        </div>
+        <div>
+          <h2 class="font-headline font-bold text-base text-on-surface">Active Cross-System Prescriptions</h2>
+          <p class="text-xs text-on-surface-variant">Synchronized across connected EHR health systems</p>
+        </div>
+      </div>
+      <span class="text-xs font-bold bg-surface-container px-2.5 py-1 rounded-full text-primary" id="active-rx-count-badge">
+        {{ active_rx_list|length }} Active Regimens
+      </span>
+    </div>
+
+    <!-- Active Prescriptions Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-3.5" id="prescriptions-container">
+      {% if active_rx_list %}
+        {% for rx in active_rx_list %}
+        {% set rx_id = rx.prescription_id or rx.prescriptionId %}
+        {% set med_name = rx.medication_name or rx.medicationName %}
+        {% set prescriber = rx.prescribed_by or rx.prescribedBy or 'Attending Physician' %}
+        <div class="p-4 rounded-xl bg-surface-container-low border border-surface-container-high flex flex-col justify-between gap-3 transition-all duration-300" id="rx-card-{{ rx_id }}">
+          <div>
+            <div class="flex items-start justify-between gap-2">
+              <div>
+                <h3 class="font-headline font-bold text-sm text-on-surface flex items-center gap-1.5" id="rx-name-{{ rx_id }}">
+                  <span>{{ med_name }}</span>
+                </h3>
+                <span class="inline-block mt-0.5 text-xs font-bold text-primary bg-white px-2 py-0.5 rounded border border-surface-container-high" id="rx-dose-badge-{{ rx_id }}">
+                  {{ rx.dosage }} • {{ rx.frequency }}
+                </span>
+              </div>
+              <span class="text-[11px] font-bold px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 border border-emerald-300" id="rx-status-badge-{{ rx_id }}">
+                {{ rx.status or 'ACTIVE' }}
+              </span>
+            </div>
+            <p class="text-xs text-on-surface-variant mt-2">
+              Prescribed by <strong class="text-on-surface">{{ prescriber }}</strong>
+            </p>
+            {% if rx.instructions %}
+            <p class="text-xs text-on-surface-variant/80 italic mt-0.5" id="rx-instr-{{ rx_id }}">
+              "{{ rx.instructions }}"
+            </p>
+            {% endif %}
+          </div>
+
+          <!-- Prescription Action Buttons -->
+          <div class="flex items-center justify-between pt-2.5 border-t border-surface-container-high/60 text-xs" id="rx-actions-{{ rx_id }}">
+            <span class="text-[11px] font-mono text-on-surface-variant" id="rx-ver-{{ rx_id }}">
+              {{ rx_id }} (v{{ rx.version or 1 }})
+            </span>
+            <div class="flex items-center gap-2">
+              <button onclick="modifyRx('{{ rx_id }}', '{{ med_name }}', '{{ rx.dosage }}')" 
+                      class="px-2.5 py-1.5 rounded-lg bg-surface-container hover:bg-surface-container-high text-primary font-bold transition-all flex items-center gap-1 text-xs shadow-2xs hover:shadow-xs active:scale-95" 
+                      title="Modify Dosage" 
+                      id="btn-modify-{{ rx_id }}">
+                <span class="text-[13px]">✏️</span>
+                <span>Modify Dosage</span>
+              </button>
+              <button onclick="discontinueRx('{{ rx_id }}', '{{ med_name }}')" 
+                      class="px-2.5 py-1.5 rounded-lg bg-error-container/70 hover:bg-error hover:text-white text-error font-bold transition-all flex items-center gap-1 text-xs shadow-2xs hover:shadow-xs active:scale-95 border border-error/20" 
+                      title="Discontinue Medication" 
+                      id="btn-disc-{{ rx_id }}">
+                <span class="text-[13px]">🚫</span>
+                <span>Discontinue Medication</span>
+              </button>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      {% else %}
+        <div class="col-span-2 p-6 rounded-xl bg-surface-container-low text-center text-xs text-on-surface-variant" id="active-rx-empty-placeholder">
+          No active prescriptions currently on file.
+        </div>
+      {% endif %}
+    </div>
+
+    <!-- Discontinued Prescriptions Archive Section -->
+    <div class="mt-4 pt-4 border-t border-surface-container-high/60" id="discontinued-section">
+      <div class="flex items-center justify-between mb-3">
+        <div class="flex items-center gap-2">
+          <span class="material-symbols-outlined text-error text-[18px]">cancel</span>
+          <h3 class="font-headline font-bold text-xs uppercase tracking-wide text-error">Discontinued Regimens & Cessation History</h3>
+        </div>
+        <span class="text-[11px] font-bold px-2 py-0.5 rounded-full bg-error-container text-error" id="disc-count-badge">
+          {{ disc_rx_list|length }} Discontinued
+        </span>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-3" id="discontinued-container">
+        {% if disc_rx_list %}
+          {% for rx in disc_rx_list %}
+          {% set rx_id = rx.prescription_id or rx.prescriptionId %}
+          {% set med_name = rx.medication_name or rx.medicationName %}
+          <div class="p-3.5 rounded-xl bg-error-container/20 border border-error/30 flex flex-col justify-between gap-2" id="disc-card-{{ rx_id }}">
+            <div class="flex items-start justify-between gap-2">
+              <div>
+                <h4 class="font-headline font-bold text-xs text-on-surface line-through opacity-80">
+                  {{ med_name }} ({{ rx.dosage }})
+                </h4>
+                <p class="text-[11px] text-error font-medium mt-0.5">
+                  🚫 Reason: {{ rx.discontinue_reason or rx.reason or 'Discontinued per clinical decision' }}
+                </p>
+              </div>
+              <span class="text-[10px] font-bold px-2 py-0.5 rounded bg-error text-white uppercase">
+                DISCONTINUED
+              </span>
+            </div>
+            <div class="text-[10px] text-on-surface-variant flex items-center justify-between pt-1 border-t border-error/10">
+              <span class="font-mono">{{ rx_id }} (v{{ rx.version or 1 }})</span>
+              <span>By: {{ rx.lastModifiedBy or rx.prescribed_by or 'Doctor' }}</span>
+            </div>
+          </div>
+          {% endfor %}
+        {% else %}
+          <div class="col-span-2 p-3 rounded-lg bg-surface-container-low text-center text-xs text-on-surface-variant" id="disc-empty-placeholder">
+            No discontinued medications on file.
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+
+  <!-- ======================================================================= -->
+  <!-- 4. 3-Stage AI Safety Engine & CSV Medicine Catalog Menu -->
+  <!-- ======================================================================= -->
+  <div class="bg-surface-container-lowest rounded-2xl p-5 border border-surface-container-high/80 shadow-xs space-y-4">
+    <div class="flex items-center justify-between">
+      <div class="flex items-center gap-2.5">
+        <div class="w-8 h-8 rounded-xl bg-primary text-white flex items-center justify-center">
+          <span class="material-symbols-outlined text-[18px]">verified_user</span>
+        </div>
+        <div>
+          <h2 class="font-headline font-bold text-base text-on-surface">3-Stage AI Safety Gatekeeper & Catalog Search</h2>
+          <p class="text-xs text-on-surface-variant">Comprehend Medical + Bedrock LLM + 253,973 Medicine Catalog</p>
+        </div>
+      </div>
+      <span class="text-xs font-bold text-tertiary bg-tertiary-fixed/40 px-2.5 py-1 rounded-full flex items-center gap-1">
+        <span class="material-symbols-outlined text-[14px]">bolt</span>
+        Real-Time Safety Check
+      </span>
+    </div>
+
+    <!-- Rapid Category Selector Menu -->
+    <div class="p-3 rounded-xl bg-surface-container-low border border-surface-container-high space-y-2">
+      <label class="text-xs font-bold text-on-surface-variant block">Quick Catalog Filter by Therapeutic Category:</label>
+      <div class="flex items-center gap-2 flex-wrap" id="category-chips">
+        <button onclick="selectCategory('All')" class="cat-chip px-2.5 py-1 rounded-lg bg-primary text-white text-xs font-bold transition-colors">All Categories</button>
+        <button onclick="selectCategory('Antibiotic (Penicillin / Beta-lactam)')" class="cat-chip px-2.5 py-1 rounded-lg bg-surface-container text-on-surface text-xs font-semibold hover:bg-surface-container-high transition-colors">Penicillin / Beta-lactams</button>
+        <button onclick="selectCategory('Antibiotic (Macrolide)')" class="cat-chip px-2.5 py-1 rounded-lg bg-surface-container text-on-surface text-xs font-semibold hover:bg-surface-container-high transition-colors">Macrolides (Safer Alternative)</button>
+        <button onclick="selectCategory('Cardiovascular (Antiplatelet / Anticoagulant)')" class="cat-chip px-2.5 py-1 rounded-lg bg-surface-container text-on-surface text-xs font-semibold hover:bg-surface-container-high transition-colors">Cardiovascular / Antiplatelet</button>
+        <button onclick="selectCategory('Cardiovascular (Statin / Lipid)')" class="cat-chip px-2.5 py-1 rounded-lg bg-surface-container text-on-surface text-xs font-semibold hover:bg-surface-container-high transition-colors">Statins / Lipid Lowering</button>
+        <button onclick="selectCategory('Antidiabetic')" class="cat-chip px-2.5 py-1 rounded-lg bg-surface-container text-on-surface text-xs font-semibold hover:bg-surface-container-high transition-colors">Antidiabetic</button>
+      </div>
+    </div>
+
+    <!-- Prescription Input Form -->
+    <form id="rx-form" onsubmit="event.preventDefault(); runAISafetyCheck();" class="space-y-4">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+        <!-- Medicine Autocomplete Search -->
+        <div class="md:col-span-2 relative">
+          <label class="block text-xs font-bold text-on-surface mb-1">
+            Search Medicine / Tablet Catalog (253k Dataset):
+          </label>
+          <div class="relative">
+            <input 
+              id="med-search-input" 
+              type="text" 
+              placeholder="Type brand or generic name (e.g. Augmentin, Aspirin, Atorva, Azithral)..." 
+              autocomplete="off"
+              oninput="onSearchInput(this.value)"
+              class="w-full h-11 px-3.5 pr-9 rounded-xl bg-surface-container-low border border-surface-container-high text-xs font-semibold text-on-surface outline-none focus:border-primary transition-colors"
+            />
+            <span class="material-symbols-outlined absolute right-2.5 top-2.5 text-on-surface-variant text-[20px]">search</span>
+          </div>
+
+          <!-- Autocomplete Dropdown List -->
+          <div id="autocomplete-list" class="hidden absolute top-full left-0 right-0 mt-1 max-h-60 overflow-y-auto bg-white rounded-xl shadow-xl border border-surface-container-high z-30 divide-y divide-surface-container-low"></div>
+        </div>
+
+        <!-- Dosage & Strength -->
+        <div>
+          <label class="block text-xs font-bold text-on-surface mb-1">Dosage / Strength:</label>
+          <input 
+            id="rx-dosage" 
+            type="text" 
+            placeholder="e.g. 500 mg or 10 mg" 
+            value="500 mg"
+            class="w-full h-11 px-3.5 rounded-xl bg-surface-container-low border border-surface-container-high text-xs font-semibold text-on-surface outline-none focus:border-primary transition-colors"
+          />
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+        <div>
+          <label class="block text-xs font-bold text-on-surface mb-1">Dosing Frequency:</label>
+          <select id="rx-frequency" class="w-full h-11 px-3.5 rounded-xl bg-surface-container-low border border-surface-container-high text-xs font-semibold text-on-surface outline-none focus:border-primary transition-colors cursor-pointer">
+            <option value="Once daily (Morning 08:00)">Once daily (Morning 08:00)</option>
+            <option value="Twice daily (08:00 & 20:00)">Twice daily (08:00 & 20:00)</option>
+            <option value="Three times daily (08:00, 14:00, 20:00)">Three times daily (08:00, 14:00, 20:00)</option>
+            <option value="Bedtime (22:00)">Bedtime (22:00)</option>
+          </select>
+        </div>
+
+        <div>
+          <label class="block text-xs font-bold text-on-surface mb-1">Clinical Instructions / Notes:</label>
+          <input 
+            id="rx-notes" 
+            type="text" 
+            placeholder="e.g. Take with food, monitor INR" 
+            value="Take after breakfast with water"
+            class="w-full h-11 px-3.5 rounded-xl bg-surface-container-low border border-surface-container-high text-xs font-semibold text-on-surface outline-none focus:border-primary transition-colors"
+          />
+        </div>
+      </div>
+
+      <input type="hidden" id="selected-med-id" value=""/>
+      <input type="hidden" id="selected-med-name" value=""/>
+
+      <!-- Submit Button -->
+      <button 
+        type="submit" 
+        id="btn-run-safety" 
+        class="w-full h-12 rounded-xl bg-primary hover:bg-primary-container text-white font-headline font-bold text-sm shadow-md flex items-center justify-center gap-2 active:scale-[0.99] transition-all"
+      >
+        <span class="material-symbols-outlined text-[20px]">verified_user</span>
+        <span>Run AI Safety Check & Prescribe</span>
+      </button>
+    </form>
+
+    <!-- ===================================================================== -->
+    <!-- DYNAMIC SAFETY ALERT / CONFLICT CARD (Hidden by default) -->
+    <!-- ===================================================================== -->
+    <div id="safety-alert-container" class="hidden space-y-4 pt-2">
+      <div class="rounded-2xl bg-error-container p-5 border border-error/30 shadow-md space-y-3.5">
+        <!-- Alert Header -->
+        <div class="flex items-start gap-3">
+          <div class="w-10 h-10 rounded-xl bg-error text-white flex items-center justify-center flex-shrink-0 shadow-xs">
+            <span class="material-symbols-outlined text-[24px] fill-1">dangerous</span>
+          </div>
+          <div class="flex-1 min-w-0">
+            <h3 class="font-headline font-bold text-sm text-on-error-container leading-tight" id="alert-title">
+              CRITICAL SAFETY INTERACTION DETECTED
+            </h3>
+            <p class="text-xs text-error font-bold tracking-wide uppercase mt-0.5" id="alert-subtitle">
+              AWS Bedrock & Comprehend Medical Contraindication Protocol
+            </p>
+          </div>
+        </div>
+
+        <!-- Conflict Details Box -->
+        <div class="bg-white rounded-xl p-4 border border-error/20 space-y-2 text-on-surface">
+          <div class="flex items-center justify-between text-error text-xs font-bold">
+            <span class="flex items-center gap-1">
+              <span class="material-symbols-outlined text-[16px]">sync_problem</span>
+              <span id="alert-conflict-type">Allergy / Drug Interaction</span>
+            </span>
+            <span class="bg-error/10 px-2 py-0.5 rounded" id="alert-severity">Level 1: Lethal Risk</span>
+          </div>
+          <p class="text-sm font-bold text-on-surface" id="alert-med-pair">
+            Proposed Medication + Patient Regimen
+          </p>
+          <p class="text-xs text-on-surface-variant leading-relaxed" id="alert-description">
+            Detailed clinical interaction mechanism.
+          </p>
+        </div>
+
+        <!-- Suggested Safer Alternatives from CSV Catalog -->
+        <div class="space-y-2" id="alternatives-box">
+          <span class="text-xs font-bold text-on-error-container uppercase tracking-wide flex items-center gap-1">
+            <span class="material-symbols-outlined text-[16px]">auto_awesome</span>
+            Safer Clinical Alternatives (from Catalog):
+          </span>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2" id="alternatives-list">
+            <!-- Dynamic alternative buttons injected here -->
+          </div>
+        </div>
+
+        <!-- Accordion: Doctor Clinical Override Section -->
+        <div class="pt-2 border-t border-error/20">
+          <button 
+            type="button" 
+            onclick="toggleOverrideAccordion()" 
+            class="flex items-center justify-between w-full py-1 text-on-error-container font-headline font-bold text-xs"
+          >
+            <span class="flex items-center gap-1.5">
+              <span class="material-symbols-outlined text-[18px]">shield_person</span>
+              <span>Physician Clinical Override Protocol (CloudTrail Audited)</span>
+            </span>
+            <span class="material-symbols-outlined text-[18px] transition-transform" id="override-chevron">expand_more</span>
+          </button>
+
+          <div id="override-panel" class="hidden space-y-3 pt-3">
+            <label class="flex items-start gap-2.5 p-3 rounded-xl bg-white border border-error/20 cursor-pointer">
+              <input type="checkbox" id="override-confirm-checkbox" onchange="checkOverrideValidity()" class="mt-0.5 w-4 h-4 text-error rounded"/>
+              <span class="text-xs text-on-surface leading-tight">
+                I verify that I have evaluated the clinical contraindication, informed the patient/caregiver, and accept medical-legal responsibility for this override.
+              </span>
+            </label>
+
+            <div>
+              <label class="block text-xs font-bold text-on-error-container mb-1">
+                Mandatory Clinical Justification (>15 characters required):
+              </label>
+              <textarea 
+                id="override-justification" 
+                rows="2" 
+                oninput="checkOverrideValidity()"
+                placeholder="State clinical rationale, specialized monitoring protocol (e.g. INR check cadence), and gastroprotection..." 
+                class="w-full p-3 rounded-xl bg-white border border-error/20 text-xs font-semibold text-on-surface outline-none resize-none focus:border-error"
+              ></textarea>
+            </div>
+
+            <div class="grid grid-cols-2 gap-2">
+              <button 
+                type="button" 
+                onclick="cancelSafetyBlock()" 
+                class="h-11 rounded-xl bg-white hover:bg-surface-container text-on-surface font-bold text-xs shadow-xs transition-colors"
+              >
+                Cancel Order (Safe)
+              </button>
+              <button 
+                type="button" 
+                id="btn-submit-override" 
+                disabled 
+                onclick="submitClinicalOverride()" 
+                class="h-11 rounded-xl bg-error text-white font-bold text-xs opacity-40 cursor-not-allowed transition-all flex items-center justify-center gap-1.5"
+              >
+                <span class="material-symbols-outlined text-[16px]">warning</span>
+                <span>Authorize Override</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ======================================================================= -->
+  <!-- 5. Comprehensive Shared Activity & Clinical Audit Timeline Log -->
+  <!-- ======================================================================= -->
+  <div class="bg-surface-container-lowest rounded-2xl p-5 border border-surface-container-high/80 shadow-xs space-y-4">
+    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+      <div class="flex items-center gap-2.5">
+        <div class="w-9 h-9 rounded-xl bg-primary/10 text-primary flex items-center justify-center font-bold">
+          <span class="material-symbols-outlined text-[20px]">history_edu</span>
+        </div>
+        <div>
+          <div class="flex items-center gap-2">
+            <h2 class="font-headline font-bold text-base text-on-surface">Shared Clinical Activity & Audit Timeline</h2>
+            <span class="px-2 py-0.5 rounded-full bg-tertiary-fixed text-on-tertiary-fixed text-[10px] font-bold flex items-center gap-1">
+              <span class="w-1.5 h-1.5 rounded-full bg-tertiary animate-pulse"></span>
+              <span>Live Ledger</span>
+            </span>
+          </div>
+          <p class="text-xs text-on-surface-variant">Real-time tamper-evident chronological stream of doctor prescriptions, overrides, dosage modifications, and patient dose telemetry.</p>
+        </div>
+      </div>
+      <div class="flex items-center gap-2">
+        <button onclick="fetchDoctorTimeline()" class="h-8 px-2.5 rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface text-xs font-semibold flex items-center gap-1 transition-colors" title="Sync live timeline">
+          <span class="material-symbols-outlined text-[16px]">sync</span>
+          <span>Refresh</span>
+        </button>
+        <a href="/patient/{{ patient_id }}/prescription-pdf" target="_blank" class="h-8 px-2.5 rounded-lg bg-primary/10 hover:bg-primary/20 text-primary text-xs font-bold flex items-center gap-1 transition-colors" title="Download Official PDF Record">
+          <span class="material-symbols-outlined text-[16px]">picture_as_pdf</span>
+          <span>Export Clinical PDF</span>
+        </a>
+        <a href="/audit" class="text-xs font-bold text-primary hover:underline ml-1">CloudTrail Audit →</a>
+      </div>
+    </div>
+
+    <!-- Filter Category Chips -->
+    <div class="flex items-center gap-2 overflow-x-auto pb-1 text-xs" id="doctor-timeline-filters">
+      <button onclick="filterDoctorTimeline('ALL', this)" class="doc-tl-chip px-3 py-1 rounded-lg bg-primary text-white font-bold transition-all">All Events</button>
+      <button onclick="filterDoctorTimeline('PRESCRIPTION', this)" class="doc-tl-chip px-3 py-1 rounded-lg bg-surface-container text-on-surface font-medium hover:bg-surface-container-high transition-all">Prescriptions</button>
+      <button onclick="filterDoctorTimeline('OVERRIDE', this)" class="doc-tl-chip px-3 py-1 rounded-lg bg-surface-container text-on-surface font-medium hover:bg-surface-container-high transition-all">Clinical Overrides</button>
+      <button onclick="filterDoctorTimeline('ADHERENCE', this)" class="doc-tl-chip px-3 py-1 rounded-lg bg-surface-container text-on-surface font-medium hover:bg-surface-container-high transition-all">Patient Adherence</button>
+      <button onclick="filterDoctorTimeline('ALLERGY', this)" class="doc-tl-chip px-3 py-1 rounded-lg bg-surface-container text-on-surface font-medium hover:bg-surface-container-high transition-all">Allergies</button>
+      <button onclick="filterDoctorTimeline('PHARMACY', this)" class="doc-tl-chip px-3 py-1 rounded-lg bg-surface-container text-on-surface font-medium hover:bg-surface-container-high transition-all">Pharmacy</button>
+    </div>
+
+    <!-- Timeline Entries Stream -->
+    <div class="relative pl-6 space-y-4 before:absolute before:left-2.5 before:top-3 before:bottom-3 before:w-0.5 before:bg-surface-container-high" id="doctor-timeline-container">
+      {% set timeline = data.timelineEvents or data.timeline_events or [] %}
+      {% if timeline %}
+        {% for item in timeline %}
+        <div class="doctor-timeline-entry relative flex flex-col gap-1" data-category="{{ item.category or 'CLINICAL' }}">
+          {% set cat = item.category or 'CLINICAL' %}
+          <div class="absolute -left-[23px] top-1.5 w-3.5 h-3.5 rounded-full ring-4 ring-white
+            {% if cat == 'PRESCRIPTION' %}bg-primary
+            {% elif cat == 'OVERRIDE' %}bg-amber-600
+            {% elif cat == 'ADHERENCE' %}bg-tertiary
+            {% elif cat == 'ALLERGY' %}bg-error
+            {% elif cat == 'PHARMACY' %}bg-secondary
+            {% else %}bg-primary{% endif %}"></div>
+          
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
+            <span class="text-xs font-bold text-on-surface flex items-center gap-1.5">
+              <span>{{ item.title }}</span>
+            </span>
+            <div class="flex items-center gap-2">
+              <span class="text-[10px] font-bold px-2 py-0.5 rounded-md
+                {% if cat == 'PRESCRIPTION' %}bg-primary/10 text-primary
+                {% elif cat == 'OVERRIDE' %}bg-amber-500/10 text-amber-800
+                {% elif cat == 'ADHERENCE' %}bg-tertiary/10 text-tertiary
+                {% elif cat == 'ALLERGY' %}bg-error/10 text-error
+                {% elif cat == 'PHARMACY' %}bg-secondary/10 text-secondary
+                {% else %}bg-surface-container text-on-surface-variant{% endif %}">
+                {{ item.action or cat }}
+              </span>
+              <span class="text-[11px] font-mono text-on-surface-variant whitespace-nowrap">
+                {{ item.dateFormatted or '' }} • {{ item.timeFormatted or '' }}
+              </span>
+            </div>
+          </div>
+          <p class="text-xs text-on-surface-variant leading-relaxed">
+            {{ item.details }}
+          </p>
+          <div class="text-[10px] text-on-surface-variant/80 flex items-center gap-2 pt-0.5">
+            <span>Actor: <b>{{ item.actor }}</b> ({{ item.role or 'SYSTEM' }})</span>
+            {% if item.eventId %}
+            <span>• ID: <span class="font-mono">{{ item.eventId }}</span></span>
+            {% endif %}
+          </div>
+        </div>
+        {% endfor %}
+      {% else %}
+        <div class="text-xs text-on-surface-variant p-4 text-center">No timeline events recorded yet.</div>
+      {% endif %}
+    </div>
+  </div>
+
+</div>
+
+<!-- ========================================================================= -->
+<!-- MODAL: ADD ALLERGY -->
+<!-- ========================================================================= -->
+<div id="allergy-modal" class="fixed inset-0 z-50 bg-black/40 backdrop-blur-xs flex items-center justify-center p-4 hidden">
+  <div class="bg-white rounded-2xl p-5 max-w-md w-full border border-surface-container-high shadow-2xl space-y-4">
+    <div class="flex items-center justify-between">
+      <h3 class="font-headline font-bold text-base text-on-surface flex items-center gap-1.5">
+        <span class="material-symbols-outlined text-error text-[20px]">block</span>
+        <span>Add Verified Patient Allergy</span>
+      </h3>
+      <button onclick="toggleAllergyModal(false)" class="text-on-surface-variant hover:text-on-surface">
+        <span class="material-symbols-outlined text-[20px]">close</span>
+      </button>
+    </div>
+
+    <div class="space-y-3">
+      <div>
+        <label class="block text-xs font-bold text-on-surface mb-1">Allergen / Substance:</label>
+        <input id="modal-allergen" type="text" placeholder="e.g. Cephalosporin, Aspirin, NSAIDs" class="w-full h-11 px-3.5 rounded-xl bg-surface-container-low border border-surface-container-high text-xs font-semibold outline-none focus:border-primary"/>
+      </div>
+      <div>
+        <label class="block text-xs font-bold text-on-surface mb-1">Reaction Description:</label>
+        <input id="modal-reaction" type="text" placeholder="e.g. Urticaria, Bronchospasm, Anaphylaxis" value="Severe cutaneous rash and hives" class="w-full h-11 px-3.5 rounded-xl bg-surface-container-low border border-surface-container-high text-xs font-semibold outline-none focus:border-primary"/>
+      </div>
+      <div>
+        <label class="block text-xs font-bold text-on-surface mb-1">Severity:</label>
+        <select id="modal-severity" class="w-full h-11 px-3.5 rounded-xl bg-surface-container-low border border-surface-container-high text-xs font-semibold outline-none focus:border-primary">
+          <option value="SEVERE">SEVERE (Life-Threatening / Anaphylaxis)</option>
+          <option value="MODERATE">MODERATE (Urticaria / Bronchospasm)</option>
+          <option value="MILD">MILD (Mild pruritus / Rash)</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-2 gap-2 pt-2">
+      <button onclick="toggleAllergyModal(false)" class="h-11 rounded-xl bg-surface-container text-xs font-bold hover:bg-surface-container-high transition-colors">
+        Cancel
+      </button>
+      <button onclick="submitNewAllergy()" class="h-11 rounded-xl bg-primary text-white text-xs font-bold shadow-md hover:bg-primary-container transition-colors">
+        Save & Check Conflict
+      </button>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+  let lastBlockedPayload = null;
+  let searchDebounceTimer = null;
+
+  function switchPatient(newPid) {
+    window.location.href = `/doctor?doctor_id={{ doctor_id }}&patient_id=${newPid}`;
+  }
+
+  function toggleAllergyModal(open) {
+    document.getElementById('allergy-modal').classList.toggle('hidden', !open);
+  }
+
+  function toggleOverrideAccordion() {
+    const panel = document.getElementById('override-panel');
+    const chevron = document.getElementById('override-chevron');
+    const isHidden = panel.classList.contains('hidden');
+    panel.classList.toggle('hidden', !isHidden);
+    chevron.innerText = isHidden ? 'expand_less' : 'expand_more';
+  }
+
+  function checkOverrideValidity() {
+    const isChecked = document.getElementById('override-confirm-checkbox').checked;
+    const text = document.getElementById('override-justification').value.trim();
+    const btn = document.getElementById('btn-submit-override');
+
+    if (isChecked && text.length > 15) {
+      btn.disabled = false;
+      btn.classList.remove('opacity-40', 'cursor-not-allowed');
+      btn.classList.add('hover:bg-red-700', 'shadow-md');
+    } else {
+      btn.disabled = true;
+      btn.classList.add('opacity-40', 'cursor-not-allowed');
+      btn.classList.remove('hover:bg-red-700', 'shadow-md');
+    }
+  }
+
+  // Live Autocomplete Search against 253k CSV Medicine Catalog
+  function onSearchInput(query) {
+    clearTimeout(searchDebounceTimer);
+    const dropdown = document.getElementById('autocomplete-list');
+    
+    if (!query || query.trim().length < 2) {
+      dropdown.classList.add('hidden');
+      dropdown.innerHTML = '';
+      return;
+    }
+
+    searchDebounceTimer = setTimeout(async () => {
+      try {
+        const resp = await fetch(`/doctor/medicines/search?q=${encodeURIComponent(query.trim())}&limit=12`);
+        const data = await resp.json();
+        const results = data.matches || data.results || [];
+
+        if (results.length === 0) {
+          dropdown.innerHTML = '<div class="p-3 text-xs text-on-surface-variant text-center">No catalog matches found. You can still prescribe directly.</div>';
+          dropdown.classList.remove('hidden');
+          return;
+        }
+
+        dropdown.innerHTML = results.map(item => {
+          const id = item.med_id || item.raw_id || item.id || '';
+          const brand = (item.brand_name || '').replace(/'/g, "\\'");
+          const generic = (item.generic_composition || item.generic_name || '').replace(/'/g, "\\'");
+          const dosage = item.default_strength || item.dosage || '';
+          const price = item.unit_price || item.price_inr || 10.0;
+          const form = item.dosage_form || 'Tablet';
+          const mfg = item.manufacturer || '';
+          const tclass = item.therapeutic_class || '';
+
+          return `
+            <div class="p-3 hover:bg-surface-container-low cursor-pointer transition-colors" onclick="selectMedicine('${id}', '${brand}', '${generic}', '${dosage}')">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-bold text-on-surface">${item.brand_name || brand}</span>
+                <span class="text-[11px] font-bold text-primary">INR ${price}</span>
+              </div>
+              <p class="text-[11px] text-on-surface-variant truncate">${item.generic_composition || item.generic_name || ''}</p>
+              <div class="flex items-center gap-1.5 mt-1 text-[10px] text-on-surface-variant font-medium">
+                <span class="px-1.5 py-0.5 rounded bg-surface-container">${form}</span>
+                ${tclass ? `<span class="px-1.5 py-0.5 rounded bg-secondary-fixed/30 text-secondary">${tclass}</span>` : ''}
+                <span>${mfg}</span>
+              </div>
+            </div>
+          `;
+        }).join('');
+
+        dropdown.classList.remove('hidden');
+      } catch (err) {
+        console.error("Autocomplete search error:", err);
+      }
+    }, 200);
+  }
+
+  function selectMedicine(id, brandName, genericName, defaultDosage) {
+    document.getElementById('med-search-input').value = brandName;
+    document.getElementById('selected-med-id').value = id;
+    document.getElementById('selected-med-name').value = brandName;
+    if (defaultDosage) {
+      document.getElementById('rx-dosage').value = defaultDosage;
+    }
+    document.getElementById('autocomplete-list').classList.add('hidden');
+  }
+
+  async function selectCategory(categoryName) {
+    document.querySelectorAll('.cat-chip').forEach(c => {
+      c.classList.remove('bg-primary', 'text-white');
+      c.classList.add('bg-surface-container', 'text-on-surface');
+    });
+    if (window.event && window.event.target) {
+      window.event.target.classList.remove('bg-surface-container', 'text-on-surface');
+      window.event.target.classList.add('bg-primary', 'text-white');
+    }
+
+    const dropdown = document.getElementById('autocomplete-list');
+    dropdown.innerHTML = '<div class="p-3 text-xs text-on-surface-variant text-center"><span class="material-symbols-outlined animate-spin text-[16px] inline-block mr-1">sync</span>Loading categorized medicines from 253k catalog...</div>';
+    dropdown.classList.remove('hidden');
+
+    try {
+      const url = categoryName === 'All' 
+        ? '/doctor/medicines/menu?form=Tablet&limit=25'
+        : `/doctor/medicines/menu?category=${encodeURIComponent(categoryName)}&form=Tablet&limit=25`;
+      const resp = await fetch(url);
+      const data = await resp.json();
+      
+      const menu = data.menuByCategory || data.menu_by_category || {};
+      let items = [];
+      Object.values(menu).forEach(list => {
+        items = items.concat(list);
+      });
+
+      if (items.length > 0) {
+        dropdown.innerHTML = items.map(item => {
+          const id = item.med_id || item.raw_id || item.id || '';
+          const brand = (item.brand_name || '').replace(/'/g, "\\'");
+          const generic = (item.generic_composition || item.generic_name || '').replace(/'/g, "\\'");
+          const dosage = item.default_strength || item.dosage || '';
+          const price = item.unit_price || item.price_inr || 10.0;
+          const form = item.dosage_form || 'Tablet';
+          const mfg = item.manufacturer || '';
+          const tclass = item.therapeutic_class || '';
+
+          return `
+            <div class="p-3 hover:bg-surface-container-low cursor-pointer transition-colors" onclick="selectMedicine('${id}', '${brand}', '${generic}', '${dosage}')">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-bold text-on-surface">${item.brand_name || brand}</span>
+                <span class="text-[11px] font-bold text-primary">INR ${price}</span>
+              </div>
+              <p class="text-[11px] text-on-surface-variant truncate">${item.generic_composition || item.generic_name || ''}</p>
+              <div class="flex items-center gap-1.5 mt-1 text-[10px] text-on-surface-variant font-medium">
+                <span class="px-1.5 py-0.5 rounded bg-surface-container">${form}</span>
+                ${tclass ? `<span class="px-1.5 py-0.5 rounded bg-secondary-fixed/30 text-secondary">${tclass}</span>` : ''}
+                <span>${mfg}</span>
+              </div>
+            </div>
+          `;
+        }).join('');
+        showToast(`Loaded ${items.length} medicines for ${categoryName}`, 'success');
+      } else {
+        dropdown.innerHTML = '<div class="p-3 text-xs text-on-surface-variant text-center">No catalog medicines in this category.</div>';
+      }
+    } catch (err) {
+      console.error("Error loading category menu:", err);
+      if (categoryName.includes('Penicillin')) {
+        selectMedicine('MED-1', 'Augmentin 625 Duo Tablet', 'Amoxycillin + Clavulanic Acid', '500 mg');
+      } else if (categoryName.includes('Macrolide')) {
+        selectMedicine('MED-3', 'Azithral 500 Tablet', 'Azithromycin', '500 mg');
+      } else if (categoryName.includes('Antiplatelet')) {
+        selectMedicine('MED-13', 'Aspirin 81mg', 'Aspirin', '81 mg');
+      } else if (categoryName.includes('Statin')) {
+        selectMedicine('MED-8', 'Atorva Tablet 10mg', 'Atorvastatin', '10 mg');
+      } else if (categoryName.includes('Antidiabetic')) {
+        selectMedicine('MED-10', 'Glycomet 500 Tablet', 'Metformin', '500 mg');
+      }
+      dropdown.classList.add('hidden');
+    }
+  }
+
+  // Run AI Safety Pipeline & Prescribe
+  async function runAISafetyCheck() {
+    const medName = document.getElementById('med-search-input').value.trim();
+    const dosage = document.getElementById('rx-dosage').value.trim();
+    const frequency = document.getElementById('rx-frequency').value;
+    const notes = document.getElementById('rx-notes').value.trim();
+    const medId = document.getElementById('selected-med-id').value;
+
+    if (!medName) {
+      showToast('Please enter a medicine name or select one from catalog.', 'error');
+      return;
+    }
+
+    const btn = document.getElementById('btn-run-safety');
+    btn.innerHTML = '<span class="material-symbols-outlined animate-spin text-[20px]">sync</span><span>Analyzing with Bedrock & Comprehend Medical...</span>';
+    btn.disabled = true;
+
+    const payload = {
+      patient_id: "{{ patient_id }}",
+      doctor_id: "{{ doctor_id }}",
+      new_medicine: medName,
+      med_id: medId,
+      dosage: dosage,
+      frequency: frequency,
+      notes: notes,
+      user_role: "DOCTOR"
+    };
+
+    try {
+      const resp = await fetch('/api/doctor/prescriptions', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+      const result = await resp.json();
+
+      btn.innerHTML = '<span class="material-symbols-outlined text-[20px]">verified_user</span><span>Run AI Safety Check & Prescribe</span>';
+      btn.disabled = false;
+
+      if (result.status === 'BLOCKED') {
+        // INTERCEPTION: Render AI Safety Block Card
+        lastBlockedPayload = { ...payload, block_result: result };
+        renderSafetyBlockCard(result);
+        showToast('Prescription BLOCKED by AI Safety Engine!', 'error');
+      } else if (result.status === 'ACTIVE' || result.status === 'APPROVED') {
+        // SUCCESS: Safe prescription created
+        document.getElementById('safety-alert-container').classList.add('hidden');
+        showToast(`Prescription for ${medName} created successfully (ID: ${result.prescription_id})!`, 'success');
+        setTimeout(() => window.location.reload(), 1500);
+      } else {
+        showToast(result.message || 'Error running safety pipeline.', 'error');
+      }
+    } catch (err) {
+      btn.innerHTML = '<span class="material-symbols-outlined text-[20px]">verified_user</span><span>Run AI Safety Check & Prescribe</span>';
+      btn.disabled = false;
+      showToast('Network error contacting safety engine.', 'error');
+    }
+  }
+
+  function renderSafetyBlockCard(result) {
+    const container = document.getElementById('safety-alert-container');
+    const details = result.safety_gate_details || {};
+    const conflict = details.conflict || result.safety_details || {};
+
+    document.getElementById('alert-title').innerText = details.title || 'CRITICAL SAFETY INTERACTION DETECTED';
+    document.getElementById('alert-conflict-type').innerText = details.type || 'Clinical Contraindication';
+    document.getElementById('alert-severity').innerText = details.severity || 'SEVERE RISK';
+    document.getElementById('alert-med-pair').innerText = details.medication_involved || document.getElementById('med-search-input').value;
+    document.getElementById('alert-description').innerText = details.rationale || result.reason || 'Contraindication detected by clinical safety pipeline.';
+
+    // Render Alternatives
+    const altsList = document.getElementById('alternatives-list');
+    const alternatives = details.alternatives || [];
+    
+    if (alternatives.length > 0) {
+      altsList.innerHTML = alternatives.map(alt => `
+        <button type="button" onclick="applyAlternative('${alt}')" class="p-2.5 rounded-xl bg-white hover:bg-surface-container text-left text-xs font-bold text-primary flex items-center justify-between shadow-xs border border-error/20 transition-all">
+          <span class="truncate">${alt}</span>
+          <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+        </button>
+      `).join('');
+      document.getElementById('alternatives-box').classList.remove('hidden');
+    } else {
+      document.getElementById('alternatives-box').classList.add('hidden');
+    }
+
+    container.classList.remove('hidden');
+    container.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+
+  function applyAlternative(altText) {
+    // Extract medicine name from alternative text (e.g. "Azithral 500 Tablet (Azithromycin) - INR 132" -> "Azithral 500 Tablet")
+    let cleanName = altText.split('(')[0].trim();
+    if (cleanName.includes('-')) {
+      cleanName = cleanName.split('-')[0].trim();
+    }
+    document.getElementById('med-search-input').value = cleanName;
+    document.getElementById('safety-alert-container').classList.add('hidden');
+    showToast(`Loaded alternative: ${cleanName}. Click Run Safety Check.`, 'success');
+  }
+
+  function cancelSafetyBlock() {
+    document.getElementById('safety-alert-container').classList.add('hidden');
+    showToast('Prescription order cancelled safely.', 'success');
+  }
+
+  // Authorize Clinical Override
+  async function submitClinicalOverride() {
+    if (!lastBlockedPayload) return;
+    const justification = document.getElementById('override-justification').value.trim();
+
+    const overridePayload = {
+      patient_id: "{{ patient_id }}",
+      doctor_id: "{{ doctor_id }}",
+      prescription_data: {
+        new_medicine: lastBlockedPayload.new_medicine,
+        dosage: lastBlockedPayload.dosage,
+        frequency: lastBlockedPayload.frequency,
+        notes: lastBlockedPayload.notes
+      },
+      clinical_justification: justification,
+      monitoring_plan: "Continuous clinical telemetry and strict dosage adherence follow-up."
+    };
+
+    try {
+      const resp = await fetch('/api/doctor/prescriptions/override', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(overridePayload)
+      });
+      const data = await resp.json();
+
+      const rxId = data.prescription_id || (data.prescription && data.prescription.prescriptionId) || data.overrideId || 'APPROVED';
+      if (data.status === 'FORCE_APPROVED_BY_PHYSICIAN' || data.status === 'OVERRIDE_APPROVED' || data.prescription || data.prescription_id) {
+        showToast(`Override Authorized & Audited in CloudTrail! Prescription ID: ${rxId}`, 'warning');
+        setTimeout(() => window.location.reload(), 1800);
+      } else {
+        showToast(data.message || 'Override authorization rejected.', 'error');
+      }
+    } catch (err) {
+      showToast('Error authorizing clinical override.', 'error');
+    }
+  }
+
+  // Add Allergy
+  async function submitNewAllergy() {
+    const allergen = document.getElementById('modal-allergen').value.trim();
+    const reaction = document.getElementById('modal-reaction').value.trim();
+    const severity = document.getElementById('modal-severity').value;
+
+    if (!allergen) {
+      showToast('Please enter an allergen substance.', 'error');
+      return;
+    }
+
+    try {
+      const resp = await fetch('/api/doctor/allergies', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          patient_id: "{{ patient_id }}",
+          doctor_id: "{{ doctor_id }}",
+          action: "ADD",
+          allergen: allergen,
+          reaction: reaction,
+          severity: severity
+        })
+      });
+      const res = await resp.json();
+      toggleAllergyModal(false);
+
+      if (res.conflict_detected) {
+        showToast(`Allergy saved. WARNING: Active conflict with ${res.conflicting_prescriptions.join(', ')}!`, 'error');
+      } else {
+        showToast(`Allergy ${allergen} saved successfully.`, 'success');
+      }
+      setTimeout(() => window.location.reload(), 1500);
+    } catch (err) {
+      showToast('Failed to save allergy.', 'error');
+    }
+  }
+
+  // Discontinue Rx with Immediate DOM State Transition & Backend Sync
+  async function discontinueRx(rxId, medName) {
+    const reason = prompt(`Enter clinical justification for discontinuing ${medName}:`, "Therapy discontinued per clinical evaluation");
+    if (reason === null) return;
+    const finalReason = reason.trim() || "Therapy discontinued per clinical evaluation";
+
+    // 1. Instant UI update on card before network roundtrip finishes
+    const card = document.getElementById(`rx-card-${rxId}`);
+    const badge = document.getElementById(`rx-status-badge-${rxId}`);
+    const actions = document.getElementById(`rx-actions-${rxId}`);
+    
+    if (card) {
+      card.classList.remove('bg-surface-container-low', 'border-surface-container-high');
+      card.classList.add('bg-red-50/70', 'border-red-400', 'shadow-xs');
+    }
+    if (badge) {
+      badge.className = 'text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-error text-white uppercase animate-pulse';
+      badge.innerText = 'DISCONTINUED';
+    }
+    if (actions) {
+      actions.innerHTML = `
+        <span class="text-[11px] font-mono text-on-surface-variant">${rxId}</span>
+        <div class="flex items-center gap-1.5 text-xs text-error font-bold">
+          <span class="material-symbols-outlined text-[16px]">cancel</span>
+          <span>Discontinued: ${finalReason}</span>
+        </div>
+      `;
+    }
+
+    try {
+      const resp = await fetch(`/api/doctor/prescriptions/${rxId}`, {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          action: 'DISCONTINUE',
+          status: 'DISCONTINUED',
+          patient_id: "{{ patient_id }}",
+          doctor_id: "{{ doctor_id }}",
+          reason: finalReason
+        })
+      });
+      const res = await resp.json();
+
+      showToast(`🚫 ${medName} discontinued: ${finalReason}`, 'success');
+
+      // Update active counter
+      const activeBadge = document.getElementById('active-rx-count-badge');
+      if (activeBadge) {
+        const currentActive = parseInt(activeBadge.innerText) || 1;
+        activeBadge.innerText = `${Math.max(0, currentActive - 1)} Active Regimens`;
+      }
+
+      // Add to discontinued section
+      const discContainer = document.getElementById('discontinued-container');
+      const discEmpty = document.getElementById('disc-empty-placeholder');
+      if (discEmpty) discEmpty.remove();
+
+      if (discContainer && !document.getElementById(`disc-card-${rxId}`)) {
+        const discCard = document.createElement('div');
+        discCard.id = `disc-card-${rxId}`;
+        discCard.className = 'p-3.5 rounded-xl bg-error-container/20 border border-error/30 flex flex-col justify-between gap-2 transition-all';
+        discCard.innerHTML = `
+          <div class="flex items-start justify-between gap-2">
+            <div>
+              <h4 class="font-headline font-bold text-xs text-on-surface line-through opacity-80">
+                ${medName}
+              </h4>
+              <p class="text-[11px] text-error font-medium mt-0.5">
+                🚫 Reason: ${finalReason}
+              </p>
+            </div>
+            <span class="text-[10px] font-bold px-2 py-0.5 rounded bg-error text-white uppercase">
+              DISCONTINUED
+            </span>
+          </div>
+          <div class="text-[10px] text-on-surface-variant flex items-center justify-between pt-1 border-t border-error/10">
+            <span class="font-mono">${rxId}</span>
+            <span>By: {{ doctor_id }}</span>
+          </div>
+        `;
+        discContainer.prepend(discCard);
+      }
+
+      const discBadge = document.getElementById('disc-count-badge');
+      if (discBadge) {
+        const currentDisc = parseInt(discBadge.innerText) || 0;
+        discBadge.innerText = `${currentDisc + 1} Discontinued`;
+      }
+
+      // Live refresh doctor audit timeline
+      await fetchDoctorTimeline();
+    } catch (err) {
+      showToast('Error discontinuing prescription.', 'error');
+      console.error(err);
+    }
+  }
+
+  // Modify Dosage with Instant UI Reflection & Backend Synchronization
+  async function modifyRx(rxId, medName, currentDose) {
+    const newDose = prompt(`Modify dosage for ${medName}:`, currentDose);
+    if (!newDose || newDose.trim() === currentDose.trim()) return;
+    const finalDose = newDose.trim();
+
+    const reason = prompt(`Enter clinical justification for adjusting dosage of ${medName}:`, "Physician titration via clinical workspace");
+    if (reason === null) return;
+    const finalReason = reason.trim() || "Physician titration via clinical workspace";
+
+    // Instant UI update
+    const doseBadge = document.getElementById(`rx-dose-badge-${rxId}`);
+    const statusBadge = document.getElementById(`rx-status-badge-${rxId}`);
+    const verBadge = document.getElementById(`rx-ver-${rxId}`);
+
+    if (doseBadge) {
+      doseBadge.innerText = `${finalDose} • Titrated`;
+      doseBadge.classList.add('bg-amber-50', 'text-amber-800', 'border-amber-300');
+    }
+    if (statusBadge) {
+      statusBadge.className = 'text-[11px] font-bold px-2 py-0.5 rounded-full bg-amber-100 text-amber-800 border border-amber-300';
+      statusBadge.innerText = 'MODIFIED';
+    }
+
+    try {
+      const resp = await fetch(`/api/doctor/prescriptions/${rxId}`, {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          patient_id: "{{ patient_id }}",
+          doctor_id: "{{ doctor_id }}",
+          new_dosage: finalDose,
+          reason: finalReason
+        })
+      });
+      const res = await resp.json();
+
+      if (verBadge && res.version) {
+        verBadge.innerText = `${rxId} (v${res.version})`;
+      }
+
+      showToast(`✏️ Dosage for ${medName} updated to ${finalDose}.`, 'success');
+      await fetchDoctorTimeline();
+    } catch (err) {
+      showToast('Error updating dosage.', 'error');
+      console.error(err);
+    }
+  }
+
+  // Filter Doctor Timeline
+  function filterDoctorTimeline(category, btnEl) {
+    if (btnEl) {
+      document.querySelectorAll('#doctor-timeline-filters .doc-tl-chip').forEach(el => {
+        el.classList.remove('bg-primary', 'text-white', 'font-bold');
+        el.classList.add('bg-surface-container', 'text-on-surface', 'font-medium');
+      });
+      btnEl.classList.remove('bg-surface-container', 'text-on-surface', 'font-medium');
+      btnEl.classList.add('bg-primary', 'text-white', 'font-bold');
+    }
+
+    const entries = document.querySelectorAll('#doctor-timeline-container .doctor-timeline-entry');
+    entries.forEach(entry => {
+      const cat = entry.getAttribute('data-category');
+      if (category === 'ALL' || cat === category) {
+        entry.style.display = 'flex';
+      } else {
+        entry.style.display = 'none';
+      }
+    });
+  }
+
+  // Live Refresh Doctor Timeline from API
+  async function fetchDoctorTimeline() {
+    try {
+      const resp = await fetch('/api/patient/{{ patient_id }}/timeline?limit=50');
+      const data = await resp.json();
+      const events = data.timelineEvents || data.timeline_events || [];
+      if (!events || events.length === 0) return;
+
+      const container = document.getElementById('doctor-timeline-container');
+      let html = '';
+      events.forEach(item => {
+        const cat = item.category || 'CLINICAL';
+        let circleColor = 'bg-primary';
+        let badgeColor = 'bg-primary/10 text-primary';
+        if (cat === 'OVERRIDE') {
+          circleColor = 'bg-amber-600';
+          badgeColor = 'bg-amber-500/10 text-amber-800';
+        } else if (cat === 'ADHERENCE') {
+          circleColor = 'bg-tertiary';
+          badgeColor = 'bg-tertiary/10 text-tertiary';
+        } else if (cat === 'ALLERGY') {
+          circleColor = 'bg-error';
+          badgeColor = 'bg-error/10 text-error';
+        } else if (cat === 'PHARMACY') {
+          circleColor = 'bg-secondary';
+          badgeColor = 'bg-secondary/10 text-secondary';
+        }
+
+        html += `
+          <div class="doctor-timeline-entry relative flex flex-col gap-1" data-category="${cat}">
+            <div class="absolute -left-[23px] top-1.5 w-3.5 h-3.5 rounded-full ring-4 ring-white ${circleColor}"></div>
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
+              <span class="text-xs font-bold text-on-surface flex items-center gap-1.5">
+                <span>${item.title}</span>
+              </span>
+              <div class="flex items-center gap-2">
+                <span class="text-[10px] font-bold px-2 py-0.5 rounded-md ${badgeColor}">
+                  ${item.action || cat}
+                </span>
+                <span class="text-[11px] font-mono text-on-surface-variant whitespace-nowrap">
+                  ${item.dateFormatted || ''} • ${item.timeFormatted || ''}
+                </span>
+              </div>
+            </div>
+            <p class="text-xs text-on-surface-variant leading-relaxed">
+              ${item.details}
+            </p>
+            <div class="text-[10px] text-on-surface-variant/80 flex items-center gap-2 pt-0.5">
+              <span>Actor: <b>${item.actor}</b> (${item.role || 'SYSTEM'})</span>
+              ${item.eventId ? `<span>• ID: <span class="font-mono">${item.eventId}</span></span>` : ''}
+            </div>
+          </div>
+        `;
+      });
+      container.innerHTML = html;
+    } catch (err) {
+      console.warn('Error syncing doctor timeline:', err);
+    }
+  }
+
+  // Auto poll every 15 seconds
+  setInterval(fetchDoctorTimeline, 15000);
+</script>
+{% endblock %}

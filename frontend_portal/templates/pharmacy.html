@@ -1,0 +1,280 @@
+{% extends "base.html" %}
+
+{% block title %}Pharmacy Stock & Location Finder | MedCoord Health{% endblock %}
+
+{% block content %}
+<div class="space-y-6">
+
+  <!-- ======================================================================= -->
+  <!-- 1. Header & Geospatial Search Bar -->
+  <!-- ======================================================================= -->
+  <div class="bg-surface-container-lowest rounded-2xl p-5 border border-surface-container-high/80 shadow-xs space-y-4">
+    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+      <div class="flex items-center gap-3.5">
+        <div class="w-12 h-12 rounded-2xl bg-primary text-white flex items-center justify-center font-bold shadow-xs flex-shrink-0">
+          <span class="material-symbols-outlined text-[28px]">local_pharmacy</span>
+        </div>
+        <div>
+          <div class="flex items-center gap-2">
+            <h1 class="font-headline font-bold text-lg text-on-surface">1-Stop Pharmacy Stock & Route Finder</h1>
+            <span class="px-2 py-0.5 rounded-full bg-tertiary-fixed text-on-tertiary-fixed-variant text-[11px] font-bold uppercase">
+              Amazon Location Service
+            </span>
+          </div>
+          <p class="text-xs text-on-surface-variant mt-0.5">
+            Geospatial route optimization & real-time inventory checking for patient <strong>{{ patient_id }}</strong>
+          </p>
+        </div>
+      </div>
+
+      <!-- Quick Coordinates Pill -->
+      <div class="flex items-center gap-2 bg-surface-container-low px-3 py-1.5 rounded-xl border border-surface-container-high text-xs font-semibold text-on-surface">
+        <span class="material-symbols-outlined text-primary text-[18px]">near_me</span>
+        <span>Center: 13.1155° N, 77.6070° E (Bengaluru North)</span>
+      </div>
+    </div>
+
+    <!-- Active Multi-Drug Regimen Chips -->
+    <div class="p-3.5 rounded-xl bg-surface-container-low border border-surface-container-high space-y-2">
+      <div class="flex items-center justify-between text-xs font-bold text-on-surface">
+        <span class="flex items-center gap-1.5">
+          <span class="material-symbols-outlined text-primary text-[16px]">medication</span>
+          <span>Target Regimen for 1-Stop Pickup:</span>
+        </span>
+        <span class="text-tertiary">{{ med_list|length }} Required Medications</span>
+      </div>
+      <div class="flex items-center gap-2 flex-wrap">
+        {% for med in med_list %}
+        <span class="px-2.5 py-1 rounded-lg bg-white border border-surface-container-high text-xs font-bold text-primary flex items-center gap-1 shadow-2xs">
+          <span class="material-symbols-outlined text-[14px]">check_circle</span>
+          <span>{{ med }}</span>
+        </span>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+
+  <!-- ======================================================================= -->
+  <!-- 2. Full Match Pharmacies (100% Stocked) -->
+  <!-- ======================================================================= -->
+  <div class="bg-surface-container-lowest rounded-2xl p-5 border border-surface-container-high/80 shadow-xs space-y-4">
+    <div class="flex items-center justify-between">
+      <div class="flex items-center gap-2">
+        <span class="relative flex h-3 w-3">
+          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-tertiary opacity-75"></span>
+          <span class="relative inline-flex rounded-full h-3 w-3 bg-tertiary"></span>
+        </span>
+        <h2 class="font-headline font-bold text-base text-on-surface">
+          1-Stop Fulfillment Pharmacies (100% Stock Available)
+        </h2>
+      </div>
+      <span class="text-xs font-bold bg-tertiary-fixed text-on-tertiary-fixed-variant px-2.5 py-1 rounded-full">
+        {{ geo_results.full_match_count if geo_results.full_match_count is defined else geo_results.full_match_pharmacies|length }} Ready for Pickup
+      </span>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4" id="full-match-list">
+      {% if geo_results.full_match_pharmacies %}
+        {% for p in geo_results.full_match_pharmacies %}
+        <div class="p-4 rounded-xl bg-surface-container-low border border-surface-container-high/80 flex flex-col justify-between gap-3 hover:border-primary/50 transition-colors shadow-2xs">
+          <div class="space-y-2">
+            <!-- Pharmacy Header -->
+            <div class="flex items-start justify-between gap-2">
+              <div>
+                <div class="flex items-center gap-2">
+                  <h3 class="font-headline font-bold text-sm text-on-surface">
+                    {{ p.name }}
+                  </h3>
+                  {% if p.is_24_7_hospital_emergency %}
+                  <span class="text-[10px] font-bold px-1.5 py-0.5 rounded bg-secondary text-white">24/7 HOSPITAL</span>
+                  {% endif %}
+                </div>
+                <p class="text-xs text-on-surface-variant mt-0.5">{{ p.address }}</p>
+                <p class="text-[11px] text-on-surface-variant font-mono">Tel: {{ p.phone }}</p>
+              </div>
+              <div class="text-right flex-shrink-0">
+                <span class="inline-block px-2.5 py-1 rounded-lg bg-white border border-surface-container-high text-xs font-bold text-primary shadow-xs">
+                  {{ p.distance_km }} km
+                </span>
+                <p class="text-[11px] text-tertiary font-bold mt-1 flex items-center justify-end gap-0.5">
+                  <span class="material-symbols-outlined text-[13px]">directions_car</span>
+                  <span>{{ p.drive_time_minutes }} mins</span>
+                </p>
+              </div>
+            </div>
+
+            <!-- Regimen Stock Details -->
+            <div class="p-2.5 rounded-lg bg-white border border-surface-container-high/60 space-y-1.5 text-xs">
+              <span class="font-bold text-[11px] text-on-surface-variant uppercase">Stock & Unit Pricing:</span>
+              <div class="grid grid-cols-2 gap-2">
+                {% for item in p.regimen_stock %}
+                <div class="flex items-center justify-between text-[11px] p-1 rounded bg-surface-container-low">
+                  <span class="font-semibold text-on-surface truncate">{{ item.medication }}</span>
+                  <span class="font-bold text-tertiary">{{ item.stock_units }} in stock</span>
+                </div>
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+
+          <!-- Reserve Button -->
+          <div class="pt-2 border-t border-surface-container-high/60 flex items-center justify-between">
+            <span class="text-[11px] font-bold text-tertiary flex items-center gap-1">
+              <span class="material-symbols-outlined text-[15px]">verified</span>
+              <span>100% Stock Guaranteed</span>
+            </span>
+            <button onclick="reserveStock('{{ p.pharmacy_id }}', '{{ p.name }}', 'RX-WAR-1001')" class="h-9 px-4 rounded-xl bg-primary hover:bg-primary-container text-white text-xs font-bold flex items-center gap-1.5 shadow-xs transition-transform active:scale-95" id="btn-reserve-{{ p.pharmacy_id }}">
+              <span class="material-symbols-outlined text-[16px]">shopping_bag</span>
+              <span>Reserve for Pickup</span>
+            </button>
+          </div>
+        </div>
+        {% endfor %}
+      {% else %}
+        <div class="col-span-2 p-6 rounded-xl bg-surface-container-low text-center text-xs text-on-surface-variant">
+          No 100% match pharmacies found in this radius. Expanding radius...
+        </div>
+      {% endif %}
+    </div>
+  </div>
+
+  <!-- ======================================================================= -->
+  <!-- 3. Partial Match Pharmacies -->
+  <!-- ======================================================================= -->
+  {% if geo_results.partial_match_pharmacies %}
+  <div class="bg-surface-container-lowest rounded-2xl p-5 border border-surface-container-high/80 shadow-xs space-y-4">
+    <div class="flex items-center justify-between">
+      <h2 class="font-headline font-bold text-base text-on-surface flex items-center gap-2">
+        <span class="material-symbols-outlined text-amber-600 text-[20px]">store</span>
+        <span>Partial Stock Pharmacies (Split Regimen)</span>
+      </h2>
+      <span class="text-xs font-bold text-on-surface-variant">
+        {{ geo_results.partial_match_pharmacies|length }} Nearby Options
+      </span>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      {% for p in geo_results.partial_match_pharmacies %}
+      <div class="p-4 rounded-xl bg-surface-container-low border border-surface-container-high/80 flex flex-col justify-between gap-3">
+        <div class="space-y-1">
+          <div class="flex items-start justify-between gap-2">
+            <div>
+              <h3 class="font-headline font-bold text-sm text-on-surface">{{ p.name }}</h3>
+              <p class="text-xs text-on-surface-variant">{{ p.address }}</p>
+            </div>
+            <span class="text-xs font-bold text-primary bg-white px-2 py-0.5 rounded border border-surface-container-high">
+              {{ p.distance_km }} km ({{ p.drive_time_minutes }} mins)
+            </span>
+          </div>
+          <p class="text-xs text-amber-800 font-bold mt-1">
+            Stocks {{ p.matched_items }} of {{ p.total_required }} required medications
+          </p>
+        </div>
+
+        <button onclick="reserveStock('{{ p.pharmacy_id }}', '{{ p.name }}', 'RX-WAR-1001')" class="h-9 px-3 rounded-xl bg-surface-container hover:bg-surface-container-high text-on-surface text-xs font-bold transition-colors">
+          Reserve Available Units
+        </button>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+  {% endif %}
+
+</div>
+
+<!-- ========================================================================= -->
+<!-- MODAL: PICKUP RESERVATION CONFIRMATION -->
+<!-- ========================================================================= -->
+<div id="reservation-modal" class="fixed inset-0 z-50 bg-black/40 backdrop-blur-xs flex items-center justify-center p-4 hidden">
+  <div class="bg-white rounded-2xl p-6 max-w-md w-full border border-surface-container-high shadow-2xl space-y-4">
+    <div class="text-center space-y-1">
+      <div class="w-14 h-14 rounded-full bg-tertiary-fixed text-on-tertiary-fixed-variant mx-auto flex items-center justify-center font-bold shadow-xs">
+        <span class="material-symbols-outlined text-[32px]">check_circle</span>
+      </div>
+      <h3 class="font-headline font-bold text-lg text-on-surface">Medication Reserved!</h3>
+      <p class="text-xs text-on-surface-variant">Stock has been locked in the pharmacy inventory database.</p>
+    </div>
+
+    <div class="p-4 rounded-xl bg-surface-container-low border border-surface-container-high text-center space-y-2">
+      <span class="text-[11px] font-bold text-on-surface-variant uppercase tracking-wider">Your Pickup Voucher Code</span>
+      <p class="font-mono font-bold text-2xl text-primary tracking-wider" id="modal-pickup-code">
+        PICKUP-XXXX-XXXX
+      </p>
+      <p class="text-xs text-on-surface" id="modal-pharmacy-name">Apollo Pharmacy Yelahanka</p>
+      <span class="inline-block text-[10px] font-bold px-2 py-0.5 rounded bg-tertiary text-white">
+        LOCKED FOR 24 HOURS
+      </span>
+    </div>
+
+    <div class="text-xs text-on-surface-variant leading-relaxed space-y-1">
+      <p>• Present this voucher code and your patient ID ({{ patient_id }}) at the pickup counter.</p>
+      <p>• The pharmacist has received your verified e-prescription and allergy profile via FHIR R4.</p>
+    </div>
+
+    <button onclick="closeReservationModal()" class="w-full h-11 rounded-xl bg-primary text-white text-xs font-bold shadow-md hover:bg-primary-container transition-colors">
+      Done
+    </button>
+  </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+  function closeReservationModal() {
+    document.getElementById('reservation-modal').classList.add('hidden');
+  }
+
+  // Reserve stock at selected pharmacy
+  async function reserveStock(pharmacyId, pharmacyName, rxId) {
+    const btn = document.getElementById(`btn-reserve-${pharmacyId}`);
+    if (btn) {
+      btn.innerHTML = '<span class="material-symbols-outlined animate-spin text-[16px]">sync</span><span>Locking...</span>';
+      btn.disabled = true;
+    }
+
+    try {
+      const resp = await fetch('/api/pharmacies/reserve', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          patient_id: "{{ patient_id }}",
+          prescription_id: rxId || "RX-WAR-1001",
+          pharmacy_id: pharmacyId
+        })
+      });
+      const data = await resp.json();
+
+      if (!resp.ok || data.error) {
+        const errMsg = data.message || data.error || 'Cannot reserve medication.';
+        if (btn) {
+          btn.innerHTML = '<span class="material-symbols-outlined text-[16px]">block</span><span>Reservation Blocked</span>';
+          btn.classList.remove('bg-primary', 'bg-tertiary');
+          btn.classList.add('bg-error', 'text-white');
+          btn.disabled = false;
+        }
+        showToast(errMsg, 'error');
+        return;
+      }
+
+      if (btn) {
+        btn.innerHTML = '<span class="material-symbols-outlined text-[16px]">verified</span><span>Reserved!</span>';
+        btn.classList.remove('bg-primary');
+        btn.classList.add('bg-tertiary');
+      }
+
+      const pickupCode = data.pickupCode || data.pickup_code || (data.reservationTicket && data.reservationTicket.pickupCode) || 'PICKUP-74A8-32B9';
+      document.getElementById('modal-pickup-code').innerText = pickupCode;
+      document.getElementById('modal-pharmacy-name').innerText = pharmacyName;
+      document.getElementById('reservation-modal').classList.remove('hidden');
+
+      showToast(`Stock locked at ${pharmacyName}! Pickup code: ${pickupCode}`, 'success');
+    } catch (err) {
+      if (btn) {
+        btn.innerHTML = '<span class="material-symbols-outlined text-[16px]">shopping_bag</span><span>Reserve for Pickup</span>';
+        btn.disabled = false;
+      }
+      showToast('Error reserving medication stock.', 'error');
+    }
+  }
+</script>
+{% endblock %}
