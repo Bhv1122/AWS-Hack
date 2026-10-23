@@ -47,6 +47,51 @@
   </div>
 
   <!-- ======================================================================= -->
+  <!-- 1b. SwasthyaID Digital Passport & Doctor Consent Privacy Shield -->
+  <!-- ======================================================================= -->
+  <div class="bg-gradient-to-r from-primary to-primary-container text-white rounded-2xl p-4 sm:p-5 shadow-xs flex flex-col md:flex-row md:items-center justify-between gap-4">
+    <div class="flex items-center gap-3 min-w-0">
+      <div class="w-11 h-11 rounded-xl bg-white/20 backdrop-blur-md flex items-center justify-center font-bold shadow-xs flex-shrink-0">
+        <span class="material-symbols-outlined text-[24px]">badge</span>
+      </div>
+      <div class="min-w-0 space-y-0.5">
+        <div class="flex items-center gap-2 flex-wrap">
+          <span class="text-xs uppercase font-extrabold tracking-wider text-primary-fixed">SwasthyaID Passport:</span>
+          <span class="font-mono text-sm font-bold bg-white/20 px-2 py-0.5 rounded-md">
+            {{ data.patient.uniquePatientId if (data.patient and data.patient.uniquePatientId) else 'PAT-SS-1001' }}
+          </span>
+          <span class="text-[10px] uppercase font-bold px-2 py-0.5 rounded-full bg-white/20 text-white/90">
+            AWS KMS Privacy Shield
+          </span>
+        </div>
+        <p class="text-xs text-white/80">
+          Decryption PIN is required for doctors to view your clinical chart. Rotate at any time to revoke access.
+        </p>
+      </div>
+    </div>
+
+    <!-- PIN Display & Rotate Action -->
+    <div class="flex items-center gap-3 flex-wrap sm:flex-nowrap">
+      <div class="px-3.5 py-1.5 rounded-xl bg-white/10 backdrop-blur-md border border-white/20 text-center">
+        <div class="text-[9px] uppercase font-bold text-primary-fixed tracking-wider">Active Doctor Consent PIN</div>
+        <div id="patient-portal-pin" class="text-xl font-mono font-bold tracking-widest text-yellow-300">
+          {{ data.patient.consentPin if (data.patient and data.patient.consentPin) else '482910' }}
+        </div>
+      </div>
+
+      <button type="button" onclick="revokeDoctorConsentFromPortal()" id="btn-revoke-pin" class="h-10 px-3.5 rounded-xl bg-white hover:bg-error-container text-error text-xs font-bold flex items-center gap-1.5 shadow-sm transition-all" title="Rotate Consent PIN & Immediately Revoke Doctor Access">
+        <span class="material-symbols-outlined text-[16px]">lock_reset</span>
+        <span>Revoke Access & Rotate PIN</span>
+      </button>
+
+      <a href="/login?tab=patient" class="h-10 px-3 rounded-xl bg-white/20 hover:bg-white/30 text-white text-xs font-bold flex items-center gap-1.5 transition-colors" title="View Full Printable ID Card & QR Code">
+        <span class="material-symbols-outlined text-[16px]">qr_code_scanner</span>
+        <span>QR Card</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- ======================================================================= -->
   <!-- 2. Hero Adherence Scorecard & Daily Overview -->
   <!-- ======================================================================= -->
   <div class="bg-surface-container-lowest rounded-2xl p-5 border border-surface-container-high/80 shadow-xs space-y-4">
@@ -575,5 +620,31 @@
       showToast('Error sending symptom report.', 'error');
     }
   }
+
+  // Revoke Doctor Consent & Rotate PIN
+  async function revokeDoctorConsentFromPortal() {
+    const btn = document.getElementById('btn-revoke-pin');
+    btn.disabled = true;
+    btn.innerHTML = '<span class="material-symbols-outlined animate-spin text-[16px]">refresh</span><span>Rotating PIN...</span>';
+
+    try {
+      const resp = await fetch('/api/auth/revoke-consent', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ patientId: "{{ patient_id }}" })
+      });
+      const data = await resp.json();
+      if (!resp.ok) throw new Error(data.message || 'Consent revocation failed');
+
+      document.getElementById('patient-portal-pin').innerText = data.newConsentPin;
+      showToast(`Consent PIN successfully rotated to ${data.newConsentPin}! All active doctor sessions terminated.`, 'warning');
+    } catch (err) {
+      showToast(err.message, 'error');
+    } finally {
+      btn.disabled = false;
+      btn.innerHTML = '<span class="material-symbols-outlined text-[16px]">lock_reset</span><span>Revoke Access & Rotate PIN</span>';
+    }
+  }
 </script>
 {% endblock %}
+

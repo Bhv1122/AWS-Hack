@@ -412,7 +412,7 @@ def verify_qr_consent_access(
 # Built-in multilingual medical dictionary / phrasebook fallback
 BHASHASEHAT_PHRASEBOOK = {
     "chest_pain": {
-        "keywords": ["chest pain", "chest", "heart", "tightness", "pain in chest", "pressure in chest", "angina"],
+        "keywords": ["chest pain", "chest", "heart", "tightness", "pain in chest", "pressure in chest", "angina", "chhati", "chhatire", "kasta", "kasta heuchi", "seene", "edeyalli novu"],
         "symptoms": ["Chest Pain / Angina", "Cardiovascular Strain"],
         "translations": {
             "Odia": "ମୋ ଛାତିରେ ବହୁତ କଷ୍ଟ ଏବଂ ଚାପ ହେଉଛି ।",
@@ -431,7 +431,7 @@ BHASHASEHAT_PHRASEBOOK = {
         }
     },
     "cement_cough": {
-        "keywords": ["cough", "dust", "cement", "construction dust", "silica", "throat", "phlegm", "breathless", "short of breath"],
+        "keywords": ["cough", "dust", "cement", "construction dust", "silica", "throat", "phlegm", "breathless", "short of breath", "kasa", "kasa heuchi", "kasha", "kemmu", "khaansi"],
         "symptoms": ["Persistent Dust Cough", "Suspected Silica Exposure", "Shortness of Breath"],
         "translations": {
             "Odia": "କନ୍‌ଷ୍ଟ୍ରକସନ ସାଇଟର ସିମେଣ୍ଟ ଓ ଧୂଳି ଯୋଗୁଁ ମୋତେ ଲଗାତାର ଶୁଖିଲା କାଶ ହେଉଛି ଏବଂ ନିଶ୍ୱାସ ନେବାରେ କଷ୍ଟ ହେଉଛି ।",
@@ -676,6 +676,7 @@ def translate_medical_conversation(
         "translatedText": translated_text,
         "phonetic": phonetic_text,
         "extractedClinicalSymptoms": list(dict.fromkeys(symptoms)),
+        "extractedClinicalEntities": {"symptoms": [{"symptom": s} if isinstance(s, str) else s for s in list(dict.fromkeys(symptoms))]},
         "sourceLanguage": source_norm,
         "targetLanguage": target_norm,
         "speakerRole": speaker_role.upper(),
@@ -894,14 +895,26 @@ def scan_and_digitize_prescription(
     except Exception as te:
         logger.debug(f"Notice logging timeline event in scan_and_digitize_prescription: {te}")
 
+    # Ensure both 'name' and 'medication_name' are populated in each item
+    for med in extracted_meds:
+        if "medication_name" in med and "name" not in med:
+            med["name"] = med["medication_name"]
+        elif "name" in med and "medication_name" not in med:
+            med["medication_name"] = med["name"]
+
     return convert_decimals({
         "status": "SUCCESS_DIGITIZED",
         "documentId": doc_id,
         "patientId": actual_id,
         "documentTitle": document_title,
         "s3Uri": s3_uri,
+        "s3StorageKey": s3_key,
         "extractedMedications": extracted_meds,
         "drugInteractionWarnings": interaction_warnings,
+        "interactionCheck": {
+            "hasInteractions": len(interaction_warnings) > 0,
+            "conflicts": interaction_warnings
+        },
         "hasClinicalSafetyAlerts": len(interaction_warnings) > 0,
         "fhirResource": fhir_doc_reference,
         "digitizedAt": now_iso
@@ -1141,7 +1154,9 @@ def assess_occupational_risk(
         "occupationalCategory": matched_category,
         "exposureYears": years,
         "riskLevel": risk_level,
+        "riskTier": risk_level,
         "riskScore": final_score,
+        "clinicalSummary": f"{risk_level} occupational hazard for {matched_category.replace('_', ' ').title()} with {years} years of exposure. Recommended surveillance: {followup_interval}.",
         "primaryHazards": matched_matrix["primaryHazards"],
         "predictedOccupationalConditions": matched_matrix["predictedConditions"],
         "recommendedScreenings": matched_matrix["recommendedScreenings"],

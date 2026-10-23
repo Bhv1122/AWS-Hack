@@ -44,6 +44,67 @@
       </div>
     </div>
 
+    <!-- ======================================================================= -->
+    <!-- ZERO-TRUST SECURE PATIENT LOOKUP & AWS KMS PRIVACY SHIELD -->
+    <!-- ======================================================================= -->
+    <div id="zero-trust-panel" class="p-4 rounded-2xl bg-gradient-to-r from-surface-container-low to-surface-container border border-primary/20 shadow-xs space-y-3">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+        <div class="flex items-center gap-2.5">
+          <div class="w-9 h-9 rounded-xl bg-primary text-white flex items-center justify-center font-bold shadow-xs flex-shrink-0">
+            <span class="material-symbols-outlined text-[20px]">lock</span>
+          </div>
+          <div>
+            <div class="flex items-center gap-2 flex-wrap">
+              <span class="text-xs font-headline font-bold text-on-surface">Zero-Trust Patient Lookup & AWS KMS Privacy Shield</span>
+              <span id="privacy-status-badge" class="px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-800 text-[10px] font-bold uppercase tracking-wider flex items-center gap-1 border border-emerald-500/20">
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                <span id="privacy-status-text">Consent Verified & Decrypted</span>
+              </span>
+            </div>
+            <p class="text-[11px] text-on-surface-variant">
+              AWS KMS envelope encryption protects PHI. Chart decryption requires Patient Unique ID + 6-digit Consent PIN.
+            </p>
+          </div>
+        </div>
+        <div class="flex items-center gap-2">
+          <a href="/login?tab=doctor" class="px-2.5 py-1 rounded-lg bg-surface-container-lowest hover:bg-white text-secondary text-xs font-bold border border-surface-container-high transition-colors flex items-center gap-1 shadow-xs">
+            <span class="material-symbols-outlined text-[15px]">badge</span>
+            <span>Doctor Badge / QR</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Lookup Input Bar -->
+      <form id="doctor-lookup-form" onsubmit="handleDoctorPatientLookup(event)" class="grid grid-cols-1 sm:grid-cols-12 gap-2 pt-1">
+        <div class="sm:col-span-4 relative">
+          <span class="material-symbols-outlined absolute left-3 top-2.5 text-[18px] text-on-surface-variant">fingerprint</span>
+          <input type="text" id="lookup-patient-id" required value="PAT-SS-1001" placeholder="Patient ID (PAT-SS-XXXX)" class="w-full pl-9 pr-3 py-2 rounded-xl border border-surface-container-high bg-white text-xs font-semibold focus:outline-none focus:ring-2 focus:ring-primary"/>
+        </div>
+
+        <div class="sm:col-span-3 relative">
+          <span class="material-symbols-outlined absolute left-3 top-2.5 text-[18px] text-yellow-600">key</span>
+          <input type="text" id="lookup-consent-pin" maxlength="6" value="482910" placeholder="6-digit PIN (e.g. 482910)" class="w-full pl-9 pr-3 py-2 rounded-xl border border-surface-container-high bg-white text-xs font-mono font-bold tracking-widest text-on-surface focus:outline-none focus:ring-2 focus:ring-primary"/>
+        </div>
+
+        <div class="sm:col-span-3">
+          <button type="submit" id="btn-decrypt-chart" class="w-full py-2 px-3 rounded-xl bg-primary hover:bg-primary-container text-white text-xs font-bold transition-all shadow-xs flex items-center justify-center gap-1.5">
+            <span class="material-symbols-outlined text-[16px]">lock_open</span>
+            <span>Decrypt Chart</span>
+          </button>
+        </div>
+
+        <div class="sm:col-span-2 flex gap-1">
+          <button type="button" onclick="triggerQrScanUpload()" class="flex-1 py-2 px-2 rounded-xl bg-white hover:bg-surface-container-low border border-surface-container-high text-on-surface text-xs font-bold transition-colors flex items-center justify-center gap-1" title="Scan or Upload Patient QR Code">
+            <span class="material-symbols-outlined text-[16px] text-tertiary">qr_code_scanner</span>
+            <span>Scan QR</span>
+          </button>
+          <button type="button" onclick="openBreakGlassModal()" class="py-2 px-2.5 rounded-xl bg-error/10 hover:bg-error/20 border border-error/30 text-error text-xs font-bold transition-colors flex items-center justify-center" title="Emergency Break-Glass Clinical Override">
+            <span class="material-symbols-outlined text-[16px]">emergency</span>
+          </button>
+        </div>
+      </form>
+    </div>
+
     <!-- Active Patient Profile Details Bar -->
     <div class="p-4 rounded-xl bg-surface-container-low/70 border border-surface-container-high flex flex-col md:flex-row md:items-center justify-between gap-3">
       <div class="space-y-1">
@@ -1229,5 +1290,174 @@
 
   // Auto poll every 15 seconds
   setInterval(fetchDoctorTimeline, 15000);
+
+  // Zero-Trust Patient Chart Lookup
+  async function handleDoctorPatientLookup(e) {
+    if (e) e.preventDefault();
+    const pid = document.getElementById('lookup-patient-id').value.trim();
+    const pin = document.getElementById('lookup-consent-pin').value.trim();
+    const docId = '{{ doctor_id }}' || 'DOC-IN-8841';
+    const btn = document.getElementById('btn-decrypt-chart');
+    const badge = document.getElementById('privacy-status-badge');
+    const badgeText = document.getElementById('privacy-status-text');
+
+    btn.disabled = true;
+    btn.innerHTML = `<span class="material-symbols-outlined text-[16px] animate-spin">refresh</span><span>Decrypting...</span>`;
+
+    try {
+      const res = await fetch('/api/auth/lookup-patient', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ doctorId: docId, patientId: pid, consentPin: pin })
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.message || 'Decryption denied');
+
+      badge.className = "px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-800 text-[10px] font-bold uppercase tracking-wider flex items-center gap-1 border border-emerald-500/20";
+      badgeText.innerText = "Consent Verified & Decrypted";
+      showToast(`Zero-trust privacy shield unlocked for ${data.patient.name || pid}!`, "success");
+
+      // If viewing a different patient than currently active, switch view
+      const curPid = '{{ patient_id }}';
+      const actualPid = (pid === 'PAT-SS-1001') ? 'PAT-1001' : pid;
+      if (actualPid !== curPid && actualPid !== 'PAT-1001') {
+        window.location.href = `/doctor?doctor_id=${docId}&patient_id=${actualPid}`;
+      }
+    } catch (err) {
+      badge.className = "px-2.5 py-0.5 rounded-full bg-error-container text-error text-[10px] font-bold uppercase tracking-wider flex items-center gap-1 border border-error/30";
+      badgeText.innerText = "Locked: Invalid Consent PIN";
+      showToast(err.message, "error");
+    } finally {
+      btn.disabled = false;
+      btn.innerHTML = `<span class="material-symbols-outlined text-[16px]">lock_open</span><span>Decrypt Chart</span>`;
+    }
+  }
+
+  // Break-Glass Override Modal Handlers
+  function openBreakGlassModal() {
+    document.getElementById('break-glass-modal').classList.remove('hidden');
+  }
+
+  function closeBreakGlassModal() {
+    document.getElementById('break-glass-modal').classList.add('hidden');
+  }
+
+  async function submitBreakGlassOverride() {
+    const reason = document.getElementById('break-glass-reason').value.trim();
+    if (reason.length < 20) {
+      showToast("Clinical justification must be at least 20 characters.", "error");
+      return;
+    }
+    const pid = document.getElementById('lookup-patient-id').value.trim();
+    const docId = '{{ doctor_id }}' || 'DOC-IN-8841';
+
+    try {
+      const res = await fetch('/api/auth/lookup-patient', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ doctorId: docId, patientId: pid, breakGlassReason: reason })
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.message || 'Break-glass failed');
+
+      closeBreakGlassModal();
+      const badge = document.getElementById('privacy-status-badge');
+      const badgeText = document.getElementById('privacy-status-text');
+      badge.className = "px-2.5 py-0.5 rounded-full bg-amber-500/10 text-amber-800 text-[10px] font-bold uppercase tracking-wider flex items-center gap-1 border border-amber-500/30";
+      badgeText.innerText = "Emergency Break-Glass Active";
+      showToast("CRITICAL: Emergency break-glass access granted. Logged in CloudTrail audit.", "warning");
+    } catch (err) {
+      showToast(err.message, "error");
+    }
+  }
+
+  // QR Modal Handlers
+  function triggerQrScanUpload() {
+    document.getElementById('qr-scan-modal').classList.remove('hidden');
+  }
+
+  function closeQrScanModal() {
+    document.getElementById('qr-scan-modal').classList.add('hidden');
+  }
+
+  function applyPastedQrData() {
+    const raw = document.getElementById('qr-pasted-json').value.trim();
+    try {
+      let parsed = JSON.parse(raw);
+      if (parsed.patientId) document.getElementById('lookup-patient-id').value = parsed.patientId;
+      if (parsed.consentPin) document.getElementById('lookup-consent-pin').value = parsed.consentPin;
+      closeQrScanModal();
+      showToast(`Scanned QR for ${parsed.patientId || 'Patient'}. Ready to decrypt.`, "success");
+      handleDoctorPatientLookup();
+    } catch (e) {
+      if (raw.startsWith('PAT-')) {
+        document.getElementById('lookup-patient-id').value = raw;
+        closeQrScanModal();
+        showToast(`Loaded ID: ${raw}`, "success");
+      } else {
+        showToast("Invalid QR JSON payload. Please paste valid QR data.", "error");
+      }
+    }
+  }
 </script>
+
+<!-- Emergency Break-Glass Modal -->
+<div id="break-glass-modal" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 hidden">
+  <div class="bg-white rounded-3xl max-w-lg w-full p-6 shadow-2xl border border-error/30 space-y-4">
+    <div class="flex items-center gap-3 text-error">
+      <div class="w-10 h-10 rounded-xl bg-error/10 flex items-center justify-center font-bold">
+        <span class="material-symbols-outlined text-[24px]">emergency</span>
+      </div>
+      <div>
+        <h3 class="font-headline font-bold text-base text-on-surface">Emergency Break-Glass Override</h3>
+        <p class="text-xs text-error font-semibold">Bypasses Patient Consent PIN under Life-Threatening Conditions</p>
+      </div>
+    </div>
+    <div class="p-3 rounded-xl bg-error-container/40 border border-error/20 text-xs text-on-error-container">
+      <strong>Statutory HIPAA & ABDM Notice:</strong> This action triggers an immutable AWS CloudTrail security alert logged with your verified credentials, timestamp, and patient alert notification.
+    </div>
+    <div>
+      <label class="block text-xs font-bold text-on-surface-variant mb-1">Clinical Justification (Minimum 20 characters) *</label>
+      <textarea id="break-glass-reason" rows="3" placeholder="e.g. Patient presents with acute pulmonary distress and altered sensorium; immediate anticoagulant history required." class="w-full p-3 rounded-xl border border-surface-container-high text-xs font-medium focus:outline-none focus:ring-2 focus:ring-error"></textarea>
+    </div>
+    <div class="flex items-center justify-end gap-2 pt-2">
+      <button type="button" onclick="closeBreakGlassModal()" class="px-4 py-2 rounded-xl bg-surface-container hover:bg-surface-container-high text-xs font-bold text-on-surface transition-colors">
+        Cancel
+      </button>
+      <button type="button" onclick="submitBreakGlassOverride()" class="px-4 py-2 rounded-xl bg-error hover:bg-red-700 text-xs font-bold text-white transition-colors flex items-center gap-1.5 shadow-sm">
+        <span class="material-symbols-outlined text-[16px]">warning</span>
+        <span>Execute Break-Glass Access</span>
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- QR Scan / Paste Modal -->
+<div id="qr-scan-modal" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 hidden">
+  <div class="bg-white rounded-3xl max-w-md w-full p-6 shadow-2xl border border-surface-container-high space-y-4">
+    <div class="flex items-center gap-3">
+      <div class="w-10 h-10 rounded-xl bg-tertiary-fixed text-on-tertiary-fixed-variant flex items-center justify-center font-bold">
+        <span class="material-symbols-outlined text-[24px]">qr_code_scanner</span>
+      </div>
+      <div>
+        <h3 class="font-headline font-bold text-base text-on-surface">Scan or Paste Patient QR Payload</h3>
+        <p class="text-xs text-on-surface-variant">Instant zero-trust credentials decoding</p>
+      </div>
+    </div>
+    <div>
+      <label class="block text-xs font-bold text-on-surface-variant mb-1">Paste SwasthyaID QR JSON or Unique ID</label>
+      <textarea id="qr-pasted-json" rows="4" placeholder='{"patientId": "PAT-SS-1001", "consentPin": "482910"}' class="w-full p-3 rounded-xl border border-surface-container-high text-xs font-mono focus:outline-none focus:ring-2 focus:ring-primary"></textarea>
+    </div>
+    <div class="flex items-center justify-end gap-2 pt-2">
+      <button type="button" onclick="closeQrScanModal()" class="px-4 py-2 rounded-xl bg-surface-container hover:bg-surface-container-high text-xs font-bold text-on-surface transition-colors">
+        Cancel
+      </button>
+      <button type="button" onclick="applyPastedQrData()" class="px-4 py-2 rounded-xl bg-primary hover:bg-primary-container text-xs font-bold text-white transition-colors flex items-center gap-1.5 shadow-sm">
+        <span class="material-symbols-outlined text-[16px]">check_circle</span>
+        <span>Apply & Decrypt Chart</span>
+      </button>
+    </div>
+  </div>
+</div>
 {% endblock %}
+
