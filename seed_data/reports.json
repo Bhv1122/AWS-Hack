@@ -1,0 +1,3611 @@
+[
+  {
+    "reportId": "RPT-PAT-SS-1001-01",
+    "patientId": "PAT-SS-1001",
+    "type": "LAB",
+    "title": "Glycated Hemoglobin (HbA1c) Monitoring - Baseline",
+    "date": "2026-01-26T10:00:00+00:00",
+    "facility": "MKCG Medical College & Hospital, Berhampur",
+    "facilityState": "Odisha",
+    "orderedBy": "Dr. Prasant Mohanty, MD",
+    "language": "English",
+    "source": "HOME_STATE_PHC",
+    "results": [
+      {
+        "name": "HbA1c",
+        "value": 8.9,
+        "unit": "%",
+        "refLow": 4.0,
+        "refHigh": 5.6,
+        "flag": "H"
+      },
+      {
+        "name": "Estimated Average Glucose (eAG)",
+        "value": 208,
+        "unit": "mg/dL",
+        "refLow": 70,
+        "refHigh": 126,
+        "flag": "H"
+      }
+    ],
+    "findings": "Significant hyperglycemia consistent with suboptimally managed Type 2 Diabetes Mellitus.",
+    "impression": "Poorly controlled T2DM. Metformin initiated and titrated.",
+    "attachment": {
+      "ocrRawText": "MKCG MCH BERHAMPUR - HbA1c: 8.9% (HIGH), eAG: 208 mg/dL. Baseline diabetic evaluation.",
+      "ocrConfidence": 0.96
+    },
+    "fhirResourceType": "DiagnosticReport",
+    "synthetic": true
+  },
+  {
+    "reportId": "RPT-PAT-SS-1001-02",
+    "patientId": "PAT-SS-1001",
+    "type": "LAB",
+    "title": "Glycated Hemoglobin (HbA1c) Follow-up",
+    "date": "2026-05-26T10:00:00+00:00",
+    "facility": "Whitefield Urban Primary Health Centre",
+    "facilityState": "Karnataka",
+    "orderedBy": "Dr. Sarah Jenkins, MD, FACC",
+    "language": "English",
+    "source": "BENGALURU_CLINIC",
+    "results": [
+      {
+        "name": "HbA1c",
+        "value": 8.1,
+        "unit": "%",
+        "refLow": 4.0,
+        "refHigh": 5.6,
+        "flag": "H"
+      },
+      {
+        "name": "Fasting Blood Sugar (FBS)",
+        "value": 158,
+        "unit": "mg/dL",
+        "refLow": 70,
+        "refHigh": 100,
+        "flag": "H"
+      }
+    ],
+    "findings": "Fasting blood sugar remains elevated but improving on dual-dose Metformin 500mg.",
+    "impression": "Improving glycemic control. Continue lifestyle and adherence reinforcement.",
+    "attachment": {
+      "ocrRawText": "UPHC WHITEFIELD - HbA1c: 8.1% (H), FBS: 158 mg/dL. Titrate diet.",
+      "ocrConfidence": 0.94
+    },
+    "fhirResourceType": "DiagnosticReport",
+    "synthetic": true
+  },
+  {
+    "reportId": "RPT-PAT-SS-1001-03",
+    "patientId": "PAT-SS-1001",
+    "type": "LAB",
+    "title": "Glycated Hemoglobin (HbA1c) Routine Panel",
+    "date": "2026-09-23T10:00:00+00:00",
+    "facility": "Manipal Hospital Heart Institute, Whitefield",
+    "facilityState": "Karnataka",
+    "orderedBy": "Dr. Ananya Sharma, MD",
+    "language": "English",
+    "source": "BENGALURU_CLINIC",
+    "results": [
+      {
+        "name": "HbA1c",
+        "value": 7.4,
+        "unit": "%",
+        "refLow": 4.0,
+        "refHigh": 5.6,
+        "flag": "H"
+      },
+      {
+        "name": "Post-Prandial Blood Sugar (PPBS)",
+        "value": 142,
+        "unit": "mg/dL",
+        "refLow": 70,
+        "refHigh": 140,
+        "flag": "H"
+      }
+    ],
+    "findings": "HbA1c demonstrated marked reduction from 8.9% to 7.4% across 9 months.",
+    "impression": "Demonstrable therapeutic response to adherence tracking. Approaching clinical target (<7.0%).",
+    "attachment": {
+      "ocrRawText": "MANIPAL HOSPITALS - HbA1c: 7.4%, PPBS: 142 mg/dL. Excellent response.",
+      "ocrConfidence": 0.98
+    },
+    "fhirResourceType": "DiagnosticReport",
+    "synthetic": true
+  },
+  {
+    "reportId": "RPT-PAT-SS-1001-04",
+    "patientId": "PAT-SS-1001",
+    "type": "LAB",
+    "title": "Prothrombin Time & INR Monitoring",
+    "date": "2026-04-26T10:00:00+00:00",
+    "facility": "Whitefield Urban PHC",
+    "facilityState": "Karnataka",
+    "orderedBy": "Dr. Sarah Jenkins, MD, FACC",
+    "language": "English",
+    "source": "BENGALURU_CLINIC",
+    "results": [
+      {
+        "name": "INR",
+        "value": 2.1,
+        "unit": "ratio",
+        "refLow": 2.0,
+        "refHigh": 3.0,
+        "flag": "N"
+      },
+      {
+        "name": "Prothrombin Time",
+        "value": 23.4,
+        "unit": "seconds",
+        "refLow": 11.0,
+        "refHigh": 13.5,
+        "flag": "H"
+      }
+    ],
+    "findings": "International Normalized Ratio (INR) is within target therapeutic window (2.0 - 3.0).",
+    "impression": "Therapeutic Warfarin 5mg maintenance for DVT prophylaxis.",
+    "attachment": {
+      "ocrRawText": "INR: 2.1 (Therapeutic 2.0-3.0), PT: 23.4s.",
+      "ocrConfidence": 0.95
+    },
+    "fhirResourceType": "DiagnosticReport",
+    "synthetic": true
+  },
+  {
+    "reportId": "RPT-PAT-SS-1001-05",
+    "patientId": "PAT-SS-1001",
+    "type": "LAB",
+    "title": "Urgent Coagulation Profile (INR)",
+    "date": "2026-07-25T10:00:00+00:00",
+    "facility": "Manipal Hospital Heart Institute, Whitefield",
+    "facilityState": "Karnataka",
+    "orderedBy": "Dr. Ananya Sharma, MD",
+    "language": "English",
+    "source": "BENGALURU_CLINIC",
+    "results": [
+      {
+        "name": "INR",
+        "value": 3.4,
+        "unit": "ratio",
+        "refLow": 2.0,
+        "refHigh": 3.0,
+        "flag": "H"
+      },
+      {
+        "name": "Prothrombin Time",
+        "value": 38.2,
+        "unit": "seconds",
+        "refLow": 11.0,
+        "refHigh": 13.5,
+        "flag": "CRITICAL"
+      }
+    ],
+    "findings": "Elevated INR above target range. Moderate bleeding diathesis risk.",
+    "impression": "Supra-therapeutic anticoagulation. Warfarin dose titrating protocol engaged; avoid all NSAIDs and Aspirin.",
+    "attachment": {
+      "ocrRawText": "CRITICAL LAB ALERT - INR: 3.4 (HIGH), PT: 38.2s. Hold 1 dose Warfarin.",
+      "ocrConfidence": 0.99
+    },
+    "fhirResourceType": "DiagnosticReport",
+    "synthetic": true
+  },
+  {
+    "reportId": "RPT-PAT-SS-1001-06",
+    "patientId": "PAT-SS-1001",
+    "type": "LAB",
+    "title": "Follow-up Coagulation Profile",
+    "date": "2026-09-23T10:00:00+00:00",
+    "facility": "Manipal Hospital Heart Institute, Whitefield",
+    "facilityState": "Karnataka",
+    "orderedBy": "Dr. Ananya Sharma, MD",
+    "language": "English",
+    "source": "BENGALURU_CLINIC",
+    "results": [
+      {
+        "name": "INR",
+        "value": 2.6,
+        "unit": "ratio",
+        "refLow": 2.0,
+        "refHigh": 3.0,
+        "flag": "N"
+      },
+      {
+        "name": "Prothrombin Time",
+        "value": 27.8,
+        "unit": "seconds",
+        "refLow": 11.0,
+        "refHigh": 13.5,
+        "flag": "H"
+      }
+    ],
+    "findings": "INR returned cleanly to mid-therapeutic target range (2.6).",
+    "impression": "Stable anticoagulation restored on 5mg alternating schedule.",
+    "attachment": {
+      "ocrRawText": "INR: 2.6 (Target 2.0-3.0), stable response.",
+      "ocrConfidence": 0.97
+    },
+    "fhirResourceType": "DiagnosticReport",
+    "synthetic": true
+  },
+  {
+    "reportId": "RPT-PAT-SS-1001-07",
+    "patientId": "PAT-SS-1001",
+    "type": "IMAGING",
+    "title": "Digital Chest Radiograph (PA View) - Occupational Screening",
+    "date": "2026-08-24T10:00:00+00:00",
+    "facility": "Bowring and Lady Curzon Hospital",
+    "facilityState": "Karnataka",
+    "orderedBy": "Dr. Arvind Bhat, MD",
+    "language": "English",
+    "source": "BENGALURU_CLINIC",
+    "results": [
+      {
+        "name": "ILO Category",
+        "value": "1/1 q/t",
+        "unit": "score",
+        "refLow": 0,
+        "refHigh": 0,
+        "flag": "H"
+      }
+    ],
+    "findings": "Bilateral upper-zone profusion of small rounded nodular opacities (ILO category 1/1 q/t) with hilar prominence and eggshell calcification noted in bilateral hilar lymph nodes. Costophrenic angles sharp. No acute consolidation or cavitation.",
+    "impression": "Radiological findings consistent with early chronic occupational silicosis. High-Resolution Computed Tomography (HRCT) of thorax recommended.",
+    "attachment": {
+      "ocrRawText": "CHEST X-RAY PA VIEW: Upper zone nodular opacities ILO 1/1 q/t. Hilar prominence. Consistent with early silicosis. Advise HRCT.",
+      "ocrConfidence": 0.93
+    },
+    "fhirResourceType": "DiagnosticReport",
+    "synthetic": true
+  },
+  {
+    "reportId": "RPT-PAT-SS-1001-08",
+    "patientId": "PAT-SS-1001",
+    "type": "PULMONARY",
+    "title": "Computerized Pulmonary Function Test (Spirometry)",
+    "date": "2026-08-24T10:00:00+00:00",
+    "facility": "Bowring and Lady Curzon Hospital",
+    "facilityState": "Karnataka",
+    "orderedBy": "Dr. Arvind Bhat, MD",
+    "language": "English",
+    "source": "BENGALURU_CLINIC",
+    "results": [
+      {
+        "name": "FEV1",
+        "value": 2.15,
+        "unit": "L",
+        "refLow": 2.8,
+        "refHigh": 3.6,
+        "flag": "L"
+      },
+      {
+        "name": "FEV1 % Predicted",
+        "value": 68.0,
+        "unit": "%",
+        "refLow": 80.0,
+        "refHigh": 120.0,
+        "flag": "L"
+      },
+      {
+        "name": "FVC",
+        "value": 3.4,
+        "unit": "L",
+        "refLow": 3.5,
+        "refHigh": 4.5,
+        "flag": "N"
+      },
+      {
+        "name": "FEV1/FVC Ratio",
+        "value": 0.63,
+        "unit": "fraction",
+        "refLow": 0.7,
+        "refHigh": 0.85,
+        "flag": "L"
+      }
+    ],
+    "findings": "Post-bronchodilator spirometry demonstrates a reduced FEV1 (68% predicted) and reduced FEV1/FVC ratio (0.63), indicating an obstructive ventilatory defect with mild restriction.",
+    "impression": "Moderate occupational obstructive airway disease superimposed on silica dust exposure.",
+    "attachment": {
+      "ocrRawText": "SPIROMETRY: FEV1 2.15L (68%), FVC 3.40L (85%), FEV1/FVC 0.63 (L). Moderate obstructive defect.",
+      "ocrConfidence": 0.96
+    },
+    "fhirResourceType": "DiagnosticReport",
+    "synthetic": true
+  },
+  {
+    "reportId": "RPT-PAT-SS-1001-09",
+    "patientId": "PAT-SS-1001",
+    "type": "LAB",
+    "title": "Complete Serum Lipid Profile",
+    "date": "2026-07-25T10:00:00+00:00",
+    "facility": "Manipal Hospital Heart Institute, Whitefield",
+    "facilityState": "Karnataka",
+    "orderedBy": "Dr. Ananya Sharma, MD",
+    "language": "English",
+    "source": "BENGALURU_CLINIC",
+    "results": [
+      {
+        "name": "Total Cholesterol",
+        "value": 218,
+        "unit": "mg/dL",
+        "refLow": 125,
+        "refHigh": 200,
+        "flag": "H"
+      },
+      {
+        "name": "Triglycerides",
+        "value": 195,
+        "unit": "mg/dL",
+        "refLow": 50,
+        "refHigh": 150,
+        "flag": "H"
+      },
+      {
+        "name": "HDL Cholesterol",
+        "value": 38,
+        "unit": "mg/dL",
+        "refLow": 40,
+        "refHigh": 60,
+        "flag": "L"
+      },
+      {
+        "name": "LDL Cholesterol",
+        "value": 141,
+        "unit": "mg/dL",
+        "refLow": 50,
+        "refHigh": 100,
+        "flag": "H"
+      }
+    ],
+    "findings": "Mixed dyslipidemia with elevated LDL and low cardioprotective HDL.",
+    "impression": "Indication for Statin therapy (Atorvastatin 20mg).",
+    "attachment": {
+      "ocrRawText": "LIPID PROFILE: Cholesterol 218, Triglycerides 195, HDL 38, LDL 141. Mixed dyslipidemia.",
+      "ocrConfidence": 0.95
+    },
+    "fhirResourceType": "DiagnosticReport",
+    "synthetic": true
+  },
+  {
+    "reportId": "RPT-PAT-SS-1001-10",
+    "patientId": "PAT-SS-1001",
+    "type": "DISCHARGE_SUMMARY",
+    "title": "Inpatient Discharge Summary - Deep Vein Thrombosis",
+    "date": "2025-11-27T10:00:00+00:00",
+    "facility": "MKCG Medical College & Hospital, Berhampur",
+    "facilityState": "Odisha",
+    "orderedBy": "Dr. Prasant Mohanty, MD",
+    "language": "English",
+    "source": "HOME_STATE_PHC",
+    "results": [
+      {
+        "name": "Venous Doppler",
+        "value": "Thrombosis",
+        "unit": "clinical",
+        "refLow": 0,
+        "refHigh": 0,
+        "flag": "H"
+      }
+    ],
+    "findings": "48-year-old male construction worker presented with sudden onset right calf erythema and swelling. Lower extremity compression Doppler revealed non-compressible right common femoral and popliteal veins.",
+    "impression": "Acute lower extremity DVT. Managed with LMWH bridge to oral Warfarin 5mg. Target INR 2.0 - 3.0 maintained.",
+    "attachment": {
+      "ocrRawText": "DISCHARGE SUMMARY - DVT Right Lower Limb. Started Tab Warfarin 5mg OD. Caution: Bleeding precautions.",
+      "ocrConfidence": 0.98
+    },
+    "fhirResourceType": "DocumentReference",
+    "synthetic": true
+  },
+  {
+    "reportId": "RPT-PAT-SS-1001-11",
+    "patientId": "PAT-SS-1001",
+    "type": "PAPER_PRESCRIPTION",
+    "title": "Scanned Historical PHC Prescription Slip (Odisha)",
+    "date": "2025-11-17T10:00:00+00:00",
+    "facility": "Chhatrapur Sub-Divisional Hospital",
+    "facilityState": "Odisha",
+    "orderedBy": "Dr. B. K. Sahu, MBBS",
+    "language": "Odia",
+    "source": "PATIENT_UPLOAD",
+    "results": [],
+    "findings": "Historical hand-written prescription containing Glycomet 500mg, Warfarin 5mg, and an old prescription of Cap Amoxyclav 625mg.",
+    "impression": "Historical record digitized via Document AI. Confirms Penicillin and Augmentin allergy flag.",
+    "attachment": {
+      "ocrRawText": "CHHATRAPUR SDH OPD - Tab Metformin 500mg (1-0-1), Tab Warfarin 5mg (0-0-1), Cap Amoxyclav 625mg (DISCONTINUED DUE TO RASH).",
+      "ocrConfidence": 0.84
+    },
+    "fhirResourceType": "DocumentReference",
+    "synthetic": true
+  },
+  {
+    "reportId": "RPT-PAT-SS-1002-01",
+    "patientId": "PAT-SS-1002",
+    "type": "IMAGING",
+    "title": "Routine Imaging Investigation",
+    "date": "2026-08-11T10:00:00+00:00",
+    "facility": "AIIMS Bhubaneswar",
+    "facilityState": "Odisha",
+    "orderedBy": "Dr. Debabrata Nayak, MD",
+    "language": "English",
+    "source": "HOME_STATE_PHC",
+    "results": [
+      {
+        "name": "Complete Blood Count (Hb)",
+        "value": 12.4,
+        "unit": "g/dL",
+        "refLow": 12.0,
+        "refHigh": 16.0,
+        "flag": "N"
+      },
+      {
+        "name": "Fasting Blood Sugar",
+        "value": 106,
+        "unit": "mg/dL",
+        "refLow": 70,
+        "refHigh": 100,
+        "flag": "H"
+      }
+    ],
+    "findings": "Clinical findings within acceptable physiological limits for age and occupational status.",
+    "impression": "Stable chronic condition follow-up.",
+    "attachment": {
+      "ocrRawText": "AIIMS BHUBANESWAR - IMAGING RESULTS: WNL. Follow up in 60 days.",
+      "ocrConfidence": 0.92
+    },
+    "fhirResourceType": "DiagnosticReport",
+    "synthetic": true
+  },
+  {
+    "reportId": "RPT-PAT-SS-1002-02",
+    "patientId": "PAT-SS-1002",
+    "type": "PULMONARY",
+    "title": "Routine Pulmonary Investigation",
+    "date": "2026-05-16T10:00:00+00:00",
+    "facility": "SCB Medical College Cuttack",
+    "facilityState": "Odisha",
+    "orderedBy": "Dr. Debabrata Nayak, MD",
+    "language": "English",
+    "source": "HOME_STATE_PHC",
+    "results": [
+      {
+        "name": "Complete Blood Count (Hb)",
+        "value": 12.4,
+        "unit": "g/dL",
+        "refLow": 12.0,
+        "refHigh": 16.0,
+        "flag": "N"
+      },
+      {
+        "name": "Fasting Blood Sugar",
+        "value": 89,
+        "unit": "mg/dL",
+        "refLow": 70,
+        "refHigh": 100,
+        "flag": "N"
+      }
+    ],
+    "findings": "Clinical findings within acceptable physiological limits for age and occupational status.",
+    "impression": "Stable chronic condition follow-up.",
+    "attachment": {
+      "ocrRawText": "SCB MEDICAL COLLEGE CUTTACK - PULMONARY RESULTS: WNL. Follow up in 60 days.",
+      "ocrConfidence": 0.86
+    },
+    "fhirResourceType": "DiagnosticReport",
+    "synthetic": true
+  },
+  {
+    "reportId": "RPT-PAT-SS-1002-03",
+    "patientId": "PAT-SS-1002",
+    "type": "ECG",
+    "title": "Routine Ecg Investigation",
+    "date": "2026-09-26T10:00:00+00:00",
+    "facility": "Patna Medical College",
+    "facilityState": "Bihar",
+    "orderedBy": "Dr. Debabrata Nayak, MD",
+    "language": "English",
+    "source": "HOME_STATE_PHC",
+    "results": [
+      {
+        "name": "Complete Blood Count (Hb)",
+        "value": 15.1,
+        "unit": "g/dL",
+        "refLow": 12.0,
+        "refHigh": 16.0,
+        "flag": "N"
+      },
+      {
+        "name": "Fasting Blood Sugar",
+        "value": 106,
+        "unit": "mg/dL",
+        "refLow": 70,
+        "refHigh": 100,
+        "flag": "H"
+      }
+    ],
+    "findings": "Clinical findings within acceptable physiological limits for age and occupational status.",
+    "impression": "Stable chronic condition follow-up.",
+    "attachment": {
+      "ocrRawText": "PATNA MEDICAL COLLEGE - ECG RESULTS: WNL. Follow up in 60 days.",
+      "ocrConfidence": 0.88
+    },
+    "fhirResourceType": "DiagnosticReport",
+    "synthetic": true
+  },
+  {
+    "reportId": "RPT-PAT-SS-1003-01",
+    "patientId": "PAT-SS-1003",
+    "type": "IMAGING",
+    "title": "Routine Imaging Investigation",
+    "date": "2026-06-11T10:00:00+00:00",
+    "facility": "SCB Medical College Cuttack",
+    "facilityState": "Odisha",
+    "orderedBy": "Dr. Debabrata Nayak, MD",
+    "language": "English",
+    "source": "HOME_STATE_PHC",
+    "results": [
+      {
+        "name": "Complete Blood Count (Hb)",
+        "value": 12.4,
+        "unit": "g/dL",
+        "refLow": 12.0,
+        "refHigh": 16.0,
+        "flag": "N"
+      },
+      {
+        "name": "Fasting Blood Sugar",
+        "value": 93,
+        "unit": "mg/dL",
+        "refLow": 70,
+        "refHigh": 100,
+        "flag": "N"
+      }
+    ],
+    "findings": "Clinical findings within acceptable physiological limits for age and occupational status.",
+    "impression": "Stable chronic condition follow-up.",
+    "attachment": {
+      "ocrRawText": "SCB MEDICAL COLLEGE CUTTACK - IMAGING RESULTS: WNL. Follow up in 60 days.",
+      "ocrConfidence": 0.96
+    },
+    "fhirResourceType": "DiagnosticReport",
+    "synthetic": true
+  },
+  {
+    "reportId": "RPT-PAT-SS-1003-02",
+    "patientId": "PAT-SS-1003",
+    "type": "PULMONARY",
+    "title": "Routine Pulmonary Investigation",
+    "date": "2026-05-19T10:00:00+00:00",
+    "facility": "Patna Medical College",
+    "facilityState": "Bihar",
+    "orderedBy": "Dr. Debabrata Nayak, MD",
+    "language": "English",
+    "source": "HOME_STATE_PHC",
+    "results": [
+      {
+        "name": "Complete Blood Count (Hb)",
+        "value": 13.4,
+        "unit": "g/dL",
+        "refLow": 12.0,
+        "refHigh": 16.0,
+        "flag": "N"
+      },
+      {
+        "name": "Fasting Blood Sugar",
+        "value": 115,
+        "unit": "mg/dL",
+        "refLow": 70,
+        "refHigh": 100,
+        "flag": "N"
+      }
+    ],
+    "findings": "Clinical findings within acceptable physiological limits for age and occupational status.",
+    "impression": "Stable chronic condition follow-up.",
+    "attachment": {
+      "ocrRawText": "PATNA MEDICAL COLLEGE - PULMONARY RESULTS: WNL. Follow up in 60 days.",
+      "ocrConfidence": 0.87
+    },
+    "fhirResourceType": "DiagnosticReport",
+    "synthetic": true
+  },
+  {
+    "reportId": "RPT-PAT-SS-1003-03",
+    "patientId": "PAT-SS-1003",
+    "type": "ECG",
+    "title": "Routine Ecg Investigation",
+    "date": "2026-09-19T10:00:00+00:00",
+    "facility": "Whitefield Urban PHC",
+    "facilityState": "Karnataka",
+    "orderedBy": "Dr. Sarah Jenkins, MD",
+    "language": "English",
+    "source": "BENGALURU_CLINIC",
+    "results": [
+      {
+        "name": "Complete Blood Count (Hb)",
+        "value": 14.1,
+        "unit": "g/dL",
+        "refLow": 12.0,
+        "refHigh": 16.0,
+        "flag": "N"
+      },
+      {
+        "name": "Fasting Blood Sugar",
+        "value": 107,
+        "unit": "mg/dL",
+        "refLow": 70,
+        "refHigh": 100,
+        "flag": "N"
+      }
+    ],
+    "findings": "Clinical findings within acceptable physiological limits for age and occupational status.",
+    "impression": "Stable chronic condition follow-up.",
+    "attachment": {
+      "ocrRawText": "WHITEFIELD URBAN PHC - ECG RESULTS: WNL. Follow up in 60 days.",
+      "ocrConfidence": 0.91
+    },
+    "fhirResourceType": "DiagnosticReport",
+    "synthetic": true
+  },
+  {
+    "reportId": "RPT-PAT-SS-1003-04",
+    "patientId": "PAT-SS-1003",
+    "type": "OPD_NOTE",
+    "title": "Routine Opd Note Investigation",
+    "date": "2026-04-10T10:00:00+00:00",
+    "facility": "Manipal Hospital Heart Institute",
+    "facilityState": "Karnataka",
+    "orderedBy": "Dr. Sarah Jenkins, MD",
+    "language": "English",
+    "source": "BENGALURU_CLINIC",
+    "results": [
+      {
+        "name": "Complete Blood Count (Hb)",
+        "value": 11.7,
+        "unit": "g/dL",
+        "refLow": 12.0,
+        "refHigh": 16.0,
+        "flag": "N"
+      },
+      {
+        "name": "Fasting Blood Sugar",
+        "value": 126,
+        "unit": "mg/dL",
+        "refLow": 70,
+        "refHigh": 100,
+        "flag": "N"
+      }
+    ],
+    "findings": "Clinical findings within acceptable physiological limits for age and occupational status.",
+    "impression": "Stable chronic condition follow-up.",
+    "attachment": {
+      "ocrRawText": "MANIPAL HOSPITAL HEART INSTITUTE - OPD_NOTE RESULTS: WNL. Follow up in 60 days.",
+      "ocrConfidence": 0.86
+    },
+    "fhirResourceType": "DocumentReference",
+    "synthetic": true
+  },
+  {
+    "reportId": "RPT-PAT-SS-1003-05",
+    "patientId": "PAT-SS-1003",
+    "type": "VACCINATION",
+    "title": "Routine Vaccination Investigation",
+    "date": "2026-07-02T10:00:00+00:00",
+    "facility": "Bowring and Lady Curzon Hospital",
+    "facilityState": "Karnataka",
+    "orderedBy": "Dr. Sarah Jenkins, MD",
+    "language": "English",
+    "source": "BENGALURU_CLINIC",
+    "results": [
+      {
+        "name": "Complete Blood Count (Hb)",
+        "value": 14.4,
+        "unit": "g/dL",
+        "refLow": 12.0,
+        "refHigh": 16.0,
+        "flag": "N"
+      },
+      {
+        "name": "Fasting Blood Sugar",
+        "value": 91,
+        "unit": "mg/dL",
+        "refLow": 70,
+        "refHigh": 100,
+        "flag": "H"
+      }
+    ],
+    "findings": "Clinical findings within acceptable physiological limits for age and occupational status.",
+    "impression": "Stable chronic condition follow-up.",
+    "attachment": {
+      "ocrRawText": "BOWRING AND LADY CURZON HOSPITAL - VACCINATION RESULTS: WNL. Follow up in 60 days.",
+      "ocrConfidence": 0.87
+    },
+    "fhirResourceType": "DocumentReference",
+    "synthetic": true
+  },
+  {
+    "reportId": "RPT-PAT-SS-1004-01",
+    "patientId": "PAT-SS-1004",
+    "type": "IMAGING",
+    "title": "Routine Imaging Investigation",
+    "date": "2026-09-08T10:00:00+00:00",
+    "facility": "Patna Medical College",
+    "facilityState": "Bihar",
+    "orderedBy": "Dr. Debabrata Nayak, MD",
+    "language": "English",
+    "source": "HOME_STATE_PHC",
+    "results": [
+      {
+        "name": "Complete Blood Count (Hb)",
+        "value": 13.2,
+        "unit": "g/dL",
+        "refLow": 12.0,
+        "refHigh": 16.0,
+        "flag": "N"
+      },
+      {
+        "name": "Fasting Blood Sugar",
+        "value": 102,
+        "unit": "mg/dL",
+        "refLow": 70,
+        "refHigh": 100,
+        "flag": "N"
+      }
+    ],
+    "findings": "Clinical findings within acceptable physiological limits for age and occupational status.",
+    "impression": "Stable chronic condition follow-up.",
+    "attachment": {
+      "ocrRawText": "PATNA MEDICAL COLLEGE - IMAGING RESULTS: WNL. Follow up in 60 days.",
+      "ocrConfidence": 0.96
+    },
+    "fhirResourceType": "DiagnosticReport",
+    "synthetic": true
+  },
+  {
+    "reportId": "RPT-PAT-SS-1004-02",
+    "patientId": "PAT-SS-1004",
+    "type": "PULMONARY",
+    "title": "Routine Pulmonary Investigation",
+    "date": "2026-09-24T10:00:00+00:00",
+    "facility": "Whitefield Urban PHC",
+    "facilityState": "Karnataka",
+    "orderedBy": "Dr. Sarah Jenkins, MD",
+    "language": "English",
+    "source": "BENGALURU_CLINIC",
+    "results": [
+      {
+        "name": "Complete Blood Count (Hb)",
+        "value": 13.3,
+        "unit": "g/dL",
+        "refLow": 12.0,
+        "refHigh": 16.0,
+        "flag": "N"
+      },
+      {
+        "name": "Fasting Blood Sugar",
+        "value": 120,
+        "unit": "mg/dL",
+        "refLow": 70,
+        "refHigh": 100,
+        "flag": "H"
+      }
+    ],
+    "findings": "Clinical findings within acceptable physiological limits for age and occupational status.",
+    "impression": "Stable chronic condition follow-up.",
+    "attachment": {
+      "ocrRawText": "WHITEFIELD URBAN PHC - PULMONARY RESULTS: WNL. Follow up in 60 days.",
+      "ocrConfidence": 0.93
+    },
+    "fhirResourceType": "DiagnosticReport",
+    "synthetic": true
+  },
+  {
+    "reportId": "RPT-PAT-SS-1004-03",
+    "patientId": "PAT-SS-1004",
+    "type": "ECG",
+    "title": "Routine Ecg Investigation",
+    "date": "2026-05-28T10:00:00+00:00",
+    "facility": "Manipal Hospital Heart Institute",
+    "facilityState": "Karnataka",
+    "orderedBy": "Dr. Sarah Jenkins, MD",
+    "language": "English",
+    "source": "BENGALURU_CLINIC",
+    "results": [
+      {
+        "name": "Complete Blood Count (Hb)",
+        "value": 14.8,
+        "unit": "g/dL",
+        "refLow": 12.0,
+        "refHigh": 16.0,
+        "flag": "N"
+      },
+      {
+        "name": "Fasting Blood Sugar",
+        "value": 90,
+        "unit": "mg/dL",
+        "refLow": 70,
+        "refHigh": 100,
+        "flag": "N"
+      }
+    ],
+    "findings": "Clinical findings within acceptable physiological limits for age and occupational status.",
+    "impression": "Stable chronic condition follow-up.",
+    "attachment": {
+      "ocrRawText": "MANIPAL HOSPITAL HEART INSTITUTE - ECG RESULTS: WNL. Follow up in 60 days.",
+      "ocrConfidence": 0.96
+    },
+    "fhirResourceType": "DiagnosticReport",
+    "synthetic": true
+  },
+  {
+    "reportId": "RPT-PAT-SS-1004-04",
+    "patientId": "PAT-SS-1004",
+    "type": "OPD_NOTE",
+    "title": "Routine Opd Note Investigation",
+    "date": "2026-09-01T10:00:00+00:00",
+    "facility": "Bowring and Lady Curzon Hospital",
+    "facilityState": "Karnataka",
+    "orderedBy": "Dr. Sarah Jenkins, MD",
+    "language": "English",
+    "source": "BENGALURU_CLINIC",
+    "results": [
+      {
+        "name": "Complete Blood Count (Hb)",
+        "value": 13.1,
+        "unit": "g/dL",
+        "refLow": 12.0,
+        "refHigh": 16.0,
+        "flag": "N"
+      },
+      {
+        "name": "Fasting Blood Sugar",
+        "value": 115,
+        "unit": "mg/dL",
+        "refLow": 70,
+        "refHigh": 100,
+        "flag": "H"
+      }
+    ],
+    "findings": "Clinical findings within acceptable physiological limits for age and occupational status.",
+    "impression": "Stable chronic condition follow-up.",
+    "attachment": {
+      "ocrRawText": "BOWRING AND LADY CURZON HOSPITAL - OPD_NOTE RESULTS: WNL. Follow up in 60 days.",
+      "ocrConfidence": 0.9
+    },
+    "fhirResourceType": "DocumentReference",
+    "synthetic": true
+  },
+  {
+    "reportId": "RPT-PAT-SS-1005-01",
+    "patientId": "PAT-SS-1005",
+    "type": "IMAGING",
+    "title": "Routine Imaging Investigation",
+    "date": "2026-09-01T10:00:00+00:00",
+    "facility": "Whitefield Urban PHC",
+    "facilityState": "Karnataka",
+    "orderedBy": "Dr. Sarah Jenkins, MD",
+    "language": "English",
+    "source": "BENGALURU_CLINIC",
+    "results": [
+      {
+        "name": "Complete Blood Count (Hb)",
+        "value": 13.0,
+        "unit": "g/dL",
+        "refLow": 12.0,
+        "refHigh": 16.0,
+        "flag": "N"
+      },
+      {
+        "name": "Fasting Blood Sugar",
+        "value": 109,
+        "unit": "mg/dL",
+        "refLow": 70,
+        "refHigh": 100,
+        "flag": "H"
+      }
+    ],
+    "findings": "Clinical findings within acceptable physiological limits for age and occupational status.",
+    "impression": "Stable chronic condition follow-up.",
+    "attachment": {
+      "ocrRawText": "WHITEFIELD URBAN PHC - IMAGING RESULTS: WNL. Follow up in 60 days.",
+      "ocrConfidence": 0.95
+    },
+    "fhirResourceType": "DiagnosticReport",
+    "synthetic": true
+  },
+  {
+    "reportId": "RPT-PAT-SS-1005-02",
+    "patientId": "PAT-SS-1005",
+    "type": "PULMONARY",
+    "title": "Routine Pulmonary Investigation",
+    "date": "2026-06-19T10:00:00+00:00",
+    "facility": "Manipal Hospital Heart Institute",
+    "facilityState": "Karnataka",
+    "orderedBy": "Dr. Sarah Jenkins, MD",
+    "language": "English",
+    "source": "BENGALURU_CLINIC",
+    "results": [
+      {
+        "name": "Complete Blood Count (Hb)",
+        "value": 12.6,
+        "unit": "g/dL",
+        "refLow": 12.0,
+        "refHigh": 16.0,
+        "flag": "N"
+      },
+      {
+        "name": "Fasting Blood Sugar",
+        "value": 129,
+        "unit": "mg/dL",
+        "refLow": 70,
+        "refHigh": 100,
+        "flag": "N"
+      }
+    ],
+    "findings": "Clinical findings within acceptable physiological limits for age and occupational status.",
+    "impression": "Stable chronic condition follow-up.",
+    "attachment": {
+      "ocrRawText": "MANIPAL HOSPITAL HEART INSTITUTE - PULMONARY RESULTS: WNL. Follow up in 60 days.",
+      "ocrConfidence": 0.98
+    },
+    "fhirResourceType": "DiagnosticReport",
+    "synthetic": true
+  },
+  {
+    "reportId": "RPT-PAT-SS-1005-03",
+    "patientId": "PAT-SS-1005",
+    "type": "ECG",
+    "title": "Routine Ecg Investigation",
+    "date": "2026-05-24T10:00:00+00:00",
+    "facility": "Bowring and Lady Curzon Hospital",
+    "facilityState": "Karnataka",
+    "orderedBy": "Dr. Sarah Jenkins, MD",
+    "language": "English",
+    "source": "BENGALURU_CLINIC",
+    "results": [
+      {
+        "name": "Complete Blood Count (Hb)",
+        "value": 14.1,
+        "unit": "g/dL",
+        "refLow": 12.0,
+        "refHigh": 16.0,
+        "flag": "N"
+      },
+      {
+        "name": "Fasting Blood Sugar",
+        "value": 116,
+        "unit": "mg/dL",
+        "refLow": 70,
+        "refHigh": 100,
+        "flag": "H"
+      }
+    ],
+    "findings": "Clinical findings within acceptable physiological limits for age and occupational status.",
+    "impression": "Stable chronic condition follow-up.",
+    "attachment": {
+      "ocrRawText": "BOWRING AND LADY CURZON HOSPITAL - ECG RESULTS: WNL. Follow up in 60 days.",
+      "ocrConfidence": 0.89
+    },
+    "fhirResourceType": "DiagnosticReport",
+    "synthetic": true
+  },
+  {
+    "reportId": "RPT-PAT-SS-1006-01",
+    "patientId": "PAT-SS-1006",
+    "type": "IMAGING",
+    "title": "Routine Imaging Investigation",
+    "date": "2026-05-18T10:00:00+00:00",
+    "facility": "Manipal Hospital Heart Institute",
+    "facilityState": "Karnataka",
+    "orderedBy": "Dr. Sarah Jenkins, MD",
+    "language": "English",
+    "source": "BENGALURU_CLINIC",
+    "results": [
+      {
+        "name": "Complete Blood Count (Hb)",
+        "value": 14.4,
+        "unit": "g/dL",
+        "refLow": 12.0,
+        "refHigh": 16.0,
+        "flag": "N"
+      },
+      {
+        "name": "Fasting Blood Sugar",
+        "value": 88,
+        "unit": "mg/dL",
+        "refLow": 70,
+        "refHigh": 100,
+        "flag": "N"
+      }
+    ],
+    "findings": "Clinical findings within acceptable physiological limits for age and occupational status.",
+    "impression": "Stable chronic condition follow-up.",
+    "attachment": {
+      "ocrRawText": "MANIPAL HOSPITAL HEART INSTITUTE - IMAGING RESULTS: WNL. Follow up in 60 days.",
+      "ocrConfidence": 0.86
+    },
+    "fhirResourceType": "DiagnosticReport",
+    "synthetic": true
+  },
+  {
+    "reportId": "RPT-PAT-SS-1006-02",
+    "patientId": "PAT-SS-1006",
+    "type": "PULMONARY",
+    "title": "Routine Pulmonary Investigation",
+    "date": "2026-05-17T10:00:00+00:00",
+    "facility": "Bowring and Lady Curzon Hospital",
+    "facilityState": "Karnataka",
+    "orderedBy": "Dr. Sarah Jenkins, MD",
+    "language": "English",
+    "source": "BENGALURU_CLINIC",
+    "results": [
+      {
+        "name": "Complete Blood Count (Hb)",
+        "value": 13.4,
+        "unit": "g/dL",
+        "refLow": 12.0,
+        "refHigh": 16.0,
+        "flag": "N"
+      },
+      {
+        "name": "Fasting Blood Sugar",
+        "value": 118,
+        "unit": "mg/dL",
+        "refLow": 70,
+        "refHigh": 100,
+        "flag": "H"
+      }
+    ],
+    "findings": "Clinical findings within acceptable physiological limits for age and occupational status.",
+    "impression": "Stable chronic condition follow-up.",
+    "attachment": {
+      "ocrRawText": "BOWRING AND LADY CURZON HOSPITAL - PULMONARY RESULTS: WNL. Follow up in 60 days.",
+      "ocrConfidence": 0.97
+    },
+    "fhirResourceType": "DiagnosticReport",
+    "synthetic": true
+  },
+  {
+    "reportId": "RPT-PAT-SS-1006-03",
+    "patientId": "PAT-SS-1006",
+    "type": "ECG",
+    "title": "Routine Ecg Investigation",
+    "date": "2026-09-23T10:00:00+00:00",
+    "facility": "AIIMS Bhubaneswar",
+    "facilityState": "Odisha",
+    "orderedBy": "Dr. Debabrata Nayak, MD",
+    "language": "English",
+    "source": "HOME_STATE_PHC",
+    "results": [
+      {
+        "name": "Complete Blood Count (Hb)",
+        "value": 14.9,
+        "unit": "g/dL",
+        "refLow": 12.0,
+        "refHigh": 16.0,
+        "flag": "N"
+      },
+      {
+        "name": "Fasting Blood Sugar",
+        "value": 89,
+        "unit": "mg/dL",
+        "refLow": 70,
+        "refHigh": 100,
+        "flag": "N"
+      }
+    ],
+    "findings": "Clinical findings within acceptable physiological limits for age and occupational status.",
+    "impression": "Stable chronic condition follow-up.",
+    "attachment": {
+      "ocrRawText": "AIIMS BHUBANESWAR - ECG RESULTS: WNL. Follow up in 60 days.",
+      "ocrConfidence": 0.94
+    },
+    "fhirResourceType": "DiagnosticReport",
+    "synthetic": true
+  },
+  {
+    "reportId": "RPT-PAT-SS-1007-01",
+    "patientId": "PAT-SS-1007",
+    "type": "IMAGING",
+    "title": "Routine Imaging Investigation",
+    "date": "2026-07-02T10:00:00+00:00",
+    "facility": "Bowring and Lady Curzon Hospital",
+    "facilityState": "Karnataka",
+    "orderedBy": "Dr. Sarah Jenkins, MD",
+    "language": "English",
+    "source": "BENGALURU_CLINIC",
+    "results": [
+      {
+        "name": "Complete Blood Count (Hb)",
+        "value": 12.0,
+        "unit": "g/dL",
+        "refLow": 12.0,
+        "refHigh": 16.0,
+        "flag": "N"
+      },
+      {
+        "name": "Fasting Blood Sugar",
+        "value": 121,
+        "unit": "mg/dL",
+        "refLow": 70,
+        "refHigh": 100,
+        "flag": "H"
+      }
+    ],
+    "findings": "Clinical findings within acceptable physiological limits for age and occupational status.",
+    "impression": "Stable chronic condition follow-up.",
+    "attachment": {
+      "ocrRawText": "BOWRING AND LADY CURZON HOSPITAL - IMAGING RESULTS: WNL. Follow up in 60 days.",
+      "ocrConfidence": 0.93
+    },
+    "fhirResourceType": "DiagnosticReport",
+    "synthetic": true
+  },
+  {
+    "reportId": "RPT-PAT-SS-1007-02",
+    "patientId": "PAT-SS-1007",
+    "type": "PULMONARY",
+    "title": "Routine Pulmonary Investigation",
+    "date": "2026-05-08T10:00:00+00:00",
+    "facility": "AIIMS Bhubaneswar",
+    "facilityState": "Odisha",
+    "orderedBy": "Dr. Debabrata Nayak, MD",
+    "language": "English",
+    "source": "HOME_STATE_PHC",
+    "results": [
+      {
+        "name": "Complete Blood Count (Hb)",
+        "value": 11.8,
+        "unit": "g/dL",
+        "refLow": 12.0,
+        "refHigh": 16.0,
+        "flag": "N"
+      },
+      {
+        "name": "Fasting Blood Sugar",
+        "value": 127,
+        "unit": "mg/dL",
+        "refLow": 70,
+        "refHigh": 100,
+        "flag": "N"
+      }
+    ],
+    "findings": "Clinical findings within acceptable physiological limits for age and occupational status.",
+    "impression": "Stable chronic condition follow-up.",
+    "attachment": {
+      "ocrRawText": "AIIMS BHUBANESWAR - PULMONARY RESULTS: WNL. Follow up in 60 days.",
+      "ocrConfidence": 0.92
+    },
+    "fhirResourceType": "DiagnosticReport",
+    "synthetic": true
+  },
+  {
+    "reportId": "RPT-PAT-SS-1007-03",
+    "patientId": "PAT-SS-1007",
+    "type": "ECG",
+    "title": "Routine Ecg Investigation",
+    "date": "2026-08-08T10:00:00+00:00",
+    "facility": "SCB Medical College Cuttack",
+    "facilityState": "Odisha",
+    "orderedBy": "Dr. Debabrata Nayak, MD",
+    "language": "English",
+    "source": "HOME_STATE_PHC",
+    "results": [
+      {
+        "name": "Complete Blood Count (Hb)",
+        "value": 12.3,
+        "unit": "g/dL",
+        "refLow": 12.0,
+        "refHigh": 16.0,
+        "flag": "N"
+      },
+      {
+        "name": "Fasting Blood Sugar",
+        "value": 130,
+        "unit": "mg/dL",
+        "refLow": 70,
+        "refHigh": 100,
+        "flag": "N"
+      }
+    ],
+    "findings": "Clinical findings within acceptable physiological limits for age and occupational status.",
+    "impression": "Stable chronic condition follow-up.",
+    "attachment": {
+      "ocrRawText": "SCB MEDICAL COLLEGE CUTTACK - ECG RESULTS: WNL. Follow up in 60 days.",
+      "ocrConfidence": 0.88
+    },
+    "fhirResourceType": "DiagnosticReport",
+    "synthetic": true
+  },
+  {
+    "reportId": "RPT-PAT-SS-1009-01",
+    "patientId": "PAT-SS-1009",
+    "type": "IMAGING",
+    "title": "Routine Imaging Investigation",
+    "date": "2026-04-25T10:00:00+00:00",
+    "facility": "SCB Medical College Cuttack",
+    "facilityState": "Odisha",
+    "orderedBy": "Dr. Debabrata Nayak, MD",
+    "language": "English",
+    "source": "HOME_STATE_PHC",
+    "results": [
+      {
+        "name": "Complete Blood Count (Hb)",
+        "value": 14.1,
+        "unit": "g/dL",
+        "refLow": 12.0,
+        "refHigh": 16.0,
+        "flag": "N"
+      },
+      {
+        "name": "Fasting Blood Sugar",
+        "value": 114,
+        "unit": "mg/dL",
+        "refLow": 70,
+        "refHigh": 100,
+        "flag": "N"
+      }
+    ],
+    "findings": "Clinical findings within acceptable physiological limits for age and occupational status.",
+    "impression": "Stable chronic condition follow-up.",
+    "attachment": {
+      "ocrRawText": "SCB MEDICAL COLLEGE CUTTACK - IMAGING RESULTS: WNL. Follow up in 60 days.",
+      "ocrConfidence": 0.95
+    },
+    "fhirResourceType": "DiagnosticReport",
+    "synthetic": true
+  },
+  {
+    "reportId": "RPT-PAT-SS-1009-02",
+    "patientId": "PAT-SS-1009",
+    "type": "PULMONARY",
+    "title": "Routine Pulmonary Investigation",
+    "date": "2026-09-25T10:00:00+00:00",
+    "facility": "Patna Medical College",
+    "facilityState": "Bihar",
+    "orderedBy": "Dr. Debabrata Nayak, MD",
+    "language": "English",
+    "source": "HOME_STATE_PHC",
+    "results": [
+      {
+        "name": "Complete Blood Count (Hb)",
+        "value": 11.5,
+        "unit": "g/dL",
+        "refLow": 12.0,
+        "refHigh": 16.0,
+        "flag": "N"
+      },
+      {
+        "name": "Fasting Blood Sugar",
+        "value": 124,
+        "unit": "mg/dL",
+        "refLow": 70,
+        "refHigh": 100,
+        "flag": "N"
+      }
+    ],
+    "findings": "Clinical findings within acceptable physiological limits for age and occupational status.",
+    "impression": "Stable chronic condition follow-up.",
+    "attachment": {
+      "ocrRawText": "PATNA MEDICAL COLLEGE - PULMONARY RESULTS: WNL. Follow up in 60 days.",
+      "ocrConfidence": 0.98
+    },
+    "fhirResourceType": "DiagnosticReport",
+    "synthetic": true
+  },
+  {
+    "reportId": "RPT-PAT-SS-1009-03",
+    "patientId": "PAT-SS-1009",
+    "type": "ECG",
+    "title": "Routine Ecg Investigation",
+    "date": "2026-09-25T10:00:00+00:00",
+    "facility": "Whitefield Urban PHC",
+    "facilityState": "Karnataka",
+    "orderedBy": "Dr. Sarah Jenkins, MD",
+    "language": "English",
+    "source": "BENGALURU_CLINIC",
+    "results": [
+      {
+        "name": "Complete Blood Count (Hb)",
+        "value": 13.7,
+        "unit": "g/dL",
+        "refLow": 12.0,
+        "refHigh": 16.0,
+        "flag": "N"
+      },
+      {
+        "name": "Fasting Blood Sugar",
+        "value": 117,
+        "unit": "mg/dL",
+        "refLow": 70,
+        "refHigh": 100,
+        "flag": "H"
+      }
+    ],
+    "findings": "Clinical findings within acceptable physiological limits for age and occupational status.",
+    "impression": "Stable chronic condition follow-up.",
+    "attachment": {
+      "ocrRawText": "WHITEFIELD URBAN PHC - ECG RESULTS: WNL. Follow up in 60 days.",
+      "ocrConfidence": 0.97
+    },
+    "fhirResourceType": "DiagnosticReport",
+    "synthetic": true
+  },
+  {
+    "reportId": "RPT-PAT-SS-1010-01",
+    "patientId": "PAT-SS-1010",
+    "type": "IMAGING",
+    "title": "Routine Imaging Investigation",
+    "date": "2026-03-02T10:00:00+00:00",
+    "facility": "Patna Medical College",
+    "facilityState": "Bihar",
+    "orderedBy": "Dr. Debabrata Nayak, MD",
+    "language": "English",
+    "source": "HOME_STATE_PHC",
+    "results": [
+      {
+        "name": "Complete Blood Count (Hb)",
+        "value": 12.5,
+        "unit": "g/dL",
+        "refLow": 12.0,
+        "refHigh": 16.0,
+        "flag": "N"
+      },
+      {
+        "name": "Fasting Blood Sugar",
+        "value": 103,
+        "unit": "mg/dL",
+        "refLow": 70,
+        "refHigh": 100,
+        "flag": "H"
+      }
+    ],
+    "findings": "Clinical findings within acceptable physiological limits for age and occupational status.",
+    "impression": "Stable chronic condition follow-up.",
+    "attachment": {
+      "ocrRawText": "PATNA MEDICAL COLLEGE - IMAGING RESULTS: WNL. Follow up in 60 days.",
+      "ocrConfidence": 0.96
+    },
+    "fhirResourceType": "DiagnosticReport",
+    "synthetic": true
+  },
+  {
+    "reportId": "RPT-PAT-SS-1010-02",
+    "patientId": "PAT-SS-1010",
+    "type": "PULMONARY",
+    "title": "Routine Pulmonary Investigation",
+    "date": "2026-04-16T10:00:00+00:00",
+    "facility": "Whitefield Urban PHC",
+    "facilityState": "Karnataka",
+    "orderedBy": "Dr. Sarah Jenkins, MD",
+    "language": "English",
+    "source": "BENGALURU_CLINIC",
+    "results": [
+      {
+        "name": "Complete Blood Count (Hb)",
+        "value": 12.7,
+        "unit": "g/dL",
+        "refLow": 12.0,
+        "refHigh": 16.0,
+        "flag": "N"
+      },
+      {
+        "name": "Fasting Blood Sugar",
+        "value": 126,
+        "unit": "mg/dL",
+        "refLow": 70,
+        "refHigh": 100,
+        "flag": "N"
+      }
+    ],
+    "findings": "Clinical findings within acceptable physiological limits for age and occupational status.",
+    "impression": "Stable chronic condition follow-up.",
+    "attachment": {
+      "ocrRawText": "WHITEFIELD URBAN PHC - PULMONARY RESULTS: WNL. Follow up in 60 days.",
+      "ocrConfidence": 0.94
+    },
+    "fhirResourceType": "DiagnosticReport",
+    "synthetic": true
+  },
+  {
+    "reportId": "RPT-PAT-SS-1010-03",
+    "patientId": "PAT-SS-1010",
+    "type": "ECG",
+    "title": "Routine Ecg Investigation",
+    "date": "2026-05-25T10:00:00+00:00",
+    "facility": "Manipal Hospital Heart Institute",
+    "facilityState": "Karnataka",
+    "orderedBy": "Dr. Sarah Jenkins, MD",
+    "language": "English",
+    "source": "BENGALURU_CLINIC",
+    "results": [
+      {
+        "name": "Complete Blood Count (Hb)",
+        "value": 12.7,
+        "unit": "g/dL",
+        "refLow": 12.0,
+        "refHigh": 16.0,
+        "flag": "N"
+      },
+      {
+        "name": "Fasting Blood Sugar",
+        "value": 127,
+        "unit": "mg/dL",
+        "refLow": 70,
+        "refHigh": 100,
+        "flag": "H"
+      }
+    ],
+    "findings": "Clinical findings within acceptable physiological limits for age and occupational status.",
+    "impression": "Stable chronic condition follow-up.",
+    "attachment": {
+      "ocrRawText": "MANIPAL HOSPITAL HEART INSTITUTE - ECG RESULTS: WNL. Follow up in 60 days.",
+      "ocrConfidence": 0.96
+    },
+    "fhirResourceType": "DiagnosticReport",
+    "synthetic": true
+  },
+  {
+    "reportId": "RPT-PAT-SS-1011-01",
+    "patientId": "PAT-SS-1011",
+    "type": "IMAGING",
+    "title": "Routine Imaging Investigation",
+    "date": "2026-09-14T10:00:00+00:00",
+    "facility": "Whitefield Urban PHC",
+    "facilityState": "Karnataka",
+    "orderedBy": "Dr. Sarah Jenkins, MD",
+    "language": "English",
+    "source": "BENGALURU_CLINIC",
+    "results": [
+      {
+        "name": "Complete Blood Count (Hb)",
+        "value": 15.1,
+        "unit": "g/dL",
+        "refLow": 12.0,
+        "refHigh": 16.0,
+        "flag": "N"
+      },
+      {
+        "name": "Fasting Blood Sugar",
+        "value": 120,
+        "unit": "mg/dL",
+        "refLow": 70,
+        "refHigh": 100,
+        "flag": "H"
+      }
+    ],
+    "findings": "Clinical findings within acceptable physiological limits for age and occupational status.",
+    "impression": "Stable chronic condition follow-up.",
+    "attachment": {
+      "ocrRawText": "WHITEFIELD URBAN PHC - IMAGING RESULTS: WNL. Follow up in 60 days.",
+      "ocrConfidence": 0.89
+    },
+    "fhirResourceType": "DiagnosticReport",
+    "synthetic": true
+  },
+  {
+    "reportId": "RPT-PAT-SS-1011-02",
+    "patientId": "PAT-SS-1011",
+    "type": "PULMONARY",
+    "title": "Routine Pulmonary Investigation",
+    "date": "2026-08-21T10:00:00+00:00",
+    "facility": "Manipal Hospital Heart Institute",
+    "facilityState": "Karnataka",
+    "orderedBy": "Dr. Sarah Jenkins, MD",
+    "language": "English",
+    "source": "BENGALURU_CLINIC",
+    "results": [
+      {
+        "name": "Complete Blood Count (Hb)",
+        "value": 14.4,
+        "unit": "g/dL",
+        "refLow": 12.0,
+        "refHigh": 16.0,
+        "flag": "N"
+      },
+      {
+        "name": "Fasting Blood Sugar",
+        "value": 98,
+        "unit": "mg/dL",
+        "refLow": 70,
+        "refHigh": 100,
+        "flag": "N"
+      }
+    ],
+    "findings": "Clinical findings within acceptable physiological limits for age and occupational status.",
+    "impression": "Stable chronic condition follow-up.",
+    "attachment": {
+      "ocrRawText": "MANIPAL HOSPITAL HEART INSTITUTE - PULMONARY RESULTS: WNL. Follow up in 60 days.",
+      "ocrConfidence": 0.96
+    },
+    "fhirResourceType": "DiagnosticReport",
+    "synthetic": true
+  },
+  {
+    "reportId": "RPT-PAT-SS-1011-03",
+    "patientId": "PAT-SS-1011",
+    "type": "ECG",
+    "title": "Routine Ecg Investigation",
+    "date": "2026-06-06T10:00:00+00:00",
+    "facility": "Bowring and Lady Curzon Hospital",
+    "facilityState": "Karnataka",
+    "orderedBy": "Dr. Sarah Jenkins, MD",
+    "language": "English",
+    "source": "BENGALURU_CLINIC",
+    "results": [
+      {
+        "name": "Complete Blood Count (Hb)",
+        "value": 13.5,
+        "unit": "g/dL",
+        "refLow": 12.0,
+        "refHigh": 16.0,
+        "flag": "N"
+      },
+      {
+        "name": "Fasting Blood Sugar",
+        "value": 88,
+        "unit": "mg/dL",
+        "refLow": 70,
+        "refHigh": 100,
+        "flag": "H"
+      }
+    ],
+    "findings": "Clinical findings within acceptable physiological limits for age and occupational status.",
+    "impression": "Stable chronic condition follow-up.",
+    "attachment": {
+      "ocrRawText": "BOWRING AND LADY CURZON HOSPITAL - ECG RESULTS: WNL. Follow up in 60 days.",
+      "ocrConfidence": 0.91
+    },
+    "fhirResourceType": "DiagnosticReport",
+    "synthetic": true
+  },
+  {
+    "reportId": "RPT-PAT-SS-1011-04",
+    "patientId": "PAT-SS-1011",
+    "type": "OPD_NOTE",
+    "title": "Routine Opd Note Investigation",
+    "date": "2026-08-04T10:00:00+00:00",
+    "facility": "AIIMS Bhubaneswar",
+    "facilityState": "Odisha",
+    "orderedBy": "Dr. Debabrata Nayak, MD",
+    "language": "English",
+    "source": "HOME_STATE_PHC",
+    "results": [
+      {
+        "name": "Complete Blood Count (Hb)",
+        "value": 11.7,
+        "unit": "g/dL",
+        "refLow": 12.0,
+        "refHigh": 16.0,
+        "flag": "N"
+      },
+      {
+        "name": "Fasting Blood Sugar",
+        "value": 106,
+        "unit": "mg/dL",
+        "refLow": 70,
+        "refHigh": 100,
+        "flag": "N"
+      }
+    ],
+    "findings": "Clinical findings within acceptable physiological limits for age and occupational status.",
+    "impression": "Stable chronic condition follow-up.",
+    "attachment": {
+      "ocrRawText": "AIIMS BHUBANESWAR - OPD_NOTE RESULTS: WNL. Follow up in 60 days.",
+      "ocrConfidence": 0.93
+    },
+    "fhirResourceType": "DocumentReference",
+    "synthetic": true
+  },
+  {
+    "reportId": "RPT-PAT-SS-1012-01",
+    "patientId": "PAT-SS-1012",
+    "type": "IMAGING",
+    "title": "Routine Imaging Investigation",
+    "date": "2026-09-02T10:00:00+00:00",
+    "facility": "Manipal Hospital Heart Institute",
+    "facilityState": "Karnataka",
+    "orderedBy": "Dr. Sarah Jenkins, MD",
+    "language": "English",
+    "source": "BENGALURU_CLINIC",
+    "results": [
+      {
+        "name": "Complete Blood Count (Hb)",
+        "value": 14.5,
+        "unit": "g/dL",
+        "refLow": 12.0,
+        "refHigh": 16.0,
+        "flag": "N"
+      },
+      {
+        "name": "Fasting Blood Sugar",
+        "value": 120,
+        "unit": "mg/dL",
+        "refLow": 70,
+        "refHigh": 100,
+        "flag": "N"
+      }
+    ],
+    "findings": "Clinical findings within acceptable physiological limits for age and occupational status.",
+    "impression": "Stable chronic condition follow-up.",
+    "attachment": {
+      "ocrRawText": "MANIPAL HOSPITAL HEART INSTITUTE - IMAGING RESULTS: WNL. Follow up in 60 days.",
+      "ocrConfidence": 0.92
+    },
+    "fhirResourceType": "DiagnosticReport",
+    "synthetic": true
+  },
+  {
+    "reportId": "RPT-PAT-SS-1012-02",
+    "patientId": "PAT-SS-1012",
+    "type": "PULMONARY",
+    "title": "Routine Pulmonary Investigation",
+    "date": "2026-09-15T10:00:00+00:00",
+    "facility": "Bowring and Lady Curzon Hospital",
+    "facilityState": "Karnataka",
+    "orderedBy": "Dr. Sarah Jenkins, MD",
+    "language": "English",
+    "source": "BENGALURU_CLINIC",
+    "results": [
+      {
+        "name": "Complete Blood Count (Hb)",
+        "value": 11.8,
+        "unit": "g/dL",
+        "refLow": 12.0,
+        "refHigh": 16.0,
+        "flag": "N"
+      },
+      {
+        "name": "Fasting Blood Sugar",
+        "value": 129,
+        "unit": "mg/dL",
+        "refLow": 70,
+        "refHigh": 100,
+        "flag": "N"
+      }
+    ],
+    "findings": "Clinical findings within acceptable physiological limits for age and occupational status.",
+    "impression": "Stable chronic condition follow-up.",
+    "attachment": {
+      "ocrRawText": "BOWRING AND LADY CURZON HOSPITAL - PULMONARY RESULTS: WNL. Follow up in 60 days.",
+      "ocrConfidence": 0.92
+    },
+    "fhirResourceType": "DiagnosticReport",
+    "synthetic": true
+  },
+  {
+    "reportId": "RPT-PAT-SS-1012-03",
+    "patientId": "PAT-SS-1012",
+    "type": "ECG",
+    "title": "Routine Ecg Investigation",
+    "date": "2026-03-14T10:00:00+00:00",
+    "facility": "AIIMS Bhubaneswar",
+    "facilityState": "Odisha",
+    "orderedBy": "Dr. Debabrata Nayak, MD",
+    "language": "English",
+    "source": "HOME_STATE_PHC",
+    "results": [
+      {
+        "name": "Complete Blood Count (Hb)",
+        "value": 13.0,
+        "unit": "g/dL",
+        "refLow": 12.0,
+        "refHigh": 16.0,
+        "flag": "N"
+      },
+      {
+        "name": "Fasting Blood Sugar",
+        "value": 120,
+        "unit": "mg/dL",
+        "refLow": 70,
+        "refHigh": 100,
+        "flag": "H"
+      }
+    ],
+    "findings": "Clinical findings within acceptable physiological limits for age and occupational status.",
+    "impression": "Stable chronic condition follow-up.",
+    "attachment": {
+      "ocrRawText": "AIIMS BHUBANESWAR - ECG RESULTS: WNL. Follow up in 60 days.",
+      "ocrConfidence": 0.87
+    },
+    "fhirResourceType": "DiagnosticReport",
+    "synthetic": true
+  },
+  {
+    "reportId": "RPT-PAT-SS-1012-04",
+    "patientId": "PAT-SS-1012",
+    "type": "OPD_NOTE",
+    "title": "Routine Opd Note Investigation",
+    "date": "2026-07-27T10:00:00+00:00",
+    "facility": "SCB Medical College Cuttack",
+    "facilityState": "Odisha",
+    "orderedBy": "Dr. Debabrata Nayak, MD",
+    "language": "English",
+    "source": "HOME_STATE_PHC",
+    "results": [
+      {
+        "name": "Complete Blood Count (Hb)",
+        "value": 13.0,
+        "unit": "g/dL",
+        "refLow": 12.0,
+        "refHigh": 16.0,
+        "flag": "N"
+      },
+      {
+        "name": "Fasting Blood Sugar",
+        "value": 87,
+        "unit": "mg/dL",
+        "refLow": 70,
+        "refHigh": 100,
+        "flag": "N"
+      }
+    ],
+    "findings": "Clinical findings within acceptable physiological limits for age and occupational status.",
+    "impression": "Stable chronic condition follow-up.",
+    "attachment": {
+      "ocrRawText": "SCB MEDICAL COLLEGE CUTTACK - OPD_NOTE RESULTS: WNL. Follow up in 60 days.",
+      "ocrConfidence": 0.88
+    },
+    "fhirResourceType": "DocumentReference",
+    "synthetic": true
+  },
+  {
+    "reportId": "RPT-PAT-SS-1013-01",
+    "patientId": "PAT-SS-1013",
+    "type": "IMAGING",
+    "title": "Routine Imaging Investigation",
+    "date": "2026-04-26T10:00:00+00:00",
+    "facility": "Bowring and Lady Curzon Hospital",
+    "facilityState": "Karnataka",
+    "orderedBy": "Dr. Sarah Jenkins, MD",
+    "language": "English",
+    "source": "BENGALURU_CLINIC",
+    "results": [
+      {
+        "name": "Complete Blood Count (Hb)",
+        "value": 11.9,
+        "unit": "g/dL",
+        "refLow": 12.0,
+        "refHigh": 16.0,
+        "flag": "N"
+      },
+      {
+        "name": "Fasting Blood Sugar",
+        "value": 120,
+        "unit": "mg/dL",
+        "refLow": 70,
+        "refHigh": 100,
+        "flag": "N"
+      }
+    ],
+    "findings": "Clinical findings within acceptable physiological limits for age and occupational status.",
+    "impression": "Stable chronic condition follow-up.",
+    "attachment": {
+      "ocrRawText": "BOWRING AND LADY CURZON HOSPITAL - IMAGING RESULTS: WNL. Follow up in 60 days.",
+      "ocrConfidence": 0.9
+    },
+    "fhirResourceType": "DiagnosticReport",
+    "synthetic": true
+  },
+  {
+    "reportId": "RPT-PAT-SS-1013-02",
+    "patientId": "PAT-SS-1013",
+    "type": "PULMONARY",
+    "title": "Routine Pulmonary Investigation",
+    "date": "2026-05-08T10:00:00+00:00",
+    "facility": "AIIMS Bhubaneswar",
+    "facilityState": "Odisha",
+    "orderedBy": "Dr. Debabrata Nayak, MD",
+    "language": "English",
+    "source": "HOME_STATE_PHC",
+    "results": [
+      {
+        "name": "Complete Blood Count (Hb)",
+        "value": 14.5,
+        "unit": "g/dL",
+        "refLow": 12.0,
+        "refHigh": 16.0,
+        "flag": "N"
+      },
+      {
+        "name": "Fasting Blood Sugar",
+        "value": 100,
+        "unit": "mg/dL",
+        "refLow": 70,
+        "refHigh": 100,
+        "flag": "N"
+      }
+    ],
+    "findings": "Clinical findings within acceptable physiological limits for age and occupational status.",
+    "impression": "Stable chronic condition follow-up.",
+    "attachment": {
+      "ocrRawText": "AIIMS BHUBANESWAR - PULMONARY RESULTS: WNL. Follow up in 60 days.",
+      "ocrConfidence": 0.98
+    },
+    "fhirResourceType": "DiagnosticReport",
+    "synthetic": true
+  },
+  {
+    "reportId": "RPT-PAT-SS-1013-03",
+    "patientId": "PAT-SS-1013",
+    "type": "ECG",
+    "title": "Routine Ecg Investigation",
+    "date": "2026-03-20T10:00:00+00:00",
+    "facility": "SCB Medical College Cuttack",
+    "facilityState": "Odisha",
+    "orderedBy": "Dr. Debabrata Nayak, MD",
+    "language": "English",
+    "source": "HOME_STATE_PHC",
+    "results": [
+      {
+        "name": "Complete Blood Count (Hb)",
+        "value": 12.2,
+        "unit": "g/dL",
+        "refLow": 12.0,
+        "refHigh": 16.0,
+        "flag": "N"
+      },
+      {
+        "name": "Fasting Blood Sugar",
+        "value": 111,
+        "unit": "mg/dL",
+        "refLow": 70,
+        "refHigh": 100,
+        "flag": "H"
+      }
+    ],
+    "findings": "Clinical findings within acceptable physiological limits for age and occupational status.",
+    "impression": "Stable chronic condition follow-up.",
+    "attachment": {
+      "ocrRawText": "SCB MEDICAL COLLEGE CUTTACK - ECG RESULTS: WNL. Follow up in 60 days.",
+      "ocrConfidence": 0.95
+    },
+    "fhirResourceType": "DiagnosticReport",
+    "synthetic": true
+  },
+  {
+    "reportId": "RPT-PAT-SS-1014-01",
+    "patientId": "PAT-SS-1014",
+    "type": "IMAGING",
+    "title": "Routine Imaging Investigation",
+    "date": "2026-03-27T10:00:00+00:00",
+    "facility": "AIIMS Bhubaneswar",
+    "facilityState": "Odisha",
+    "orderedBy": "Dr. Debabrata Nayak, MD",
+    "language": "English",
+    "source": "HOME_STATE_PHC",
+    "results": [
+      {
+        "name": "Complete Blood Count (Hb)",
+        "value": 15.2,
+        "unit": "g/dL",
+        "refLow": 12.0,
+        "refHigh": 16.0,
+        "flag": "N"
+      },
+      {
+        "name": "Fasting Blood Sugar",
+        "value": 127,
+        "unit": "mg/dL",
+        "refLow": 70,
+        "refHigh": 100,
+        "flag": "N"
+      }
+    ],
+    "findings": "Clinical findings within acceptable physiological limits for age and occupational status.",
+    "impression": "Stable chronic condition follow-up.",
+    "attachment": {
+      "ocrRawText": "AIIMS BHUBANESWAR - IMAGING RESULTS: WNL. Follow up in 60 days.",
+      "ocrConfidence": 0.96
+    },
+    "fhirResourceType": "DiagnosticReport",
+    "synthetic": true
+  },
+  {
+    "reportId": "RPT-PAT-SS-1014-02",
+    "patientId": "PAT-SS-1014",
+    "type": "PULMONARY",
+    "title": "Routine Pulmonary Investigation",
+    "date": "2026-08-06T10:00:00+00:00",
+    "facility": "SCB Medical College Cuttack",
+    "facilityState": "Odisha",
+    "orderedBy": "Dr. Debabrata Nayak, MD",
+    "language": "English",
+    "source": "HOME_STATE_PHC",
+    "results": [
+      {
+        "name": "Complete Blood Count (Hb)",
+        "value": 12.1,
+        "unit": "g/dL",
+        "refLow": 12.0,
+        "refHigh": 16.0,
+        "flag": "N"
+      },
+      {
+        "name": "Fasting Blood Sugar",
+        "value": 129,
+        "unit": "mg/dL",
+        "refLow": 70,
+        "refHigh": 100,
+        "flag": "H"
+      }
+    ],
+    "findings": "Clinical findings within acceptable physiological limits for age and occupational status.",
+    "impression": "Stable chronic condition follow-up.",
+    "attachment": {
+      "ocrRawText": "SCB MEDICAL COLLEGE CUTTACK - PULMONARY RESULTS: WNL. Follow up in 60 days.",
+      "ocrConfidence": 0.96
+    },
+    "fhirResourceType": "DiagnosticReport",
+    "synthetic": true
+  },
+  {
+    "reportId": "RPT-PAT-SS-1014-03",
+    "patientId": "PAT-SS-1014",
+    "type": "ECG",
+    "title": "Routine Ecg Investigation",
+    "date": "2026-03-08T10:00:00+00:00",
+    "facility": "Patna Medical College",
+    "facilityState": "Bihar",
+    "orderedBy": "Dr. Debabrata Nayak, MD",
+    "language": "English",
+    "source": "HOME_STATE_PHC",
+    "results": [
+      {
+        "name": "Complete Blood Count (Hb)",
+        "value": 13.4,
+        "unit": "g/dL",
+        "refLow": 12.0,
+        "refHigh": 16.0,
+        "flag": "N"
+      },
+      {
+        "name": "Fasting Blood Sugar",
+        "value": 97,
+        "unit": "mg/dL",
+        "refLow": 70,
+        "refHigh": 100,
+        "flag": "N"
+      }
+    ],
+    "findings": "Clinical findings within acceptable physiological limits for age and occupational status.",
+    "impression": "Stable chronic condition follow-up.",
+    "attachment": {
+      "ocrRawText": "PATNA MEDICAL COLLEGE - ECG RESULTS: WNL. Follow up in 60 days.",
+      "ocrConfidence": 0.91
+    },
+    "fhirResourceType": "DiagnosticReport",
+    "synthetic": true
+  },
+  {
+    "reportId": "RPT-PAT-SS-1014-04",
+    "patientId": "PAT-SS-1014",
+    "type": "OPD_NOTE",
+    "title": "Routine Opd Note Investigation",
+    "date": "2026-07-27T10:00:00+00:00",
+    "facility": "Whitefield Urban PHC",
+    "facilityState": "Karnataka",
+    "orderedBy": "Dr. Sarah Jenkins, MD",
+    "language": "English",
+    "source": "BENGALURU_CLINIC",
+    "results": [
+      {
+        "name": "Complete Blood Count (Hb)",
+        "value": 14.8,
+        "unit": "g/dL",
+        "refLow": 12.0,
+        "refHigh": 16.0,
+        "flag": "N"
+      },
+      {
+        "name": "Fasting Blood Sugar",
+        "value": 99,
+        "unit": "mg/dL",
+        "refLow": 70,
+        "refHigh": 100,
+        "flag": "H"
+      }
+    ],
+    "findings": "Clinical findings within acceptable physiological limits for age and occupational status.",
+    "impression": "Stable chronic condition follow-up.",
+    "attachment": {
+      "ocrRawText": "WHITEFIELD URBAN PHC - OPD_NOTE RESULTS: WNL. Follow up in 60 days.",
+      "ocrConfidence": 0.94
+    },
+    "fhirResourceType": "DocumentReference",
+    "synthetic": true
+  },
+  {
+    "reportId": "RPT-PAT-SS-1015-01",
+    "patientId": "PAT-SS-1015",
+    "type": "IMAGING",
+    "title": "Routine Imaging Investigation",
+    "date": "2026-07-21T10:00:00+00:00",
+    "facility": "SCB Medical College Cuttack",
+    "facilityState": "Odisha",
+    "orderedBy": "Dr. Debabrata Nayak, MD",
+    "language": "English",
+    "source": "HOME_STATE_PHC",
+    "results": [
+      {
+        "name": "Complete Blood Count (Hb)",
+        "value": 12.6,
+        "unit": "g/dL",
+        "refLow": 12.0,
+        "refHigh": 16.0,
+        "flag": "N"
+      },
+      {
+        "name": "Fasting Blood Sugar",
+        "value": 89,
+        "unit": "mg/dL",
+        "refLow": 70,
+        "refHigh": 100,
+        "flag": "N"
+      }
+    ],
+    "findings": "Clinical findings within acceptable physiological limits for age and occupational status.",
+    "impression": "Stable chronic condition follow-up.",
+    "attachment": {
+      "ocrRawText": "SCB MEDICAL COLLEGE CUTTACK - IMAGING RESULTS: WNL. Follow up in 60 days.",
+      "ocrConfidence": 0.89
+    },
+    "fhirResourceType": "DiagnosticReport",
+    "synthetic": true
+  },
+  {
+    "reportId": "RPT-PAT-SS-1015-02",
+    "patientId": "PAT-SS-1015",
+    "type": "PULMONARY",
+    "title": "Routine Pulmonary Investigation",
+    "date": "2026-05-02T10:00:00+00:00",
+    "facility": "Patna Medical College",
+    "facilityState": "Bihar",
+    "orderedBy": "Dr. Debabrata Nayak, MD",
+    "language": "English",
+    "source": "HOME_STATE_PHC",
+    "results": [
+      {
+        "name": "Complete Blood Count (Hb)",
+        "value": 13.5,
+        "unit": "g/dL",
+        "refLow": 12.0,
+        "refHigh": 16.0,
+        "flag": "N"
+      },
+      {
+        "name": "Fasting Blood Sugar",
+        "value": 128,
+        "unit": "mg/dL",
+        "refLow": 70,
+        "refHigh": 100,
+        "flag": "N"
+      }
+    ],
+    "findings": "Clinical findings within acceptable physiological limits for age and occupational status.",
+    "impression": "Stable chronic condition follow-up.",
+    "attachment": {
+      "ocrRawText": "PATNA MEDICAL COLLEGE - PULMONARY RESULTS: WNL. Follow up in 60 days.",
+      "ocrConfidence": 0.92
+    },
+    "fhirResourceType": "DiagnosticReport",
+    "synthetic": true
+  },
+  {
+    "reportId": "RPT-PAT-SS-1015-03",
+    "patientId": "PAT-SS-1015",
+    "type": "ECG",
+    "title": "Routine Ecg Investigation",
+    "date": "2026-10-06T10:00:00+00:00",
+    "facility": "Whitefield Urban PHC",
+    "facilityState": "Karnataka",
+    "orderedBy": "Dr. Sarah Jenkins, MD",
+    "language": "English",
+    "source": "BENGALURU_CLINIC",
+    "results": [
+      {
+        "name": "Complete Blood Count (Hb)",
+        "value": 12.0,
+        "unit": "g/dL",
+        "refLow": 12.0,
+        "refHigh": 16.0,
+        "flag": "N"
+      },
+      {
+        "name": "Fasting Blood Sugar",
+        "value": 101,
+        "unit": "mg/dL",
+        "refLow": 70,
+        "refHigh": 100,
+        "flag": "H"
+      }
+    ],
+    "findings": "Clinical findings within acceptable physiological limits for age and occupational status.",
+    "impression": "Stable chronic condition follow-up.",
+    "attachment": {
+      "ocrRawText": "WHITEFIELD URBAN PHC - ECG RESULTS: WNL. Follow up in 60 days.",
+      "ocrConfidence": 0.98
+    },
+    "fhirResourceType": "DiagnosticReport",
+    "synthetic": true
+  },
+  {
+    "reportId": "RPT-PAT-SS-1015-04",
+    "patientId": "PAT-SS-1015",
+    "type": "OPD_NOTE",
+    "title": "Routine Opd Note Investigation",
+    "date": "2026-08-07T10:00:00+00:00",
+    "facility": "Manipal Hospital Heart Institute",
+    "facilityState": "Karnataka",
+    "orderedBy": "Dr. Sarah Jenkins, MD",
+    "language": "English",
+    "source": "BENGALURU_CLINIC",
+    "results": [
+      {
+        "name": "Complete Blood Count (Hb)",
+        "value": 11.7,
+        "unit": "g/dL",
+        "refLow": 12.0,
+        "refHigh": 16.0,
+        "flag": "N"
+      },
+      {
+        "name": "Fasting Blood Sugar",
+        "value": 123,
+        "unit": "mg/dL",
+        "refLow": 70,
+        "refHigh": 100,
+        "flag": "N"
+      }
+    ],
+    "findings": "Clinical findings within acceptable physiological limits for age and occupational status.",
+    "impression": "Stable chronic condition follow-up.",
+    "attachment": {
+      "ocrRawText": "MANIPAL HOSPITAL HEART INSTITUTE - OPD_NOTE RESULTS: WNL. Follow up in 60 days.",
+      "ocrConfidence": 0.94
+    },
+    "fhirResourceType": "DocumentReference",
+    "synthetic": true
+  },
+  {
+    "reportId": "RPT-PAT-SS-1016-01",
+    "patientId": "PAT-SS-1016",
+    "type": "IMAGING",
+    "title": "Routine Imaging Investigation",
+    "date": "2026-06-24T10:00:00+00:00",
+    "facility": "Patna Medical College",
+    "facilityState": "Bihar",
+    "orderedBy": "Dr. Debabrata Nayak, MD",
+    "language": "English",
+    "source": "HOME_STATE_PHC",
+    "results": [
+      {
+        "name": "Complete Blood Count (Hb)",
+        "value": 13.9,
+        "unit": "g/dL",
+        "refLow": 12.0,
+        "refHigh": 16.0,
+        "flag": "N"
+      },
+      {
+        "name": "Fasting Blood Sugar",
+        "value": 117,
+        "unit": "mg/dL",
+        "refLow": 70,
+        "refHigh": 100,
+        "flag": "H"
+      }
+    ],
+    "findings": "Clinical findings within acceptable physiological limits for age and occupational status.",
+    "impression": "Stable chronic condition follow-up.",
+    "attachment": {
+      "ocrRawText": "PATNA MEDICAL COLLEGE - IMAGING RESULTS: WNL. Follow up in 60 days.",
+      "ocrConfidence": 0.97
+    },
+    "fhirResourceType": "DiagnosticReport",
+    "synthetic": true
+  },
+  {
+    "reportId": "RPT-PAT-SS-1016-02",
+    "patientId": "PAT-SS-1016",
+    "type": "PULMONARY",
+    "title": "Routine Pulmonary Investigation",
+    "date": "2026-08-26T10:00:00+00:00",
+    "facility": "Whitefield Urban PHC",
+    "facilityState": "Karnataka",
+    "orderedBy": "Dr. Sarah Jenkins, MD",
+    "language": "English",
+    "source": "BENGALURU_CLINIC",
+    "results": [
+      {
+        "name": "Complete Blood Count (Hb)",
+        "value": 12.5,
+        "unit": "g/dL",
+        "refLow": 12.0,
+        "refHigh": 16.0,
+        "flag": "N"
+      },
+      {
+        "name": "Fasting Blood Sugar",
+        "value": 130,
+        "unit": "mg/dL",
+        "refLow": 70,
+        "refHigh": 100,
+        "flag": "N"
+      }
+    ],
+    "findings": "Clinical findings within acceptable physiological limits for age and occupational status.",
+    "impression": "Stable chronic condition follow-up.",
+    "attachment": {
+      "ocrRawText": "WHITEFIELD URBAN PHC - PULMONARY RESULTS: WNL. Follow up in 60 days.",
+      "ocrConfidence": 0.92
+    },
+    "fhirResourceType": "DiagnosticReport",
+    "synthetic": true
+  },
+  {
+    "reportId": "RPT-PAT-SS-1016-03",
+    "patientId": "PAT-SS-1016",
+    "type": "ECG",
+    "title": "Routine Ecg Investigation",
+    "date": "2026-03-21T10:00:00+00:00",
+    "facility": "Manipal Hospital Heart Institute",
+    "facilityState": "Karnataka",
+    "orderedBy": "Dr. Sarah Jenkins, MD",
+    "language": "English",
+    "source": "BENGALURU_CLINIC",
+    "results": [
+      {
+        "name": "Complete Blood Count (Hb)",
+        "value": 13.7,
+        "unit": "g/dL",
+        "refLow": 12.0,
+        "refHigh": 16.0,
+        "flag": "N"
+      },
+      {
+        "name": "Fasting Blood Sugar",
+        "value": 127,
+        "unit": "mg/dL",
+        "refLow": 70,
+        "refHigh": 100,
+        "flag": "H"
+      }
+    ],
+    "findings": "Clinical findings within acceptable physiological limits for age and occupational status.",
+    "impression": "Stable chronic condition follow-up.",
+    "attachment": {
+      "ocrRawText": "MANIPAL HOSPITAL HEART INSTITUTE - ECG RESULTS: WNL. Follow up in 60 days.",
+      "ocrConfidence": 0.91
+    },
+    "fhirResourceType": "DiagnosticReport",
+    "synthetic": true
+  },
+  {
+    "reportId": "RPT-PAT-SS-1016-04",
+    "patientId": "PAT-SS-1016",
+    "type": "OPD_NOTE",
+    "title": "Routine Opd Note Investigation",
+    "date": "2026-04-26T10:00:00+00:00",
+    "facility": "Bowring and Lady Curzon Hospital",
+    "facilityState": "Karnataka",
+    "orderedBy": "Dr. Sarah Jenkins, MD",
+    "language": "English",
+    "source": "BENGALURU_CLINIC",
+    "results": [
+      {
+        "name": "Complete Blood Count (Hb)",
+        "value": 15.2,
+        "unit": "g/dL",
+        "refLow": 12.0,
+        "refHigh": 16.0,
+        "flag": "N"
+      },
+      {
+        "name": "Fasting Blood Sugar",
+        "value": 124,
+        "unit": "mg/dL",
+        "refLow": 70,
+        "refHigh": 100,
+        "flag": "N"
+      }
+    ],
+    "findings": "Clinical findings within acceptable physiological limits for age and occupational status.",
+    "impression": "Stable chronic condition follow-up.",
+    "attachment": {
+      "ocrRawText": "BOWRING AND LADY CURZON HOSPITAL - OPD_NOTE RESULTS: WNL. Follow up in 60 days.",
+      "ocrConfidence": 0.96
+    },
+    "fhirResourceType": "DocumentReference",
+    "synthetic": true
+  },
+  {
+    "reportId": "RPT-PAT-SS-1017-01",
+    "patientId": "PAT-SS-1017",
+    "type": "IMAGING",
+    "title": "Routine Imaging Investigation",
+    "date": "2026-02-25T10:00:00+00:00",
+    "facility": "Whitefield Urban PHC",
+    "facilityState": "Karnataka",
+    "orderedBy": "Dr. Sarah Jenkins, MD",
+    "language": "English",
+    "source": "BENGALURU_CLINIC",
+    "results": [
+      {
+        "name": "Complete Blood Count (Hb)",
+        "value": 12.7,
+        "unit": "g/dL",
+        "refLow": 12.0,
+        "refHigh": 16.0,
+        "flag": "N"
+      },
+      {
+        "name": "Fasting Blood Sugar",
+        "value": 104,
+        "unit": "mg/dL",
+        "refLow": 70,
+        "refHigh": 100,
+        "flag": "N"
+      }
+    ],
+    "findings": "Clinical findings within acceptable physiological limits for age and occupational status.",
+    "impression": "Stable chronic condition follow-up.",
+    "attachment": {
+      "ocrRawText": "WHITEFIELD URBAN PHC - IMAGING RESULTS: WNL. Follow up in 60 days.",
+      "ocrConfidence": 0.89
+    },
+    "fhirResourceType": "DiagnosticReport",
+    "synthetic": true
+  },
+  {
+    "reportId": "RPT-PAT-SS-1017-02",
+    "patientId": "PAT-SS-1017",
+    "type": "PULMONARY",
+    "title": "Routine Pulmonary Investigation",
+    "date": "2026-04-18T10:00:00+00:00",
+    "facility": "Manipal Hospital Heart Institute",
+    "facilityState": "Karnataka",
+    "orderedBy": "Dr. Sarah Jenkins, MD",
+    "language": "English",
+    "source": "BENGALURU_CLINIC",
+    "results": [
+      {
+        "name": "Complete Blood Count (Hb)",
+        "value": 12.7,
+        "unit": "g/dL",
+        "refLow": 12.0,
+        "refHigh": 16.0,
+        "flag": "N"
+      },
+      {
+        "name": "Fasting Blood Sugar",
+        "value": 93,
+        "unit": "mg/dL",
+        "refLow": 70,
+        "refHigh": 100,
+        "flag": "H"
+      }
+    ],
+    "findings": "Clinical findings within acceptable physiological limits for age and occupational status.",
+    "impression": "Stable chronic condition follow-up.",
+    "attachment": {
+      "ocrRawText": "MANIPAL HOSPITAL HEART INSTITUTE - PULMONARY RESULTS: WNL. Follow up in 60 days.",
+      "ocrConfidence": 0.94
+    },
+    "fhirResourceType": "DiagnosticReport",
+    "synthetic": true
+  },
+  {
+    "reportId": "RPT-PAT-SS-1017-03",
+    "patientId": "PAT-SS-1017",
+    "type": "ECG",
+    "title": "Routine Ecg Investigation",
+    "date": "2026-07-08T10:00:00+00:00",
+    "facility": "Bowring and Lady Curzon Hospital",
+    "facilityState": "Karnataka",
+    "orderedBy": "Dr. Sarah Jenkins, MD",
+    "language": "English",
+    "source": "BENGALURU_CLINIC",
+    "results": [
+      {
+        "name": "Complete Blood Count (Hb)",
+        "value": 14.2,
+        "unit": "g/dL",
+        "refLow": 12.0,
+        "refHigh": 16.0,
+        "flag": "N"
+      },
+      {
+        "name": "Fasting Blood Sugar",
+        "value": 96,
+        "unit": "mg/dL",
+        "refLow": 70,
+        "refHigh": 100,
+        "flag": "N"
+      }
+    ],
+    "findings": "Clinical findings within acceptable physiological limits for age and occupational status.",
+    "impression": "Stable chronic condition follow-up.",
+    "attachment": {
+      "ocrRawText": "BOWRING AND LADY CURZON HOSPITAL - ECG RESULTS: WNL. Follow up in 60 days.",
+      "ocrConfidence": 0.89
+    },
+    "fhirResourceType": "DiagnosticReport",
+    "synthetic": true
+  },
+  {
+    "reportId": "RPT-PAT-SS-1017-04",
+    "patientId": "PAT-SS-1017",
+    "type": "OPD_NOTE",
+    "title": "Routine Opd Note Investigation",
+    "date": "2026-05-26T10:00:00+00:00",
+    "facility": "AIIMS Bhubaneswar",
+    "facilityState": "Odisha",
+    "orderedBy": "Dr. Debabrata Nayak, MD",
+    "language": "English",
+    "source": "HOME_STATE_PHC",
+    "results": [
+      {
+        "name": "Complete Blood Count (Hb)",
+        "value": 14.8,
+        "unit": "g/dL",
+        "refLow": 12.0,
+        "refHigh": 16.0,
+        "flag": "N"
+      },
+      {
+        "name": "Fasting Blood Sugar",
+        "value": 104,
+        "unit": "mg/dL",
+        "refLow": 70,
+        "refHigh": 100,
+        "flag": "H"
+      }
+    ],
+    "findings": "Clinical findings within acceptable physiological limits for age and occupational status.",
+    "impression": "Stable chronic condition follow-up.",
+    "attachment": {
+      "ocrRawText": "AIIMS BHUBANESWAR - OPD_NOTE RESULTS: WNL. Follow up in 60 days.",
+      "ocrConfidence": 0.91
+    },
+    "fhirResourceType": "DocumentReference",
+    "synthetic": true
+  },
+  {
+    "reportId": "RPT-PAT-SS-1017-05",
+    "patientId": "PAT-SS-1017",
+    "type": "VACCINATION",
+    "title": "Routine Vaccination Investigation",
+    "date": "2026-05-18T10:00:00+00:00",
+    "facility": "SCB Medical College Cuttack",
+    "facilityState": "Odisha",
+    "orderedBy": "Dr. Debabrata Nayak, MD",
+    "language": "English",
+    "source": "HOME_STATE_PHC",
+    "results": [
+      {
+        "name": "Complete Blood Count (Hb)",
+        "value": 13.9,
+        "unit": "g/dL",
+        "refLow": 12.0,
+        "refHigh": 16.0,
+        "flag": "N"
+      },
+      {
+        "name": "Fasting Blood Sugar",
+        "value": 105,
+        "unit": "mg/dL",
+        "refLow": 70,
+        "refHigh": 100,
+        "flag": "N"
+      }
+    ],
+    "findings": "Clinical findings within acceptable physiological limits for age and occupational status.",
+    "impression": "Stable chronic condition follow-up.",
+    "attachment": {
+      "ocrRawText": "SCB MEDICAL COLLEGE CUTTACK - VACCINATION RESULTS: WNL. Follow up in 60 days.",
+      "ocrConfidence": 0.91
+    },
+    "fhirResourceType": "DocumentReference",
+    "synthetic": true
+  },
+  {
+    "reportId": "RPT-PAT-SS-1018-01",
+    "patientId": "PAT-SS-1018",
+    "type": "IMAGING",
+    "title": "Routine Imaging Investigation",
+    "date": "2026-06-05T10:00:00+00:00",
+    "facility": "Manipal Hospital Heart Institute",
+    "facilityState": "Karnataka",
+    "orderedBy": "Dr. Sarah Jenkins, MD",
+    "language": "English",
+    "source": "BENGALURU_CLINIC",
+    "results": [
+      {
+        "name": "Complete Blood Count (Hb)",
+        "value": 13.4,
+        "unit": "g/dL",
+        "refLow": 12.0,
+        "refHigh": 16.0,
+        "flag": "N"
+      },
+      {
+        "name": "Fasting Blood Sugar",
+        "value": 95,
+        "unit": "mg/dL",
+        "refLow": 70,
+        "refHigh": 100,
+        "flag": "N"
+      }
+    ],
+    "findings": "Clinical findings within acceptable physiological limits for age and occupational status.",
+    "impression": "Stable chronic condition follow-up.",
+    "attachment": {
+      "ocrRawText": "MANIPAL HOSPITAL HEART INSTITUTE - IMAGING RESULTS: WNL. Follow up in 60 days.",
+      "ocrConfidence": 0.89
+    },
+    "fhirResourceType": "DiagnosticReport",
+    "synthetic": true
+  },
+  {
+    "reportId": "RPT-PAT-SS-1018-02",
+    "patientId": "PAT-SS-1018",
+    "type": "PULMONARY",
+    "title": "Routine Pulmonary Investigation",
+    "date": "2026-04-27T10:00:00+00:00",
+    "facility": "Bowring and Lady Curzon Hospital",
+    "facilityState": "Karnataka",
+    "orderedBy": "Dr. Sarah Jenkins, MD",
+    "language": "English",
+    "source": "BENGALURU_CLINIC",
+    "results": [
+      {
+        "name": "Complete Blood Count (Hb)",
+        "value": 14.0,
+        "unit": "g/dL",
+        "refLow": 12.0,
+        "refHigh": 16.0,
+        "flag": "N"
+      },
+      {
+        "name": "Fasting Blood Sugar",
+        "value": 106,
+        "unit": "mg/dL",
+        "refLow": 70,
+        "refHigh": 100,
+        "flag": "H"
+      }
+    ],
+    "findings": "Clinical findings within acceptable physiological limits for age and occupational status.",
+    "impression": "Stable chronic condition follow-up.",
+    "attachment": {
+      "ocrRawText": "BOWRING AND LADY CURZON HOSPITAL - PULMONARY RESULTS: WNL. Follow up in 60 days.",
+      "ocrConfidence": 0.97
+    },
+    "fhirResourceType": "DiagnosticReport",
+    "synthetic": true
+  },
+  {
+    "reportId": "RPT-PAT-SS-1018-03",
+    "patientId": "PAT-SS-1018",
+    "type": "ECG",
+    "title": "Routine Ecg Investigation",
+    "date": "2026-08-14T10:00:00+00:00",
+    "facility": "AIIMS Bhubaneswar",
+    "facilityState": "Odisha",
+    "orderedBy": "Dr. Debabrata Nayak, MD",
+    "language": "English",
+    "source": "HOME_STATE_PHC",
+    "results": [
+      {
+        "name": "Complete Blood Count (Hb)",
+        "value": 14.2,
+        "unit": "g/dL",
+        "refLow": 12.0,
+        "refHigh": 16.0,
+        "flag": "N"
+      },
+      {
+        "name": "Fasting Blood Sugar",
+        "value": 99,
+        "unit": "mg/dL",
+        "refLow": 70,
+        "refHigh": 100,
+        "flag": "N"
+      }
+    ],
+    "findings": "Clinical findings within acceptable physiological limits for age and occupational status.",
+    "impression": "Stable chronic condition follow-up.",
+    "attachment": {
+      "ocrRawText": "AIIMS BHUBANESWAR - ECG RESULTS: WNL. Follow up in 60 days.",
+      "ocrConfidence": 0.87
+    },
+    "fhirResourceType": "DiagnosticReport",
+    "synthetic": true
+  },
+  {
+    "reportId": "RPT-PAT-SS-1019-01",
+    "patientId": "PAT-SS-1019",
+    "type": "IMAGING",
+    "title": "Routine Imaging Investigation",
+    "date": "2026-08-12T10:00:00+00:00",
+    "facility": "Bowring and Lady Curzon Hospital",
+    "facilityState": "Karnataka",
+    "orderedBy": "Dr. Sarah Jenkins, MD",
+    "language": "English",
+    "source": "BENGALURU_CLINIC",
+    "results": [
+      {
+        "name": "Complete Blood Count (Hb)",
+        "value": 15.4,
+        "unit": "g/dL",
+        "refLow": 12.0,
+        "refHigh": 16.0,
+        "flag": "N"
+      },
+      {
+        "name": "Fasting Blood Sugar",
+        "value": 124,
+        "unit": "mg/dL",
+        "refLow": 70,
+        "refHigh": 100,
+        "flag": "N"
+      }
+    ],
+    "findings": "Clinical findings within acceptable physiological limits for age and occupational status.",
+    "impression": "Stable chronic condition follow-up.",
+    "attachment": {
+      "ocrRawText": "BOWRING AND LADY CURZON HOSPITAL - IMAGING RESULTS: WNL. Follow up in 60 days.",
+      "ocrConfidence": 0.86
+    },
+    "fhirResourceType": "DiagnosticReport",
+    "synthetic": true
+  },
+  {
+    "reportId": "RPT-PAT-SS-1019-02",
+    "patientId": "PAT-SS-1019",
+    "type": "PULMONARY",
+    "title": "Routine Pulmonary Investigation",
+    "date": "2026-06-29T10:00:00+00:00",
+    "facility": "AIIMS Bhubaneswar",
+    "facilityState": "Odisha",
+    "orderedBy": "Dr. Debabrata Nayak, MD",
+    "language": "English",
+    "source": "HOME_STATE_PHC",
+    "results": [
+      {
+        "name": "Complete Blood Count (Hb)",
+        "value": 15.0,
+        "unit": "g/dL",
+        "refLow": 12.0,
+        "refHigh": 16.0,
+        "flag": "N"
+      },
+      {
+        "name": "Fasting Blood Sugar",
+        "value": 121,
+        "unit": "mg/dL",
+        "refLow": 70,
+        "refHigh": 100,
+        "flag": "H"
+      }
+    ],
+    "findings": "Clinical findings within acceptable physiological limits for age and occupational status.",
+    "impression": "Stable chronic condition follow-up.",
+    "attachment": {
+      "ocrRawText": "AIIMS BHUBANESWAR - PULMONARY RESULTS: WNL. Follow up in 60 days.",
+      "ocrConfidence": 0.94
+    },
+    "fhirResourceType": "DiagnosticReport",
+    "synthetic": true
+  },
+  {
+    "reportId": "RPT-PAT-SS-1019-03",
+    "patientId": "PAT-SS-1019",
+    "type": "ECG",
+    "title": "Routine Ecg Investigation",
+    "date": "2026-06-09T10:00:00+00:00",
+    "facility": "SCB Medical College Cuttack",
+    "facilityState": "Odisha",
+    "orderedBy": "Dr. Debabrata Nayak, MD",
+    "language": "English",
+    "source": "HOME_STATE_PHC",
+    "results": [
+      {
+        "name": "Complete Blood Count (Hb)",
+        "value": 13.1,
+        "unit": "g/dL",
+        "refLow": 12.0,
+        "refHigh": 16.0,
+        "flag": "N"
+      },
+      {
+        "name": "Fasting Blood Sugar",
+        "value": 94,
+        "unit": "mg/dL",
+        "refLow": 70,
+        "refHigh": 100,
+        "flag": "N"
+      }
+    ],
+    "findings": "Clinical findings within acceptable physiological limits for age and occupational status.",
+    "impression": "Stable chronic condition follow-up.",
+    "attachment": {
+      "ocrRawText": "SCB MEDICAL COLLEGE CUTTACK - ECG RESULTS: WNL. Follow up in 60 days.",
+      "ocrConfidence": 0.85
+    },
+    "fhirResourceType": "DiagnosticReport",
+    "synthetic": true
+  },
+  {
+    "reportId": "RPT-PAT-SS-1020-01",
+    "patientId": "PAT-SS-1020",
+    "type": "IMAGING",
+    "title": "Routine Imaging Investigation",
+    "date": "2026-03-28T10:00:00+00:00",
+    "facility": "AIIMS Bhubaneswar",
+    "facilityState": "Odisha",
+    "orderedBy": "Dr. Debabrata Nayak, MD",
+    "language": "English",
+    "source": "HOME_STATE_PHC",
+    "results": [
+      {
+        "name": "Complete Blood Count (Hb)",
+        "value": 13.2,
+        "unit": "g/dL",
+        "refLow": 12.0,
+        "refHigh": 16.0,
+        "flag": "N"
+      },
+      {
+        "name": "Fasting Blood Sugar",
+        "value": 96,
+        "unit": "mg/dL",
+        "refLow": 70,
+        "refHigh": 100,
+        "flag": "N"
+      }
+    ],
+    "findings": "Clinical findings within acceptable physiological limits for age and occupational status.",
+    "impression": "Stable chronic condition follow-up.",
+    "attachment": {
+      "ocrRawText": "AIIMS BHUBANESWAR - IMAGING RESULTS: WNL. Follow up in 60 days.",
+      "ocrConfidence": 0.94
+    },
+    "fhirResourceType": "DiagnosticReport",
+    "synthetic": true
+  },
+  {
+    "reportId": "RPT-PAT-SS-1020-02",
+    "patientId": "PAT-SS-1020",
+    "type": "PULMONARY",
+    "title": "Routine Pulmonary Investigation",
+    "date": "2026-06-17T10:00:00+00:00",
+    "facility": "SCB Medical College Cuttack",
+    "facilityState": "Odisha",
+    "orderedBy": "Dr. Debabrata Nayak, MD",
+    "language": "English",
+    "source": "HOME_STATE_PHC",
+    "results": [
+      {
+        "name": "Complete Blood Count (Hb)",
+        "value": 11.7,
+        "unit": "g/dL",
+        "refLow": 12.0,
+        "refHigh": 16.0,
+        "flag": "N"
+      },
+      {
+        "name": "Fasting Blood Sugar",
+        "value": 100,
+        "unit": "mg/dL",
+        "refLow": 70,
+        "refHigh": 100,
+        "flag": "N"
+      }
+    ],
+    "findings": "Clinical findings within acceptable physiological limits for age and occupational status.",
+    "impression": "Stable chronic condition follow-up.",
+    "attachment": {
+      "ocrRawText": "SCB MEDICAL COLLEGE CUTTACK - PULMONARY RESULTS: WNL. Follow up in 60 days.",
+      "ocrConfidence": 0.87
+    },
+    "fhirResourceType": "DiagnosticReport",
+    "synthetic": true
+  },
+  {
+    "reportId": "RPT-PAT-SS-1020-03",
+    "patientId": "PAT-SS-1020",
+    "type": "ECG",
+    "title": "Routine Ecg Investigation",
+    "date": "2026-09-09T10:00:00+00:00",
+    "facility": "Patna Medical College",
+    "facilityState": "Bihar",
+    "orderedBy": "Dr. Debabrata Nayak, MD",
+    "language": "English",
+    "source": "HOME_STATE_PHC",
+    "results": [
+      {
+        "name": "Complete Blood Count (Hb)",
+        "value": 14.7,
+        "unit": "g/dL",
+        "refLow": 12.0,
+        "refHigh": 16.0,
+        "flag": "N"
+      },
+      {
+        "name": "Fasting Blood Sugar",
+        "value": 127,
+        "unit": "mg/dL",
+        "refLow": 70,
+        "refHigh": 100,
+        "flag": "N"
+      }
+    ],
+    "findings": "Clinical findings within acceptable physiological limits for age and occupational status.",
+    "impression": "Stable chronic condition follow-up.",
+    "attachment": {
+      "ocrRawText": "PATNA MEDICAL COLLEGE - ECG RESULTS: WNL. Follow up in 60 days.",
+      "ocrConfidence": 0.92
+    },
+    "fhirResourceType": "DiagnosticReport",
+    "synthetic": true
+  },
+  {
+    "reportId": "RPT-PAT-SS-1021-01",
+    "patientId": "PAT-SS-1021",
+    "type": "IMAGING",
+    "title": "Routine Imaging Investigation",
+    "date": "2026-04-03T10:00:00+00:00",
+    "facility": "SCB Medical College Cuttack",
+    "facilityState": "Odisha",
+    "orderedBy": "Dr. Debabrata Nayak, MD",
+    "language": "English",
+    "source": "HOME_STATE_PHC",
+    "results": [
+      {
+        "name": "Complete Blood Count (Hb)",
+        "value": 15.1,
+        "unit": "g/dL",
+        "refLow": 12.0,
+        "refHigh": 16.0,
+        "flag": "N"
+      },
+      {
+        "name": "Fasting Blood Sugar",
+        "value": 124,
+        "unit": "mg/dL",
+        "refLow": 70,
+        "refHigh": 100,
+        "flag": "N"
+      }
+    ],
+    "findings": "Clinical findings within acceptable physiological limits for age and occupational status.",
+    "impression": "Stable chronic condition follow-up.",
+    "attachment": {
+      "ocrRawText": "SCB MEDICAL COLLEGE CUTTACK - IMAGING RESULTS: WNL. Follow up in 60 days.",
+      "ocrConfidence": 0.97
+    },
+    "fhirResourceType": "DiagnosticReport",
+    "synthetic": true
+  },
+  {
+    "reportId": "RPT-PAT-SS-1021-02",
+    "patientId": "PAT-SS-1021",
+    "type": "PULMONARY",
+    "title": "Routine Pulmonary Investigation",
+    "date": "2026-06-26T10:00:00+00:00",
+    "facility": "Patna Medical College",
+    "facilityState": "Bihar",
+    "orderedBy": "Dr. Debabrata Nayak, MD",
+    "language": "English",
+    "source": "HOME_STATE_PHC",
+    "results": [
+      {
+        "name": "Complete Blood Count (Hb)",
+        "value": 14.8,
+        "unit": "g/dL",
+        "refLow": 12.0,
+        "refHigh": 16.0,
+        "flag": "N"
+      },
+      {
+        "name": "Fasting Blood Sugar",
+        "value": 120,
+        "unit": "mg/dL",
+        "refLow": 70,
+        "refHigh": 100,
+        "flag": "N"
+      }
+    ],
+    "findings": "Clinical findings within acceptable physiological limits for age and occupational status.",
+    "impression": "Stable chronic condition follow-up.",
+    "attachment": {
+      "ocrRawText": "PATNA MEDICAL COLLEGE - PULMONARY RESULTS: WNL. Follow up in 60 days.",
+      "ocrConfidence": 0.87
+    },
+    "fhirResourceType": "DiagnosticReport",
+    "synthetic": true
+  },
+  {
+    "reportId": "RPT-PAT-SS-1021-03",
+    "patientId": "PAT-SS-1021",
+    "type": "ECG",
+    "title": "Routine Ecg Investigation",
+    "date": "2026-03-07T10:00:00+00:00",
+    "facility": "Whitefield Urban PHC",
+    "facilityState": "Karnataka",
+    "orderedBy": "Dr. Sarah Jenkins, MD",
+    "language": "English",
+    "source": "BENGALURU_CLINIC",
+    "results": [
+      {
+        "name": "Complete Blood Count (Hb)",
+        "value": 13.4,
+        "unit": "g/dL",
+        "refLow": 12.0,
+        "refHigh": 16.0,
+        "flag": "N"
+      },
+      {
+        "name": "Fasting Blood Sugar",
+        "value": 101,
+        "unit": "mg/dL",
+        "refLow": 70,
+        "refHigh": 100,
+        "flag": "N"
+      }
+    ],
+    "findings": "Clinical findings within acceptable physiological limits for age and occupational status.",
+    "impression": "Stable chronic condition follow-up.",
+    "attachment": {
+      "ocrRawText": "WHITEFIELD URBAN PHC - ECG RESULTS: WNL. Follow up in 60 days.",
+      "ocrConfidence": 0.96
+    },
+    "fhirResourceType": "DiagnosticReport",
+    "synthetic": true
+  },
+  {
+    "reportId": "RPT-PAT-SS-1021-04",
+    "patientId": "PAT-SS-1021",
+    "type": "OPD_NOTE",
+    "title": "Routine Opd Note Investigation",
+    "date": "2026-08-04T10:00:00+00:00",
+    "facility": "Manipal Hospital Heart Institute",
+    "facilityState": "Karnataka",
+    "orderedBy": "Dr. Sarah Jenkins, MD",
+    "language": "English",
+    "source": "BENGALURU_CLINIC",
+    "results": [
+      {
+        "name": "Complete Blood Count (Hb)",
+        "value": 14.6,
+        "unit": "g/dL",
+        "refLow": 12.0,
+        "refHigh": 16.0,
+        "flag": "N"
+      },
+      {
+        "name": "Fasting Blood Sugar",
+        "value": 118,
+        "unit": "mg/dL",
+        "refLow": 70,
+        "refHigh": 100,
+        "flag": "N"
+      }
+    ],
+    "findings": "Clinical findings within acceptable physiological limits for age and occupational status.",
+    "impression": "Stable chronic condition follow-up.",
+    "attachment": {
+      "ocrRawText": "MANIPAL HOSPITAL HEART INSTITUTE - OPD_NOTE RESULTS: WNL. Follow up in 60 days.",
+      "ocrConfidence": 0.88
+    },
+    "fhirResourceType": "DocumentReference",
+    "synthetic": true
+  },
+  {
+    "reportId": "RPT-PAT-SS-1022-01",
+    "patientId": "PAT-SS-1022",
+    "type": "IMAGING",
+    "title": "Routine Imaging Investigation",
+    "date": "2026-09-24T10:00:00+00:00",
+    "facility": "Patna Medical College",
+    "facilityState": "Bihar",
+    "orderedBy": "Dr. Debabrata Nayak, MD",
+    "language": "English",
+    "source": "HOME_STATE_PHC",
+    "results": [
+      {
+        "name": "Complete Blood Count (Hb)",
+        "value": 14.4,
+        "unit": "g/dL",
+        "refLow": 12.0,
+        "refHigh": 16.0,
+        "flag": "N"
+      },
+      {
+        "name": "Fasting Blood Sugar",
+        "value": 100,
+        "unit": "mg/dL",
+        "refLow": 70,
+        "refHigh": 100,
+        "flag": "H"
+      }
+    ],
+    "findings": "Clinical findings within acceptable physiological limits for age and occupational status.",
+    "impression": "Stable chronic condition follow-up.",
+    "attachment": {
+      "ocrRawText": "PATNA MEDICAL COLLEGE - IMAGING RESULTS: WNL. Follow up in 60 days.",
+      "ocrConfidence": 0.89
+    },
+    "fhirResourceType": "DiagnosticReport",
+    "synthetic": true
+  },
+  {
+    "reportId": "RPT-PAT-SS-1022-02",
+    "patientId": "PAT-SS-1022",
+    "type": "PULMONARY",
+    "title": "Routine Pulmonary Investigation",
+    "date": "2026-05-28T10:00:00+00:00",
+    "facility": "Whitefield Urban PHC",
+    "facilityState": "Karnataka",
+    "orderedBy": "Dr. Sarah Jenkins, MD",
+    "language": "English",
+    "source": "BENGALURU_CLINIC",
+    "results": [
+      {
+        "name": "Complete Blood Count (Hb)",
+        "value": 11.8,
+        "unit": "g/dL",
+        "refLow": 12.0,
+        "refHigh": 16.0,
+        "flag": "N"
+      },
+      {
+        "name": "Fasting Blood Sugar",
+        "value": 94,
+        "unit": "mg/dL",
+        "refLow": 70,
+        "refHigh": 100,
+        "flag": "H"
+      }
+    ],
+    "findings": "Clinical findings within acceptable physiological limits for age and occupational status.",
+    "impression": "Stable chronic condition follow-up.",
+    "attachment": {
+      "ocrRawText": "WHITEFIELD URBAN PHC - PULMONARY RESULTS: WNL. Follow up in 60 days.",
+      "ocrConfidence": 0.94
+    },
+    "fhirResourceType": "DiagnosticReport",
+    "synthetic": true
+  },
+  {
+    "reportId": "RPT-PAT-SS-1022-03",
+    "patientId": "PAT-SS-1022",
+    "type": "ECG",
+    "title": "Routine Ecg Investigation",
+    "date": "2026-04-16T10:00:00+00:00",
+    "facility": "Manipal Hospital Heart Institute",
+    "facilityState": "Karnataka",
+    "orderedBy": "Dr. Sarah Jenkins, MD",
+    "language": "English",
+    "source": "BENGALURU_CLINIC",
+    "results": [
+      {
+        "name": "Complete Blood Count (Hb)",
+        "value": 12.4,
+        "unit": "g/dL",
+        "refLow": 12.0,
+        "refHigh": 16.0,
+        "flag": "N"
+      },
+      {
+        "name": "Fasting Blood Sugar",
+        "value": 111,
+        "unit": "mg/dL",
+        "refLow": 70,
+        "refHigh": 100,
+        "flag": "N"
+      }
+    ],
+    "findings": "Clinical findings within acceptable physiological limits for age and occupational status.",
+    "impression": "Stable chronic condition follow-up.",
+    "attachment": {
+      "ocrRawText": "MANIPAL HOSPITAL HEART INSTITUTE - ECG RESULTS: WNL. Follow up in 60 days.",
+      "ocrConfidence": 0.92
+    },
+    "fhirResourceType": "DiagnosticReport",
+    "synthetic": true
+  },
+  {
+    "reportId": "RPT-PAT-SS-1022-04",
+    "patientId": "PAT-SS-1022",
+    "type": "OPD_NOTE",
+    "title": "Routine Opd Note Investigation",
+    "date": "2026-06-29T10:00:00+00:00",
+    "facility": "Bowring and Lady Curzon Hospital",
+    "facilityState": "Karnataka",
+    "orderedBy": "Dr. Sarah Jenkins, MD",
+    "language": "English",
+    "source": "BENGALURU_CLINIC",
+    "results": [
+      {
+        "name": "Complete Blood Count (Hb)",
+        "value": 11.7,
+        "unit": "g/dL",
+        "refLow": 12.0,
+        "refHigh": 16.0,
+        "flag": "N"
+      },
+      {
+        "name": "Fasting Blood Sugar",
+        "value": 111,
+        "unit": "mg/dL",
+        "refLow": 70,
+        "refHigh": 100,
+        "flag": "N"
+      }
+    ],
+    "findings": "Clinical findings within acceptable physiological limits for age and occupational status.",
+    "impression": "Stable chronic condition follow-up.",
+    "attachment": {
+      "ocrRawText": "BOWRING AND LADY CURZON HOSPITAL - OPD_NOTE RESULTS: WNL. Follow up in 60 days.",
+      "ocrConfidence": 0.95
+    },
+    "fhirResourceType": "DocumentReference",
+    "synthetic": true
+  },
+  {
+    "reportId": "RPT-PAT-SS-1023-01",
+    "patientId": "PAT-SS-1023",
+    "type": "IMAGING",
+    "title": "Routine Imaging Investigation",
+    "date": "2026-10-08T10:00:00+00:00",
+    "facility": "Whitefield Urban PHC",
+    "facilityState": "Karnataka",
+    "orderedBy": "Dr. Sarah Jenkins, MD",
+    "language": "English",
+    "source": "BENGALURU_CLINIC",
+    "results": [
+      {
+        "name": "Complete Blood Count (Hb)",
+        "value": 14.9,
+        "unit": "g/dL",
+        "refLow": 12.0,
+        "refHigh": 16.0,
+        "flag": "N"
+      },
+      {
+        "name": "Fasting Blood Sugar",
+        "value": 121,
+        "unit": "mg/dL",
+        "refLow": 70,
+        "refHigh": 100,
+        "flag": "N"
+      }
+    ],
+    "findings": "Clinical findings within acceptable physiological limits for age and occupational status.",
+    "impression": "Stable chronic condition follow-up.",
+    "attachment": {
+      "ocrRawText": "WHITEFIELD URBAN PHC - IMAGING RESULTS: WNL. Follow up in 60 days.",
+      "ocrConfidence": 0.85
+    },
+    "fhirResourceType": "DiagnosticReport",
+    "synthetic": true
+  },
+  {
+    "reportId": "RPT-PAT-SS-1023-02",
+    "patientId": "PAT-SS-1023",
+    "type": "PULMONARY",
+    "title": "Routine Pulmonary Investigation",
+    "date": "2026-07-15T10:00:00+00:00",
+    "facility": "Manipal Hospital Heart Institute",
+    "facilityState": "Karnataka",
+    "orderedBy": "Dr. Sarah Jenkins, MD",
+    "language": "English",
+    "source": "BENGALURU_CLINIC",
+    "results": [
+      {
+        "name": "Complete Blood Count (Hb)",
+        "value": 12.7,
+        "unit": "g/dL",
+        "refLow": 12.0,
+        "refHigh": 16.0,
+        "flag": "N"
+      },
+      {
+        "name": "Fasting Blood Sugar",
+        "value": 109,
+        "unit": "mg/dL",
+        "refLow": 70,
+        "refHigh": 100,
+        "flag": "N"
+      }
+    ],
+    "findings": "Clinical findings within acceptable physiological limits for age and occupational status.",
+    "impression": "Stable chronic condition follow-up.",
+    "attachment": {
+      "ocrRawText": "MANIPAL HOSPITAL HEART INSTITUTE - PULMONARY RESULTS: WNL. Follow up in 60 days.",
+      "ocrConfidence": 0.97
+    },
+    "fhirResourceType": "DiagnosticReport",
+    "synthetic": true
+  },
+  {
+    "reportId": "RPT-PAT-SS-1023-03",
+    "patientId": "PAT-SS-1023",
+    "type": "ECG",
+    "title": "Routine Ecg Investigation",
+    "date": "2026-06-28T10:00:00+00:00",
+    "facility": "Bowring and Lady Curzon Hospital",
+    "facilityState": "Karnataka",
+    "orderedBy": "Dr. Sarah Jenkins, MD",
+    "language": "English",
+    "source": "BENGALURU_CLINIC",
+    "results": [
+      {
+        "name": "Complete Blood Count (Hb)",
+        "value": 13.7,
+        "unit": "g/dL",
+        "refLow": 12.0,
+        "refHigh": 16.0,
+        "flag": "N"
+      },
+      {
+        "name": "Fasting Blood Sugar",
+        "value": 119,
+        "unit": "mg/dL",
+        "refLow": 70,
+        "refHigh": 100,
+        "flag": "N"
+      }
+    ],
+    "findings": "Clinical findings within acceptable physiological limits for age and occupational status.",
+    "impression": "Stable chronic condition follow-up.",
+    "attachment": {
+      "ocrRawText": "BOWRING AND LADY CURZON HOSPITAL - ECG RESULTS: WNL. Follow up in 60 days.",
+      "ocrConfidence": 0.97
+    },
+    "fhirResourceType": "DiagnosticReport",
+    "synthetic": true
+  },
+  {
+    "reportId": "RPT-PAT-SS-1023-04",
+    "patientId": "PAT-SS-1023",
+    "type": "OPD_NOTE",
+    "title": "Routine Opd Note Investigation",
+    "date": "2026-06-11T10:00:00+00:00",
+    "facility": "AIIMS Bhubaneswar",
+    "facilityState": "Odisha",
+    "orderedBy": "Dr. Debabrata Nayak, MD",
+    "language": "English",
+    "source": "HOME_STATE_PHC",
+    "results": [
+      {
+        "name": "Complete Blood Count (Hb)",
+        "value": 12.4,
+        "unit": "g/dL",
+        "refLow": 12.0,
+        "refHigh": 16.0,
+        "flag": "N"
+      },
+      {
+        "name": "Fasting Blood Sugar",
+        "value": 112,
+        "unit": "mg/dL",
+        "refLow": 70,
+        "refHigh": 100,
+        "flag": "N"
+      }
+    ],
+    "findings": "Clinical findings within acceptable physiological limits for age and occupational status.",
+    "impression": "Stable chronic condition follow-up.",
+    "attachment": {
+      "ocrRawText": "AIIMS BHUBANESWAR - OPD_NOTE RESULTS: WNL. Follow up in 60 days.",
+      "ocrConfidence": 0.9
+    },
+    "fhirResourceType": "DocumentReference",
+    "synthetic": true
+  },
+  {
+    "reportId": "RPT-PAT-SS-1023-05",
+    "patientId": "PAT-SS-1023",
+    "type": "VACCINATION",
+    "title": "Routine Vaccination Investigation",
+    "date": "2026-04-25T10:00:00+00:00",
+    "facility": "SCB Medical College Cuttack",
+    "facilityState": "Odisha",
+    "orderedBy": "Dr. Debabrata Nayak, MD",
+    "language": "English",
+    "source": "HOME_STATE_PHC",
+    "results": [
+      {
+        "name": "Complete Blood Count (Hb)",
+        "value": 14.2,
+        "unit": "g/dL",
+        "refLow": 12.0,
+        "refHigh": 16.0,
+        "flag": "N"
+      },
+      {
+        "name": "Fasting Blood Sugar",
+        "value": 110,
+        "unit": "mg/dL",
+        "refLow": 70,
+        "refHigh": 100,
+        "flag": "N"
+      }
+    ],
+    "findings": "Clinical findings within acceptable physiological limits for age and occupational status.",
+    "impression": "Stable chronic condition follow-up.",
+    "attachment": {
+      "ocrRawText": "SCB MEDICAL COLLEGE CUTTACK - VACCINATION RESULTS: WNL. Follow up in 60 days.",
+      "ocrConfidence": 0.96
+    },
+    "fhirResourceType": "DocumentReference",
+    "synthetic": true
+  },
+  {
+    "reportId": "RPT-PAT-SS-1024-01",
+    "patientId": "PAT-SS-1024",
+    "type": "IMAGING",
+    "title": "Routine Imaging Investigation",
+    "date": "2026-05-07T10:00:00+00:00",
+    "facility": "Manipal Hospital Heart Institute",
+    "facilityState": "Karnataka",
+    "orderedBy": "Dr. Sarah Jenkins, MD",
+    "language": "English",
+    "source": "BENGALURU_CLINIC",
+    "results": [
+      {
+        "name": "Complete Blood Count (Hb)",
+        "value": 13.6,
+        "unit": "g/dL",
+        "refLow": 12.0,
+        "refHigh": 16.0,
+        "flag": "N"
+      },
+      {
+        "name": "Fasting Blood Sugar",
+        "value": 110,
+        "unit": "mg/dL",
+        "refLow": 70,
+        "refHigh": 100,
+        "flag": "N"
+      }
+    ],
+    "findings": "Clinical findings within acceptable physiological limits for age and occupational status.",
+    "impression": "Stable chronic condition follow-up.",
+    "attachment": {
+      "ocrRawText": "MANIPAL HOSPITAL HEART INSTITUTE - IMAGING RESULTS: WNL. Follow up in 60 days.",
+      "ocrConfidence": 0.94
+    },
+    "fhirResourceType": "DiagnosticReport",
+    "synthetic": true
+  },
+  {
+    "reportId": "RPT-PAT-SS-1024-02",
+    "patientId": "PAT-SS-1024",
+    "type": "PULMONARY",
+    "title": "Routine Pulmonary Investigation",
+    "date": "2026-09-22T10:00:00+00:00",
+    "facility": "Bowring and Lady Curzon Hospital",
+    "facilityState": "Karnataka",
+    "orderedBy": "Dr. Sarah Jenkins, MD",
+    "language": "English",
+    "source": "BENGALURU_CLINIC",
+    "results": [
+      {
+        "name": "Complete Blood Count (Hb)",
+        "value": 14.1,
+        "unit": "g/dL",
+        "refLow": 12.0,
+        "refHigh": 16.0,
+        "flag": "N"
+      },
+      {
+        "name": "Fasting Blood Sugar",
+        "value": 93,
+        "unit": "mg/dL",
+        "refLow": 70,
+        "refHigh": 100,
+        "flag": "N"
+      }
+    ],
+    "findings": "Clinical findings within acceptable physiological limits for age and occupational status.",
+    "impression": "Stable chronic condition follow-up.",
+    "attachment": {
+      "ocrRawText": "BOWRING AND LADY CURZON HOSPITAL - PULMONARY RESULTS: WNL. Follow up in 60 days.",
+      "ocrConfidence": 0.87
+    },
+    "fhirResourceType": "DiagnosticReport",
+    "synthetic": true
+  },
+  {
+    "reportId": "RPT-PAT-SS-1024-03",
+    "patientId": "PAT-SS-1024",
+    "type": "ECG",
+    "title": "Routine Ecg Investigation",
+    "date": "2026-08-08T10:00:00+00:00",
+    "facility": "AIIMS Bhubaneswar",
+    "facilityState": "Odisha",
+    "orderedBy": "Dr. Debabrata Nayak, MD",
+    "language": "English",
+    "source": "HOME_STATE_PHC",
+    "results": [
+      {
+        "name": "Complete Blood Count (Hb)",
+        "value": 13.0,
+        "unit": "g/dL",
+        "refLow": 12.0,
+        "refHigh": 16.0,
+        "flag": "N"
+      },
+      {
+        "name": "Fasting Blood Sugar",
+        "value": 98,
+        "unit": "mg/dL",
+        "refLow": 70,
+        "refHigh": 100,
+        "flag": "N"
+      }
+    ],
+    "findings": "Clinical findings within acceptable physiological limits for age and occupational status.",
+    "impression": "Stable chronic condition follow-up.",
+    "attachment": {
+      "ocrRawText": "AIIMS BHUBANESWAR - ECG RESULTS: WNL. Follow up in 60 days.",
+      "ocrConfidence": 0.89
+    },
+    "fhirResourceType": "DiagnosticReport",
+    "synthetic": true
+  },
+  {
+    "reportId": "RPT-PAT-SS-1025-01",
+    "patientId": "PAT-SS-1025",
+    "type": "IMAGING",
+    "title": "Routine Imaging Investigation",
+    "date": "2026-08-03T10:00:00+00:00",
+    "facility": "Bowring and Lady Curzon Hospital",
+    "facilityState": "Karnataka",
+    "orderedBy": "Dr. Sarah Jenkins, MD",
+    "language": "English",
+    "source": "BENGALURU_CLINIC",
+    "results": [
+      {
+        "name": "Complete Blood Count (Hb)",
+        "value": 14.5,
+        "unit": "g/dL",
+        "refLow": 12.0,
+        "refHigh": 16.0,
+        "flag": "N"
+      },
+      {
+        "name": "Fasting Blood Sugar",
+        "value": 111,
+        "unit": "mg/dL",
+        "refLow": 70,
+        "refHigh": 100,
+        "flag": "H"
+      }
+    ],
+    "findings": "Clinical findings within acceptable physiological limits for age and occupational status.",
+    "impression": "Stable chronic condition follow-up.",
+    "attachment": {
+      "ocrRawText": "BOWRING AND LADY CURZON HOSPITAL - IMAGING RESULTS: WNL. Follow up in 60 days.",
+      "ocrConfidence": 0.86
+    },
+    "fhirResourceType": "DiagnosticReport",
+    "synthetic": true
+  },
+  {
+    "reportId": "RPT-PAT-SS-1025-02",
+    "patientId": "PAT-SS-1025",
+    "type": "PULMONARY",
+    "title": "Routine Pulmonary Investigation",
+    "date": "2026-10-09T10:00:00+00:00",
+    "facility": "AIIMS Bhubaneswar",
+    "facilityState": "Odisha",
+    "orderedBy": "Dr. Debabrata Nayak, MD",
+    "language": "English",
+    "source": "HOME_STATE_PHC",
+    "results": [
+      {
+        "name": "Complete Blood Count (Hb)",
+        "value": 14.5,
+        "unit": "g/dL",
+        "refLow": 12.0,
+        "refHigh": 16.0,
+        "flag": "N"
+      },
+      {
+        "name": "Fasting Blood Sugar",
+        "value": 88,
+        "unit": "mg/dL",
+        "refLow": 70,
+        "refHigh": 100,
+        "flag": "N"
+      }
+    ],
+    "findings": "Clinical findings within acceptable physiological limits for age and occupational status.",
+    "impression": "Stable chronic condition follow-up.",
+    "attachment": {
+      "ocrRawText": "AIIMS BHUBANESWAR - PULMONARY RESULTS: WNL. Follow up in 60 days.",
+      "ocrConfidence": 0.9
+    },
+    "fhirResourceType": "DiagnosticReport",
+    "synthetic": true
+  },
+  {
+    "reportId": "RPT-PAT-SS-1025-03",
+    "patientId": "PAT-SS-1025",
+    "type": "ECG",
+    "title": "Routine Ecg Investigation",
+    "date": "2026-04-30T10:00:00+00:00",
+    "facility": "SCB Medical College Cuttack",
+    "facilityState": "Odisha",
+    "orderedBy": "Dr. Debabrata Nayak, MD",
+    "language": "English",
+    "source": "HOME_STATE_PHC",
+    "results": [
+      {
+        "name": "Complete Blood Count (Hb)",
+        "value": 11.8,
+        "unit": "g/dL",
+        "refLow": 12.0,
+        "refHigh": 16.0,
+        "flag": "N"
+      },
+      {
+        "name": "Fasting Blood Sugar",
+        "value": 126,
+        "unit": "mg/dL",
+        "refLow": 70,
+        "refHigh": 100,
+        "flag": "H"
+      }
+    ],
+    "findings": "Clinical findings within acceptable physiological limits for age and occupational status.",
+    "impression": "Stable chronic condition follow-up.",
+    "attachment": {
+      "ocrRawText": "SCB MEDICAL COLLEGE CUTTACK - ECG RESULTS: WNL. Follow up in 60 days.",
+      "ocrConfidence": 0.85
+    },
+    "fhirResourceType": "DiagnosticReport",
+    "synthetic": true
+  },
+  {
+    "reportId": "RPT-PAT-SS-1025-04",
+    "patientId": "PAT-SS-1025",
+    "type": "OPD_NOTE",
+    "title": "Routine Opd Note Investigation",
+    "date": "2026-08-11T10:00:00+00:00",
+    "facility": "Patna Medical College",
+    "facilityState": "Bihar",
+    "orderedBy": "Dr. Debabrata Nayak, MD",
+    "language": "English",
+    "source": "HOME_STATE_PHC",
+    "results": [
+      {
+        "name": "Complete Blood Count (Hb)",
+        "value": 12.3,
+        "unit": "g/dL",
+        "refLow": 12.0,
+        "refHigh": 16.0,
+        "flag": "N"
+      },
+      {
+        "name": "Fasting Blood Sugar",
+        "value": 86,
+        "unit": "mg/dL",
+        "refLow": 70,
+        "refHigh": 100,
+        "flag": "N"
+      }
+    ],
+    "findings": "Clinical findings within acceptable physiological limits for age and occupational status.",
+    "impression": "Stable chronic condition follow-up.",
+    "attachment": {
+      "ocrRawText": "PATNA MEDICAL COLLEGE - OPD_NOTE RESULTS: WNL. Follow up in 60 days.",
+      "ocrConfidence": 0.88
+    },
+    "fhirResourceType": "DocumentReference",
+    "synthetic": true
+  }
+]

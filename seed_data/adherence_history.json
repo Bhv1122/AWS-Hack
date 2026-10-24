@@ -1,0 +1,2718 @@
+{
+  "PAT-SS-1001": [
+    {
+      "doseId": "DOSE-1001-1-M",
+      "patientId": "PAT-SS-1001",
+      "prescriptionId": "RX-MET-1002",
+      "medicationName": "Metformin 500mg",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-10-22T08:15:00+00:00",
+      "status": "MISSED",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1001-1-N",
+      "patientId": "PAT-SS-1001",
+      "prescriptionId": "RX-WAR-1001",
+      "medicationName": "Warfarin 5mg",
+      "scheduledTime": "20:00",
+      "timestamp": "2026-10-22T20:30:00+00:00",
+      "status": "MISSED",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1001-2-M",
+      "patientId": "PAT-SS-1001",
+      "prescriptionId": "RX-MET-1002",
+      "medicationName": "Metformin 500mg",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-10-21T08:15:00+00:00",
+      "status": "MISSED",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1001-2-N",
+      "patientId": "PAT-SS-1001",
+      "prescriptionId": "RX-WAR-1001",
+      "medicationName": "Warfarin 5mg",
+      "scheduledTime": "20:00",
+      "timestamp": "2026-10-21T20:30:00+00:00",
+      "status": "MISSED",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1001-3-M",
+      "patientId": "PAT-SS-1001",
+      "prescriptionId": "RX-MET-1002",
+      "medicationName": "Metformin 500mg",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-10-20T08:15:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1001-3-N",
+      "patientId": "PAT-SS-1001",
+      "prescriptionId": "RX-WAR-1001",
+      "medicationName": "Warfarin 5mg",
+      "scheduledTime": "20:00",
+      "timestamp": "2026-10-20T20:30:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1001-4-M",
+      "patientId": "PAT-SS-1001",
+      "prescriptionId": "RX-MET-1002",
+      "medicationName": "Metformin 500mg",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-10-19T08:15:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1001-4-N",
+      "patientId": "PAT-SS-1001",
+      "prescriptionId": "RX-WAR-1001",
+      "medicationName": "Warfarin 5mg",
+      "scheduledTime": "20:00",
+      "timestamp": "2026-10-19T20:30:00+00:00",
+      "status": "MISSED",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1001-5-M",
+      "patientId": "PAT-SS-1001",
+      "prescriptionId": "RX-MET-1002",
+      "medicationName": "Metformin 500mg",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-10-18T08:15:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1001-5-N",
+      "patientId": "PAT-SS-1001",
+      "prescriptionId": "RX-WAR-1001",
+      "medicationName": "Warfarin 5mg",
+      "scheduledTime": "20:00",
+      "timestamp": "2026-10-18T20:30:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1001-6-M",
+      "patientId": "PAT-SS-1001",
+      "prescriptionId": "RX-MET-1002",
+      "medicationName": "Metformin 500mg",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-10-17T08:15:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1001-6-N",
+      "patientId": "PAT-SS-1001",
+      "prescriptionId": "RX-WAR-1001",
+      "medicationName": "Warfarin 5mg",
+      "scheduledTime": "20:00",
+      "timestamp": "2026-10-17T20:30:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1001-7-M",
+      "patientId": "PAT-SS-1001",
+      "prescriptionId": "RX-MET-1002",
+      "medicationName": "Metformin 500mg",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-10-16T08:15:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1001-7-N",
+      "patientId": "PAT-SS-1001",
+      "prescriptionId": "RX-WAR-1001",
+      "medicationName": "Warfarin 5mg",
+      "scheduledTime": "20:00",
+      "timestamp": "2026-10-16T20:30:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1001-8-M",
+      "patientId": "PAT-SS-1001",
+      "prescriptionId": "RX-MET-1002",
+      "medicationName": "Metformin 500mg",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-10-15T08:15:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1001-8-N",
+      "patientId": "PAT-SS-1001",
+      "prescriptionId": "RX-WAR-1001",
+      "medicationName": "Warfarin 5mg",
+      "scheduledTime": "20:00",
+      "timestamp": "2026-10-15T20:30:00+00:00",
+      "status": "MISSED",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1001-9-M",
+      "patientId": "PAT-SS-1001",
+      "prescriptionId": "RX-MET-1002",
+      "medicationName": "Metformin 500mg",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-10-14T08:15:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1001-9-N",
+      "patientId": "PAT-SS-1001",
+      "prescriptionId": "RX-WAR-1001",
+      "medicationName": "Warfarin 5mg",
+      "scheduledTime": "20:00",
+      "timestamp": "2026-10-14T20:30:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1001-10-M",
+      "patientId": "PAT-SS-1001",
+      "prescriptionId": "RX-MET-1002",
+      "medicationName": "Metformin 500mg",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-10-13T08:15:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1001-10-N",
+      "patientId": "PAT-SS-1001",
+      "prescriptionId": "RX-WAR-1001",
+      "medicationName": "Warfarin 5mg",
+      "scheduledTime": "20:00",
+      "timestamp": "2026-10-13T20:30:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1001-11-M",
+      "patientId": "PAT-SS-1001",
+      "prescriptionId": "RX-MET-1002",
+      "medicationName": "Metformin 500mg",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-10-12T08:15:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1001-11-N",
+      "patientId": "PAT-SS-1001",
+      "prescriptionId": "RX-WAR-1001",
+      "medicationName": "Warfarin 5mg",
+      "scheduledTime": "20:00",
+      "timestamp": "2026-10-12T20:30:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1001-12-M",
+      "patientId": "PAT-SS-1001",
+      "prescriptionId": "RX-MET-1002",
+      "medicationName": "Metformin 500mg",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-10-11T08:15:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1001-12-N",
+      "patientId": "PAT-SS-1001",
+      "prescriptionId": "RX-WAR-1001",
+      "medicationName": "Warfarin 5mg",
+      "scheduledTime": "20:00",
+      "timestamp": "2026-10-11T20:30:00+00:00",
+      "status": "MISSED",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1001-13-M",
+      "patientId": "PAT-SS-1001",
+      "prescriptionId": "RX-MET-1002",
+      "medicationName": "Metformin 500mg",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-10-10T08:15:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1001-13-N",
+      "patientId": "PAT-SS-1001",
+      "prescriptionId": "RX-WAR-1001",
+      "medicationName": "Warfarin 5mg",
+      "scheduledTime": "20:00",
+      "timestamp": "2026-10-10T20:30:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1001-14-M",
+      "patientId": "PAT-SS-1001",
+      "prescriptionId": "RX-MET-1002",
+      "medicationName": "Metformin 500mg",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-10-09T08:15:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1001-14-N",
+      "patientId": "PAT-SS-1001",
+      "prescriptionId": "RX-WAR-1001",
+      "medicationName": "Warfarin 5mg",
+      "scheduledTime": "20:00",
+      "timestamp": "2026-10-09T20:30:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1001-15-M",
+      "patientId": "PAT-SS-1001",
+      "prescriptionId": "RX-MET-1002",
+      "medicationName": "Metformin 500mg",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-10-08T08:15:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1001-15-N",
+      "patientId": "PAT-SS-1001",
+      "prescriptionId": "RX-WAR-1001",
+      "medicationName": "Warfarin 5mg",
+      "scheduledTime": "20:00",
+      "timestamp": "2026-10-08T20:30:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1001-16-M",
+      "patientId": "PAT-SS-1001",
+      "prescriptionId": "RX-MET-1002",
+      "medicationName": "Metformin 500mg",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-10-07T08:15:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1001-16-N",
+      "patientId": "PAT-SS-1001",
+      "prescriptionId": "RX-WAR-1001",
+      "medicationName": "Warfarin 5mg",
+      "scheduledTime": "20:00",
+      "timestamp": "2026-10-07T20:30:00+00:00",
+      "status": "MISSED",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1001-17-M",
+      "patientId": "PAT-SS-1001",
+      "prescriptionId": "RX-MET-1002",
+      "medicationName": "Metformin 500mg",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-10-06T08:15:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1001-17-N",
+      "patientId": "PAT-SS-1001",
+      "prescriptionId": "RX-WAR-1001",
+      "medicationName": "Warfarin 5mg",
+      "scheduledTime": "20:00",
+      "timestamp": "2026-10-06T20:30:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1001-18-M",
+      "patientId": "PAT-SS-1001",
+      "prescriptionId": "RX-MET-1002",
+      "medicationName": "Metformin 500mg",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-10-05T08:15:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1001-18-N",
+      "patientId": "PAT-SS-1001",
+      "prescriptionId": "RX-WAR-1001",
+      "medicationName": "Warfarin 5mg",
+      "scheduledTime": "20:00",
+      "timestamp": "2026-10-05T20:30:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1001-19-M",
+      "patientId": "PAT-SS-1001",
+      "prescriptionId": "RX-MET-1002",
+      "medicationName": "Metformin 500mg",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-10-04T08:15:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1001-19-N",
+      "patientId": "PAT-SS-1001",
+      "prescriptionId": "RX-WAR-1001",
+      "medicationName": "Warfarin 5mg",
+      "scheduledTime": "20:00",
+      "timestamp": "2026-10-04T20:30:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1001-20-M",
+      "patientId": "PAT-SS-1001",
+      "prescriptionId": "RX-MET-1002",
+      "medicationName": "Metformin 500mg",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-10-03T08:15:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1001-20-N",
+      "patientId": "PAT-SS-1001",
+      "prescriptionId": "RX-WAR-1001",
+      "medicationName": "Warfarin 5mg",
+      "scheduledTime": "20:00",
+      "timestamp": "2026-10-03T20:30:00+00:00",
+      "status": "MISSED",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1001-21-M",
+      "patientId": "PAT-SS-1001",
+      "prescriptionId": "RX-MET-1002",
+      "medicationName": "Metformin 500mg",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-10-02T08:15:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1001-21-N",
+      "patientId": "PAT-SS-1001",
+      "prescriptionId": "RX-WAR-1001",
+      "medicationName": "Warfarin 5mg",
+      "scheduledTime": "20:00",
+      "timestamp": "2026-10-02T20:30:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1001-22-M",
+      "patientId": "PAT-SS-1001",
+      "prescriptionId": "RX-MET-1002",
+      "medicationName": "Metformin 500mg",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-10-01T08:15:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1001-22-N",
+      "patientId": "PAT-SS-1001",
+      "prescriptionId": "RX-WAR-1001",
+      "medicationName": "Warfarin 5mg",
+      "scheduledTime": "20:00",
+      "timestamp": "2026-10-01T20:30:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1001-23-M",
+      "patientId": "PAT-SS-1001",
+      "prescriptionId": "RX-MET-1002",
+      "medicationName": "Metformin 500mg",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-09-30T08:15:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1001-23-N",
+      "patientId": "PAT-SS-1001",
+      "prescriptionId": "RX-WAR-1001",
+      "medicationName": "Warfarin 5mg",
+      "scheduledTime": "20:00",
+      "timestamp": "2026-09-30T20:30:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1001-24-M",
+      "patientId": "PAT-SS-1001",
+      "prescriptionId": "RX-MET-1002",
+      "medicationName": "Metformin 500mg",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-09-29T08:15:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1001-24-N",
+      "patientId": "PAT-SS-1001",
+      "prescriptionId": "RX-WAR-1001",
+      "medicationName": "Warfarin 5mg",
+      "scheduledTime": "20:00",
+      "timestamp": "2026-09-29T20:30:00+00:00",
+      "status": "MISSED",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1001-25-M",
+      "patientId": "PAT-SS-1001",
+      "prescriptionId": "RX-MET-1002",
+      "medicationName": "Metformin 500mg",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-09-28T08:15:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1001-25-N",
+      "patientId": "PAT-SS-1001",
+      "prescriptionId": "RX-WAR-1001",
+      "medicationName": "Warfarin 5mg",
+      "scheduledTime": "20:00",
+      "timestamp": "2026-09-28T20:30:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1001-26-M",
+      "patientId": "PAT-SS-1001",
+      "prescriptionId": "RX-MET-1002",
+      "medicationName": "Metformin 500mg",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-09-27T08:15:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1001-26-N",
+      "patientId": "PAT-SS-1001",
+      "prescriptionId": "RX-WAR-1001",
+      "medicationName": "Warfarin 5mg",
+      "scheduledTime": "20:00",
+      "timestamp": "2026-09-27T20:30:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1001-27-M",
+      "patientId": "PAT-SS-1001",
+      "prescriptionId": "RX-MET-1002",
+      "medicationName": "Metformin 500mg",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-09-26T08:15:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1001-27-N",
+      "patientId": "PAT-SS-1001",
+      "prescriptionId": "RX-WAR-1001",
+      "medicationName": "Warfarin 5mg",
+      "scheduledTime": "20:00",
+      "timestamp": "2026-09-26T20:30:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1001-28-M",
+      "patientId": "PAT-SS-1001",
+      "prescriptionId": "RX-MET-1002",
+      "medicationName": "Metformin 500mg",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-09-25T08:15:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1001-28-N",
+      "patientId": "PAT-SS-1001",
+      "prescriptionId": "RX-WAR-1001",
+      "medicationName": "Warfarin 5mg",
+      "scheduledTime": "20:00",
+      "timestamp": "2026-09-25T20:30:00+00:00",
+      "status": "MISSED",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1001-29-M",
+      "patientId": "PAT-SS-1001",
+      "prescriptionId": "RX-MET-1002",
+      "medicationName": "Metformin 500mg",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-09-24T08:15:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1001-29-N",
+      "patientId": "PAT-SS-1001",
+      "prescriptionId": "RX-WAR-1001",
+      "medicationName": "Warfarin 5mg",
+      "scheduledTime": "20:00",
+      "timestamp": "2026-09-24T20:30:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1001-30-M",
+      "patientId": "PAT-SS-1001",
+      "prescriptionId": "RX-MET-1002",
+      "medicationName": "Metformin 500mg",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-09-23T08:15:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1001-30-N",
+      "patientId": "PAT-SS-1001",
+      "prescriptionId": "RX-WAR-1001",
+      "medicationName": "Warfarin 5mg",
+      "scheduledTime": "20:00",
+      "timestamp": "2026-09-23T20:30:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    }
+  ],
+  "PAT-SS-1006": [
+    {
+      "doseId": "DOSE-1006-1",
+      "patientId": "PAT-SS-1006",
+      "prescriptionId": "RX-PAT-SS-1006-1",
+      "medicationName": "Omeprazole 20mg",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-10-22T08:10:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1006-2",
+      "patientId": "PAT-SS-1006",
+      "prescriptionId": "RX-PAT-SS-1006-1",
+      "medicationName": "Omeprazole 20mg",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-10-21T08:10:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1006-3",
+      "patientId": "PAT-SS-1006",
+      "prescriptionId": "RX-PAT-SS-1006-1",
+      "medicationName": "Omeprazole 20mg",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-10-20T08:10:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1006-4",
+      "patientId": "PAT-SS-1006",
+      "prescriptionId": "RX-PAT-SS-1006-1",
+      "medicationName": "Omeprazole 20mg",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-10-19T08:10:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1006-5",
+      "patientId": "PAT-SS-1006",
+      "prescriptionId": "RX-PAT-SS-1006-1",
+      "medicationName": "Omeprazole 20mg",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-10-18T08:10:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1006-6",
+      "patientId": "PAT-SS-1006",
+      "prescriptionId": "RX-PAT-SS-1006-1",
+      "medicationName": "Omeprazole 20mg",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-10-17T08:10:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1006-7",
+      "patientId": "PAT-SS-1006",
+      "prescriptionId": "RX-PAT-SS-1006-1",
+      "medicationName": "Omeprazole 20mg",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-10-16T08:10:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1006-8",
+      "patientId": "PAT-SS-1006",
+      "prescriptionId": "RX-PAT-SS-1006-1",
+      "medicationName": "Omeprazole 20mg",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-10-15T08:10:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1006-9",
+      "patientId": "PAT-SS-1006",
+      "prescriptionId": "RX-PAT-SS-1006-1",
+      "medicationName": "Omeprazole 20mg",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-10-14T08:10:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1006-10",
+      "patientId": "PAT-SS-1006",
+      "prescriptionId": "RX-PAT-SS-1006-1",
+      "medicationName": "Omeprazole 20mg",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-10-13T08:10:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1006-11",
+      "patientId": "PAT-SS-1006",
+      "prescriptionId": "RX-PAT-SS-1006-1",
+      "medicationName": "Omeprazole 20mg",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-10-12T08:10:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1006-12",
+      "patientId": "PAT-SS-1006",
+      "prescriptionId": "RX-PAT-SS-1006-1",
+      "medicationName": "Omeprazole 20mg",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-10-11T08:10:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1006-13",
+      "patientId": "PAT-SS-1006",
+      "prescriptionId": "RX-PAT-SS-1006-1",
+      "medicationName": "Omeprazole 20mg",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-10-10T08:10:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1006-14",
+      "patientId": "PAT-SS-1006",
+      "prescriptionId": "RX-PAT-SS-1006-1",
+      "medicationName": "Omeprazole 20mg",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-10-09T08:10:00+00:00",
+      "status": "SKIPPED",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1006-15",
+      "patientId": "PAT-SS-1006",
+      "prescriptionId": "RX-PAT-SS-1006-1",
+      "medicationName": "Omeprazole 20mg",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-10-08T08:10:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1006-16",
+      "patientId": "PAT-SS-1006",
+      "prescriptionId": "RX-PAT-SS-1006-1",
+      "medicationName": "Omeprazole 20mg",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-10-07T08:10:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1006-17",
+      "patientId": "PAT-SS-1006",
+      "prescriptionId": "RX-PAT-SS-1006-1",
+      "medicationName": "Omeprazole 20mg",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-10-06T08:10:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1006-18",
+      "patientId": "PAT-SS-1006",
+      "prescriptionId": "RX-PAT-SS-1006-1",
+      "medicationName": "Omeprazole 20mg",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-10-05T08:10:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1006-19",
+      "patientId": "PAT-SS-1006",
+      "prescriptionId": "RX-PAT-SS-1006-1",
+      "medicationName": "Omeprazole 20mg",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-10-04T08:10:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1006-20",
+      "patientId": "PAT-SS-1006",
+      "prescriptionId": "RX-PAT-SS-1006-1",
+      "medicationName": "Omeprazole 20mg",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-10-03T08:10:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1006-21",
+      "patientId": "PAT-SS-1006",
+      "prescriptionId": "RX-PAT-SS-1006-1",
+      "medicationName": "Omeprazole 20mg",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-10-02T08:10:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1006-22",
+      "patientId": "PAT-SS-1006",
+      "prescriptionId": "RX-PAT-SS-1006-1",
+      "medicationName": "Omeprazole 20mg",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-10-01T08:10:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1006-23",
+      "patientId": "PAT-SS-1006",
+      "prescriptionId": "RX-PAT-SS-1006-1",
+      "medicationName": "Omeprazole 20mg",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-09-30T08:10:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1006-24",
+      "patientId": "PAT-SS-1006",
+      "prescriptionId": "RX-PAT-SS-1006-1",
+      "medicationName": "Omeprazole 20mg",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-09-29T08:10:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1006-25",
+      "patientId": "PAT-SS-1006",
+      "prescriptionId": "RX-PAT-SS-1006-1",
+      "medicationName": "Omeprazole 20mg",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-09-28T08:10:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1006-26",
+      "patientId": "PAT-SS-1006",
+      "prescriptionId": "RX-PAT-SS-1006-1",
+      "medicationName": "Omeprazole 20mg",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-09-27T08:10:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1006-27",
+      "patientId": "PAT-SS-1006",
+      "prescriptionId": "RX-PAT-SS-1006-1",
+      "medicationName": "Omeprazole 20mg",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-09-26T08:10:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1006-28",
+      "patientId": "PAT-SS-1006",
+      "prescriptionId": "RX-PAT-SS-1006-1",
+      "medicationName": "Omeprazole 20mg",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-09-25T08:10:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1006-29",
+      "patientId": "PAT-SS-1006",
+      "prescriptionId": "RX-PAT-SS-1006-1",
+      "medicationName": "Omeprazole 20mg",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-09-24T08:10:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1006-30",
+      "patientId": "PAT-SS-1006",
+      "prescriptionId": "RX-PAT-SS-1006-1",
+      "medicationName": "Omeprazole 20mg",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-09-23T08:10:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    }
+  ],
+  "PAT-SS-1007": [
+    {
+      "doseId": "DOSE-1007-1",
+      "patientId": "PAT-SS-1007",
+      "prescriptionId": "RX-PAT-SS-1007-1",
+      "medicationName": "Amlodipine 5mg",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-10-22T08:45:00+00:00",
+      "status": "MISSED",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1007-2",
+      "patientId": "PAT-SS-1007",
+      "prescriptionId": "RX-PAT-SS-1007-1",
+      "medicationName": "Amlodipine 5mg",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-10-21T08:45:00+00:00",
+      "status": "MISSED",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1007-3",
+      "patientId": "PAT-SS-1007",
+      "prescriptionId": "RX-PAT-SS-1007-1",
+      "medicationName": "Amlodipine 5mg",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-10-20T08:45:00+00:00",
+      "status": "MISSED",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1007-4",
+      "patientId": "PAT-SS-1007",
+      "prescriptionId": "RX-PAT-SS-1007-1",
+      "medicationName": "Amlodipine 5mg",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-10-19T08:45:00+00:00",
+      "status": "MISSED",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1007-5",
+      "patientId": "PAT-SS-1007",
+      "prescriptionId": "RX-PAT-SS-1007-1",
+      "medicationName": "Amlodipine 5mg",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-10-18T08:45:00+00:00",
+      "status": "MISSED",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1007-6",
+      "patientId": "PAT-SS-1007",
+      "prescriptionId": "RX-PAT-SS-1007-1",
+      "medicationName": "Amlodipine 5mg",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-10-17T08:45:00+00:00",
+      "status": "MISSED",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1007-7",
+      "patientId": "PAT-SS-1007",
+      "prescriptionId": "RX-PAT-SS-1007-1",
+      "medicationName": "Amlodipine 5mg",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-10-16T08:45:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1007-8",
+      "patientId": "PAT-SS-1007",
+      "prescriptionId": "RX-PAT-SS-1007-1",
+      "medicationName": "Amlodipine 5mg",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-10-15T08:45:00+00:00",
+      "status": "MISSED",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1007-9",
+      "patientId": "PAT-SS-1007",
+      "prescriptionId": "RX-PAT-SS-1007-1",
+      "medicationName": "Amlodipine 5mg",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-10-14T08:45:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1007-10",
+      "patientId": "PAT-SS-1007",
+      "prescriptionId": "RX-PAT-SS-1007-1",
+      "medicationName": "Amlodipine 5mg",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-10-13T08:45:00+00:00",
+      "status": "MISSED",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1007-11",
+      "patientId": "PAT-SS-1007",
+      "prescriptionId": "RX-PAT-SS-1007-1",
+      "medicationName": "Amlodipine 5mg",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-10-12T08:45:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1007-12",
+      "patientId": "PAT-SS-1007",
+      "prescriptionId": "RX-PAT-SS-1007-1",
+      "medicationName": "Amlodipine 5mg",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-10-11T08:45:00+00:00",
+      "status": "MISSED",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1007-13",
+      "patientId": "PAT-SS-1007",
+      "prescriptionId": "RX-PAT-SS-1007-1",
+      "medicationName": "Amlodipine 5mg",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-10-10T08:45:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1007-14",
+      "patientId": "PAT-SS-1007",
+      "prescriptionId": "RX-PAT-SS-1007-1",
+      "medicationName": "Amlodipine 5mg",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-10-09T08:45:00+00:00",
+      "status": "MISSED",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1007-15",
+      "patientId": "PAT-SS-1007",
+      "prescriptionId": "RX-PAT-SS-1007-1",
+      "medicationName": "Amlodipine 5mg",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-10-08T08:45:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1007-16",
+      "patientId": "PAT-SS-1007",
+      "prescriptionId": "RX-PAT-SS-1007-1",
+      "medicationName": "Amlodipine 5mg",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-10-07T08:45:00+00:00",
+      "status": "MISSED",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1007-17",
+      "patientId": "PAT-SS-1007",
+      "prescriptionId": "RX-PAT-SS-1007-1",
+      "medicationName": "Amlodipine 5mg",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-10-06T08:45:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1007-18",
+      "patientId": "PAT-SS-1007",
+      "prescriptionId": "RX-PAT-SS-1007-1",
+      "medicationName": "Amlodipine 5mg",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-10-05T08:45:00+00:00",
+      "status": "MISSED",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1007-19",
+      "patientId": "PAT-SS-1007",
+      "prescriptionId": "RX-PAT-SS-1007-1",
+      "medicationName": "Amlodipine 5mg",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-10-04T08:45:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1007-20",
+      "patientId": "PAT-SS-1007",
+      "prescriptionId": "RX-PAT-SS-1007-1",
+      "medicationName": "Amlodipine 5mg",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-10-03T08:45:00+00:00",
+      "status": "MISSED",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1007-21",
+      "patientId": "PAT-SS-1007",
+      "prescriptionId": "RX-PAT-SS-1007-1",
+      "medicationName": "Amlodipine 5mg",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-10-02T08:45:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1007-22",
+      "patientId": "PAT-SS-1007",
+      "prescriptionId": "RX-PAT-SS-1007-1",
+      "medicationName": "Amlodipine 5mg",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-10-01T08:45:00+00:00",
+      "status": "MISSED",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1007-23",
+      "patientId": "PAT-SS-1007",
+      "prescriptionId": "RX-PAT-SS-1007-1",
+      "medicationName": "Amlodipine 5mg",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-09-30T08:45:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1007-24",
+      "patientId": "PAT-SS-1007",
+      "prescriptionId": "RX-PAT-SS-1007-1",
+      "medicationName": "Amlodipine 5mg",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-09-29T08:45:00+00:00",
+      "status": "MISSED",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1007-25",
+      "patientId": "PAT-SS-1007",
+      "prescriptionId": "RX-PAT-SS-1007-1",
+      "medicationName": "Amlodipine 5mg",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-09-28T08:45:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1007-26",
+      "patientId": "PAT-SS-1007",
+      "prescriptionId": "RX-PAT-SS-1007-1",
+      "medicationName": "Amlodipine 5mg",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-09-27T08:45:00+00:00",
+      "status": "MISSED",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1007-27",
+      "patientId": "PAT-SS-1007",
+      "prescriptionId": "RX-PAT-SS-1007-1",
+      "medicationName": "Amlodipine 5mg",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-09-26T08:45:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1007-28",
+      "patientId": "PAT-SS-1007",
+      "prescriptionId": "RX-PAT-SS-1007-1",
+      "medicationName": "Amlodipine 5mg",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-09-25T08:45:00+00:00",
+      "status": "MISSED",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1007-29",
+      "patientId": "PAT-SS-1007",
+      "prescriptionId": "RX-PAT-SS-1007-1",
+      "medicationName": "Amlodipine 5mg",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-09-24T08:45:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1007-30",
+      "patientId": "PAT-SS-1007",
+      "prescriptionId": "RX-PAT-SS-1007-1",
+      "medicationName": "Amlodipine 5mg",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-09-23T08:45:00+00:00",
+      "status": "MISSED",
+      "synthetic": true
+    }
+  ],
+  "PAT-SS-1002": [
+    {
+      "doseId": "DOSE-1002-1",
+      "patientId": "PAT-SS-1002",
+      "prescriptionId": "RX-PAT-SS-1002-1",
+      "medicationName": "Maintenance Therapy",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-10-22T08:20:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1002-2",
+      "patientId": "PAT-SS-1002",
+      "prescriptionId": "RX-PAT-SS-1002-1",
+      "medicationName": "Maintenance Therapy",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-10-21T08:20:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1002-3",
+      "patientId": "PAT-SS-1002",
+      "prescriptionId": "RX-PAT-SS-1002-1",
+      "medicationName": "Maintenance Therapy",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-10-20T08:20:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1002-4",
+      "patientId": "PAT-SS-1002",
+      "prescriptionId": "RX-PAT-SS-1002-1",
+      "medicationName": "Maintenance Therapy",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-10-19T08:20:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1002-5",
+      "patientId": "PAT-SS-1002",
+      "prescriptionId": "RX-PAT-SS-1002-1",
+      "medicationName": "Maintenance Therapy",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-10-18T08:20:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1002-6",
+      "patientId": "PAT-SS-1002",
+      "prescriptionId": "RX-PAT-SS-1002-1",
+      "medicationName": "Maintenance Therapy",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-10-17T08:20:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1002-7",
+      "patientId": "PAT-SS-1002",
+      "prescriptionId": "RX-PAT-SS-1002-1",
+      "medicationName": "Maintenance Therapy",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-10-16T08:20:00+00:00",
+      "status": "MISSED",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1002-8",
+      "patientId": "PAT-SS-1002",
+      "prescriptionId": "RX-PAT-SS-1002-1",
+      "medicationName": "Maintenance Therapy",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-10-15T08:20:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1002-9",
+      "patientId": "PAT-SS-1002",
+      "prescriptionId": "RX-PAT-SS-1002-1",
+      "medicationName": "Maintenance Therapy",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-10-14T08:20:00+00:00",
+      "status": "MISSED",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1002-10",
+      "patientId": "PAT-SS-1002",
+      "prescriptionId": "RX-PAT-SS-1002-1",
+      "medicationName": "Maintenance Therapy",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-10-13T08:20:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1002-11",
+      "patientId": "PAT-SS-1002",
+      "prescriptionId": "RX-PAT-SS-1002-1",
+      "medicationName": "Maintenance Therapy",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-10-12T08:20:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1002-12",
+      "patientId": "PAT-SS-1002",
+      "prescriptionId": "RX-PAT-SS-1002-1",
+      "medicationName": "Maintenance Therapy",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-10-11T08:20:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1002-13",
+      "patientId": "PAT-SS-1002",
+      "prescriptionId": "RX-PAT-SS-1002-1",
+      "medicationName": "Maintenance Therapy",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-10-10T08:20:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1002-14",
+      "patientId": "PAT-SS-1002",
+      "prescriptionId": "RX-PAT-SS-1002-1",
+      "medicationName": "Maintenance Therapy",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-10-09T08:20:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1002-15",
+      "patientId": "PAT-SS-1002",
+      "prescriptionId": "RX-PAT-SS-1002-1",
+      "medicationName": "Maintenance Therapy",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-10-08T08:20:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1002-16",
+      "patientId": "PAT-SS-1002",
+      "prescriptionId": "RX-PAT-SS-1002-1",
+      "medicationName": "Maintenance Therapy",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-10-07T08:20:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1002-17",
+      "patientId": "PAT-SS-1002",
+      "prescriptionId": "RX-PAT-SS-1002-1",
+      "medicationName": "Maintenance Therapy",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-10-06T08:20:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1002-18",
+      "patientId": "PAT-SS-1002",
+      "prescriptionId": "RX-PAT-SS-1002-1",
+      "medicationName": "Maintenance Therapy",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-10-05T08:20:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1002-19",
+      "patientId": "PAT-SS-1002",
+      "prescriptionId": "RX-PAT-SS-1002-1",
+      "medicationName": "Maintenance Therapy",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-10-04T08:20:00+00:00",
+      "status": "MISSED",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1002-20",
+      "patientId": "PAT-SS-1002",
+      "prescriptionId": "RX-PAT-SS-1002-1",
+      "medicationName": "Maintenance Therapy",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-10-03T08:20:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1002-21",
+      "patientId": "PAT-SS-1002",
+      "prescriptionId": "RX-PAT-SS-1002-1",
+      "medicationName": "Maintenance Therapy",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-10-02T08:20:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1002-22",
+      "patientId": "PAT-SS-1002",
+      "prescriptionId": "RX-PAT-SS-1002-1",
+      "medicationName": "Maintenance Therapy",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-10-01T08:20:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1002-23",
+      "patientId": "PAT-SS-1002",
+      "prescriptionId": "RX-PAT-SS-1002-1",
+      "medicationName": "Maintenance Therapy",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-09-30T08:20:00+00:00",
+      "status": "MISSED",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1002-24",
+      "patientId": "PAT-SS-1002",
+      "prescriptionId": "RX-PAT-SS-1002-1",
+      "medicationName": "Maintenance Therapy",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-09-29T08:20:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1002-25",
+      "patientId": "PAT-SS-1002",
+      "prescriptionId": "RX-PAT-SS-1002-1",
+      "medicationName": "Maintenance Therapy",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-09-28T08:20:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1002-26",
+      "patientId": "PAT-SS-1002",
+      "prescriptionId": "RX-PAT-SS-1002-1",
+      "medicationName": "Maintenance Therapy",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-09-27T08:20:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1002-27",
+      "patientId": "PAT-SS-1002",
+      "prescriptionId": "RX-PAT-SS-1002-1",
+      "medicationName": "Maintenance Therapy",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-09-26T08:20:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1002-28",
+      "patientId": "PAT-SS-1002",
+      "prescriptionId": "RX-PAT-SS-1002-1",
+      "medicationName": "Maintenance Therapy",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-09-25T08:20:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1002-29",
+      "patientId": "PAT-SS-1002",
+      "prescriptionId": "RX-PAT-SS-1002-1",
+      "medicationName": "Maintenance Therapy",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-09-24T08:20:00+00:00",
+      "status": "MISSED",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1002-30",
+      "patientId": "PAT-SS-1002",
+      "prescriptionId": "RX-PAT-SS-1002-1",
+      "medicationName": "Maintenance Therapy",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-09-23T08:20:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    }
+  ],
+  "PAT-SS-1003": [
+    {
+      "doseId": "DOSE-1003-1",
+      "patientId": "PAT-SS-1003",
+      "prescriptionId": "RX-PAT-SS-1003-1",
+      "medicationName": "Maintenance Therapy",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-10-22T08:20:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1003-2",
+      "patientId": "PAT-SS-1003",
+      "prescriptionId": "RX-PAT-SS-1003-1",
+      "medicationName": "Maintenance Therapy",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-10-21T08:20:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1003-3",
+      "patientId": "PAT-SS-1003",
+      "prescriptionId": "RX-PAT-SS-1003-1",
+      "medicationName": "Maintenance Therapy",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-10-20T08:20:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1003-4",
+      "patientId": "PAT-SS-1003",
+      "prescriptionId": "RX-PAT-SS-1003-1",
+      "medicationName": "Maintenance Therapy",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-10-19T08:20:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1003-5",
+      "patientId": "PAT-SS-1003",
+      "prescriptionId": "RX-PAT-SS-1003-1",
+      "medicationName": "Maintenance Therapy",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-10-18T08:20:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1003-6",
+      "patientId": "PAT-SS-1003",
+      "prescriptionId": "RX-PAT-SS-1003-1",
+      "medicationName": "Maintenance Therapy",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-10-17T08:20:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1003-7",
+      "patientId": "PAT-SS-1003",
+      "prescriptionId": "RX-PAT-SS-1003-1",
+      "medicationName": "Maintenance Therapy",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-10-16T08:20:00+00:00",
+      "status": "MISSED",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1003-8",
+      "patientId": "PAT-SS-1003",
+      "prescriptionId": "RX-PAT-SS-1003-1",
+      "medicationName": "Maintenance Therapy",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-10-15T08:20:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1003-9",
+      "patientId": "PAT-SS-1003",
+      "prescriptionId": "RX-PAT-SS-1003-1",
+      "medicationName": "Maintenance Therapy",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-10-14T08:20:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1003-10",
+      "patientId": "PAT-SS-1003",
+      "prescriptionId": "RX-PAT-SS-1003-1",
+      "medicationName": "Maintenance Therapy",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-10-13T08:20:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1003-11",
+      "patientId": "PAT-SS-1003",
+      "prescriptionId": "RX-PAT-SS-1003-1",
+      "medicationName": "Maintenance Therapy",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-10-12T08:20:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1003-12",
+      "patientId": "PAT-SS-1003",
+      "prescriptionId": "RX-PAT-SS-1003-1",
+      "medicationName": "Maintenance Therapy",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-10-11T08:20:00+00:00",
+      "status": "MISSED",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1003-13",
+      "patientId": "PAT-SS-1003",
+      "prescriptionId": "RX-PAT-SS-1003-1",
+      "medicationName": "Maintenance Therapy",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-10-10T08:20:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1003-14",
+      "patientId": "PAT-SS-1003",
+      "prescriptionId": "RX-PAT-SS-1003-1",
+      "medicationName": "Maintenance Therapy",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-10-09T08:20:00+00:00",
+      "status": "MISSED",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1003-15",
+      "patientId": "PAT-SS-1003",
+      "prescriptionId": "RX-PAT-SS-1003-1",
+      "medicationName": "Maintenance Therapy",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-10-08T08:20:00+00:00",
+      "status": "MISSED",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1003-16",
+      "patientId": "PAT-SS-1003",
+      "prescriptionId": "RX-PAT-SS-1003-1",
+      "medicationName": "Maintenance Therapy",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-10-07T08:20:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1003-17",
+      "patientId": "PAT-SS-1003",
+      "prescriptionId": "RX-PAT-SS-1003-1",
+      "medicationName": "Maintenance Therapy",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-10-06T08:20:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1003-18",
+      "patientId": "PAT-SS-1003",
+      "prescriptionId": "RX-PAT-SS-1003-1",
+      "medicationName": "Maintenance Therapy",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-10-05T08:20:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1003-19",
+      "patientId": "PAT-SS-1003",
+      "prescriptionId": "RX-PAT-SS-1003-1",
+      "medicationName": "Maintenance Therapy",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-10-04T08:20:00+00:00",
+      "status": "MISSED",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1003-20",
+      "patientId": "PAT-SS-1003",
+      "prescriptionId": "RX-PAT-SS-1003-1",
+      "medicationName": "Maintenance Therapy",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-10-03T08:20:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1003-21",
+      "patientId": "PAT-SS-1003",
+      "prescriptionId": "RX-PAT-SS-1003-1",
+      "medicationName": "Maintenance Therapy",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-10-02T08:20:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1003-22",
+      "patientId": "PAT-SS-1003",
+      "prescriptionId": "RX-PAT-SS-1003-1",
+      "medicationName": "Maintenance Therapy",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-10-01T08:20:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1003-23",
+      "patientId": "PAT-SS-1003",
+      "prescriptionId": "RX-PAT-SS-1003-1",
+      "medicationName": "Maintenance Therapy",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-09-30T08:20:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1003-24",
+      "patientId": "PAT-SS-1003",
+      "prescriptionId": "RX-PAT-SS-1003-1",
+      "medicationName": "Maintenance Therapy",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-09-29T08:20:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1003-25",
+      "patientId": "PAT-SS-1003",
+      "prescriptionId": "RX-PAT-SS-1003-1",
+      "medicationName": "Maintenance Therapy",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-09-28T08:20:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1003-26",
+      "patientId": "PAT-SS-1003",
+      "prescriptionId": "RX-PAT-SS-1003-1",
+      "medicationName": "Maintenance Therapy",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-09-27T08:20:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1003-27",
+      "patientId": "PAT-SS-1003",
+      "prescriptionId": "RX-PAT-SS-1003-1",
+      "medicationName": "Maintenance Therapy",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-09-26T08:20:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1003-28",
+      "patientId": "PAT-SS-1003",
+      "prescriptionId": "RX-PAT-SS-1003-1",
+      "medicationName": "Maintenance Therapy",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-09-25T08:20:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1003-29",
+      "patientId": "PAT-SS-1003",
+      "prescriptionId": "RX-PAT-SS-1003-1",
+      "medicationName": "Maintenance Therapy",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-09-24T08:20:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1003-30",
+      "patientId": "PAT-SS-1003",
+      "prescriptionId": "RX-PAT-SS-1003-1",
+      "medicationName": "Maintenance Therapy",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-09-23T08:20:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    }
+  ],
+  "PAT-SS-1004": [
+    {
+      "doseId": "DOSE-1004-1",
+      "patientId": "PAT-SS-1004",
+      "prescriptionId": "RX-PAT-SS-1004-1",
+      "medicationName": "Maintenance Therapy",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-10-22T08:20:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1004-2",
+      "patientId": "PAT-SS-1004",
+      "prescriptionId": "RX-PAT-SS-1004-1",
+      "medicationName": "Maintenance Therapy",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-10-21T08:20:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1004-3",
+      "patientId": "PAT-SS-1004",
+      "prescriptionId": "RX-PAT-SS-1004-1",
+      "medicationName": "Maintenance Therapy",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-10-20T08:20:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1004-4",
+      "patientId": "PAT-SS-1004",
+      "prescriptionId": "RX-PAT-SS-1004-1",
+      "medicationName": "Maintenance Therapy",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-10-19T08:20:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1004-5",
+      "patientId": "PAT-SS-1004",
+      "prescriptionId": "RX-PAT-SS-1004-1",
+      "medicationName": "Maintenance Therapy",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-10-18T08:20:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1004-6",
+      "patientId": "PAT-SS-1004",
+      "prescriptionId": "RX-PAT-SS-1004-1",
+      "medicationName": "Maintenance Therapy",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-10-17T08:20:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1004-7",
+      "patientId": "PAT-SS-1004",
+      "prescriptionId": "RX-PAT-SS-1004-1",
+      "medicationName": "Maintenance Therapy",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-10-16T08:20:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1004-8",
+      "patientId": "PAT-SS-1004",
+      "prescriptionId": "RX-PAT-SS-1004-1",
+      "medicationName": "Maintenance Therapy",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-10-15T08:20:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1004-9",
+      "patientId": "PAT-SS-1004",
+      "prescriptionId": "RX-PAT-SS-1004-1",
+      "medicationName": "Maintenance Therapy",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-10-14T08:20:00+00:00",
+      "status": "MISSED",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1004-10",
+      "patientId": "PAT-SS-1004",
+      "prescriptionId": "RX-PAT-SS-1004-1",
+      "medicationName": "Maintenance Therapy",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-10-13T08:20:00+00:00",
+      "status": "MISSED",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1004-11",
+      "patientId": "PAT-SS-1004",
+      "prescriptionId": "RX-PAT-SS-1004-1",
+      "medicationName": "Maintenance Therapy",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-10-12T08:20:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1004-12",
+      "patientId": "PAT-SS-1004",
+      "prescriptionId": "RX-PAT-SS-1004-1",
+      "medicationName": "Maintenance Therapy",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-10-11T08:20:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1004-13",
+      "patientId": "PAT-SS-1004",
+      "prescriptionId": "RX-PAT-SS-1004-1",
+      "medicationName": "Maintenance Therapy",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-10-10T08:20:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1004-14",
+      "patientId": "PAT-SS-1004",
+      "prescriptionId": "RX-PAT-SS-1004-1",
+      "medicationName": "Maintenance Therapy",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-10-09T08:20:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1004-15",
+      "patientId": "PAT-SS-1004",
+      "prescriptionId": "RX-PAT-SS-1004-1",
+      "medicationName": "Maintenance Therapy",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-10-08T08:20:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1004-16",
+      "patientId": "PAT-SS-1004",
+      "prescriptionId": "RX-PAT-SS-1004-1",
+      "medicationName": "Maintenance Therapy",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-10-07T08:20:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1004-17",
+      "patientId": "PAT-SS-1004",
+      "prescriptionId": "RX-PAT-SS-1004-1",
+      "medicationName": "Maintenance Therapy",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-10-06T08:20:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1004-18",
+      "patientId": "PAT-SS-1004",
+      "prescriptionId": "RX-PAT-SS-1004-1",
+      "medicationName": "Maintenance Therapy",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-10-05T08:20:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1004-19",
+      "patientId": "PAT-SS-1004",
+      "prescriptionId": "RX-PAT-SS-1004-1",
+      "medicationName": "Maintenance Therapy",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-10-04T08:20:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1004-20",
+      "patientId": "PAT-SS-1004",
+      "prescriptionId": "RX-PAT-SS-1004-1",
+      "medicationName": "Maintenance Therapy",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-10-03T08:20:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1004-21",
+      "patientId": "PAT-SS-1004",
+      "prescriptionId": "RX-PAT-SS-1004-1",
+      "medicationName": "Maintenance Therapy",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-10-02T08:20:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1004-22",
+      "patientId": "PAT-SS-1004",
+      "prescriptionId": "RX-PAT-SS-1004-1",
+      "medicationName": "Maintenance Therapy",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-10-01T08:20:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1004-23",
+      "patientId": "PAT-SS-1004",
+      "prescriptionId": "RX-PAT-SS-1004-1",
+      "medicationName": "Maintenance Therapy",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-09-30T08:20:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1004-24",
+      "patientId": "PAT-SS-1004",
+      "prescriptionId": "RX-PAT-SS-1004-1",
+      "medicationName": "Maintenance Therapy",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-09-29T08:20:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1004-25",
+      "patientId": "PAT-SS-1004",
+      "prescriptionId": "RX-PAT-SS-1004-1",
+      "medicationName": "Maintenance Therapy",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-09-28T08:20:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1004-26",
+      "patientId": "PAT-SS-1004",
+      "prescriptionId": "RX-PAT-SS-1004-1",
+      "medicationName": "Maintenance Therapy",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-09-27T08:20:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1004-27",
+      "patientId": "PAT-SS-1004",
+      "prescriptionId": "RX-PAT-SS-1004-1",
+      "medicationName": "Maintenance Therapy",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-09-26T08:20:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1004-28",
+      "patientId": "PAT-SS-1004",
+      "prescriptionId": "RX-PAT-SS-1004-1",
+      "medicationName": "Maintenance Therapy",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-09-25T08:20:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1004-29",
+      "patientId": "PAT-SS-1004",
+      "prescriptionId": "RX-PAT-SS-1004-1",
+      "medicationName": "Maintenance Therapy",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-09-24T08:20:00+00:00",
+      "status": "MISSED",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1004-30",
+      "patientId": "PAT-SS-1004",
+      "prescriptionId": "RX-PAT-SS-1004-1",
+      "medicationName": "Maintenance Therapy",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-09-23T08:20:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    }
+  ],
+  "PAT-SS-1005": [
+    {
+      "doseId": "DOSE-1005-1",
+      "patientId": "PAT-SS-1005",
+      "prescriptionId": "RX-PAT-SS-1005-1",
+      "medicationName": "Maintenance Therapy",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-10-22T08:20:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1005-2",
+      "patientId": "PAT-SS-1005",
+      "prescriptionId": "RX-PAT-SS-1005-1",
+      "medicationName": "Maintenance Therapy",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-10-21T08:20:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1005-3",
+      "patientId": "PAT-SS-1005",
+      "prescriptionId": "RX-PAT-SS-1005-1",
+      "medicationName": "Maintenance Therapy",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-10-20T08:20:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1005-4",
+      "patientId": "PAT-SS-1005",
+      "prescriptionId": "RX-PAT-SS-1005-1",
+      "medicationName": "Maintenance Therapy",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-10-19T08:20:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1005-5",
+      "patientId": "PAT-SS-1005",
+      "prescriptionId": "RX-PAT-SS-1005-1",
+      "medicationName": "Maintenance Therapy",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-10-18T08:20:00+00:00",
+      "status": "MISSED",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1005-6",
+      "patientId": "PAT-SS-1005",
+      "prescriptionId": "RX-PAT-SS-1005-1",
+      "medicationName": "Maintenance Therapy",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-10-17T08:20:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1005-7",
+      "patientId": "PAT-SS-1005",
+      "prescriptionId": "RX-PAT-SS-1005-1",
+      "medicationName": "Maintenance Therapy",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-10-16T08:20:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1005-8",
+      "patientId": "PAT-SS-1005",
+      "prescriptionId": "RX-PAT-SS-1005-1",
+      "medicationName": "Maintenance Therapy",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-10-15T08:20:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1005-9",
+      "patientId": "PAT-SS-1005",
+      "prescriptionId": "RX-PAT-SS-1005-1",
+      "medicationName": "Maintenance Therapy",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-10-14T08:20:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1005-10",
+      "patientId": "PAT-SS-1005",
+      "prescriptionId": "RX-PAT-SS-1005-1",
+      "medicationName": "Maintenance Therapy",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-10-13T08:20:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1005-11",
+      "patientId": "PAT-SS-1005",
+      "prescriptionId": "RX-PAT-SS-1005-1",
+      "medicationName": "Maintenance Therapy",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-10-12T08:20:00+00:00",
+      "status": "MISSED",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1005-12",
+      "patientId": "PAT-SS-1005",
+      "prescriptionId": "RX-PAT-SS-1005-1",
+      "medicationName": "Maintenance Therapy",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-10-11T08:20:00+00:00",
+      "status": "MISSED",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1005-13",
+      "patientId": "PAT-SS-1005",
+      "prescriptionId": "RX-PAT-SS-1005-1",
+      "medicationName": "Maintenance Therapy",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-10-10T08:20:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1005-14",
+      "patientId": "PAT-SS-1005",
+      "prescriptionId": "RX-PAT-SS-1005-1",
+      "medicationName": "Maintenance Therapy",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-10-09T08:20:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1005-15",
+      "patientId": "PAT-SS-1005",
+      "prescriptionId": "RX-PAT-SS-1005-1",
+      "medicationName": "Maintenance Therapy",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-10-08T08:20:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1005-16",
+      "patientId": "PAT-SS-1005",
+      "prescriptionId": "RX-PAT-SS-1005-1",
+      "medicationName": "Maintenance Therapy",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-10-07T08:20:00+00:00",
+      "status": "MISSED",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1005-17",
+      "patientId": "PAT-SS-1005",
+      "prescriptionId": "RX-PAT-SS-1005-1",
+      "medicationName": "Maintenance Therapy",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-10-06T08:20:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1005-18",
+      "patientId": "PAT-SS-1005",
+      "prescriptionId": "RX-PAT-SS-1005-1",
+      "medicationName": "Maintenance Therapy",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-10-05T08:20:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1005-19",
+      "patientId": "PAT-SS-1005",
+      "prescriptionId": "RX-PAT-SS-1005-1",
+      "medicationName": "Maintenance Therapy",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-10-04T08:20:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1005-20",
+      "patientId": "PAT-SS-1005",
+      "prescriptionId": "RX-PAT-SS-1005-1",
+      "medicationName": "Maintenance Therapy",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-10-03T08:20:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1005-21",
+      "patientId": "PAT-SS-1005",
+      "prescriptionId": "RX-PAT-SS-1005-1",
+      "medicationName": "Maintenance Therapy",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-10-02T08:20:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1005-22",
+      "patientId": "PAT-SS-1005",
+      "prescriptionId": "RX-PAT-SS-1005-1",
+      "medicationName": "Maintenance Therapy",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-10-01T08:20:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1005-23",
+      "patientId": "PAT-SS-1005",
+      "prescriptionId": "RX-PAT-SS-1005-1",
+      "medicationName": "Maintenance Therapy",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-09-30T08:20:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1005-24",
+      "patientId": "PAT-SS-1005",
+      "prescriptionId": "RX-PAT-SS-1005-1",
+      "medicationName": "Maintenance Therapy",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-09-29T08:20:00+00:00",
+      "status": "MISSED",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1005-25",
+      "patientId": "PAT-SS-1005",
+      "prescriptionId": "RX-PAT-SS-1005-1",
+      "medicationName": "Maintenance Therapy",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-09-28T08:20:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1005-26",
+      "patientId": "PAT-SS-1005",
+      "prescriptionId": "RX-PAT-SS-1005-1",
+      "medicationName": "Maintenance Therapy",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-09-27T08:20:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1005-27",
+      "patientId": "PAT-SS-1005",
+      "prescriptionId": "RX-PAT-SS-1005-1",
+      "medicationName": "Maintenance Therapy",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-09-26T08:20:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1005-28",
+      "patientId": "PAT-SS-1005",
+      "prescriptionId": "RX-PAT-SS-1005-1",
+      "medicationName": "Maintenance Therapy",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-09-25T08:20:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1005-29",
+      "patientId": "PAT-SS-1005",
+      "prescriptionId": "RX-PAT-SS-1005-1",
+      "medicationName": "Maintenance Therapy",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-09-24T08:20:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1005-30",
+      "patientId": "PAT-SS-1005",
+      "prescriptionId": "RX-PAT-SS-1005-1",
+      "medicationName": "Maintenance Therapy",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-09-23T08:20:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    }
+  ],
+  "PAT-SS-1009": [
+    {
+      "doseId": "DOSE-1009-1",
+      "patientId": "PAT-SS-1009",
+      "prescriptionId": "RX-PAT-SS-1009-1",
+      "medicationName": "Maintenance Therapy",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-10-22T08:20:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1009-2",
+      "patientId": "PAT-SS-1009",
+      "prescriptionId": "RX-PAT-SS-1009-1",
+      "medicationName": "Maintenance Therapy",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-10-21T08:20:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1009-3",
+      "patientId": "PAT-SS-1009",
+      "prescriptionId": "RX-PAT-SS-1009-1",
+      "medicationName": "Maintenance Therapy",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-10-20T08:20:00+00:00",
+      "status": "MISSED",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1009-4",
+      "patientId": "PAT-SS-1009",
+      "prescriptionId": "RX-PAT-SS-1009-1",
+      "medicationName": "Maintenance Therapy",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-10-19T08:20:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1009-5",
+      "patientId": "PAT-SS-1009",
+      "prescriptionId": "RX-PAT-SS-1009-1",
+      "medicationName": "Maintenance Therapy",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-10-18T08:20:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1009-6",
+      "patientId": "PAT-SS-1009",
+      "prescriptionId": "RX-PAT-SS-1009-1",
+      "medicationName": "Maintenance Therapy",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-10-17T08:20:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1009-7",
+      "patientId": "PAT-SS-1009",
+      "prescriptionId": "RX-PAT-SS-1009-1",
+      "medicationName": "Maintenance Therapy",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-10-16T08:20:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1009-8",
+      "patientId": "PAT-SS-1009",
+      "prescriptionId": "RX-PAT-SS-1009-1",
+      "medicationName": "Maintenance Therapy",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-10-15T08:20:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1009-9",
+      "patientId": "PAT-SS-1009",
+      "prescriptionId": "RX-PAT-SS-1009-1",
+      "medicationName": "Maintenance Therapy",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-10-14T08:20:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1009-10",
+      "patientId": "PAT-SS-1009",
+      "prescriptionId": "RX-PAT-SS-1009-1",
+      "medicationName": "Maintenance Therapy",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-10-13T08:20:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1009-11",
+      "patientId": "PAT-SS-1009",
+      "prescriptionId": "RX-PAT-SS-1009-1",
+      "medicationName": "Maintenance Therapy",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-10-12T08:20:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1009-12",
+      "patientId": "PAT-SS-1009",
+      "prescriptionId": "RX-PAT-SS-1009-1",
+      "medicationName": "Maintenance Therapy",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-10-11T08:20:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1009-13",
+      "patientId": "PAT-SS-1009",
+      "prescriptionId": "RX-PAT-SS-1009-1",
+      "medicationName": "Maintenance Therapy",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-10-10T08:20:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1009-14",
+      "patientId": "PAT-SS-1009",
+      "prescriptionId": "RX-PAT-SS-1009-1",
+      "medicationName": "Maintenance Therapy",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-10-09T08:20:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1009-15",
+      "patientId": "PAT-SS-1009",
+      "prescriptionId": "RX-PAT-SS-1009-1",
+      "medicationName": "Maintenance Therapy",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-10-08T08:20:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1009-16",
+      "patientId": "PAT-SS-1009",
+      "prescriptionId": "RX-PAT-SS-1009-1",
+      "medicationName": "Maintenance Therapy",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-10-07T08:20:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1009-17",
+      "patientId": "PAT-SS-1009",
+      "prescriptionId": "RX-PAT-SS-1009-1",
+      "medicationName": "Maintenance Therapy",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-10-06T08:20:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1009-18",
+      "patientId": "PAT-SS-1009",
+      "prescriptionId": "RX-PAT-SS-1009-1",
+      "medicationName": "Maintenance Therapy",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-10-05T08:20:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1009-19",
+      "patientId": "PAT-SS-1009",
+      "prescriptionId": "RX-PAT-SS-1009-1",
+      "medicationName": "Maintenance Therapy",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-10-04T08:20:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1009-20",
+      "patientId": "PAT-SS-1009",
+      "prescriptionId": "RX-PAT-SS-1009-1",
+      "medicationName": "Maintenance Therapy",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-10-03T08:20:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1009-21",
+      "patientId": "PAT-SS-1009",
+      "prescriptionId": "RX-PAT-SS-1009-1",
+      "medicationName": "Maintenance Therapy",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-10-02T08:20:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1009-22",
+      "patientId": "PAT-SS-1009",
+      "prescriptionId": "RX-PAT-SS-1009-1",
+      "medicationName": "Maintenance Therapy",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-10-01T08:20:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1009-23",
+      "patientId": "PAT-SS-1009",
+      "prescriptionId": "RX-PAT-SS-1009-1",
+      "medicationName": "Maintenance Therapy",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-09-30T08:20:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1009-24",
+      "patientId": "PAT-SS-1009",
+      "prescriptionId": "RX-PAT-SS-1009-1",
+      "medicationName": "Maintenance Therapy",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-09-29T08:20:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1009-25",
+      "patientId": "PAT-SS-1009",
+      "prescriptionId": "RX-PAT-SS-1009-1",
+      "medicationName": "Maintenance Therapy",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-09-28T08:20:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1009-26",
+      "patientId": "PAT-SS-1009",
+      "prescriptionId": "RX-PAT-SS-1009-1",
+      "medicationName": "Maintenance Therapy",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-09-27T08:20:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1009-27",
+      "patientId": "PAT-SS-1009",
+      "prescriptionId": "RX-PAT-SS-1009-1",
+      "medicationName": "Maintenance Therapy",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-09-26T08:20:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1009-28",
+      "patientId": "PAT-SS-1009",
+      "prescriptionId": "RX-PAT-SS-1009-1",
+      "medicationName": "Maintenance Therapy",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-09-25T08:20:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1009-29",
+      "patientId": "PAT-SS-1009",
+      "prescriptionId": "RX-PAT-SS-1009-1",
+      "medicationName": "Maintenance Therapy",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-09-24T08:20:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    },
+    {
+      "doseId": "DOSE-1009-30",
+      "patientId": "PAT-SS-1009",
+      "prescriptionId": "RX-PAT-SS-1009-1",
+      "medicationName": "Maintenance Therapy",
+      "scheduledTime": "08:00",
+      "timestamp": "2026-09-23T08:20:00+00:00",
+      "status": "TAKEN",
+      "synthetic": true
+    }
+  ]
+}

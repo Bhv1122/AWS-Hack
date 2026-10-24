@@ -1,0 +1,850 @@
+{
+  "PAT-SS-1001": [
+    {
+      "prescriptionId": "RX-WAR-1001",
+      "patientId": "PAT-SS-1001",
+      "medicationName": "Warfarin 5mg",
+      "genericName": "Warfarin",
+      "dosage": "5 mg",
+      "frequency": "Night (20:00)",
+      "status": "ACTIVE",
+      "prescribedBy": "DOC-IN-8841",
+      "doctorName": "Dr. Ananya Sharma, MD",
+      "startDate": "2025-12-27",
+      "notes": "Oral anticoagulant therapy for DVT maintenance. Monitor routine INR (target 2.0-3.0).",
+      "versionHistory": [
+        {
+          "version": 1,
+          "dosage": "5 mg",
+          "timestamp": "2025-12-27T10:00:00+00:00",
+          "doctor": "Dr. Prasant Mohanty"
+        },
+        {
+          "version": 2,
+          "dosage": "5 mg",
+          "timestamp": "2026-07-25T10:00:00+00:00",
+          "doctor": "Dr. Ananya Sharma"
+        }
+      ],
+      "synthetic": true
+    },
+    {
+      "prescriptionId": "RX-MET-1002",
+      "patientId": "PAT-SS-1001",
+      "medicationName": "Metformin 500mg",
+      "genericName": "Metformin",
+      "dosage": "500 mg",
+      "frequency": "Twice daily (08:00, 20:00)",
+      "status": "ACTIVE",
+      "prescribedBy": "DOC-IN-8841",
+      "doctorName": "Dr. Rajesh Verma, MD",
+      "startDate": "2026-01-26",
+      "notes": "Oral antihyperglycemic for T2DM control.",
+      "versionHistory": [
+        {
+          "version": 1,
+          "dosage": "500 mg",
+          "timestamp": "2026-01-26T10:00:00+00:00",
+          "doctor": "Dr. Rajesh Verma"
+        }
+      ],
+      "synthetic": true
+    },
+    {
+      "prescriptionId": "RX-ATOR-1003",
+      "patientId": "PAT-SS-1001",
+      "medicationName": "Atorvastatin 20mg",
+      "genericName": "Atorvastatin",
+      "dosage": "20 mg",
+      "frequency": "Night (20:00)",
+      "status": "ACTIVE",
+      "prescribedBy": "DOC-IN-8841",
+      "doctorName": "Dr. Ananya Sharma, MD",
+      "startDate": "2026-07-25",
+      "notes": "Lipid-lowering HMG-CoA reductase inhibitor for secondary cardiovascular prevention.",
+      "versionHistory": [
+        {
+          "version": 1,
+          "dosage": "20 mg",
+          "timestamp": "2026-07-25T10:00:00+00:00",
+          "doctor": "Dr. Ananya Sharma"
+        }
+      ],
+      "synthetic": true
+    },
+    {
+      "prescriptionId": "RX-LIS-1004",
+      "patientId": "PAT-SS-1001",
+      "medicationName": "Lisinopril 5mg",
+      "genericName": "Lisinopril",
+      "dosage": "5 mg",
+      "frequency": "Morning (08:00)",
+      "status": "DISCONTINUED",
+      "prescribedBy": "DOC-IN-8841",
+      "doctorName": "Dr. Sarah Jenkins, MD",
+      "startDate": "2026-01-16",
+      "endDate": "2026-04-26",
+      "discontinueReason": "Patient developed persistent dry bradykinin cough. Discontinued per clinical review.",
+      "synthetic": true
+    }
+  ],
+  "PAT-SS-1003": [
+    {
+      "prescriptionId": "RX-PAT3-01",
+      "patientId": "PAT-SS-1003",
+      "medicationName": "Diclofenac 50mg Tablet",
+      "genericName": "Diclofenac",
+      "dosage": "50 mg",
+      "frequency": "Twice daily",
+      "status": "ACTIVE",
+      "prescribedBy": "DOC-IN-8841",
+      "doctorName": "Dr. Ananya Sharma, MD",
+      "startDate": "2026-08-24",
+      "notes": "NSAID for acute knee osteoarthritis flare.",
+      "synthetic": true
+    },
+    {
+      "prescriptionId": "RX-PAT3-02",
+      "patientId": "PAT-SS-1003",
+      "medicationName": "Ibuprofen 400mg Tablet",
+      "genericName": "Ibuprofen",
+      "dosage": "400 mg",
+      "frequency": "SOS / Thrice daily",
+      "status": "ACTIVE",
+      "prescribedBy": "DOC-202",
+      "doctorName": "Dr. Rajesh Verma, MD",
+      "startDate": "2026-09-08",
+      "notes": "Analgesic for lumbar muscular strain. DUPLICATE NSAID with Diclofenac.",
+      "synthetic": true
+    },
+    {
+      "prescriptionId": "RX-PAT3-03",
+      "patientId": "PAT-SS-1003",
+      "medicationName": "Ramipril 5mg Tablet",
+      "genericName": "Ramipril",
+      "dosage": "5 mg",
+      "frequency": "Morning (08:00)",
+      "status": "ACTIVE",
+      "prescribedBy": "DOC-IN-8841",
+      "doctorName": "Dr. Ananya Sharma, MD",
+      "startDate": "2026-06-25",
+      "notes": "ACE-Inhibitor for blood pressure management.",
+      "synthetic": true
+    },
+    {
+      "prescriptionId": "RX-PAT3-04",
+      "patientId": "PAT-SS-1003",
+      "medicationName": "Telmisartan 40mg Tablet",
+      "genericName": "Telmisartan",
+      "dosage": "40 mg",
+      "frequency": "Night (20:00)",
+      "status": "ACTIVE",
+      "prescribedBy": "DOC-202",
+      "doctorName": "Dr. Rajesh Verma, MD",
+      "startDate": "2026-09-23",
+      "notes": "ARB prescribed by secondary clinic. DUPLICATE RENIN-ANGIOTENSIN BLOCKADE with Ramipril.",
+      "synthetic": true
+    },
+    {
+      "prescriptionId": "RX-PAT3-05",
+      "patientId": "PAT-SS-1003",
+      "medicationName": "Pantoprazole 40mg Tablet",
+      "genericName": "Pantoprazole",
+      "dosage": "40 mg",
+      "frequency": "Morning (08:00 before food)",
+      "status": "ACTIVE",
+      "prescribedBy": "DOC-IN-8841",
+      "doctorName": "Dr. Ananya Sharma, MD",
+      "startDate": "2026-08-24",
+      "notes": "Gastroprotective proton-pump inhibitor.",
+      "synthetic": true
+    },
+    {
+      "prescriptionId": "RX-PAT3-06",
+      "patientId": "PAT-SS-1003",
+      "medicationName": "Paracetamol 650mg Tablet",
+      "genericName": "Paracetamol",
+      "dosage": "650 mg",
+      "frequency": "SOS",
+      "status": "ACTIVE",
+      "prescribedBy": "DOC-IN-8841",
+      "doctorName": "Dr. Ananya Sharma, MD",
+      "startDate": "2026-10-08",
+      "notes": "Pain relief SOS.",
+      "synthetic": true
+    }
+  ],
+  "PAT-SS-1004": [
+    {
+      "prescriptionId": "RX-PAT-SS-1004-1",
+      "patientId": "PAT-SS-1004",
+      "medicationName": "Iron & Folic Acid Tablet",
+      "genericName": "Ferrous Ascorbate",
+      "dosage": "100 mg",
+      "frequency": "Afternoon",
+      "status": "ACTIVE",
+      "prescribedBy": "DOC-IN-8841",
+      "doctorName": "Dr. Ananya Sharma, MD",
+      "startDate": "2026-07-28",
+      "notes": "Routine maintenance therapy.",
+      "synthetic": true
+    },
+    {
+      "prescriptionId": "RX-PAT-SS-1004-2",
+      "patientId": "PAT-SS-1004",
+      "medicationName": "Amlodipine 5mg",
+      "genericName": "Amlodipine",
+      "dosage": "5 mg",
+      "frequency": "Morning",
+      "status": "ACTIVE",
+      "prescribedBy": "DOC-IN-8841",
+      "doctorName": "Dr. Ananya Sharma, MD",
+      "startDate": "2026-09-11",
+      "notes": "Routine maintenance therapy.",
+      "synthetic": true
+    }
+  ],
+  "PAT-SS-1005": [
+    {
+      "prescriptionId": "RX-PAT-SS-1005-1",
+      "patientId": "PAT-SS-1005",
+      "medicationName": "Iron & Folic Acid Tablet",
+      "genericName": "Ferrous Ascorbate",
+      "dosage": "100 mg",
+      "frequency": "Afternoon",
+      "status": "ACTIVE",
+      "prescribedBy": "DOC-IN-8841",
+      "doctorName": "Dr. Ananya Sharma, MD",
+      "startDate": "2026-08-22",
+      "notes": "Routine maintenance therapy.",
+      "synthetic": true
+    },
+    {
+      "prescriptionId": "RX-PAT-SS-1005-2",
+      "patientId": "PAT-SS-1005",
+      "medicationName": "Salbutamol Inhaler 100mcg",
+      "genericName": "Salbutamol",
+      "dosage": "2 puffs",
+      "frequency": "SOS",
+      "status": "ACTIVE",
+      "prescribedBy": "DOC-IN-8841",
+      "doctorName": "Dr. Ananya Sharma, MD",
+      "startDate": "2026-09-17",
+      "notes": "Routine maintenance therapy.",
+      "synthetic": true
+    }
+  ],
+  "PAT-SS-1006": [
+    {
+      "prescriptionId": "RX-PAT-SS-1006-1",
+      "patientId": "PAT-SS-1006",
+      "medicationName": "Omeprazole 20mg",
+      "genericName": "Omeprazole",
+      "dosage": "20 mg",
+      "frequency": "Morning",
+      "status": "ACTIVE",
+      "prescribedBy": "DOC-IN-8841",
+      "doctorName": "Dr. Ananya Sharma, MD",
+      "startDate": "2026-08-30",
+      "notes": "Routine maintenance therapy.",
+      "synthetic": true
+    },
+    {
+      "prescriptionId": "RX-PAT-SS-1006-2",
+      "patientId": "PAT-SS-1006",
+      "medicationName": "Amlodipine 5mg",
+      "genericName": "Amlodipine",
+      "dosage": "5 mg",
+      "frequency": "Morning",
+      "status": "ACTIVE",
+      "prescribedBy": "DOC-IN-8841",
+      "doctorName": "Dr. Ananya Sharma, MD",
+      "startDate": "2026-09-25",
+      "notes": "Routine maintenance therapy.",
+      "synthetic": true
+    },
+    {
+      "prescriptionId": "RX-PAT-SS-1006-3",
+      "patientId": "PAT-SS-1006",
+      "medicationName": "Metoprolol Succinate 25mg",
+      "genericName": "Metoprolol",
+      "dosage": "25 mg",
+      "frequency": "Morning",
+      "status": "ACTIVE",
+      "prescribedBy": "DOC-IN-8841",
+      "doctorName": "Dr. Ananya Sharma, MD",
+      "startDate": "2026-07-26",
+      "notes": "Routine maintenance therapy.",
+      "synthetic": true
+    }
+  ],
+  "PAT-SS-1007": [
+    {
+      "prescriptionId": "RX-PAT-SS-1007-1",
+      "patientId": "PAT-SS-1007",
+      "medicationName": "Salbutamol Inhaler 100mcg",
+      "genericName": "Salbutamol",
+      "dosage": "2 puffs",
+      "frequency": "SOS",
+      "status": "ACTIVE",
+      "prescribedBy": "DOC-IN-8841",
+      "doctorName": "Dr. Ananya Sharma, MD",
+      "startDate": "2026-07-27",
+      "notes": "Routine maintenance therapy.",
+      "synthetic": true
+    }
+  ],
+  "PAT-SS-1008": [],
+  "PAT-SS-1009": [
+    {
+      "prescriptionId": "RX-PAT-SS-1009-1",
+      "patientId": "PAT-SS-1009",
+      "medicationName": "Cetirizine 10mg",
+      "genericName": "Cetirizine",
+      "dosage": "10 mg",
+      "frequency": "Night",
+      "status": "ACTIVE",
+      "prescribedBy": "DOC-IN-8841",
+      "doctorName": "Dr. Ananya Sharma, MD",
+      "startDate": "2026-09-29",
+      "notes": "Routine maintenance therapy.",
+      "synthetic": true
+    },
+    {
+      "prescriptionId": "RX-PAT-SS-1009-2",
+      "patientId": "PAT-SS-1009",
+      "medicationName": "Iron & Folic Acid Tablet",
+      "genericName": "Ferrous Ascorbate",
+      "dosage": "100 mg",
+      "frequency": "Afternoon",
+      "status": "ACTIVE",
+      "prescribedBy": "DOC-IN-8841",
+      "doctorName": "Dr. Ananya Sharma, MD",
+      "startDate": "2026-07-25",
+      "notes": "Routine maintenance therapy.",
+      "synthetic": true
+    },
+    {
+      "prescriptionId": "RX-PAT-SS-1009-3",
+      "patientId": "PAT-SS-1009",
+      "medicationName": "Metoprolol Succinate 25mg",
+      "genericName": "Metoprolol",
+      "dosage": "25 mg",
+      "frequency": "Morning",
+      "status": "ACTIVE",
+      "prescribedBy": "DOC-IN-8841",
+      "doctorName": "Dr. Ananya Sharma, MD",
+      "startDate": "2026-09-07",
+      "notes": "Routine maintenance therapy.",
+      "synthetic": true
+    }
+  ],
+  "PAT-SS-1010": [
+    {
+      "prescriptionId": "RX-PAT-SS-1010-1",
+      "patientId": "PAT-SS-1010",
+      "medicationName": "Iron & Folic Acid Tablet",
+      "genericName": "Ferrous Ascorbate",
+      "dosage": "100 mg",
+      "frequency": "Afternoon",
+      "status": "ACTIVE",
+      "prescribedBy": "DOC-IN-8841",
+      "doctorName": "Dr. Ananya Sharma, MD",
+      "startDate": "2026-08-31",
+      "notes": "Routine maintenance therapy.",
+      "synthetic": true
+    }
+  ],
+  "PAT-SS-1011": [
+    {
+      "prescriptionId": "RX-PAT-SS-1011-1",
+      "patientId": "PAT-SS-1011",
+      "medicationName": "Omeprazole 20mg",
+      "genericName": "Omeprazole",
+      "dosage": "20 mg",
+      "frequency": "Morning",
+      "status": "ACTIVE",
+      "prescribedBy": "DOC-IN-8841",
+      "doctorName": "Dr. Ananya Sharma, MD",
+      "startDate": "2026-08-25",
+      "notes": "Routine maintenance therapy.",
+      "synthetic": true
+    },
+    {
+      "prescriptionId": "RX-PAT-SS-1011-2",
+      "patientId": "PAT-SS-1011",
+      "medicationName": "Amlodipine 5mg",
+      "genericName": "Amlodipine",
+      "dosage": "5 mg",
+      "frequency": "Morning",
+      "status": "ACTIVE",
+      "prescribedBy": "DOC-IN-8841",
+      "doctorName": "Dr. Ananya Sharma, MD",
+      "startDate": "2026-08-01",
+      "notes": "Routine maintenance therapy.",
+      "synthetic": true
+    },
+    {
+      "prescriptionId": "RX-PAT-SS-1011-3",
+      "patientId": "PAT-SS-1011",
+      "medicationName": "Iron & Folic Acid Tablet",
+      "genericName": "Ferrous Ascorbate",
+      "dosage": "100 mg",
+      "frequency": "Afternoon",
+      "status": "ACTIVE",
+      "prescribedBy": "DOC-IN-8841",
+      "doctorName": "Dr. Ananya Sharma, MD",
+      "startDate": "2026-08-15",
+      "notes": "Routine maintenance therapy.",
+      "synthetic": true
+    }
+  ],
+  "PAT-SS-1012": [
+    {
+      "prescriptionId": "RX-PAT-SS-1012-1",
+      "patientId": "PAT-SS-1012",
+      "medicationName": "Salbutamol Inhaler 100mcg",
+      "genericName": "Salbutamol",
+      "dosage": "2 puffs",
+      "frequency": "SOS",
+      "status": "ACTIVE",
+      "prescribedBy": "DOC-IN-8841",
+      "doctorName": "Dr. Ananya Sharma, MD",
+      "startDate": "2026-10-07",
+      "notes": "Routine maintenance therapy.",
+      "synthetic": true
+    },
+    {
+      "prescriptionId": "RX-PAT-SS-1012-2",
+      "patientId": "PAT-SS-1012",
+      "medicationName": "Amlodipine 5mg",
+      "genericName": "Amlodipine",
+      "dosage": "5 mg",
+      "frequency": "Morning",
+      "status": "ACTIVE",
+      "prescribedBy": "DOC-IN-8841",
+      "doctorName": "Dr. Ananya Sharma, MD",
+      "startDate": "2026-08-16",
+      "notes": "Routine maintenance therapy.",
+      "synthetic": true
+    },
+    {
+      "prescriptionId": "RX-PAT-SS-1012-3",
+      "patientId": "PAT-SS-1012",
+      "medicationName": "Iron & Folic Acid Tablet",
+      "genericName": "Ferrous Ascorbate",
+      "dosage": "100 mg",
+      "frequency": "Afternoon",
+      "status": "ACTIVE",
+      "prescribedBy": "DOC-IN-8841",
+      "doctorName": "Dr. Ananya Sharma, MD",
+      "startDate": "2026-08-07",
+      "notes": "Routine maintenance therapy.",
+      "synthetic": true
+    }
+  ],
+  "PAT-SS-1013": [
+    {
+      "prescriptionId": "RX-PAT-SS-1013-1",
+      "patientId": "PAT-SS-1013",
+      "medicationName": "Cetirizine 10mg",
+      "genericName": "Cetirizine",
+      "dosage": "10 mg",
+      "frequency": "Night",
+      "status": "ACTIVE",
+      "prescribedBy": "DOC-IN-8841",
+      "doctorName": "Dr. Ananya Sharma, MD",
+      "startDate": "2026-08-23",
+      "notes": "Routine maintenance therapy.",
+      "synthetic": true
+    }
+  ],
+  "PAT-SS-1014": [
+    {
+      "prescriptionId": "RX-PAT-SS-1014-1",
+      "patientId": "PAT-SS-1014",
+      "medicationName": "Cetirizine 10mg",
+      "genericName": "Cetirizine",
+      "dosage": "10 mg",
+      "frequency": "Night",
+      "status": "ACTIVE",
+      "prescribedBy": "DOC-IN-8841",
+      "doctorName": "Dr. Ananya Sharma, MD",
+      "startDate": "2026-09-16",
+      "notes": "Routine maintenance therapy.",
+      "synthetic": true
+    },
+    {
+      "prescriptionId": "RX-PAT-SS-1014-2",
+      "patientId": "PAT-SS-1014",
+      "medicationName": "Metoprolol Succinate 25mg",
+      "genericName": "Metoprolol",
+      "dosage": "25 mg",
+      "frequency": "Morning",
+      "status": "ACTIVE",
+      "prescribedBy": "DOC-IN-8841",
+      "doctorName": "Dr. Ananya Sharma, MD",
+      "startDate": "2026-08-03",
+      "notes": "Routine maintenance therapy.",
+      "synthetic": true
+    },
+    {
+      "prescriptionId": "RX-PAT-SS-1014-3",
+      "patientId": "PAT-SS-1014",
+      "medicationName": "Iron & Folic Acid Tablet",
+      "genericName": "Ferrous Ascorbate",
+      "dosage": "100 mg",
+      "frequency": "Afternoon",
+      "status": "ACTIVE",
+      "prescribedBy": "DOC-IN-8841",
+      "doctorName": "Dr. Ananya Sharma, MD",
+      "startDate": "2026-09-04",
+      "notes": "Routine maintenance therapy.",
+      "synthetic": true
+    }
+  ],
+  "PAT-SS-1015": [
+    {
+      "prescriptionId": "RX-PAT-SS-1015-1",
+      "patientId": "PAT-SS-1015",
+      "medicationName": "Omeprazole 20mg",
+      "genericName": "Omeprazole",
+      "dosage": "20 mg",
+      "frequency": "Morning",
+      "status": "ACTIVE",
+      "prescribedBy": "DOC-IN-8841",
+      "doctorName": "Dr. Ananya Sharma, MD",
+      "startDate": "2026-08-14",
+      "notes": "Routine maintenance therapy.",
+      "synthetic": true
+    },
+    {
+      "prescriptionId": "RX-PAT-SS-1015-2",
+      "patientId": "PAT-SS-1015",
+      "medicationName": "Cetirizine 10mg",
+      "genericName": "Cetirizine",
+      "dosage": "10 mg",
+      "frequency": "Night",
+      "status": "ACTIVE",
+      "prescribedBy": "DOC-IN-8841",
+      "doctorName": "Dr. Ananya Sharma, MD",
+      "startDate": "2026-07-25",
+      "notes": "Routine maintenance therapy.",
+      "synthetic": true
+    },
+    {
+      "prescriptionId": "RX-PAT-SS-1015-3",
+      "patientId": "PAT-SS-1015",
+      "medicationName": "Iron & Folic Acid Tablet",
+      "genericName": "Ferrous Ascorbate",
+      "dosage": "100 mg",
+      "frequency": "Afternoon",
+      "status": "ACTIVE",
+      "prescribedBy": "DOC-IN-8841",
+      "doctorName": "Dr. Ananya Sharma, MD",
+      "startDate": "2026-09-04",
+      "notes": "Routine maintenance therapy.",
+      "synthetic": true
+    }
+  ],
+  "PAT-SS-1016": [
+    {
+      "prescriptionId": "RX-PAT-SS-1016-1",
+      "patientId": "PAT-SS-1016",
+      "medicationName": "Metoprolol Succinate 25mg",
+      "genericName": "Metoprolol",
+      "dosage": "25 mg",
+      "frequency": "Morning",
+      "status": "ACTIVE",
+      "prescribedBy": "DOC-IN-8841",
+      "doctorName": "Dr. Ananya Sharma, MD",
+      "startDate": "2026-09-03",
+      "notes": "Routine maintenance therapy.",
+      "synthetic": true
+    },
+    {
+      "prescriptionId": "RX-PAT-SS-1016-2",
+      "patientId": "PAT-SS-1016",
+      "medicationName": "Amlodipine 5mg",
+      "genericName": "Amlodipine",
+      "dosage": "5 mg",
+      "frequency": "Morning",
+      "status": "ACTIVE",
+      "prescribedBy": "DOC-IN-8841",
+      "doctorName": "Dr. Ananya Sharma, MD",
+      "startDate": "2026-08-12",
+      "notes": "Routine maintenance therapy.",
+      "synthetic": true
+    }
+  ],
+  "PAT-SS-1017": [
+    {
+      "prescriptionId": "RX-PAT-SS-1017-1",
+      "patientId": "PAT-SS-1017",
+      "medicationName": "Cetirizine 10mg",
+      "genericName": "Cetirizine",
+      "dosage": "10 mg",
+      "frequency": "Night",
+      "status": "ACTIVE",
+      "prescribedBy": "DOC-IN-8841",
+      "doctorName": "Dr. Ananya Sharma, MD",
+      "startDate": "2026-07-28",
+      "notes": "Routine maintenance therapy.",
+      "synthetic": true
+    }
+  ],
+  "PAT-SS-1018": [
+    {
+      "prescriptionId": "RX-PAT-SS-1018-1",
+      "patientId": "PAT-SS-1018",
+      "medicationName": "Iron & Folic Acid Tablet",
+      "genericName": "Ferrous Ascorbate",
+      "dosage": "100 mg",
+      "frequency": "Afternoon",
+      "status": "ACTIVE",
+      "prescribedBy": "DOC-IN-8841",
+      "doctorName": "Dr. Ananya Sharma, MD",
+      "startDate": "2026-10-05",
+      "notes": "Routine maintenance therapy.",
+      "synthetic": true
+    },
+    {
+      "prescriptionId": "RX-PAT-SS-1018-2",
+      "patientId": "PAT-SS-1018",
+      "medicationName": "Cetirizine 10mg",
+      "genericName": "Cetirizine",
+      "dosage": "10 mg",
+      "frequency": "Night",
+      "status": "ACTIVE",
+      "prescribedBy": "DOC-IN-8841",
+      "doctorName": "Dr. Ananya Sharma, MD",
+      "startDate": "2026-08-06",
+      "notes": "Routine maintenance therapy.",
+      "synthetic": true
+    },
+    {
+      "prescriptionId": "RX-PAT-SS-1018-3",
+      "patientId": "PAT-SS-1018",
+      "medicationName": "Salbutamol Inhaler 100mcg",
+      "genericName": "Salbutamol",
+      "dosage": "2 puffs",
+      "frequency": "SOS",
+      "status": "ACTIVE",
+      "prescribedBy": "DOC-IN-8841",
+      "doctorName": "Dr. Ananya Sharma, MD",
+      "startDate": "2026-08-28",
+      "notes": "Routine maintenance therapy.",
+      "synthetic": true
+    }
+  ],
+  "PAT-SS-1019": [
+    {
+      "prescriptionId": "RX-PAT-SS-1019-1",
+      "patientId": "PAT-SS-1019",
+      "medicationName": "Cetirizine 10mg",
+      "genericName": "Cetirizine",
+      "dosage": "10 mg",
+      "frequency": "Night",
+      "status": "ACTIVE",
+      "prescribedBy": "DOC-IN-8841",
+      "doctorName": "Dr. Ananya Sharma, MD",
+      "startDate": "2026-09-11",
+      "notes": "Routine maintenance therapy.",
+      "synthetic": true
+    }
+  ],
+  "PAT-SS-1020": [
+    {
+      "prescriptionId": "RX-PAT-SS-1020-1",
+      "patientId": "PAT-SS-1020",
+      "medicationName": "Salbutamol Inhaler 100mcg",
+      "genericName": "Salbutamol",
+      "dosage": "2 puffs",
+      "frequency": "SOS",
+      "status": "ACTIVE",
+      "prescribedBy": "DOC-IN-8841",
+      "doctorName": "Dr. Ananya Sharma, MD",
+      "startDate": "2026-09-03",
+      "notes": "Routine maintenance therapy.",
+      "synthetic": true
+    },
+    {
+      "prescriptionId": "RX-PAT-SS-1020-2",
+      "patientId": "PAT-SS-1020",
+      "medicationName": "Iron & Folic Acid Tablet",
+      "genericName": "Ferrous Ascorbate",
+      "dosage": "100 mg",
+      "frequency": "Afternoon",
+      "status": "ACTIVE",
+      "prescribedBy": "DOC-IN-8841",
+      "doctorName": "Dr. Ananya Sharma, MD",
+      "startDate": "2026-09-03",
+      "notes": "Routine maintenance therapy.",
+      "synthetic": true
+    }
+  ],
+  "PAT-SS-1021": [
+    {
+      "prescriptionId": "RX-PAT-SS-1021-1",
+      "patientId": "PAT-SS-1021",
+      "medicationName": "Amlodipine 5mg",
+      "genericName": "Amlodipine",
+      "dosage": "5 mg",
+      "frequency": "Morning",
+      "status": "ACTIVE",
+      "prescribedBy": "DOC-IN-8841",
+      "doctorName": "Dr. Ananya Sharma, MD",
+      "startDate": "2026-09-28",
+      "notes": "Routine maintenance therapy.",
+      "synthetic": true
+    },
+    {
+      "prescriptionId": "RX-PAT-SS-1021-2",
+      "patientId": "PAT-SS-1021",
+      "medicationName": "Omeprazole 20mg",
+      "genericName": "Omeprazole",
+      "dosage": "20 mg",
+      "frequency": "Morning",
+      "status": "ACTIVE",
+      "prescribedBy": "DOC-IN-8841",
+      "doctorName": "Dr. Ananya Sharma, MD",
+      "startDate": "2026-09-08",
+      "notes": "Routine maintenance therapy.",
+      "synthetic": true
+    },
+    {
+      "prescriptionId": "RX-PAT-SS-1021-3",
+      "patientId": "PAT-SS-1021",
+      "medicationName": "Metoprolol Succinate 25mg",
+      "genericName": "Metoprolol",
+      "dosage": "25 mg",
+      "frequency": "Morning",
+      "status": "ACTIVE",
+      "prescribedBy": "DOC-IN-8841",
+      "doctorName": "Dr. Ananya Sharma, MD",
+      "startDate": "2026-08-17",
+      "notes": "Routine maintenance therapy.",
+      "synthetic": true
+    }
+  ],
+  "PAT-SS-1022": [
+    {
+      "prescriptionId": "RX-PAT-SS-1022-1",
+      "patientId": "PAT-SS-1022",
+      "medicationName": "Omeprazole 20mg",
+      "genericName": "Omeprazole",
+      "dosage": "20 mg",
+      "frequency": "Morning",
+      "status": "ACTIVE",
+      "prescribedBy": "DOC-IN-8841",
+      "doctorName": "Dr. Ananya Sharma, MD",
+      "startDate": "2026-08-09",
+      "notes": "Routine maintenance therapy.",
+      "synthetic": true
+    },
+    {
+      "prescriptionId": "RX-PAT-SS-1022-2",
+      "patientId": "PAT-SS-1022",
+      "medicationName": "Metoprolol Succinate 25mg",
+      "genericName": "Metoprolol",
+      "dosage": "25 mg",
+      "frequency": "Morning",
+      "status": "ACTIVE",
+      "prescribedBy": "DOC-IN-8841",
+      "doctorName": "Dr. Ananya Sharma, MD",
+      "startDate": "2026-08-07",
+      "notes": "Routine maintenance therapy.",
+      "synthetic": true
+    }
+  ],
+  "PAT-SS-1023": [
+    {
+      "prescriptionId": "RX-PAT-SS-1023-1",
+      "patientId": "PAT-SS-1023",
+      "medicationName": "Amlodipine 5mg",
+      "genericName": "Amlodipine",
+      "dosage": "5 mg",
+      "frequency": "Morning",
+      "status": "ACTIVE",
+      "prescribedBy": "DOC-IN-8841",
+      "doctorName": "Dr. Ananya Sharma, MD",
+      "startDate": "2026-09-01",
+      "notes": "Routine maintenance therapy.",
+      "synthetic": true
+    },
+    {
+      "prescriptionId": "RX-PAT-SS-1023-2",
+      "patientId": "PAT-SS-1023",
+      "medicationName": "Iron & Folic Acid Tablet",
+      "genericName": "Ferrous Ascorbate",
+      "dosage": "100 mg",
+      "frequency": "Afternoon",
+      "status": "ACTIVE",
+      "prescribedBy": "DOC-IN-8841",
+      "doctorName": "Dr. Ananya Sharma, MD",
+      "startDate": "2026-09-10",
+      "notes": "Routine maintenance therapy.",
+      "synthetic": true
+    }
+  ],
+  "PAT-SS-1024": [
+    {
+      "prescriptionId": "RX-PAT-SS-1024-1",
+      "patientId": "PAT-SS-1024",
+      "medicationName": "Iron & Folic Acid Tablet",
+      "genericName": "Ferrous Ascorbate",
+      "dosage": "100 mg",
+      "frequency": "Afternoon",
+      "status": "ACTIVE",
+      "prescribedBy": "DOC-IN-8841",
+      "doctorName": "Dr. Ananya Sharma, MD",
+      "startDate": "2026-08-30",
+      "notes": "Routine maintenance therapy.",
+      "synthetic": true
+    },
+    {
+      "prescriptionId": "RX-PAT-SS-1024-2",
+      "patientId": "PAT-SS-1024",
+      "medicationName": "Metoprolol Succinate 25mg",
+      "genericName": "Metoprolol",
+      "dosage": "25 mg",
+      "frequency": "Morning",
+      "status": "ACTIVE",
+      "prescribedBy": "DOC-IN-8841",
+      "doctorName": "Dr. Ananya Sharma, MD",
+      "startDate": "2026-07-26",
+      "notes": "Routine maintenance therapy.",
+      "synthetic": true
+    }
+  ],
+  "PAT-SS-1025": [
+    {
+      "prescriptionId": "RX-PAT-SS-1025-1",
+      "patientId": "PAT-SS-1025",
+      "medicationName": "Cetirizine 10mg",
+      "genericName": "Cetirizine",
+      "dosage": "10 mg",
+      "frequency": "Night",
+      "status": "ACTIVE",
+      "prescribedBy": "DOC-IN-8841",
+      "doctorName": "Dr. Ananya Sharma, MD",
+      "startDate": "2026-08-02",
+      "notes": "Routine maintenance therapy.",
+      "synthetic": true
+    },
+    {
+      "prescriptionId": "RX-PAT-SS-1025-2",
+      "patientId": "PAT-SS-1025",
+      "medicationName": "Omeprazole 20mg",
+      "genericName": "Omeprazole",
+      "dosage": "20 mg",
+      "frequency": "Morning",
+      "status": "ACTIVE",
+      "prescribedBy": "DOC-IN-8841",
+      "doctorName": "Dr. Ananya Sharma, MD",
+      "startDate": "2026-08-25",
+      "notes": "Routine maintenance therapy.",
+      "synthetic": true
+    }
+  ]
+}

@@ -1,0 +1,101 @@
+[
+  {
+    "councilCode": "NMC",
+    "name": "National Medical Commission",
+    "state": "National",
+    "licensePrefix": "NMC",
+    "licenseRegex": "^NMC(-IND)?-\\d{4,6}$",
+    "registryStatus": "ACTIVE",
+    "synthetic": true
+  },
+  {
+    "councilCode": "KMC",
+    "name": "Karnataka Medical Council",
+    "state": "Karnataka",
+    "licensePrefix": "KMC",
+    "licenseRegex": "^KMC-\\d{4}-\\d{5}$",
+    "registryStatus": "ACTIVE",
+    "synthetic": true
+  },
+  {
+    "councilCode": "OCMR",
+    "name": "Odisha Council of Medical Registration",
+    "state": "Odisha",
+    "licensePrefix": "OCMR",
+    "licenseRegex": "^(OCMR|OMC)-\\d{4}-\\d{5}$",
+    "registryStatus": "ACTIVE",
+    "synthetic": true
+  },
+  {
+    "councilCode": "TNMC",
+    "name": "Tamil Nadu Medical Council",
+    "state": "Tamil Nadu",
+    "licensePrefix": "TNMC",
+    "licenseRegex": "^TNMC-\\d{4}-\\d{5}$",
+    "registryStatus": "ACTIVE",
+    "synthetic": true
+  },
+  {
+    "councilCode": "TSMC",
+    "name": "Telangana State Medical Council",
+    "state": "Telangana",
+    "licensePrefix": "TSMC",
+    "licenseRegex": "^TSMC-\\d{4}-\\d{5}$",
+    "registryStatus": "ACTIVE",
+    "synthetic": true
+  },
+  {
+    "councilCode": "APMC",
+    "name": "Andhra Pradesh Medical Council",
+    "state": "Andhra Pradesh",
+    "licensePrefix": "APMC",
+    "licenseRegex": "^APMC-\\d{4}-\\d{5}$",
+    "registryStatus": "ACTIVE",
+    "synthetic": true
+  },
+  {
+    "councilCode": "WBMC",
+    "name": "West Bengal Medical Council",
+    "state": "West Bengal",
+    "licensePrefix": "WBMC",
+    "licenseRegex": "^WBMC-\\d{4}-\\d{5}$",
+    "registryStatus": "ACTIVE",
+    "synthetic": true
+  },
+  {
+    "councilCode": "BMC",
+    "name": "Bihar Medical Council",
+    "state": "Bihar",
+    "licensePrefix": "BMC",
+    "licenseRegex": "^BMC-\\d{4}-\\d{5}$",
+    "registryStatus": "ACTIVE",
+    "synthetic": true
+  },
+  {
+    "councilCode": "JMC",
+    "name": "Jharkhand Medical Council",
+    "state": "Jharkhand",
+    "licensePrefix": "JMC",
+    "licenseRegex": "^JMC-\\d{4}-\\d{5}$",
+    "registryStatus": "ACTIVE",
+    "synthetic": true
+  },
+  {
+    "councilCode": "DMC",
+    "name": "Delhi Medical Council",
+    "state": "Delhi",
+    "licensePrefix": "DMC",
+    "licenseRegex": "^DMC-\\d{4}-\\d{5}$",
+    "registryStatus": "ACTIVE",
+    "synthetic": true
+  },
+  {
+    "councilCode": "MHMC",
+    "name": "Maharashtra Medical Council",
+    "state": "Maharashtra",
+    "licensePrefix": "MHMC",
+    "licenseRegex": "^MHMC-\\d{4}-\\d{5}$",
+    "registryStatus": "ACTIVE",
+    "synthetic": true
+  }
+]

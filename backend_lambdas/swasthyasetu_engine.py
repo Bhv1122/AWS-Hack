@@ -865,6 +865,30 @@ def scan_and_digitize_prescription(
     }
 
     patient.setdefault("digitized_documents", []).append(digitized_doc_entry)
+    
+    # Also add structured report to patient clinical_reports
+    paper_rx_report = {
+        "reportId": f"RPT-{actual_id}-{doc_id[-4:]}",
+        "patientId": actual_id,
+        "type": "PAPER_PRESCRIPTION",
+        "title": document_title,
+        "date": now_iso,
+        "facility": "Prior District Clinic / Home-State PHC",
+        "facilityState": patient.get("originState", "Odisha"),
+        "orderedBy": "Historical Attending Doctor",
+        "language": "English / Vernacular",
+        "source": "PATIENT_UPLOAD",
+        "results": [{"name": m.get("medication_name"), "value": m.get("dosage", "Prescribed"), "unit": m.get("frequency", "OD"), "flag": "N"} for m in extracted_meds],
+        "findings": f"Digitized historical paper prescription. Extracted {len(extracted_meds)} active medications.",
+        "impression": f"Historical therapy record. Interactions detected: {len(interaction_warnings)}.",
+        "attachment": {
+            "ocrRawText": ocr_text,
+            "ocrConfidence": 0.85
+        },
+        "fhirResourceType": "DocumentReference",
+        "synthetic": True
+    }
+    patient.setdefault("clinical_reports", []).append(paper_rx_report)
     save_patient(patient)
 
     # 7. CloudTrail Audit & Timeline Event

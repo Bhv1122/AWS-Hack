@@ -274,8 +274,9 @@ def get_doctor_patient_view(doctor_id: str, patient_id: str) -> Dict[str, Any]:
     """
     verify_cognito_access(doctor_id, required_roles=["DOCTOR"])
 
-    actual_id = "PAT-1001" if patient_id == "PATIENT-001" else patient_id
-    patient = get_patient(actual_id)
+    clean_pid = str(patient_id).strip()
+    actual_id = "PAT-1001" if clean_pid.upper() in ("PATIENT-001", "1001", "PAT-1001", "PAT-SS-1001") else ("PAT-1002" if clean_pid.upper() in ("PATIENT-002", "1002", "PAT-1002", "PAT-SS-1002") else clean_pid)
+    patient = get_patient(actual_id) or get_patient(clean_pid)
     if not patient:
         raise ValueError(f"Patient with ID '{patient_id}' not found.")
 
@@ -737,6 +738,31 @@ def run_deterministic_safety_gate(
     highest_severity = "SAFE"
     safer_alternatives = []
     explanations = []
+    matched_eval_rule = None
+
+    # 0. Comprehensive 42-rule safety evaluation via generic_resolver
+    try:
+        from generic_resolver import evaluate_drug_safety_rules
+        eval_res = evaluate_drug_safety_rules(
+            new_medicine=new_medicine,
+            active_prescriptions=get_prescriptions_for_patient(actual_id),
+            patient_allergies=patient.get("allergies", [])
+        )
+        if eval_res.get("isBlocked"):
+            highest_severity = "CRITICAL"
+            matched_eval_rule = eval_res.get("matchedRule")
+            conflicts.append({
+                "type": eval_res.get("conflictType", "DRUG_SAFETY_CONFLICT"),
+                "severity": "CRITICAL",
+                "explanation": eval_res.get("explanation"),
+                "matchedRule": matched_eval_rule,
+                "source": "RULES",
+                "safer_alternatives": eval_res.get("safer_alternatives", [])
+            })
+            explanations.append(eval_res.get("explanation"))
+            safer_alternatives.extend(eval_res.get("safer_alternatives", []))
+    except Exception as _e:
+        logger.debug(f"Notice evaluating generic rules: {_e}")
 
     # 1. Allergy Conflicts
     patient_allergies = patient.get("allergies", [])
@@ -851,7 +877,9 @@ def run_deterministic_safety_gate(
         "severity": highest_severity,
         "explanation": " | ".join(explanations) if explanations else "No deterministic clinical blocks detected.",
         "conflicts": conflicts,
-        "safer_alternatives": unique_alts
+        "safer_alternatives": unique_alts,
+        "source": "RULES",
+        "matchedRule": matched_eval_rule
     }
 
 
@@ -1163,16 +1191,39 @@ def prescribe_medication(
             severity="WARNING",
             role="DOCTOR"
         )
+        source_val = pipeline_res.get("stageB_DeterministicGate", {}).get("source") or ("AWS_LIVE" if bedrock_client else "RULES")
+        matched_rule = pipeline_res.get("stageB_DeterministicGate", {}).get("matchedRule")
+
+        from backend_lambdas.clinical_risk_engine import evaluate_medicine_safety
+        alt_res = evaluate_medicine_safety(
+            patient_id=actual_id,
+            medicine_name=new_medicine,
+            dosage=dosage,
+            doctor_id=doctor_id
+        )
+
         return convert_decimals({
             "status": "BLOCKED",
+            "riskLevel": alt_res.get("riskLevel", "SEVERE"),
+            "resolvedGeneric": alt_res.get("resolvedGeneric", generic_comp or new_medicine),
+            "findings": alt_res.get("findings", []),
+            "alternatives": alt_res.get("alternatives", []),
+            "noSafeSubstitute": alt_res.get("noSafeSubstitute", False),
+            "noSubstituteMessage": alt_res.get("noSubstituteMessage", ""),
+            "specialistReview": alt_res.get("specialistReview", False),
+            "needsIndication": alt_res.get("needsIndication", False),
+            "source": source_val,
+            "matchedRule": matched_rule,
             "safetyCheck": {
                 "hasInteraction": True,
                 "severity": "SEVERE" if pipeline_res["severity"] == "CRITICAL" else pipeline_res["severity"],
                 "clinicalExplanation": pipeline_res["clinicalExplanation"],
-                "safeAlternatives": pipeline_res["safer_alternatives"],
-                "risk_score": pipeline_res["risk_score"]
+                "safeAlternatives": alt_res.get("alternatives", []) or pipeline_res.get("safer_alternatives", []),
+                "risk_score": pipeline_res["risk_score"],
+                "source": source_val,
+                "matchedRule": matched_rule
             },
-            "safeAlternatives": pipeline_res["safer_alternatives"],
+            "safeAlternatives": alt_res.get("alternatives", []) or pipeline_res.get("safer_alternatives", []),
             "pipelineReport": pipeline_res
         })
 
@@ -1397,21 +1448,23 @@ def modify_prescription_dosage(
     # Locate prescription
     rx_item = None
     target_pid = patient_id
+    if target_pid:
+        clean_pid = str(target_pid).strip()
+        target_pid = "PAT-1001" if clean_pid.upper() in ("PATIENT-001", "1001", "PAT-1001", "PAT-SS-1001") else clean_pid
+        rx_item = get_prescription(target_pid, prescription_id)
 
-    if not target_pid:
+    if not rx_item:
         all_rx = list_all_prescriptions()
         for r in all_rx:
             if r.get("prescriptionId") == prescription_id:
                 rx_item = r
                 target_pid = r.get("patientId")
                 break
-    else:
-        rx_item = get_prescription(target_pid, prescription_id)
 
     if not rx_item:
         raise ValueError(f"Prescription '{prescription_id}' not found.")
 
-    actual_id = "PAT-1001" if target_pid == "PATIENT-001" else target_pid
+    actual_id = "PAT-1001" if target_pid in ("PATIENT-001", "1001", "PAT-1001", "PAT-SS-1001") else target_pid
     now_iso = datetime.now(timezone.utc).isoformat()
 
     old_version = int(rx_item.get("version", 1))
@@ -1541,21 +1594,23 @@ def discontinue_prescription(
 
     rx_item = None
     target_pid = patient_id
+    if target_pid:
+        clean_pid = str(target_pid).strip()
+        target_pid = "PAT-1001" if clean_pid.upper() in ("PATIENT-001", "1001", "PAT-1001", "PAT-SS-1001") else clean_pid
+        rx_item = get_prescription(target_pid, prescription_id)
 
-    if not target_pid:
+    if not rx_item:
         all_rx = list_all_prescriptions()
         for r in all_rx:
             if r.get("prescriptionId") == prescription_id:
                 rx_item = r
                 target_pid = r.get("patientId")
                 break
-    else:
-        rx_item = get_prescription(target_pid, prescription_id)
 
     if not rx_item:
         raise ValueError(f"Prescription '{prescription_id}' not found.")
 
-    actual_id = "PAT-1001" if target_pid == "PATIENT-001" else target_pid
+    actual_id = "PAT-1001" if target_pid in ("PATIENT-001", "1001", "PAT-1001", "PAT-SS-1001") else target_pid
     now_iso = datetime.now(timezone.utc).isoformat()
 
     old_version = int(rx_item.get("version", 1))

@@ -1,0 +1,463 @@
+{
+  "synthetic": true,
+  "clinicallyReviewed": false,
+  "entries": [
+    {
+      "riskKey": "PENICILLIN_ALLERGY",
+      "appliesToGenerics": ["amoxicillin", "clavulanic acid", "ampicillin", "piperacillin", "penicillin"],
+      "indicationNeeded": false,
+      "alternatives": [
+        {
+          "generic": "azithromycin",
+          "reason": "Macrolide antibiotic with no beta-lactam cross-reactivity for respiratory or skin infections.",
+          "cautions": ["QT prolongation risk in patients with cardiac arrhythmias", "GI distress possible"],
+          "suitableFor": ["Respiratory infection", "Skin infection"]
+        },
+        {
+          "generic": "doxycycline",
+          "reason": "Broad-spectrum tetracycline antibiotic safe in penicillin-allergic patients.",
+          "cautions": ["Not for pregnancy or young children under 8 years", "Take with full glass of water sitting upright"],
+          "suitableFor": ["Respiratory infection", "Skin infection", "Urinary infection"]
+        },
+        {
+          "generic": "cefixime",
+          "reason": "Cephalosporin antibiotic; low cross-reactivity risk (~1-2%), doctor to judge clinical history.",
+          "cautions": ["Cross-reactivity possible, doctor to judge", "Avoid if history of anaphylaxis to penicillin"],
+          "suitableFor": ["Respiratory infection", "Urinary infection"]
+        }
+      ],
+      "noSafeSubstitute": false,
+      "noSubstituteMessage": "",
+      "specialistReview": false
+    },
+    {
+      "riskKey": "WARFARIN_NSAID_INTERACTION",
+      "appliesToGenerics": ["diclofenac", "ibuprofen", "naproxen", "piroxicam", "aceclofenac", "indomethacin", "ketorolac", "mefenamic acid"],
+      "indicationNeeded": false,
+      "alternatives": [
+        {
+          "generic": "paracetamol",
+          "reason": "Centrally acting non-opioid analgesic that does not inhibit platelet aggregation or injure gastric mucosa.",
+          "cautions": ["Maximum 2000mg to 3000mg daily in chronic anticoagulation", "Monitor liver enzymes with prolonged use"],
+          "suitableFor": ["Pain or fever", "Other"]
+        }
+      ],
+      "noSafeSubstitute": false,
+      "noSubstituteMessage": "",
+      "specialistReview": false
+    },
+    {
+      "riskKey": "WARFARIN_ASPIRIN_INTERACTION",
+      "appliesToGenerics": ["aspirin", "acetylsalicylic acid"],
+      "indicationNeeded": false,
+      "alternatives": [],
+      "noSafeSubstitute": true,
+      "noSubstituteMessage": "No direct replacement. Antiplatelet need must be decided by a cardiologist.",
+      "specialistReview": true
+    },
+    {
+      "riskKey": "SULFA_ALLERGY",
+      "appliesToGenerics": ["sulfamethoxazole", "co-trimoxazole", "trimethoprim + sulfamethoxazole", "sulfasalazine"],
+      "indicationNeeded": true,
+      "alternatives": [
+        {
+          "generic": "nitrofurantoin",
+          "reason": "Targeted urinary antiseptic with no sulfonamide cross-reactivity.",
+          "cautions": ["Not suitable if eGFR < 30 mL/min", "For lower UTI only"],
+          "suitableFor": ["Urinary infection"]
+        },
+        {
+          "generic": "fosfomycin",
+          "reason": "Single-dose bactericidal agent effective against multi-drug resistant urinary pathogens.",
+          "cautions": ["Single dose only; monitor symptoms"],
+          "suitableFor": ["Urinary infection"]
+        },
+        {
+          "generic": "azithromycin",
+          "reason": "Broad-spectrum macrolide safe for acute respiratory tract infections in sulfa-allergic patients.",
+          "cautions": ["Check baseline QTc interval"],
+          "suitableFor": ["Respiratory infection"]
+        },
+        {
+          "generic": "doxycycline",
+          "reason": "Reliable non-sulfa oral antimicrobial for atypical respiratory and soft-tissue infections.",
+          "cautions": ["Avoid in pregnancy and children under 8"],
+          "suitableFor": ["Respiratory infection", "Skin infection"]
+        }
+      ],
+      "noSafeSubstitute": false,
+      "noSubstituteMessage": "",
+      "specialistReview": false
+    },
+    {
+      "riskKey": "CLOPIDOGREL_OMEPRAZOLE_INTERACTION",
+      "appliesToGenerics": ["omeprazole", "esomeprazole"],
+      "indicationNeeded": false,
+      "alternatives": [
+        {
+          "generic": "pantoprazole",
+          "reason": "Proton pump inhibitor with minimal CYP2C19 competitive inhibition preserving antiplatelet efficacy.",
+          "cautions": ["Take 30 minutes before morning meal"],
+          "suitableFor": ["Acid reflux", "Other"]
+        },
+        {
+          "generic": "rabeprazole",
+          "reason": "Non-enzymatic pathway PPI that does not interfere with clopidogrel bioactivation.",
+          "cautions": ["Take on empty stomach"],
+          "suitableFor": ["Acid reflux", "Other"]
+        }
+      ],
+      "noSafeSubstitute": false,
+      "noSubstituteMessage": "",
+      "specialistReview": false
+    },
+    {
+      "riskKey": "DUPLICATE_THERAPY_NSAID",
+      "appliesToGenerics": ["ibuprofen", "diclofenac", "naproxen", "etoricoxib", "celecoxib", "aceclofenac"],
+      "indicationNeeded": false,
+      "alternatives": [
+        {
+          "generic": "current_nsaid",
+          "reason": "Keep the current active NSAID instead of adding another, avoiding compounded GI ulceration and renal toxicity.",
+          "cautions": ["Concurrent use of 2 NSAIDs provides no extra analgesia and triples bleed risk"],
+          "suitableFor": ["Pain or fever"],
+          "action": "AVOID_DUPLICATE"
+        }
+      ],
+      "noSafeSubstitute": false,
+      "noSubstituteMessage": "",
+      "specialistReview": false
+    },
+    {
+      "riskKey": "DUPLICATE_THERAPY_STATIN",
+      "appliesToGenerics": ["atorvastatin", "rosuvastatin", "simvastatin", "pravastatin"],
+      "indicationNeeded": false,
+      "alternatives": [
+        {
+          "generic": "current_statin",
+          "reason": "Keep the current active statin instead of adding another, avoiding severe myopathy and rhabdomyolysis.",
+          "cautions": ["Dose titration of single agent preferred over dual HMG-CoA reductase inhibition"],
+          "suitableFor": ["Cholesterol"],
+          "action": "AVOID_DUPLICATE"
+        }
+      ],
+      "noSafeSubstitute": false,
+      "noSubstituteMessage": "",
+      "specialistReview": false
+    },
+    {
+      "riskKey": "DUPLICATE_THERAPY_RAAS",
+      "appliesToGenerics": ["telmisartan", "losartan", "olmesartan", "valsartan", "lisinopril", "ramipril", "enalapril"],
+      "indicationNeeded": false,
+      "alternatives": [
+        {
+          "generic": "current_raas",
+          "reason": "Keep the current ACE inhibitor or ARB; dual RAAS blockade triggers acute renal failure and hyperkalemia.",
+          "cautions": ["Dual ACEI + ARB is contraindicated in cardiovascular clinical guidelines"],
+          "suitableFor": ["Blood pressure"],
+          "action": "AVOID_DUPLICATE"
+        }
+      ],
+      "noSafeSubstitute": false,
+      "noSubstituteMessage": "",
+      "specialistReview": false
+    },
+    {
+      "riskKey": "SILDENAFIL_NITRATES_INTERACTION",
+      "appliesToGenerics": ["sildenafil", "tadalafil", "vardenafil"],
+      "indicationNeeded": false,
+      "alternatives": [],
+      "noSafeSubstitute": true,
+      "noSubstituteMessage": "Severe profound hypotension risk. Phosphodiesterase-5 inhibitors and organic nitrates must never be co-administered. Specialist review mandatory.",
+      "specialistReview": true
+    },
+    {
+      "riskKey": "TRAMADOL_SSRI_INTERACTION",
+      "appliesToGenerics": ["tramadol", "tapentadol"],
+      "indicationNeeded": false,
+      "alternatives": [
+        {
+          "generic": "paracetamol",
+          "reason": "Effective non-serotonergic analgesic eliminating the risk of life-threatening serotonin syndrome.",
+          "cautions": ["Observe maximum daily dose limits"],
+          "suitableFor": ["Pain or fever"]
+        }
+      ],
+      "noSafeSubstitute": false,
+      "noSubstituteMessage": "Tramadol combined with SSRIs triggers toxic serotonin syndrome. Request specialist review before prescribing serotonergic analgesics.",
+      "specialistReview": true
+    },
+    {
+      "riskKey": "METFORMIN_CONTRAST_INTERACTION",
+      "appliesToGenerics": ["metformin"],
+      "indicationNeeded": false,
+      "alternatives": [
+        {
+          "generic": "insulin",
+          "reason": "Temporary short-acting insulin coverage during procedure avoids metformin-associated lactic acidosis.",
+          "cautions": ["Monitor capillary blood glucose every 4 hours"],
+          "suitableFor": ["Diabetes"]
+        }
+      ],
+      "noSafeSubstitute": false,
+      "noSubstituteMessage": "",
+      "specialistReview": false
+    },
+    {
+      "riskKey": "LISINOPRIL_SPIRONOLACTONE_INTERACTION",
+      "appliesToGenerics": ["spironolactone", "eplerenone"],
+      "indicationNeeded": false,
+      "alternatives": [
+        {
+          "generic": "amlodipine",
+          "reason": "Dihydropyridine calcium channel blocker with no effect on serum potassium homeostasis.",
+          "cautions": ["Monitor for peripheral ankle edema"],
+          "suitableFor": ["Blood pressure"]
+        },
+        {
+          "generic": "chlorthalidone",
+          "reason": "Thiazide-like diuretic that promotes potassium excretion rather than retention.",
+          "cautions": ["Monitor baseline electrolytes"],
+          "suitableFor": ["Blood pressure"]
+        }
+      ],
+      "noSafeSubstitute": false,
+      "noSubstituteMessage": "",
+      "specialistReview": false
+    },
+    {
+      "riskKey": "SIMVASTATIN_MACROLIDE_INTERACTION",
+      "appliesToGenerics": ["clarithromycin", "erythromycin"],
+      "indicationNeeded": false,
+      "alternatives": [
+        {
+          "generic": "azithromycin",
+          "reason": "Macrolide with minimal CYP3A4 inhibition that avoids dangerous statin accumulation and rhabdomyolysis.",
+          "cautions": ["Check baseline QTc interval"],
+          "suitableFor": ["Respiratory infection"]
+        },
+        {
+          "generic": "amoxicillin",
+          "reason": "Beta-lactam antibiotic without cytochrome P450 pathway interactions.",
+          "cautions": ["Confirm no penicillin allergy"],
+          "suitableFor": ["Respiratory infection"]
+        }
+      ],
+      "noSafeSubstitute": false,
+      "noSubstituteMessage": "",
+      "specialistReview": false
+    },
+    {
+      "riskKey": "METHOTREXATE_NSAID_INTERACTION",
+      "appliesToGenerics": ["ibuprofen", "diclofenac", "naproxen"],
+      "indicationNeeded": false,
+      "alternatives": [
+        {
+          "generic": "paracetamol",
+          "reason": "Safe non-nephrotoxic analgesic that does not diminish renal methotrexate clearance.",
+          "cautions": ["Maximum 3000mg daily"],
+          "suitableFor": ["Pain or fever"]
+        }
+      ],
+      "noSafeSubstitute": false,
+      "noSubstituteMessage": "",
+      "specialistReview": false
+    },
+    {
+      "riskKey": "DIGOXIN_AMIODARONE_INTERACTION",
+      "appliesToGenerics": ["amiodarone"],
+      "indicationNeeded": false,
+      "alternatives": [
+        {
+          "generic": "metoprolol",
+          "reason": "Cardioselective beta-1 blocker for ventricular rate control with minimal digoxin P-gp interference.",
+          "cautions": ["Monitor heart rate and blood pressure"],
+          "suitableFor": ["Blood pressure", "Other"]
+        }
+      ],
+      "noSafeSubstitute": false,
+      "noSubstituteMessage": "",
+      "specialistReview": true
+    },
+    {
+      "riskKey": "CIPROFLOXACIN_ANTACIDS_INTERACTION",
+      "appliesToGenerics": ["magnesium hydroxide", "aluminum hydroxide", "calcium carbonate"],
+      "indicationNeeded": false,
+      "alternatives": [
+        {
+          "generic": "pantoprazole",
+          "reason": "Proton pump inhibitor does not chelate oral fluoroquinolone antibiotics.",
+          "cautions": ["Take 30 minutes before breakfast"],
+          "suitableFor": ["Acid reflux"]
+        }
+      ],
+      "noSafeSubstitute": false,
+      "noSubstituteMessage": "",
+      "specialistReview": false
+    },
+    {
+      "riskKey": "LITHIUM_ACEI_INTERACTION",
+      "appliesToGenerics": ["lisinopril", "ramipril", "enalapril"],
+      "indicationNeeded": false,
+      "alternatives": [
+        {
+          "generic": "amlodipine",
+          "reason": "Calcium channel blocker that does not compromise renal lithium excretion.",
+          "cautions": ["Check blood pressure response"],
+          "suitableFor": ["Blood pressure"]
+        }
+      ],
+      "noSafeSubstitute": false,
+      "noSubstituteMessage": "",
+      "specialistReview": false
+    },
+    {
+      "riskKey": "ALLOPURINOL_AZATHIOPRINE_INTERACTION",
+      "appliesToGenerics": ["allopurinol"],
+      "indicationNeeded": false,
+      "alternatives": [
+        {
+          "generic": "febuxostat",
+          "reason": "Alternative xanthine oxidase inhibitor, but also requires 75% azathioprine dose reduction under specialist care.",
+          "cautions": ["Weekly CBC monitoring required"],
+          "suitableFor": ["Other"]
+        }
+      ],
+      "noSafeSubstitute": true,
+      "noSubstituteMessage": "Xanthine oxidase inhibition severely blocks azathioprine catabolism, causing life-threatening pancytopenia. Specialist rheumatology review required.",
+      "specialistReview": true
+    },
+    {
+      "riskKey": "LEVOTHYROXINE_CALCIUM_INTERACTION",
+      "appliesToGenerics": ["calcium carbonate", "calcium citrate", "ferrous sulfate"],
+      "indicationNeeded": false,
+      "alternatives": [
+        {
+          "generic": "vitamin d3",
+          "reason": "Cholecalciferol monotherapy does not chelate or impair oral levothyroxine absorption.",
+          "cautions": ["Separate calcium supplements by at least 4 hours"],
+          "suitableFor": ["Other"]
+        }
+      ],
+      "noSafeSubstitute": false,
+      "noSubstituteMessage": "",
+      "specialistReview": false
+    },
+    {
+      "riskKey": "PHENYTOIN_FLUCONAZOLE_INTERACTION",
+      "appliesToGenerics": ["fluconazole", "ketoconazole", "itraconazole"],
+      "indicationNeeded": false,
+      "alternatives": [
+        {
+          "generic": "terbinafine",
+          "reason": "Allylamine antifungal agent that does not competitively inhibit hepatic CYP2C9.",
+          "cautions": ["Assess baseline hepatic function"],
+          "suitableFor": ["Skin infection"]
+        }
+      ],
+      "noSafeSubstitute": false,
+      "noSubstituteMessage": "",
+      "specialistReview": false
+    },
+    {
+      "riskKey": "THEOPHYLLINE_CIPROFLOXACIN_INTERACTION",
+      "appliesToGenerics": ["ciprofloxacin", "norfloxacin"],
+      "indicationNeeded": false,
+      "alternatives": [
+        {
+          "generic": "azithromycin",
+          "reason": "Respiratory antimicrobial with negligible CYP1A2 binding that avoids toxic theophylline accumulation.",
+          "cautions": ["Monitor respiratory peak flow"],
+          "suitableFor": ["Respiratory infection"]
+        }
+      ],
+      "noSafeSubstitute": false,
+      "noSubstituteMessage": "",
+      "specialistReview": false
+    },
+    {
+      "riskKey": "ATORVASTATIN_GEMFIBROZIL_INTERACTION",
+      "appliesToGenerics": ["gemfibrozil"],
+      "indicationNeeded": false,
+      "alternatives": [
+        {
+          "generic": "fenofibrate",
+          "reason": "Fibrate with minimal glucuronidation interference, dramatically reducing rhabdomyolysis hazard.",
+          "cautions": ["Check baseline serum creatinine and eGFR"],
+          "suitableFor": ["Cholesterol"]
+        },
+        {
+          "generic": "ezetimibe",
+          "reason": "Cholesterol absorption inhibitor completely free from myopathic drug interaction risks.",
+          "cautions": ["Well tolerated adjunct therapy"],
+          "suitableFor": ["Cholesterol"]
+        }
+      ],
+      "noSafeSubstitute": false,
+      "noSubstituteMessage": "",
+      "specialistReview": false
+    },
+    {
+      "riskKey": "SSRI_MAOI_INTERACTION",
+      "appliesToGenerics": ["moclobemide", "selegiline", "linezolid"],
+      "indicationNeeded": false,
+      "alternatives": [],
+      "noSafeSubstitute": true,
+      "noSubstituteMessage": "Concomitant MAOI and SSRI therapy triggers hyperthermic fatal serotonin toxicity. Strict 14-day washout period required.",
+      "specialistReview": true
+    },
+    {
+      "riskKey": "PROPRANOLOL_ASTHMA_INTERACTION",
+      "appliesToGenerics": ["propranolol", "timolol", "nadolol", "carvedilol"],
+      "indicationNeeded": false,
+      "alternatives": [
+        {
+          "generic": "metoprolol",
+          "reason": "Cardioselective beta-1 antagonist with significantly lower propensity for bronchospasm.",
+          "cautions": ["Use lowest effective dose; monitor FEV1 in severe asthma"],
+          "suitableFor": ["Blood pressure"]
+        },
+        {
+          "generic": "amlodipine",
+          "reason": "Calcium channel blocker with zero bronchoconstrictive airway adverse effects.",
+          "cautions": ["Monitor for pedal edema"],
+          "suitableFor": ["Blood pressure"]
+        }
+      ],
+      "noSafeSubstitute": false,
+      "noSubstituteMessage": "",
+      "specialistReview": false
+    },
+    {
+      "riskKey": "ANGIOEDEMA_ACEI_INTERACTION",
+      "appliesToGenerics": ["lisinopril", "ramipril", "enalapril", "perindopril"],
+      "indicationNeeded": false,
+      "alternatives": [
+        {
+          "generic": "amlodipine",
+          "reason": "Calcium antagonist safe in patients with history of bradykinin-mediated angioedema.",
+          "cautions": ["Blood pressure monitoring"],
+          "suitableFor": ["Blood pressure"]
+        },
+        {
+          "generic": "indapamide",
+          "reason": "Thiazide-like diuretic completely devoid of angioedema airway risk.",
+          "cautions": ["Check electrolyte panel"],
+          "suitableFor": ["Blood pressure"]
+        }
+      ],
+      "noSafeSubstitute": false,
+      "noSubstituteMessage": "",
+      "specialistReview": false
+    },
+    {
+      "riskKey": "POTASSIUM_SPIRONOLACTONE_INTERACTION",
+      "appliesToGenerics": ["potassium chloride", "potassium citrate"],
+      "indicationNeeded": false,
+      "alternatives": [],
+      "noSafeSubstitute": true,
+      "noSubstituteMessage": "Direct potassium supplementation in aldosterone antagonist therapy creates acute hyperkalemic cardiac arrest hazard. Adjust dietary intake under nephrology supervision.",
+      "specialistReview": true
+    }
+  ]
+}

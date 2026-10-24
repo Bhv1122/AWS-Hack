@@ -1,928 +1,658 @@
 {% extends "base.html" %}
 
-{% block title %}Role-Based Login & Strict Verification Gateway | MedCoord & SwasthyaSetu{% endblock %}
+{% block title %}Gateway & Zero-Trust Verification | SwasthyaSetu & AWS Platform{% endblock %}
 
 {% block extra_head %}
-<!-- QRCode.js Library with Resilient Fallback -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 <style>
-  .passport-card {
-    background: linear-gradient(135deg, #005049 0%, #00685f 50%, #008378 100%);
-    box-shadow: 0 10px 25px -5px rgba(0, 104, 95, 0.3), 0 8px 10px -6px rgba(0, 104, 95, 0.2);
+  .gate-step {
+    border-left: 3px solid var(--border-subtle);
+    padding-left: var(--space-4);
+    position: relative;
+    padding-bottom: var(--space-4);
   }
-  .doctor-badge-card {
-    background: linear-gradient(135deg, #0b1c30 0%, #15325b 60%, #0051d5 100%);
-    box-shadow: 0 10px 25px -5px rgba(0, 81, 213, 0.3), 0 8px 10px -6px rgba(0, 81, 213, 0.2);
+  .gate-step.active {
+    border-left-color: var(--doctor-accent);
   }
-  .pin-badge {
-    letter-spacing: 0.25em;
-    font-family: monospace;
+  .gate-step.completed {
+    border-left-color: var(--success);
   }
-  @media print {
-    body * { visibility: hidden; }
-    #printable-card-area, #printable-card-area * { visibility: visible; }
-    #printable-card-area { position: absolute; left: 0; top: 0; width: 100%; }
-    .no-print { display: none !important; }
+  .gate-step.failed {
+    border-left-color: var(--danger);
+  }
+  .gate-bullet {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    position: absolute;
+    left: -15px;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: 800;
+    background-color: var(--bg-card-subtle);
+    border: 2px solid var(--border-subtle);
+    color: var(--text-muted);
+  }
+  .gate-step.active .gate-bullet {
+    background-color: var(--doctor-accent);
+    border-color: var(--doctor-accent);
+    color: white;
+  }
+  .gate-step.completed .gate-bullet {
+    background-color: var(--success);
+    border-color: var(--success);
+    color: white;
+  }
+  .gate-step.failed .gate-bullet {
+    background-color: var(--danger);
+    border-color: var(--danger);
+    color: white;
   }
 </style>
 {% endblock %}
 
 {% block content %}
-<div class="max-w-4xl mx-auto space-y-6">
+<div class="w-full max-w-6xl mx-auto px-4 py-8">
 
-  <!-- TOP HEADER BANNER -->
-  <div class="text-center space-y-2">
-    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-surface-container-highest text-primary text-xs font-bold uppercase tracking-wider shadow-xs">
-      <span class="material-symbols-outlined text-[16px]">verified_user</span>
-      <span>Amazon Cognito • AWS IAM Identity Center • AWS KMS Privacy Shield</span>
+  <!-- ======================================================================= -->
+  <!-- JUDGE PANEL ("Demo for judges", gated by DEMO_MODE)                     -->
+  <!-- ======================================================================= -->
+  <div id="judge-panel" class="mb-8 p-5 rounded-2xl bg-card border border-primary/20 shadow-sm space-y-4">
+    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-subtle">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl bg-primary-soft text-primary flex items-center justify-center font-bold flex-shrink-0">
+          <svg class="lucide-icon" viewBox="0 0 24 24"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/></svg>
+        </div>
+        <div>
+          <div class="flex items-center gap-2">
+            <span class="text-xs font-extrabold uppercase tracking-wider text-primary">Judge Evaluation Panel</span>
+            <span class="badge badge-teal text-[10px]">1-CLICK SCENARIO PRESETS</span>
+          </div>
+          <p class="text-xs text-muted">Pre-fills forms with valid and negative scenarios for live verification. You press submit.</p>
+        </div>
+      </div>
+      <div class="flex items-center gap-2">
+        <button type="button" onclick="startJudgeTour()" class="btn btn-primary text-xs px-3 py-1.5 min-h-[38px]">
+          <svg class="lucide-icon sm" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <span>Start 7-Step Tour</span>
+        </button>
+      </div>
     </div>
-    <h1 class="text-3xl sm:text-4xl font-headline font-extrabold text-on-surface tracking-tight">
-      Role-Based Login & Strict Verification Gateway
-    </h1>
-    <p class="text-sm sm:text-base text-on-surface-variant max-w-2xl mx-auto">
-      Zero-trust clinical access gateway with auto-generated Unique SwasthyaIDs (<code class="bg-surface-container px-1 py-0.5 rounded text-primary font-bold">PAT-SS-XXXX</code>), dynamic 6-digit Consent PINs, and NMC-verified Doctor Credentials (<code class="bg-surface-container px-1 py-0.5 rounded text-secondary font-bold">DOC-IN-XXXX</code>).
-    </p>
+
+    <!-- Scenarios Accordion Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 pt-1">
+      <!-- Doctor Scenarios (Valid + Negatives) -->
+      <div class="space-y-2">
+        <span class="text-xs font-bold text-doctor uppercase tracking-wider">Doctor Multi-Gate Verification Scenarios:</span>
+        <div class="grid grid-cols-2 gap-2 text-xs">
+          <button type="button" onclick="fillDoctorScenario('VALID_KARNATAKA')" class="btn btn-secondary text-xs px-2.5 py-1.5 min-h-[36px] justify-between text-left" title="Valid KMC cardiologist">
+            <span>Valid (KMC Card.)</span>
+            <span class="badge badge-green text-[9px]">DOC-8841</span>
+          </button>
+          <button type="button" onclick="fillDoctorScenario('VALID_ODISHA')" class="btn btn-secondary text-xs px-2.5 py-1.5 min-h-[36px] justify-between text-left" title="Valid Odia pulmonologist">
+            <span>Valid (Odisha Pulm.)</span>
+            <span class="badge badge-green text-[9px]">AIIMS-BBSR</span>
+          </button>
+          <button type="button" onclick="fillDoctorScenario('SUSPENDED')" class="btn btn-secondary text-xs px-2.5 py-1.5 min-h-[36px] justify-between text-left" title="Suspended license test">
+            <span>Suspended Licence</span>
+            <span class="badge badge-red text-[9px]">GATE 1</span>
+          </button>
+          <button type="button" onclick="fillDoctorScenario('EXPIRED')" class="btn btn-secondary text-xs px-2.5 py-1.5 min-h-[36px] justify-between text-left" title="Expired license test">
+            <span>Expired Licence</span>
+            <span class="badge badge-red text-[9px]">GATE 1</span>
+          </button>
+          <button type="button" onclick="fillDoctorScenario('NOT_FOUND')" class="btn btn-secondary text-xs px-2.5 py-1.5 min-h-[36px] justify-between text-left" title="Not in registry test">
+            <span>Not In Registry</span>
+            <span class="badge badge-red text-[9px]">GATE 1</span>
+          </button>
+          <button type="button" onclick="fillDoctorScenario('WRONG_HOSPITAL')" class="btn btn-secondary text-xs px-2.5 py-1.5 min-h-[36px] justify-between text-left" title="Hospital affiliation mismatch">
+            <span>Wrong Hospital</span>
+            <span class="badge badge-amber text-[9px]">GATE 2</span>
+          </button>
+          <button type="button" onclick="fillDoctorScenario('WRONG_GOVID')" class="btn btn-secondary text-xs px-2.5 py-1.5 min-h-[36px] justify-between text-left" title="Govt ID mismatch">
+            <span>Wrong Govt ID</span>
+            <span class="badge badge-amber text-[9px]">GATE 3</span>
+          </button>
+          <button type="button" onclick="fillDoctorScenario('WRONG_OTP')" class="btn btn-secondary text-xs px-2.5 py-1.5 min-h-[36px] justify-between text-left" title="MFA OTP rejection">
+            <span>Wrong MFA OTP</span>
+            <span class="badge badge-amber text-[9px]">GATE 4</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Patient Clinical Scenarios -->
+      <div class="space-y-2">
+        <span class="text-xs font-bold text-primary uppercase tracking-wider">Patient Health Passport Scenarios:</span>
+        <div class="grid grid-cols-2 gap-2 text-xs">
+          <button type="button" onclick="fillPatientScenario('PAT-SS-1001')" class="btn btn-secondary text-xs px-2.5 py-1.5 min-h-[36px] justify-between text-left" title="Ramesh Kumar - Odia Mason, Penicillin allergy">
+            <span>Ramesh Kumar</span>
+            <span class="badge badge-teal text-[9px]">ANCHOR</span>
+          </button>
+          <button type="button" onclick="fillPatientScenario('PAT-SS-1002')" class="btn btn-secondary text-xs px-2.5 py-1.5 min-h-[36px] justify-between text-left" title="Rajesh Yadav - Textile Byssinosis">
+            <span>Rajesh Yadav</span>
+            <span class="badge badge-amber text-[9px]">BYSSINOSIS</span>
+          </button>
+          <button type="button" onclick="fillPatientScenario('PAT-SS-1003')" class="btn btn-secondary text-xs px-2.5 py-1.5 min-h-[36px] justify-between text-left" title="Manjunath - 6+ drugs, dual NSAID & ACEI+ARB">
+            <span>Manjunath Gowda</span>
+            <span class="badge badge-red text-[9px]">DUPLICATE RX</span>
+          </button>
+          <button type="button" onclick="fillPatientScenario('PAT-SS-1004')" class="btn btn-secondary text-xs px-2.5 py-1.5 min-h-[36px] justify-between text-left" title="Lakshmi - Sulfa allergy">
+            <span>Lakshmi Murugan</span>
+            <span class="badge badge-amber text-[9px]">SULFA ALLERGY</span>
+          </button>
+          <button type="button" onclick="fillPatientScenario('PAT-SS-1006')" class="btn btn-secondary text-xs px-2.5 py-1.5 min-h-[36px] justify-between text-left" title="Bina Mondal - Clean record, zero allergies">
+            <span>Bina Mondal</span>
+            <span class="badge badge-green text-[9px]">CLEAN / SAVED</span>
+          </button>
+          <button type="button" onclick="fillPatientScenario('PAT-SS-1007')" class="btn btn-secondary text-xs px-2.5 py-1.5 min-h-[36px] justify-between text-left" title="Dharmendra - Poor adherence streak">
+            <span>Dharmendra Paswan</span>
+            <span class="badge badge-red text-[9px]">POOR ADH</span>
+          </button>
+          <button type="button" onclick="fillPatientScenario('PAT-SS-1008')" class="btn btn-secondary text-xs px-2.5 py-1.5 min-h-[36px] justify-between text-left" title="Ankit Soren - Empty history demo">
+            <span>Ankit Soren</span>
+            <span class="badge badge-teal text-[9px]">EMPTY STATE</span>
+          </button>
+          <button type="button" onclick="fillPatientScenario('PAT-SS-1010')" class="btn btn-secondary text-xs px-2.5 py-1.5 min-h-[36px] justify-between text-left" title="Fatima Khatun - Pregnant patient">
+            <span>Fatima Khatun</span>
+            <span class="badge badge-teal text-[9px]">PREGNANCY</span>
+          </button>
+        </div>
+      </div>
+    </div>
   </div>
 
-  <!-- ROLE GATEWAY TAB SWITCHER -->
-  <div class="flex items-center justify-center">
-    <div class="grid grid-cols-2 p-1.5 bg-surface-container-high rounded-2xl max-w-md w-full shadow-inner">
-      <button id="tab-btn-patient" onclick="switchGatewayTab('patient')" class="flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl text-sm font-bold transition-all {% if active_tab == 'patient' %}bg-white text-primary shadow-sm{% else %}text-on-surface-variant hover:text-on-surface{% endif %}">
-        <span class="material-symbols-outlined text-[20px]">badge</span>
-        <span>Patient SwasthyaID</span>
-      </button>
-      <button id="tab-btn-doctor" onclick="switchGatewayTab('doctor')" class="flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl text-sm font-bold transition-all {% if active_tab == 'doctor' %}bg-white text-secondary shadow-sm{% else %}text-on-surface-variant hover:text-on-surface{% endif %}">
-        <span class="material-symbols-outlined text-[20px]">verified</span>
-        <span>Strict Doctor Portal</span>
-      </button>
+  <!-- ======================================================================= -->
+  <!-- SPLIT SCREEN: SETU CARE VALUE PROP (LEFT) vs GATEWAY (RIGHT)            -->
+  <!-- ======================================================================= -->
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+    
+    <!-- LEFT: VALUE PROPOSITION WITH BRIDGE MOTIF -->
+    <div class="lg:col-span-5 space-y-6">
+      <div class="space-y-3">
+        <span class="badge badge-teal">SETU CARE HEALTHCARE ARCHITECTURE</span>
+        <h1 class="text-3xl sm:text-4xl font-extrabold text-main tracking-tight leading-tight">
+          A Bridge of Trust Across States &amp; Clinics
+        </h1>
+        <p class="text-sm sm:text-base text-muted leading-relaxed">
+          Connecting migrant workers with doctors across language barriers, lost paper records, and cross-state relocations with AWS cloud-native security.
+        </p>
+      </div>
+
+      <!-- Setu Bridge SVG Illustration Motif -->
+      <div class="p-6 rounded-2xl bg-card border border-subtle shadow-sm relative overflow-hidden">
+        <svg class="w-full h-36 stroke-primary fill-none opacity-85" viewBox="0 0 400 120" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <!-- River Water Line -->
+          <path d="M 0 110 Q 100 100, 200 110 T 400 110" stroke="#CCFBF1" stroke-width="6"/>
+          <!-- Bridge Road Arch -->
+          <path d="M 20 85 Q 200 25, 380 85" stroke="var(--primary)" stroke-width="3"/>
+          <path d="M 20 90 L 380 90" stroke="var(--primary)" stroke-width="2"/>
+          <!-- Suspension Cables -->
+          <line x1="80" y1="58" x2="80" y2="90" stroke="var(--border-strong)"/>
+          <line x1="140" y1="42" x2="140" y2="90" stroke="var(--border-strong)"/>
+          <line x1="200" y1="36" x2="200" y2="90" stroke="var(--border-strong)"/>
+          <line x1="260" y1="42" x2="260" y2="90" stroke="var(--border-strong)"/>
+          <line x1="320" y1="58" x2="320" y2="90" stroke="var(--border-strong)"/>
+          <!-- Pillars -->
+          <rect x="50" y="50" width="12" height="40" fill="var(--primary)" rx="2"/>
+          <rect x="338" y="50" width="12" height="40" fill="var(--primary)" rx="2"/>
+        </svg>
+        <div class="mt-3 flex items-center justify-between text-xs text-muted">
+          <span>Home State (e.g. Odisha PHC)</span>
+          <span class="font-bold text-primary">SwasthyaSetu</span>
+          <span>Destination (e.g. Bengaluru Clinic)</span>
+        </div>
+      </div>
+
+      <!-- Trust Badges 2x2 Grid -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+        <div class="p-4 rounded-2xl bg-card border border-subtle shadow-xs space-y-1">
+          <div class="text-primary mb-1">
+            <svg class="lucide-icon" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <h4 class="text-xs font-bold text-main">Zero-Trust Privacy Shield</h4>
+          <p class="text-[11px] text-muted">Records locked by default; unlocked strictly via live 6-digit Consent PIN.</p>
+        </div>
+
+        <div class="p-4 rounded-2xl bg-card border border-subtle shadow-xs space-y-1">
+          <div class="text-doctor mb-1">
+            <svg class="lucide-icon" viewBox="0 0 24 24"><circle cx="7.5" cy="15.5" r="5.5"/><path d="m21 2-9.6 9.6"/><path d="m15.5 7.5 3 3L22 7l-3-3"/></svg>
+          </div>
+          <h4 class="text-xs font-bold text-main">AWS KMS Master Key</h4>
+          <p class="text-[11px] text-muted">Envelope encryption with <code class="font-mono text-[10px]">alias/MedCoord-HIPAA-MasterKey</code>.</p>
+        </div>
+
+        <div class="p-4 rounded-2xl bg-card border border-subtle shadow-xs space-y-1">
+          <div class="text-danger mb-1">
+            <svg class="lucide-icon" viewBox="0 0 24 24"><path d="m10.5 20.5 10-10a4.95 4.95 0 1 0-7-7l-10 10a4.95 4.95 0 1 0 7 7Z"/><path d="m8.5 8.5 7 7"/></svg>
+          </div>
+          <h4 class="text-xs font-bold text-main">AI Safety Gatekeeper</h4>
+          <p class="text-[11px] text-muted">Comprehend Medical &amp; Bedrock checks allergies &amp; cross-drug interactions.</p>
+        </div>
+
+        <div class="p-4 rounded-2xl bg-card border border-subtle shadow-xs space-y-1">
+          <div class="text-primary mb-1">
+            <svg class="lucide-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          </div>
+          <h4 class="text-xs font-bold text-main">BhashaSehat Translation</h4>
+          <p class="text-[11px] text-muted">Native scripts + audio speech synthesis in Odia, Hindi, Kannada, Tamil, Telugu.</p>
+        </div>
+      </div>
     </div>
-  </div>
 
-  <!-- ==================================================================== -->
-  <!-- TAB 1: PATIENT SWASTHYAID GATEWAY -->
-  <!-- ==================================================================== -->
-  <div id="patient-gateway-section" class="{% if active_tab != 'patient' %}hidden{% endif %} space-y-6">
-
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+    <!-- RIGHT: BIG TWO-CARD ROLE CHOOSER & FORMS -->
+    <div class="lg:col-span-7 space-y-6">
       
-      <!-- Left Column: Patient Auth Form (Sign In / Register) -->
-      <div class="lg:col-span-7 bg-white rounded-3xl p-6 sm:p-8 border border-surface-container-high/80 shadow-sm space-y-6">
+      <!-- Big Two-Card Role Chooser -->
+      <div class="grid grid-cols-2 gap-4">
+        <!-- Patient Card -->
+        <button type="button" id="role-card-patient" onclick="switchGatewayRole('patient')" class="card p-5 text-left border-2 border-primary bg-primary-soft transition-all flex flex-col justify-between min-h-[110px] cursor-pointer">
+          <div class="flex items-center justify-between">
+            <div class="text-primary">
+              <svg class="lucide-icon lg" viewBox="0 0 24 24"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            </div>
+            <span class="badge badge-teal text-[9px]">MIGRANT WORKER</span>
+          </div>
+          <div>
+            <h3 class="font-extrabold text-sm text-main">I am a Patient</h3>
+            <p class="text-[11px] text-muted mt-0.5">Health Passport, doses &amp; pharmacy</p>
+          </div>
+        </button>
+
+        <!-- Doctor Card -->
+        <button type="button" id="role-card-doctor" onclick="switchGatewayRole('doctor')" class="card p-5 text-left border-2 border-subtle bg-card hover:border-doctor transition-all flex flex-col justify-between min-h-[110px] cursor-pointer">
+          <div class="flex items-center justify-between">
+            <div class="text-doctor">
+              <svg class="lucide-icon lg" viewBox="0 0 24 24"><path d="M4.8 2.3A.3.3 0 1 0 5 2H4a2 2 0 0 0-2 2v5a6 6 0 0 0 6 6v0a6 6 0 0 0 6-6V4a2 2 0 0 0-2-2h-1a.2.2 0 1 0 .3.3"/><path d="M8 15v1a6 6 0 0 0 6 6v0a6 6 0 0 0 6-6v-4"/><circle cx="20" cy="10" r="2"/></svg>
+            </div>
+            <span class="badge badge-indigo text-[9px]">CLINICIAN</span>
+          </div>
+          <div>
+            <h3 class="font-extrabold text-sm text-main">I am a Doctor</h3>
+            <p class="text-[11px] text-muted mt-0.5">Clinical workspace &amp; prescriptions</p>
+          </div>
+        </button>
+      </div>
+
+      <!-- =================================================================== -->
+      <!-- 1. PATIENT GATEWAY SECTION                                          -->
+      <!-- =================================================================== -->
+      <div id="patient-gateway-section" class="card p-6 sm:p-8 space-y-6">
         
-        <div class="flex items-center justify-between pb-4 border-b border-surface-container-high/60">
-          <div>
-            <h2 class="text-xl font-headline font-bold text-on-surface flex items-center gap-2">
-              <span class="material-symbols-outlined text-primary text-[24px]">contact_emergency</span>
-              <span id="patient-form-title">Patient SwasthyaID Sign In</span>
-            </h2>
-            <p class="text-xs text-on-surface-variant mt-0.5">Access your portable digital health passport and prescriptions</p>
+        <!-- Tabs: Login vs Register -->
+        <div class="flex items-center justify-between border-b border-subtle pb-3">
+          <div class="flex items-center gap-6">
+            <button type="button" id="patient-tab-login" onclick="switchAuthTab('patient', 'login')" class="font-extrabold text-sm text-primary border-b-2 border-primary pb-2.5 transition-all">
+              Sign In to SwasthyaID
+            </button>
+            <button type="button" id="patient-tab-register" onclick="switchAuthTab('patient', 'register')" class="font-semibold text-sm text-muted hover:text-main pb-2.5 transition-all">
+              New Patient? Register
+            </button>
           </div>
-          <button type="button" onclick="togglePatientFormMode()" id="patient-mode-toggle-btn" class="text-xs font-bold text-primary hover:underline flex items-center gap-1">
-            <span id="patient-toggle-label">New Patient? Register Here</span>
-            <span class="material-symbols-outlined text-[14px]">arrow_forward</span>
-          </button>
+          <span class="text-xs text-muted hidden sm:inline">Protected by Cognito</span>
         </div>
 
-        <!-- 1-Click Demo Fill Banner -->
-        <div class="p-3 bg-surface-container-low rounded-xl border border-surface-container flex items-center justify-between gap-3">
-          <div class="flex items-center gap-2 text-xs font-semibold text-on-surface-variant">
-            <span class="material-symbols-outlined text-primary text-[18px]">bolt</span>
-            <span>Default Patient: <strong>Ramesh Kumar</strong> (<code class="text-primary font-bold">PAT-SS-1001</code>)</span>
-          </div>
-          <button type="button" onclick="fillPatientDemo()" class="px-2.5 py-1 rounded-lg bg-primary-fixed hover:bg-primary text-on-primary-fixed-variant hover:text-white text-xs font-bold transition-colors">
-            1-Click Demo Fill
-          </button>
-        </div>
-
-        <!-- PATIENT SIGN IN FORM -->
+        <!-- 1A. PATIENT SIGN IN FORM -->
         <form id="patient-signin-form" onsubmit="handlePatientLogin(event)" class="space-y-4">
-          <div>
-            <label class="block text-xs font-bold text-on-surface-variant mb-1">Unique Patient ID or Mobile Number *</label>
-            <div class="relative">
-              <span class="material-symbols-outlined absolute left-3 top-3 text-[18px] text-on-surface-variant">fingerprint</span>
-              <input type="text" id="patient-login-id" required value="PAT-SS-1001" placeholder="e.g. PAT-SS-1001 or +91-98765-43210" class="w-full pl-10 pr-3 py-2.5 rounded-xl border border-surface-container-high bg-surface-container-lowest text-sm font-semibold focus:outline-none focus:ring-2 focus:ring-primary"/>
-            </div>
-            <p class="text-[11px] text-on-surface-variant mt-1">Accepts unique identifier format <code class="text-primary">PAT-SS-XXXX</code> or phone number.</p>
+          <div class="form-group">
+            <label class="form-label" data-i18n="label_patient_id">Unique Patient ID or Mobile Number *</label>
+            <input type="text" id="patient-login-id" class="form-control" placeholder="e.g. PAT-SS-1001 or 9000000001" value="PAT-SS-1001" required/>
           </div>
 
-          <div>
-            <label class="block text-xs font-bold text-on-surface-variant mb-1">Account Password *</label>
-            <div class="relative">
-              <span class="material-symbols-outlined absolute left-3 top-3 text-[18px] text-on-surface-variant">lock</span>
-              <input type="password" id="patient-login-password" required value="Patient@123" placeholder="••••••••" class="w-full pl-10 pr-3 py-2.5 rounded-xl border border-surface-container-high bg-surface-container-lowest text-sm font-semibold focus:outline-none focus:ring-2 focus:ring-primary"/>
+          <div class="form-group">
+            <div class="flex items-center justify-between mb-1">
+              <label class="form-label mb-0">Password *</label>
+              <span class="text-xs text-muted">Demo Password: <code class="font-mono">Demo@123</code></span>
             </div>
+            <input type="password" id="patient-login-password" class="form-control" placeholder="••••••••••••" value="Demo@123" required/>
           </div>
 
-          <button type="submit" id="patient-signin-btn" class="w-full py-3 rounded-xl bg-primary hover:bg-primary-container text-white font-bold text-sm shadow-md transition-all flex items-center justify-center gap-2">
-            <span class="material-symbols-outlined text-[20px]">lock_open</span>
-            <span>Authenticate SwasthyaID & View ID Card</span>
+          <button type="submit" id="patient-signin-btn" class="btn btn-primary w-full h-12 text-base">
+            <svg class="lucide-icon sm" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 9.9-1"/></svg>
+            <span data-i18n="btn_login">Sign In &amp; Open SwasthyaID Portal</span>
           </button>
         </form>
 
-        <!-- PATIENT REGISTRATION FORM (Initially Hidden) -->
-        <form id="patient-register-form" onsubmit="handlePatientRegister(event)" class="space-y-4 hidden">
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-            <div>
-              <label class="block text-xs font-bold text-on-surface-variant mb-1">Full Name *</label>
-              <input type="text" id="reg-pat-name" required placeholder="e.g. Suresh Chandra Mohanty" class="w-full px-3 py-2 rounded-xl border border-surface-container-high bg-surface-container-lowest text-xs font-semibold focus:outline-none focus:ring-2 focus:ring-primary"/>
+        <!-- 1B. PATIENT REGISTER 4-STEP WIZARD -->
+        <form id="patient-register-form" onsubmit="handlePatientRegister(event)" class="hidden space-y-5">
+          <!-- Stepper Progress Header -->
+          <div class="space-y-2">
+            <div class="flex items-center justify-between text-xs font-bold">
+              <span id="patient-step-indicator" class="text-primary">Step 1 of 4: Personal Info</span>
+              <span class="text-muted">4-Step Wizard</span>
             </div>
-            <div>
-              <label class="block text-xs font-bold text-on-surface-variant mb-1">Age & Gender *</label>
-              <div class="flex gap-2">
-                <input type="number" id="reg-pat-age" required min="1" max="120" value="34" placeholder="Age" class="w-20 px-3 py-2 rounded-xl border border-surface-container-high bg-surface-container-lowest text-xs font-semibold focus:outline-none focus:ring-2 focus:ring-primary"/>
-                <select id="reg-pat-gender" class="flex-1 px-3 py-2 rounded-xl border border-surface-container-high bg-surface-container-lowest text-xs font-semibold focus:outline-none focus:ring-2 focus:ring-primary">
+            <div class="w-full h-2 bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
+              <div id="patient-wizard-progress" class="h-full bg-primary transition-all duration-300" style="width: 25%;"></div>
+            </div>
+          </div>
+
+          <!-- Wizard Step 1: Personal Info -->
+          <div id="patient-step-1" class="space-y-4">
+            <div class="form-group">
+              <label class="form-label" data-i18n="label_full_name">Full Name *</label>
+              <input type="text" id="reg-pat-name" class="form-control" placeholder="e.g. Suresh Chandra Mohanty" required/>
+            </div>
+            <div class="grid grid-cols-2 gap-4">
+              <div class="form-group">
+                <label class="form-label" data-i18n="label_age">Age *</label>
+                <input type="number" id="reg-pat-age" class="form-control" placeholder="38" min="1" max="120" required/>
+              </div>
+              <div class="form-group">
+                <label class="form-label" data-i18n="label_gender">Gender *</label>
+                <select id="reg-pat-gender" class="form-control">
                   <option value="Male">Male</option>
                   <option value="Female">Female</option>
                   <option value="Other">Other</option>
                 </select>
               </div>
             </div>
+            <div class="form-group">
+              <label class="form-label">Mobile Number *</label>
+              <input type="tel" id="reg-pat-phone" class="form-control" placeholder="9000000025" required/>
+            </div>
+            <button type="button" onclick="goToPatientStep(2)" class="btn btn-primary w-full">
+              <span>Next: Location &amp; Language</span>
+              <svg class="lucide-icon sm" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </button>
           </div>
 
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-            <div>
-              <label class="block text-xs font-bold text-on-surface-variant mb-1">Origin State *</label>
-              <input type="text" id="reg-pat-origin" required value="Odisha" placeholder="e.g. Odisha, Bihar, UP" class="w-full px-3 py-2 rounded-xl border border-surface-container-high bg-surface-container-lowest text-xs font-semibold focus:outline-none focus:ring-2 focus:ring-primary"/>
+          <!-- Wizard Step 2: Location & Language -->
+          <div id="patient-step-2" class="hidden space-y-4">
+            <div class="grid grid-cols-2 gap-4">
+              <div class="form-group">
+                <label class="form-label" data-i18n="label_origin_state">Origin State *</label>
+                <input type="text" id="reg-pat-origin" class="form-control" placeholder="e.g. Odisha" required/>
+              </div>
+              <div class="form-group">
+                <label class="form-label" data-i18n="label_current_city">Current City *</label>
+                <input type="text" id="reg-pat-city" class="form-control" placeholder="e.g. Bengaluru, Whitefield" required/>
+              </div>
             </div>
-            <div>
-              <label class="block text-xs font-bold text-on-surface-variant mb-1">Current Work Location *</label>
-              <input type="text" id="reg-pat-city" required value="Bengaluru, Karnataka" placeholder="e.g. Bengaluru, Karnataka" class="w-full px-3 py-2 rounded-xl border border-surface-container-high bg-surface-container-lowest text-xs font-semibold focus:outline-none focus:ring-2 focus:ring-primary"/>
-            </div>
-          </div>
-
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-            <div>
-              <label class="block text-xs font-bold text-on-surface-variant mb-1">Preferred Language *</label>
-              <select id="reg-pat-lang" class="w-full px-3 py-2 rounded-xl border border-surface-container-high bg-surface-container-lowest text-xs font-semibold focus:outline-none focus:ring-2 focus:ring-primary">
+            <div class="form-group">
+              <label class="form-label" data-i18n="label_language">Preferred Language *</label>
+              <select id="reg-pat-lang" class="form-control">
                 <option value="Odia">Odia (ଓଡ଼ିଆ)</option>
+                <option value="Hindi">Hindi (हिंदी)</option>
                 <option value="Kannada">Kannada (ಕನ್ನಡ)</option>
-                <option value="Hindi">Hindi (हिन्दी)</option>
-                <option value="English">English</option>
-                <option value="Bengali">Bengali (বাংলা)</option>
+                <option value="Tamil">Tamil (தமிழ்)</option>
                 <option value="Telugu">Telugu (తెలుగు)</option>
+                <option value="English">English</option>
               </select>
             </div>
-            <div>
-              <label class="block text-xs font-bold text-on-surface-variant mb-1">Occupation *</label>
-              <input type="text" id="reg-pat-occupation" required value="Construction Site Mason" placeholder="e.g. Textile Mill Worker, Mason" class="w-full px-3 py-2 rounded-xl border border-surface-container-high bg-surface-container-lowest text-xs font-semibold focus:outline-none focus:ring-2 focus:ring-primary"/>
+            <div class="flex items-center gap-3">
+              <button type="button" onclick="goToPatientStep(1)" class="btn btn-secondary flex-1">Back</button>
+              <button type="button" onclick="goToPatientStep(3)" class="btn btn-primary flex-1">
+                <span>Next: Occupation &amp; Health</span>
+                <svg class="lucide-icon sm" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+              </button>
             </div>
           </div>
 
-          <div>
-            <label class="block text-xs font-bold text-on-surface-variant mb-1">Known Drug Allergies (Comma-separated)</label>
-            <input type="text" id="reg-pat-allergies" value="Penicillin, Sulfa Drugs" placeholder="e.g. Penicillin, Aspirin, NSAIDs" class="w-full px-3 py-2 rounded-xl border border-surface-container-high bg-surface-container-lowest text-xs font-semibold focus:outline-none focus:ring-2 focus:ring-primary"/>
-          </div>
-
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-            <div>
-              <label class="block text-xs font-bold text-on-surface-variant mb-1">Mobile Phone Number *</label>
-              <input type="tel" id="reg-pat-phone" required value="+91-98765-44211" placeholder="+91-98765-00000" class="w-full px-3 py-2 rounded-xl border border-surface-container-high bg-surface-container-lowest text-xs font-semibold focus:outline-none focus:ring-2 focus:ring-primary"/>
+          <!-- Wizard Step 3: Occupation & Health -->
+          <div id="patient-step-3" class="hidden space-y-4">
+            <div class="form-group">
+              <label class="form-label" data-i18n="label_occupation">Occupation / Trade *</label>
+              <input type="text" id="reg-pat-occupation" class="form-control" placeholder="e.g. Construction mason, Quarry worker" required/>
             </div>
-            <div>
-              <label class="block text-xs font-bold text-on-surface-variant mb-1">ABHA Number (Optional/Auto)</label>
-              <input type="text" id="reg-pat-abha" placeholder="Leave empty to auto-generate" class="w-full px-3 py-2 rounded-xl border border-surface-container-high bg-surface-container-lowest text-xs font-semibold focus:outline-none focus:ring-2 focus:ring-primary"/>
+            <div class="form-group">
+              <label class="form-label" data-i18n="label_exposure_years">Exposure Duration (Years)</label>
+              <input type="number" id="reg-pat-exposure" class="form-control" placeholder="5" min="0" max="60" value="5"/>
+            </div>
+            <div class="form-group">
+              <label class="form-label" data-i18n="label_allergies">Known Drug Allergies</label>
+              <input type="text" id="reg-pat-allergies" class="form-control" placeholder="e.g. Penicillin, Sulfa Drugs" value="Penicillin"/>
+            </div>
+            <div class="flex items-center gap-3">
+              <button type="button" onclick="goToPatientStep(2)" class="btn btn-secondary flex-1">Back</button>
+              <button type="button" onclick="goToPatientStep(4)" class="btn btn-primary flex-1">
+                <span>Next: Password &amp; Finish</span>
+                <svg class="lucide-icon sm" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+              </button>
             </div>
           </div>
 
-          <div>
-            <label class="block text-xs font-bold text-on-surface-variant mb-1">Account Password *</label>
-            <input type="password" id="reg-pat-password" required value="Migrant@2026Safe" class="w-full px-3 py-2 rounded-xl border border-surface-container-high bg-surface-container-lowest text-xs font-semibold focus:outline-none focus:ring-2 focus:ring-primary"/>
+          <!-- Wizard Step 4: Security Password -->
+          <div id="patient-step-4" class="hidden space-y-4">
+            <div class="form-group">
+              <label class="form-label">Password *</label>
+              <input type="password" id="reg-pat-password" class="form-control" placeholder="••••••••••••" value="Demo@123" required/>
+              <p class="text-[11px] text-muted mt-1">Default: Demo@123</p>
+            </div>
+            <div class="flex items-center gap-3">
+              <button type="button" onclick="goToPatientStep(3)" class="btn btn-secondary flex-1">Back</button>
+              <button type="submit" id="patient-register-btn" class="btn btn-primary flex-1">
+                <svg class="lucide-icon sm" viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                <span>Generate SwasthyaID &amp; Passport</span>
+              </button>
+            </div>
           </div>
-
-          <button type="submit" id="patient-register-btn" class="w-full py-3 rounded-xl bg-primary hover:bg-primary-container text-white font-bold text-sm shadow-md transition-all flex items-center justify-center gap-2">
-            <span class="material-symbols-outlined text-[20px]">how_to_reg</span>
-            <span>Generate Collision-Free SwasthyaID & QR Passport</span>
-          </button>
         </form>
 
-      </div>
-
-      <!-- Right Column: Digital SwasthyaID Health Passport Card Display -->
-      <div class="lg:col-span-5 space-y-4">
-        
-        <div id="printable-card-area" class="passport-card text-white rounded-3xl p-6 relative overflow-hidden transition-all duration-300">
-          
-          <!-- Background Watermark Symbol -->
-          <div class="absolute -right-10 -bottom-10 opacity-10 pointer-events-none">
-            <span class="material-symbols-outlined text-[220px]">health_and_safety</span>
-          </div>
-
-          <!-- Card Header -->
-          <div class="flex items-center justify-between pb-3 border-b border-white/20">
-            <div class="flex items-center gap-2">
-              <div class="w-8 h-8 rounded-lg bg-white/20 backdrop-blur-md flex items-center justify-center text-white font-bold">
-                <span class="material-symbols-outlined text-[18px]">badge</span>
-              </div>
-              <div>
-                <div class="text-[10px] font-bold tracking-widest uppercase text-primary-fixed">National Digital Health</div>
-                <div class="text-sm font-headline font-extrabold leading-none">SwasthyaID Passport</div>
-              </div>
+        <!-- 1C. REGISTRATION SUCCESS PASSPORT CARD MODAL -->
+        <div id="patient-success-modal" class="modal-backdrop" onclick="if(event.target === this) closeModal('patient-success-modal')">
+          <div class="modal-dialog p-6 sm:p-8 space-y-5 text-center">
+            <div class="w-16 h-16 rounded-full bg-primary-soft text-primary mx-auto flex items-center justify-center">
+              <svg class="lucide-icon lg" viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
             </div>
-            <div class="text-right">
-              <span class="text-[9px] uppercase px-2 py-0.5 rounded-full bg-white/20 font-bold tracking-wide">HIPAA • ABDM</span>
-            </div>
-          </div>
-
-          <!-- Card Body: Unique ID & QR Code -->
-          <div class="mt-4 flex flex-col sm:flex-row items-center gap-4">
-            
-            <!-- Live QR Code Canvas / Box -->
-            <div class="w-32 h-32 bg-white rounded-2xl p-2 flex items-center justify-center shadow-md flex-shrink-0">
-              <div id="patient-card-qr" class="w-full h-full flex items-center justify-center">
-                <!-- Fallback SVG QR placeholder if JS loading -->
-                <svg viewBox="0 0 100 100" class="w-24 h-24 text-primary" fill="currentColor">
-                  <rect x="5" y="5" width="30" height="30" rx="3" fill="#005049"/>
-                  <rect x="10" y="10" width="20" height="20" rx="2" fill="white"/>
-                  <rect x="15" y="15" width="10" height="10" fill="#005049"/>
-                  <rect x="65" y="5" width="30" height="30" rx="3" fill="#005049"/>
-                  <rect x="70" y="10" width="20" height="20" rx="2" fill="white"/>
-                  <rect x="75" y="15" width="10" height="10" fill="#005049"/>
-                  <rect x="5" y="65" width="30" height="30" rx="3" fill="#005049"/>
-                  <rect x="10" y="70" width="20" height="20" rx="2" fill="white"/>
-                  <rect x="15" y="75" width="10" height="10" fill="#005049"/>
-                  <rect x="45" y="20" width="10" height="20" fill="#005049"/>
-                  <rect x="45" y="60" width="20" height="10" fill="#005049"/>
-                  <rect x="75" y="65" width="20" height="20" rx="2" fill="#005049"/>
-                </svg>
-              </div>
-            </div>
-
-            <!-- Identity Info -->
-            <div class="space-y-1.5 text-center sm:text-left min-w-0 flex-1">
-              <div class="text-[10px] text-primary-fixed uppercase font-semibold">Unique Patient Identifier</div>
-              <div id="card-pat-id" class="text-xl font-headline font-extrabold tracking-tight text-white truncate">PAT-SS-1001</div>
-              
-              <div class="text-[10px] text-white/80">Patient Name</div>
-              <div id="card-pat-name" class="text-sm font-bold text-white truncate">Ramesh Kumar</div>
-
-              <div class="text-[10px] text-white/80">ABHA Number</div>
-              <div id="card-pat-abha" class="text-xs font-mono font-semibold text-primary-fixed truncate">ABHA-21-9845-3310-7742</div>
-            </div>
-
-          </div>
-
-          <!-- Dynamic 6-Digit Patient Consent PIN Section -->
-          <div class="mt-4 p-3 rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-between">
             <div>
-              <div class="text-[10px] text-primary-fixed font-bold uppercase tracking-wider">Dynamic Doctor Consent PIN</div>
-              <div id="card-pat-pin" class="text-xl font-bold pin-badge text-yellow-300">482910</div>
+              <span class="badge badge-teal">REGISTRATION COMPLETE</span>
+              <h3 class="text-2xl font-extrabold text-main mt-1">Your SwasthyaID is Ready!</h3>
+              <p class="text-xs text-muted">Keep this Passport safe. You can show it or share the PIN with your doctor.</p>
             </div>
-            <div class="text-right">
-              <span class="text-[10px] bg-yellow-400/20 text-yellow-200 px-2 py-0.5 rounded-full font-bold">Required by Doctor</span>
-            </div>
-          </div>
 
-          <!-- Demographics Footer -->
-          <div class="mt-3 grid grid-cols-2 gap-2 text-[11px] text-white/90 pt-3 border-t border-white/15">
-            <div>
-              <span class="text-white/60">Route:</span> <span id="card-pat-location">Odisha ➔ Bengaluru</span>
+            <!-- Health Passport Visual Card -->
+            <div class="p-5 rounded-2xl bg-card border-2 border-primary text-left space-y-3 shadow-md">
+              <div class="flex items-center justify-between pb-2 border-b border-subtle">
+                <span class="font-extrabold text-sm text-primary">National Health Passport</span>
+                <span id="ready-pat-id" class="font-mono text-sm font-bold text-main">PAT-SS-XXXX</span>
+              </div>
+              <div class="flex items-center justify-between gap-4">
+                <div class="space-y-1 text-xs">
+                  <div><strong>Name:</strong> <span id="ready-pat-name">-</span></div>
+                  <div><strong>ABHA:</strong> <span id="ready-pat-abha" class="font-mono text-[11px]">-</span></div>
+                  <div class="pt-2">
+                    <span class="text-[10px] text-muted block uppercase font-bold">Your Secret Consent PIN:</span>
+                    <span id="ready-pat-pin" class="font-mono text-2xl font-black text-danger tracking-widest">------</span>
+                  </div>
+                </div>
+                <div id="ready-pat-qr" class="p-2 bg-white rounded-lg border border-subtle flex-shrink-0"></div>
+              </div>
             </div>
-            <div class="truncate">
-              <span class="text-white/60">Language:</span> <span id="card-pat-lang">Odia (ଓଡ଼ିଆ)</span>
+
+            <div class="flex flex-col sm:flex-row gap-3 pt-2">
+              <button type="button" onclick="copyToClipboard(document.getElementById('ready-pat-id').innerText, 'SwasthyaID')" class="btn btn-secondary flex-1 text-xs">
+                <svg class="lucide-icon sm" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                <span>Copy SwasthyaID</span>
+              </button>
+              <button type="button" id="btn-patient-saved-id" onclick="proceedToPatientPortal()" class="btn btn-primary flex-1 text-xs">
+                <span>I Saved My ID · Continue</span>
+                <svg class="lucide-icon sm" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+              </button>
             </div>
-            <div class="col-span-2 truncate">
-              <span class="text-white/60">Allergies:</span> <span id="card-pat-allergies" class="text-yellow-200 font-semibold">Sulfa Drugs, Aspirin</span>
-            </div>
-          </div>
-
-        </div>
-
-        <!-- Card Action Controls -->
-        <div class="space-y-2 no-print">
-          <a id="btn-enter-patient-portal" href="/patient?patient_id=PAT-1001" class="w-full py-2.5 rounded-xl bg-primary hover:bg-primary-container text-white font-bold text-xs shadow-sm transition-all flex items-center justify-center gap-2">
-            <span class="material-symbols-outlined text-[18px]">login</span>
-            <span>Enter Patient Medication Portal</span>
-          </a>
-
-          <div class="grid grid-cols-2 gap-2">
-            <button type="button" onclick="window.print()" class="py-2 px-3 rounded-xl bg-white hover:bg-surface-container-high border border-surface-container-high text-on-surface font-bold text-xs transition-colors flex items-center justify-center gap-1.5">
-              <span class="material-symbols-outlined text-[16px]">print</span>
-              <span>Print / Download Card</span>
-            </button>
-            <button type="button" onclick="handleRotateConsentPin()" class="py-2 px-3 rounded-xl bg-white hover:bg-error-container border border-surface-container-high text-error font-bold text-xs transition-colors flex items-center justify-center gap-1.5">
-              <span class="material-symbols-outlined text-[16px]">lock_reset</span>
-              <span>Rotate Consent PIN</span>
-            </button>
           </div>
         </div>
 
       </div>
 
-    </div>
-
-  </div>
-
-
-  <!-- ==================================================================== -->
-  <!-- TAB 2: STRICT DOCTOR VERIFICATION & LOGIN GATE -->
-  <!-- ==================================================================== -->
-  <div id="doctor-gateway-section" class="{% if active_tab != 'doctor' %}hidden{% endif %} space-y-6">
-
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
-      
-      <!-- Left Column: Doctor Form (MFA Sign In / Strict Verification) -->
-      <div class="lg:col-span-7 bg-white rounded-3xl p-6 sm:p-8 border border-surface-container-high/80 shadow-sm space-y-6">
+      <!-- =================================================================== -->
+      <!-- 2. DOCTOR GATEWAY SECTION                                           -->
+      <!-- =================================================================== -->
+      <div id="doctor-gateway-section" class="card p-6 sm:p-8 space-y-6 hidden">
         
-        <div class="flex items-center justify-between pb-4 border-b border-surface-container-high/60">
-          <div>
-            <h2 class="text-xl font-headline font-bold text-on-surface flex items-center gap-2">
-              <span class="material-symbols-outlined text-secondary text-[24px]">verified_user</span>
-              <span id="doctor-form-title">Verified Doctor Sign In</span>
-            </h2>
-            <p class="text-xs text-on-surface-variant mt-0.5">National Medical Commission (NMC) & Cognito 2FA Security</p>
+        <!-- Tabs: Login vs Register -->
+        <div class="flex items-center justify-between border-b border-subtle pb-3">
+          <div class="flex items-center gap-6">
+            <button type="button" id="doctor-tab-login" onclick="switchAuthTab('doctor', 'login')" class="font-extrabold text-sm text-doctor border-b-2 border-doctor pb-2.5 transition-all">
+              Practitioner Sign In
+            </button>
+            <button type="button" id="doctor-tab-register" onclick="switchAuthTab('doctor', 'register')" class="font-semibold text-sm text-muted hover:text-main pb-2.5 transition-all">
+              Verify &amp; Register Doctor
+            </button>
           </div>
-          <button type="button" onclick="toggleDoctorFormMode()" id="doctor-mode-toggle-btn" class="text-xs font-bold text-secondary hover:underline flex items-center gap-1">
-            <span id="doctor-toggle-label">New Doctor? Register & Verify</span>
-            <span class="material-symbols-outlined text-[14px]">arrow_forward</span>
-          </button>
+          <span class="text-xs text-muted hidden sm:inline">NMC &amp; State Council Registry</span>
         </div>
 
-        <!-- 4-Gate Strict Verification Notice Banner -->
-        <div class="p-3 bg-secondary-fixed/30 rounded-xl border border-secondary-fixed flex items-center justify-between gap-3">
-          <div class="flex items-center gap-2 text-xs font-semibold text-on-surface">
-            <span class="material-symbols-outlined text-secondary text-[18px]">verified</span>
-            <span>Pre-Verified: <strong>Dr. Sarah Jenkins</strong> (<code class="text-secondary font-bold">DOC-IN-8841</code>, MFA: <code class="text-secondary font-bold">654321</code>)</span>
-          </div>
-          <button type="button" onclick="fillDoctorDemo()" class="px-2.5 py-1 rounded-lg bg-secondary text-white hover:bg-secondary-container text-xs font-bold transition-colors">
-            1-Click Demo Fill
-          </button>
-        </div>
-
-        <!-- DOCTOR MFA SIGN IN FORM -->
+        <!-- 2A. DOCTOR SIGN IN FORM -->
         <form id="doctor-signin-form" onsubmit="handleDoctorLogin(event)" class="space-y-4">
-          <div>
-            <label class="block text-xs font-bold text-on-surface-variant mb-1">Doctor Unique ID or Medical License Number *</label>
-            <div class="relative">
-              <span class="material-symbols-outlined absolute left-3 top-3 text-[18px] text-on-surface-variant">medical_services</span>
-              <input type="text" id="doctor-login-id" required value="DOC-IN-8841" placeholder="e.g. DOC-IN-8841 or KMC-2019-88412" class="w-full pl-10 pr-3 py-2.5 rounded-xl border border-surface-container-high bg-surface-container-lowest text-sm font-semibold focus:outline-none focus:ring-2 focus:ring-secondary"/>
-            </div>
-            <p class="text-[11px] text-on-surface-variant mt-1">Accepts <code class="text-secondary">DOC-IN-XXXX</code> or State Medical Council License number.</p>
+          <div class="form-group">
+            <label class="form-label" data-i18n="label_doctor_id">Doctor ID (DOC-IN-XXXX) *</label>
+            <input type="text" id="doctor-login-id" class="form-control" placeholder="DOC-IN-8841" value="DOC-IN-8841" required/>
           </div>
 
-          <div>
-            <label class="block text-xs font-bold text-on-surface-variant mb-1">Clinical Password *</label>
-            <div class="relative">
-              <span class="material-symbols-outlined absolute left-3 top-3 text-[18px] text-on-surface-variant">lock</span>
-              <input type="password" id="doctor-login-password" required value="Doctor@123" placeholder="••••••••" class="w-full pl-10 pr-3 py-2.5 rounded-xl border border-surface-container-high bg-surface-container-lowest text-sm font-semibold focus:outline-none focus:ring-2 focus:ring-secondary"/>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div class="form-group">
+              <label class="form-label">Password *</label>
+              <input type="password" id="doctor-login-password" class="form-control" placeholder="••••••••••••" value="Demo@123" required/>
+            </div>
+            <div class="form-group">
+              <label class="form-label" data-i18n="label_otp">MFA OTP *</label>
+              <input type="text" id="doctor-login-mfa" class="form-control font-mono font-bold tracking-widest" placeholder="654321" value="654321" maxlength="6" required/>
             </div>
           </div>
 
-          <div>
-            <label class="block text-xs font-bold text-on-surface-variant mb-1">Cognito 2-Factor MFA Security Token (6 Digits) *</label>
-            <div class="relative">
-              <span class="material-symbols-outlined absolute left-3 top-3 text-[18px] text-secondary">security</span>
-              <input type="text" id="doctor-login-mfa" required maxlength="6" value="654321" placeholder="654321" class="w-full pl-10 pr-3 py-2.5 rounded-xl border border-secondary-fixed bg-surface-container-lowest text-sm font-mono font-bold tracking-widest text-secondary focus:outline-none focus:ring-2 focus:ring-secondary"/>
-            </div>
-            <p class="text-[11px] text-on-surface-variant mt-1">Universal demo OTP code is <code class="text-secondary font-bold">654321</code>.</p>
-          </div>
-
-          <button type="submit" id="doctor-signin-btn" class="w-full py-3 rounded-xl bg-secondary hover:bg-secondary-container text-white font-bold text-sm shadow-md transition-all flex items-center justify-center gap-2">
-            <span class="material-symbols-outlined text-[20px]">verified</span>
-            <span>Authenticate MFA & Issue KMS Session Token</span>
+          <button type="submit" id="doctor-signin-btn" class="btn btn-doctor w-full h-12 text-base">
+            <svg class="lucide-icon sm" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            <span>Verify MFA &amp; Enter Clinical Workspace</span>
           </button>
         </form>
 
-        <!-- STRICT DOCTOR REGISTRATION & VERIFICATION FORM (Initially Hidden) -->
-        <form id="doctor-register-form" onsubmit="handleDoctorRegister(event)" class="space-y-4 hidden">
+        <!-- 2B. DOCTOR 4-GATE VERTICAL REGISTRATION STEPPER -->
+        <form id="doctor-register-form" onsubmit="handleDoctorRegister(event)" class="hidden space-y-6">
           
-          <div class="p-3 bg-surface-container-low rounded-xl border border-surface-container-high text-xs text-on-surface-variant space-y-1">
-            <div class="font-bold text-on-surface flex items-center gap-1.5">
-              <span class="material-symbols-outlined text-secondary text-[16px]">security</span>
-              <span>4-Step Multi-Gate Verification Enforced:</span>
-            </div>
-            <ul class="list-disc pl-5 space-y-0.5 text-[11px]">
-              <li><strong>Gate 1:</strong> Medical Council Format & Registry Check (NMC/KMC/MCI)</li>
-              <li><strong>Gate 2:</strong> Institutional Hospital Authorization (e.g. HOSP-BLR-990)</li>
-              <li><strong>Gate 3:</strong> Govt/Medical ID (Aadhaar/PAN last 4 digits) + MBBS/MD Degree</li>
-              <li><strong>Gate 4:</strong> Amazon Cognito 2-Factor MFA Security Token</li>
-            </ul>
+          <div class="border-b border-subtle pb-3">
+            <h4 class="font-extrabold text-sm text-doctor">Strict 4-Gate National Practitioner Verification</h4>
+            <p class="text-xs text-muted mt-0.5">Enforces National Medical Commission (NMC) &amp; State Medical Council verification.</p>
           </div>
 
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-            <div>
-              <label class="block text-xs font-bold text-on-surface-variant mb-1">Doctor Full Name *</label>
-              <input type="text" id="reg-doc-name" required value="Dr. Rajeshwar Rao" placeholder="e.g. Dr. Rajeshwar Rao" class="w-full px-3 py-2 rounded-xl border border-surface-container-high bg-surface-container-lowest text-xs font-semibold focus:outline-none focus:ring-2 focus:ring-secondary"/>
-            </div>
-            <div>
-              <label class="block text-xs font-bold text-on-surface-variant mb-1">Medical Degree & Credentials *</label>
-              <input type="text" id="reg-doc-degree" required value="MBBS, MD (Pulmonology)" placeholder="e.g. MBBS, MD, FACC" class="w-full px-3 py-2 rounded-xl border border-surface-container-high bg-surface-container-lowest text-xs font-semibold focus:outline-none focus:ring-2 focus:ring-secondary"/>
+          <!-- GATE 1: Medical Council Licence -->
+          <div id="doc-gate-1" class="gate-step active">
+            <div class="gate-bullet">1</div>
+            <div class="space-y-2">
+              <div class="flex items-center justify-between">
+                <label class="form-label mb-0" data-i18n="label_license_number">Gate 1: Medical Licence Number *</label>
+                <span id="gate-1-status" class="text-[11px] font-bold text-muted"></span>
+              </div>
+              <input type="text" id="reg-doc-license" class="form-control uppercase" placeholder="e.g. KMC-2019-88412 or NMC-IND-55201" oninput="debounceLookupLicense(this.value)" required/>
+              <!-- Live Registry Feedback Container -->
+              <div id="license-feedback" class="text-xs font-semibold p-2.5 rounded-lg border hidden"></div>
             </div>
           </div>
 
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-            <div>
-              <label class="block text-xs font-bold text-on-surface-variant mb-1">Medical Council License No *</label>
-              <input type="text" id="reg-doc-license" required value="KMC-2021-44190" placeholder="e.g. KMC-2021-44190 or NMC-IND-55201" class="w-full px-3 py-2 rounded-xl border border-surface-container-high bg-surface-container-lowest text-xs font-semibold focus:outline-none focus:ring-2 focus:ring-secondary"/>
-              <p class="text-[10px] text-on-surface-variant mt-0.5">Must start with recognized council: KMC, NMC, MCI, etc.</p>
-            </div>
-            <div>
-              <label class="block text-xs font-bold text-on-surface-variant mb-1">Hospital / Institutional Code *</label>
-              <input type="text" id="reg-doc-hosp" required value="HOSP-BLR-990" placeholder="e.g. HOSP-BLR-990 or AIIMS-BBSR-101" class="w-full px-3 py-2 rounded-xl border border-surface-container-high bg-surface-container-lowest text-xs font-semibold focus:outline-none focus:ring-2 focus:ring-secondary"/>
-              <p class="text-[10px] text-on-surface-variant mt-0.5">Valid codes: HOSP-BLR-990, AIIMS-BBSR-101, ASTER-CMI-808</p>
-            </div>
-          </div>
-
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-            <div>
-              <label class="block text-xs font-bold text-on-surface-variant mb-1">Clinical Specialty *</label>
-              <input type="text" id="reg-doc-specialty" required value="Pulmonology & Occupational Lung Disease" placeholder="e.g. Cardiology, Pulmonology" class="w-full px-3 py-2 rounded-xl border border-surface-container-high bg-surface-container-lowest text-xs font-semibold focus:outline-none focus:ring-2 focus:ring-secondary"/>
-            </div>
-            <div>
-              <label class="block text-xs font-bold text-on-surface-variant mb-1">Govt ID Proof (Last 4 Digits) *</label>
-              <input type="text" id="reg-doc-govid" required maxlength="4" value="7712" placeholder="e.g. 7712 (Aadhaar/PAN)" class="w-full px-3 py-2 rounded-xl border border-surface-container-high bg-surface-container-lowest text-xs font-mono font-semibold focus:outline-none focus:ring-2 focus:ring-secondary"/>
+          <!-- GATE 2: Hospital Affiliation -->
+          <div id="doc-gate-2" class="gate-step">
+            <div class="gate-bullet">2</div>
+            <div class="space-y-2">
+              <div class="flex items-center justify-between">
+                <label class="form-label mb-0" data-i18n="label_hospital_code">Gate 2: Institutional Hospital Code *</label>
+                <span id="gate-2-status" class="text-[11px] font-bold text-muted"></span>
+              </div>
+              <input type="text" id="reg-doc-hosp" class="form-control uppercase" placeholder="e.g. HOSP-BLR-990 or AIIMS-BBSR-101" oninput="debounceLookupHospital(this.value)" required/>
+              <div id="hospital-feedback" class="text-xs font-semibold p-2.5 rounded-lg border hidden"></div>
             </div>
           </div>
 
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-            <div>
-              <label class="block text-xs font-bold text-on-surface-variant mb-1">Cognito MFA Token (6 Digits) *</label>
-              <input type="text" id="reg-doc-mfa" required maxlength="6" value="654321" placeholder="654321" class="w-full px-3 py-2 rounded-xl border border-secondary-fixed bg-surface-container-lowest text-xs font-mono font-bold tracking-widest text-secondary focus:outline-none focus:ring-2 focus:ring-secondary"/>
-            </div>
-            <div>
-              <label class="block text-xs font-bold text-on-surface-variant mb-1">Create Password *</label>
-              <input type="password" id="reg-doc-password" required value="Doctor@2026Secure" class="w-full px-3 py-2 rounded-xl border border-surface-container-high bg-surface-container-lowest text-xs font-semibold focus:outline-none focus:ring-2 focus:ring-secondary"/>
+          <!-- GATE 3: Clinical Degree, Specialty & Govt ID -->
+          <div id="doc-gate-3" class="gate-step">
+            <div class="gate-bullet">3</div>
+            <div class="space-y-3">
+              <div class="flex items-center justify-between">
+                <label class="form-label mb-0">Gate 3: Credentials &amp; Identity Last-4 *</label>
+                <span id="gate-3-status" class="text-[11px] font-bold text-muted"></span>
+              </div>
+              <div class="grid grid-cols-2 gap-3">
+                <div class="form-group mb-0">
+                  <label class="text-[11px] font-bold text-muted">Doctor Full Name</label>
+                  <input type="text" id="reg-doc-name" class="form-control" placeholder="Dr. Ananya Sen" required/>
+                </div>
+                <div class="form-group mb-0">
+                  <label class="text-[11px] font-bold text-muted">Degree</label>
+                  <input type="text" id="reg-doc-degree" class="form-control" placeholder="MBBS, MD" required/>
+                </div>
+              </div>
+              <div class="grid grid-cols-2 gap-3">
+                <div class="form-group mb-0">
+                  <label class="text-[11px] font-bold text-muted">Specialty</label>
+                  <input type="text" id="reg-doc-specialty" class="form-control" placeholder="Cardiology" required/>
+                </div>
+                <div class="form-group mb-0">
+                  <label class="text-[11px] font-bold text-muted" data-i18n="label_gov_id">Govt ID Last 4</label>
+                  <input type="text" id="reg-doc-govid" class="form-control font-mono font-bold" placeholder="4412" maxlength="4" required/>
+                </div>
+              </div>
+              <div id="gate-3-feedback" class="text-xs font-semibold p-2.5 rounded-lg border hidden"></div>
             </div>
           </div>
 
-          <button type="submit" id="doctor-register-btn" class="w-full py-3 rounded-xl bg-secondary hover:bg-secondary-container text-white font-bold text-sm shadow-md transition-all flex items-center justify-center gap-2">
-            <span class="material-symbols-outlined text-[20px]">verified</span>
-            <span>Execute 4-Gate Verification & Issue Digital Badge</span>
-          </button>
+          <!-- GATE 4: MFA Verification OTP -->
+          <div id="doc-gate-4" class="gate-step">
+            <div class="gate-bullet">4</div>
+            <div class="space-y-2">
+              <div class="flex items-center justify-between">
+                <label class="form-label mb-0" data-i18n="label_otp">Gate 4: Multi-Factor Authentication (MFA OTP) *</label>
+                <span class="text-[11px] text-muted">Demo OTP: <code class="font-mono font-bold">654321</code></span>
+              </div>
+              <input type="text" id="reg-doc-mfa" class="form-control font-mono font-bold tracking-widest text-lg" placeholder="654321" value="654321" maxlength="6" required/>
+              <div id="gate-4-feedback" class="text-xs font-semibold p-2.5 rounded-lg border hidden"></div>
+            </div>
+          </div>
+
+          <div class="pt-2">
+            <button type="submit" id="doctor-register-btn" class="btn btn-doctor w-full h-12 text-base">
+              <svg class="lucide-icon sm" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              <span>Submit 4-Gate Verification &amp; Issue Credential</span>
+            </button>
+          </div>
         </form>
 
-      </div>
-
-      <!-- Right Column: Doctor Verified Credential Card Display -->
-      <div class="lg:col-span-5 space-y-4">
-        
-        <div id="printable-doc-area" class="doctor-badge-card text-white rounded-3xl p-6 relative overflow-hidden transition-all duration-300">
-          
-          <!-- Background Watermark Symbol -->
-          <div class="absolute -right-10 -bottom-10 opacity-10 pointer-events-none">
-            <span class="material-symbols-outlined text-[220px]">stethoscope</span>
-          </div>
-
-          <!-- Card Header -->
-          <div class="flex items-center justify-between pb-3 border-b border-white/20">
-            <div class="flex items-center gap-2">
-              <div class="w-8 h-8 rounded-lg bg-white/20 backdrop-blur-md flex items-center justify-center text-white font-bold">
-                <span class="material-symbols-outlined text-[18px]">verified</span>
-              </div>
-              <div>
-                <div class="text-[10px] font-bold tracking-widest uppercase text-secondary-fixed">NMC & IAM Verified Credential</div>
-                <div class="text-sm font-headline font-extrabold leading-none">Medical Practitioner Badge</div>
-              </div>
-            </div>
-            <div class="text-right">
-              <span class="text-[9px] uppercase px-2 py-0.5 rounded-full bg-secondary-fixed text-on-surface font-bold tracking-wide">MFA Active</span>
-            </div>
-          </div>
-
-          <!-- Card Body: Doctor ID & QR -->
-          <div class="mt-4 flex flex-col sm:flex-row items-center gap-4">
-            
-            <!-- Live QR Code Canvas / Box -->
-            <div class="w-32 h-32 bg-white rounded-2xl p-2 flex items-center justify-center shadow-md flex-shrink-0">
-              <div id="doctor-card-qr" class="w-full h-full flex items-center justify-center">
-                <svg viewBox="0 0 100 100" class="w-24 h-24 text-secondary" fill="currentColor">
-                  <rect x="5" y="5" width="30" height="30" rx="3" fill="#0051d5"/>
-                  <rect x="10" y="10" width="20" height="20" rx="2" fill="white"/>
-                  <rect x="15" y="15" width="10" height="10" fill="#0051d5"/>
-                  <rect x="65" y="5" width="30" height="30" rx="3" fill="#0051d5"/>
-                  <rect x="70" y="10" width="20" height="20" rx="2" fill="white"/>
-                  <rect x="75" y="15" width="10" height="10" fill="#0051d5"/>
-                  <rect x="5" y="65" width="30" height="30" rx="3" fill="#0051d5"/>
-                  <rect x="10" y="70" width="20" height="20" rx="2" fill="white"/>
-                  <rect x="15" y="75" width="10" height="10" fill="#0051d5"/>
-                  <rect x="45" y="20" width="10" height="20" fill="#0051d5"/>
-                  <rect x="45" y="60" width="20" height="10" fill="#0051d5"/>
-                  <rect x="75" y="65" width="20" height="20" rx="2" fill="#0051d5"/>
-                </svg>
-              </div>
-            </div>
-
-            <!-- Identity Info -->
-            <div class="space-y-1.5 text-center sm:text-left min-w-0 flex-1">
-              <div class="text-[10px] text-secondary-fixed uppercase font-semibold">Unique Practitioner ID</div>
-              <div id="card-doc-id" class="text-xl font-headline font-extrabold tracking-tight text-white truncate">DOC-IN-8841</div>
-              
-              <div class="text-[10px] text-white/80">Practitioner Name</div>
-              <div id="card-doc-name" class="text-sm font-bold text-white truncate">Dr. Sarah Jenkins, MD, FACC</div>
-
-              <div class="text-[10px] text-white/80">License & Council</div>
-              <div id="card-doc-license" class="text-xs font-mono font-semibold text-secondary-fixed truncate">KMC-2019-88412 (Karnataka)</div>
-            </div>
-
-          </div>
-
-          <!-- KMS Session Token Banner -->
-          <div class="mt-4 p-3 rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-between">
-            <div class="min-w-0">
-              <div class="text-[10px] text-secondary-fixed font-bold uppercase tracking-wider">AWS KMS Active Session Token</div>
-              <div id="card-doc-token" class="text-xs font-mono text-white/90 truncate">KMS:IAM:VERIFIED:8841A1B2C3D4</div>
-            </div>
-            <span class="text-[10px] bg-emerald-400/20 text-emerald-300 px-2 py-0.5 rounded-full font-bold flex-shrink-0">Privileged</span>
-          </div>
-
-          <!-- Hospital & Specialty Footer -->
-          <div class="mt-3 grid grid-cols-1 gap-1 text-[11px] text-white/90 pt-3 border-t border-white/15">
-            <div>
-              <span class="text-white/60">Hospital:</span> <span id="card-doc-hosp" class="font-semibold truncate">Manipal Hospital Heart Institute (HOSP-BLR-990)</span>
+        <!-- 2C. DOCTOR VERIFICATION SUCCESS CREDENTIAL MODAL -->
+        <div id="doctor-success-modal" class="modal-backdrop" onclick="if(event.target === this) closeModal('doctor-success-modal')">
+          <div class="modal-dialog p-6 sm:p-8 space-y-5 text-center">
+            <div class="w-16 h-16 rounded-full bg-doctor-soft text-doctor mx-auto flex items-center justify-center">
+              <svg class="lucide-icon lg" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
             </div>
             <div>
-              <span class="text-white/60">Specialty:</span> <span id="card-doc-specialty" class="text-secondary-fixed font-semibold">Cardiology & Vascular Medicine</span>
+              <span class="badge badge-indigo">VERIFIED PRACTITIONER</span>
+              <h3 class="text-2xl font-extrabold text-main mt-1">Doctor Credential Verified!</h3>
+              <p class="text-xs text-muted">All 4 gates successfully verified against National Medical Registry.</p>
             </div>
+
+            <!-- Verified Doctor Credential Badge Card -->
+            <div class="p-5 rounded-2xl bg-card border-2 border-doctor text-left space-y-3 shadow-md">
+              <div class="flex items-center justify-between pb-2 border-b border-subtle">
+                <span class="font-extrabold text-sm text-doctor">National Doctor Credential</span>
+                <span id="ready-doc-id" class="font-mono text-sm font-bold text-main">DOC-IN-XXXX</span>
+              </div>
+              <div class="flex items-center justify-between gap-4">
+                <div class="space-y-1 text-xs">
+                  <div><strong>Practitioner:</strong> <span id="ready-doc-name">-</span></div>
+                  <div><strong>Licence:</strong> <span id="ready-doc-license" class="font-mono text-[11px]">-</span></div>
+                  <div><strong>Session:</strong> <span id="ready-doc-token" class="font-mono text-[10px] text-muted">-</span></div>
+                </div>
+                <div id="ready-doc-qr" class="p-2 bg-white rounded-lg border border-subtle flex-shrink-0"></div>
+              </div>
+            </div>
+
+            <button type="button" onclick="proceedToDoctorPortal()" class="btn btn-doctor w-full text-sm">
+              <span>Enter Doctor Clinical Workspace</span>
+              <svg class="lucide-icon sm" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </button>
           </div>
-
-        </div>
-
-        <!-- Doctor Card Actions -->
-        <div class="space-y-2 no-print">
-          <a id="btn-enter-doctor-portal" href="/doctor?doctor_id=DOC-IN-8841&patient_id=PAT-1001" class="w-full py-2.5 rounded-xl bg-secondary hover:bg-secondary-container text-white font-bold text-xs shadow-sm transition-all flex items-center justify-center gap-2">
-            <span class="material-symbols-outlined text-[18px]">stethoscope</span>
-            <span>Enter Doctor Clinical Workspace</span>
-          </a>
-
-          <button type="button" onclick="window.print()" class="w-full py-2 px-3 rounded-xl bg-white hover:bg-surface-container-high border border-surface-container-high text-on-surface font-bold text-xs transition-colors flex items-center justify-center gap-1.5">
-            <span class="material-symbols-outlined text-[16px]">print</span>
-            <span>Print / Save Doctor Credential Card</span>
-          </button>
         </div>
 
       </div>
 
     </div>
-
   </div>
 
 </div>
 {% endblock %}
 
 {% block scripts %}
+<script src="/static/js/auth.js"></script>
 <script>
-  let activePatientId = 'PAT-SS-1001';
-  let activeDoctorId = 'DOC-IN-8841';
-
-  // Helper to render live QR Code
-  function renderQrCode(containerId, dataString) {
-    const el = document.getElementById(containerId);
-    if (!el) return;
-    el.innerHTML = '';
-    try {
-      if (typeof QRCode !== 'undefined') {
-        new QRCode(el, {
-          text: typeof dataString === 'string' ? dataString : JSON.stringify(dataString),
-          width: 112,
-          height: 112,
-          colorDark: "#0b1c30",
-          colorLight: "#ffffff",
-          correctLevel: QRCode.CorrectLevel.M
-        });
-      } else {
-        // Fallback Canvas
-        const canvas = document.createElement('canvas');
-        canvas.width = 112;
-        canvas.height = 112;
-        const ctx = canvas.getContext('2d');
-        ctx.fillStyle = '#ffffff';
-        ctx.fillRect(0, 0, 112, 112);
-        ctx.fillStyle = '#005049';
-        ctx.font = '10px monospace';
-        ctx.fillText('QR CODE', 30, 60);
-        el.appendChild(canvas);
-      }
-    } catch (e) {
-      console.warn("QR render fallback: ", e);
-    }
-  }
-
-  // Gateway Tab Switcher
-  function switchGatewayTab(tab) {
-    const patTab = document.getElementById('tab-btn-patient');
-    const docTab = document.getElementById('tab-btn-doctor');
-    const patSection = document.getElementById('patient-gateway-section');
-    const docSection = document.getElementById('doctor-gateway-section');
-
-    if (tab === 'patient') {
-      patTab.className = "flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl text-sm font-bold transition-all bg-white text-primary shadow-sm";
-      docTab.className = "flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl text-sm font-bold transition-all text-on-surface-variant hover:text-on-surface";
-      patSection.classList.remove('hidden');
-      docSection.classList.add('hidden');
-    } else {
-      docTab.className = "flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl text-sm font-bold transition-all bg-white text-secondary shadow-sm";
-      patTab.className = "flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl text-sm font-bold transition-all text-on-surface-variant hover:text-on-surface";
-      docSection.classList.remove('hidden');
-      patSection.classList.add('hidden');
-    }
-  }
-
-  // Toggle Patient Sign In vs Register
-  let isPatientRegisterMode = false;
-  function togglePatientFormMode() {
-    isPatientRegisterMode = !isPatientRegisterMode;
-    const signinForm = document.getElementById('patient-signin-form');
-    const registerForm = document.getElementById('patient-register-form');
-    const title = document.getElementById('patient-form-title');
-    const toggleLabel = document.getElementById('patient-toggle-label');
-
-    if (isPatientRegisterMode) {
-      signinForm.classList.add('hidden');
-      registerForm.classList.remove('hidden');
-      title.innerText = "Register New SwasthyaID Patient";
-      toggleLabel.innerText = "Already registered? Sign In";
-    } else {
-      signinForm.classList.remove('hidden');
-      registerForm.classList.add('hidden');
-      title.innerText = "Patient SwasthyaID Sign In";
-      toggleLabel.innerText = "New Patient? Register Here";
-    }
-  }
-
-  // Toggle Doctor Sign In vs Register
-  let isDoctorRegisterMode = false;
-  function toggleDoctorFormMode() {
-    isDoctorRegisterMode = !isDoctorRegisterMode;
-    const signinForm = document.getElementById('doctor-signin-form');
-    const registerForm = document.getElementById('doctor-register-form');
-    const title = document.getElementById('doctor-form-title');
-    const toggleLabel = document.getElementById('doctor-toggle-label');
-
-    if (isDoctorRegisterMode) {
-      signinForm.classList.add('hidden');
-      registerForm.classList.remove('hidden');
-      title.innerText = "Strict Doctor Multi-Gate Verification";
-      toggleLabel.innerText = "Already verified? Sign In";
-    } else {
-      signinForm.classList.remove('hidden');
-      registerForm.classList.add('hidden');
-      title.innerText = "Verified Doctor Sign In";
-      toggleLabel.innerText = "New Doctor? Register & Verify";
-    }
-  }
-
-  // 1-Click Demo Fill for Patient
-  function fillPatientDemo() {
-    if (isPatientRegisterMode) {
-      document.getElementById('reg-pat-name').value = "Suresh Chandra Mohanty";
-      document.getElementById('reg-pat-age').value = "38";
-      document.getElementById('reg-pat-gender').value = "Male";
-      document.getElementById('reg-pat-origin').value = "Odisha";
-      document.getElementById('reg-pat-city').value = "Bengaluru, Karnataka";
-      document.getElementById('reg-pat-lang').value = "Odia";
-      document.getElementById('reg-pat-occupation').value = "Textile Mill Machine Operator";
-      document.getElementById('reg-pat-allergies').value = "Sulfa Drugs, Penicillin";
-      document.getElementById('reg-pat-phone').value = "+91-98450-99881";
-      document.getElementById('reg-pat-password').value = "Migrant@2026Safe";
-      showToast("Filled demo migrant registration details", "success");
-    } else {
-      document.getElementById('patient-login-id').value = "PAT-SS-1001";
-      document.getElementById('patient-login-password').value = "Patient@123";
-      showToast("Filled demo patient: Ramesh Kumar (PAT-SS-1001)", "success");
-    }
-  }
-
-  // 1-Click Demo Fill for Doctor
-  function fillDoctorDemo() {
-    if (isDoctorRegisterMode) {
-      document.getElementById('reg-doc-name').value = "Dr. Rajeshwar Rao";
-      document.getElementById('reg-doc-degree').value = "MBBS, MD (Pulmonology)";
-      document.getElementById('reg-doc-license').value = "KMC-2021-44190";
-      document.getElementById('reg-doc-hosp').value = "HOSP-BLR-990";
-      document.getElementById('reg-doc-specialty').value = "Pulmonology & Occupational Lung Disease";
-      document.getElementById('reg-doc-govid').value = "7712";
-      document.getElementById('reg-doc-mfa').value = "654321";
-      document.getElementById('reg-doc-password').value = "Doctor@2026Secure";
-      showToast("Filled valid doctor registration credentials (KMC + Manipal)", "success");
-    } else {
-      document.getElementById('doctor-login-id').value = "DOC-IN-8841";
-      document.getElementById('doctor-login-password').value = "Doctor@123";
-      document.getElementById('doctor-login-mfa').value = "654321";
-      showToast("Filled pre-verified doctor: Dr. Sarah Jenkins (DOC-IN-8841)", "success");
-    }
-  }
-
-  // Handle Patient Login
-  async function handlePatientLogin(e) {
-    e.preventDefault();
-    const ident = document.getElementById('patient-login-id').value.trim();
-    const pwd = document.getElementById('patient-login-password').value.trim();
-    const btn = document.getElementById('patient-signin-btn');
-    btn.disabled = true;
-    btn.innerHTML = `<span class="material-symbols-outlined text-[20px] animate-spin">refresh</span><span>Authenticating...</span>`;
-
-    try {
-      const res = await fetch('/api/auth/login-patient', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ identifier: ident, password: pwd })
-      });
-      const data = await res.json();
-      if (!res.ok) throw new Error(data.message || 'Login failed');
-
-      activePatientId = data.patientId || data.uniquePatientId;
-      updatePatientCard(data);
-      showToast(`Welcome back, ${data.name}! Digital Passport unlocked.`, "success");
-    } catch (err) {
-      showToast(err.message, "error");
-    } finally {
-      btn.disabled = false;
-      btn.innerHTML = `<span class="material-symbols-outlined text-[20px]">lock_open</span><span>Authenticate SwasthyaID & View ID Card</span>`;
-    }
-  }
-
-  // Handle Patient Register
-  async function handlePatientRegister(e) {
-    e.preventDefault();
-    const payload = {
-      fullName: document.getElementById('reg-pat-name').value.trim(),
-      age: parseInt(document.getElementById('reg-pat-age').value) || 30,
-      gender: document.getElementById('reg-pat-gender').value,
-      originState: document.getElementById('reg-pat-origin').value.trim(),
-      currentCity: document.getElementById('reg-pat-city').value.trim(),
-      preferredLanguage: document.getElementById('reg-pat-lang').value,
-      occupation: document.getElementById('reg-pat-occupation').value.trim(),
-      allergies: document.getElementById('reg-pat-allergies').value.split(',').map(s => s.trim()).filter(Boolean),
-      mobileNumber: document.getElementById('reg-pat-phone').value.trim(),
-      abhaNumber: document.getElementById('reg-pat-abha').value.trim(),
-      password: document.getElementById('reg-pat-password').value
-    };
-
-    const btn = document.getElementById('patient-register-btn');
-    btn.disabled = true;
-    btn.innerHTML = `<span class="material-symbols-outlined text-[20px] animate-spin">refresh</span><span>Generating Collision-Free ID...</span>`;
-
-    try {
-      const res = await fetch('/api/auth/register-patient', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload)
-      });
-      const data = await res.json();
-      if (!res.ok) throw new Error(data.message || 'Registration failed');
-
-      activePatientId = data.patientId || data.uniquePatientId;
-      updatePatientCard(data);
-      showToast(`🎉 SwasthyaID Generated: ${activePatientId}`, "success");
-    } catch (err) {
-      showToast(err.message, "error");
-    } finally {
-      btn.disabled = false;
-      btn.innerHTML = `<span class="material-symbols-outlined text-[20px]">how_to_reg</span><span>Generate Collision-Free SwasthyaID & QR Passport</span>`;
-    }
-  }
-
-  // Update Patient Card Elements
-  function updatePatientCard(data) {
-    const pid = data.uniquePatientId || data.patientId || 'PAT-SS-1001';
-    document.getElementById('card-pat-id').innerText = pid;
-    document.getElementById('card-pat-name').innerText = data.name || 'Patient';
-    document.getElementById('card-pat-abha').innerText = data.abhaId || 'ABHA-21-9845-3310-7742';
-    document.getElementById('card-pat-pin').innerText = data.consentPin || '482910';
-    document.getElementById('card-pat-location').innerText = `${data.originState || 'Odisha'} ➔ ${data.currentLocation || 'Bengaluru'}`;
-    document.getElementById('card-pat-lang').innerText = data.preferredLanguage || 'Odia';
-    
-    const allergies = Array.isArray(data.allergies) ? data.allergies.join(', ') : (data.allergies || 'None');
-    document.getElementById('card-pat-allergies').innerText = allergies;
-
-    // Update portal redirect button
-    const actualPid = (pid === 'PAT-SS-1001') ? 'PAT-1001' : pid;
-    document.getElementById('btn-enter-patient-portal').href = `/patient?patient_id=${actualPid}`;
-
-    // Render live QR Code
-    const qrData = data.qrPayload || {
-      patientId: pid,
-      abhaId: data.abhaId,
-      kmsKeyAlias: "alias/MedCoord-HIPAA-Key",
-      verifyUrl: `/api/auth/lookup-patient?patientId=${pid}`
-    };
-    renderQrCode('patient-card-qr', qrData);
-  }
-
-  // Handle Rotate Consent PIN
-  async function handleRotateConsentPin() {
-    try {
-      const res = await fetch('/api/auth/revoke-consent', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ patientId: activePatientId })
-      });
-      const data = await res.json();
-      if (!res.ok) throw new Error(data.message || 'Rotation failed');
-
-      document.getElementById('card-pat-pin').innerText = data.newConsentPin;
-      showToast(`Consent PIN rotated to ${data.newConsentPin}. Previous doctor sessions terminated!`, "warning");
-    } catch (err) {
-      showToast(err.message, "error");
-    }
-  }
-
-  // Handle Doctor Login
-  async function handleDoctorLogin(e) {
-    e.preventDefault();
-    const ident = document.getElementById('doctor-login-id').value.trim();
-    const pwd = document.getElementById('doctor-login-password').value.trim();
-    const mfa = document.getElementById('doctor-login-mfa').value.trim();
-    const btn = document.getElementById('doctor-signin-btn');
-    btn.disabled = true;
-    btn.innerHTML = `<span class="material-symbols-outlined text-[20px] animate-spin">refresh</span><span>Verifying Cognito MFA...</span>`;
-
-    try {
-      const res = await fetch('/api/auth/login-doctor', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ identifier: ident, password: pwd, mfa_otp: mfa })
-      });
-      const data = await res.json();
-      if (!res.ok) throw new Error(data.message || 'Doctor login failed');
-
-      activeDoctorId = data.doctorId;
-      updateDoctorCard(data);
-      showToast(`Doctor session verified for ${data.name}!`, "success");
-    } catch (err) {
-      showToast(err.message, "error");
-    } finally {
-      btn.disabled = false;
-      btn.innerHTML = `<span class="material-symbols-outlined text-[20px]">verified</span><span>Authenticate MFA & Issue KMS Session Token</span>`;
-    }
-  }
-
-  // Handle Doctor Register
-  async function handleDoctorRegister(e) {
-    e.preventDefault();
-    const payload = {
-      name: document.getElementById('reg-doc-name').value.trim(),
-      degree: document.getElementById('reg-doc-degree').value.trim(),
-      licenseNumber: document.getElementById('reg-doc-license').value.trim(),
-      hospitalCode: document.getElementById('reg-doc-hosp').value.trim(),
-      specialty: document.getElementById('reg-doc-specialty').value.trim(),
-      govIdProof: document.getElementById('reg-doc-govid').value.trim(),
-      mfaOtp: document.getElementById('reg-doc-mfa').value.trim(),
-      password: document.getElementById('reg-doc-password').value
-    };
-
-    const btn = document.getElementById('doctor-register-btn');
-    btn.disabled = true;
-    btn.innerHTML = `<span class="material-symbols-outlined text-[20px] animate-spin">refresh</span><span>Checking NMC Registry & MFA...</span>`;
-
-    try {
-      const res = await fetch('/api/auth/register-doctor', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload)
-      });
-      const data = await res.json();
-      if (!res.ok) throw new Error(data.message || 'Doctor verification failed');
-
-      activeDoctorId = data.doctorId;
-      updateDoctorCard(data);
-      showToast(`🎉 Verified Doctor Credential Issued: ${activeDoctorId}`, "success");
-    } catch (err) {
-      showToast(err.message, "error");
-    } finally {
-      btn.disabled = false;
-      btn.innerHTML = `<span class="material-symbols-outlined text-[20px]">verified</span><span>Execute 4-Gate Verification & Issue Digital Badge</span>`;
-    }
-  }
-
-  // Update Doctor Card Elements
-  function updateDoctorCard(data) {
-    const did = data.doctorId || 'DOC-IN-8841';
-    document.getElementById('card-doc-id').innerText = did;
-    document.getElementById('card-doc-name').innerText = data.name || 'Dr. Sarah Jenkins';
-    document.getElementById('card-doc-license').innerText = `${data.licenseNumber} (${data.councilName || 'State Council'})`;
-    document.getElementById('card-doc-token').innerText = data.kmsSessionToken || 'KMS:IAM:VERIFIED:8841A1B2C3D4';
-    document.getElementById('card-doc-hosp').innerText = `${data.hospitalName} (${data.hospitalCode})`;
-    document.getElementById('card-doc-specialty').innerText = `${data.specialty} • ${data.degree || 'MBBS'}`;
-
-    // Update portal redirect button
-    document.getElementById('btn-enter-doctor-portal').href = `/doctor?doctor_id=${did}&patient_id=PAT-1001`;
-
-    // Render live QR Code
-    const qrData = data.doctorBadge || {
-      doctorId: did,
-      doctorName: data.name,
-      licenseNumber: data.licenseNumber,
-      hospital: data.hospitalName,
-      kmsSessionToken: data.kmsSessionToken
-    };
-    renderQrCode('doctor-card-qr', qrData);
-  }
-
-  // Initial QR Code Render on Load
   document.addEventListener('DOMContentLoaded', () => {
-    renderQrCode('patient-card-qr', {
-      patientId: "PAT-SS-1001",
-      abhaId: "ABHA-21-9845-3310-7742",
-      name: "Ramesh Kumar",
-      consentPin: "482910",
-      kmsKeyAlias: "alias/MedCoord-HIPAA-Key"
-    });
-    renderQrCode('doctor-card-qr', {
-      doctorId: "DOC-IN-8841",
-      doctorName: "Dr. Sarah Jenkins, MD, FACC",
-      licenseNumber: "KMC-2019-88412",
-      hospital: "Manipal Hospital Heart Institute",
-      kmsSessionToken: "KMS:IAM:VERIFIED:8841A1B2C3D4"
-    });
+    initJudgePanel();
   });
 </script>
 {% endblock %}

@@ -1,0 +1,189 @@
+[
+  {
+    "hospitalCode": "HOSP-BLR-990",
+    "hospitalName": "Manipal Hospital Heart Institute, Whitefield",
+    "type": "Private",
+    "city": "Bengaluru",
+    "state": "Karnataka",
+    "lat": 12.9854,
+    "lng": 77.7299,
+    "status": "ACTIVE",
+    "synthetic": true
+  },
+  {
+    "hospitalCode": "AIIMS-BBSR-101",
+    "hospitalName": "All India Institute of Medical Sciences (AIIMS), Bhubaneswar",
+    "type": "Govt",
+    "city": "Bhubaneswar",
+    "state": "Odisha",
+    "lat": 20.2312,
+    "lng": 85.7761,
+    "status": "ACTIVE",
+    "synthetic": true
+  },
+  {
+    "hospitalCode": "HOSP-BLR-102",
+    "hospitalName": "Victoria Hospital & Bangalore Medical College",
+    "type": "Govt",
+    "city": "Bengaluru",
+    "state": "Karnataka",
+    "lat": 12.9625,
+    "lng": 77.575,
+    "status": "ACTIVE",
+    "synthetic": true
+  },
+  {
+    "hospitalCode": "HOSP-BLR-103",
+    "hospitalName": "Bowring and Lady Curzon Hospital, Shivaji Nagar",
+    "type": "Govt",
+    "city": "Bengaluru",
+    "state": "Karnataka",
+    "lat": 12.9828,
+    "lng": 77.6047,
+    "status": "ACTIVE",
+    "synthetic": true
+  },
+  {
+    "hospitalCode": "HOSP-BLR-104",
+    "hospitalName": "Aster CMI Hospital, Hebbal",
+    "type": "Private",
+    "city": "Bengaluru",
+    "state": "Karnataka",
+    "lat": 13.0489,
+    "lng": 77.5932,
+    "status": "ACTIVE",
+    "synthetic": true
+  },
+  {
+    "hospitalCode": "HOSP-BLR-105",
+    "hospitalName": "KC General Hospital, Malleshwaram",
+    "type": "Govt",
+    "city": "Bengaluru",
+    "state": "Karnataka",
+    "lat": 12.9976,
+    "lng": 77.5714,
+    "status": "ACTIVE",
+    "synthetic": true
+  },
+  {
+    "hospitalCode": "HOSP-BLR-106",
+    "hospitalName": "Bommanahalli Community Health Centre (CHC)",
+    "type": "CHC",
+    "city": "Bengaluru",
+    "state": "Karnataka",
+    "lat": 12.9038,
+    "lng": 77.6258,
+    "status": "ACTIVE",
+    "synthetic": true
+  },
+  {
+    "hospitalCode": "HOSP-BLR-107",
+    "hospitalName": "Peenya Urban Primary Health Centre (PHC)",
+    "type": "PHC",
+    "city": "Bengaluru",
+    "state": "Karnataka",
+    "lat": 13.0329,
+    "lng": 77.5273,
+    "status": "ACTIVE",
+    "synthetic": true
+  },
+  {
+    "hospitalCode": "HOSP-MYS-201",
+    "hospitalName": "KR Hospital & Mysore Medical College",
+    "type": "Medical College",
+    "city": "Mysuru",
+    "state": "Karnataka",
+    "lat": 12.3168,
+    "lng": 76.6506,
+    "status": "ACTIVE",
+    "synthetic": true
+  },
+  {
+    "hospitalCode": "HOSP-MYS-202",
+    "hospitalName": "Apollo BGS Hospital, Kuvempunagar",
+    "type": "Private",
+    "city": "Mysuru",
+    "state": "Karnataka",
+    "lat": 12.2965,
+    "lng": 76.6268,
+    "status": "ACTIVE",
+    "synthetic": true
+  },
+  {
+    "hospitalCode": "HOSP-CTC-301",
+    "hospitalName": "SCB Medical College and Hospital, Cuttack",
+    "type": "Medical College",
+    "city": "Cuttack",
+    "state": "Odisha",
+    "lat": 20.4789,
+    "lng": 85.8824,
+    "status": "ACTIVE",
+    "synthetic": true
+  },
+  {
+    "hospitalCode": "HOSP-CTC-302",
+    "hospitalName": "Cuttack Sadar Sub-Divisional Hospital",
+    "type": "Govt",
+    "city": "Cuttack",
+    "state": "Odisha",
+    "lat": 20.4625,
+    "lng": 85.869,
+    "status": "ACTIVE",
+    "synthetic": true
+  },
+  {
+    "hospitalCode": "HOSP-PAT-401",
+    "hospitalName": "Patna Medical College and Hospital (PMCH)",
+    "type": "Medical College",
+    "city": "Patna",
+    "state": "Bihar",
+    "lat": 25.6207,
+    "lng": 85.1601,
+    "status": "ACTIVE",
+    "synthetic": true
+  },
+  {
+    "hospitalCode": "HOSP-PAT-402",
+    "hospitalName": "AIIMS Patna, Phulwari Sharif",
+    "type": "Govt",
+    "city": "Patna",
+    "state": "Bihar",
+    "lat": 25.5606,
+    "lng": 85.0449,
+    "status": "ACTIVE",
+    "synthetic": true
+  },
+  {
+    "hospitalCode": "HOSP-CHN-501",
+    "hospitalName": "Rajiv Gandhi Government General Hospital",
+    "type": "Govt",
+    "city": "Chennai",
+    "state": "Tamil Nadu",
+    "lat": 13.0818,
+    "lng": 80.2785,
+    "status": "ACTIVE",
+    "synthetic": true
+  },
+  {
+    "hospitalCode": "HOSP-HYD-601",
+    "hospitalName": "Osmania General Hospital, Afzal Gunj",
+    "type": "Govt",
+    "city": "Hyderabad",
+    "state": "Telangana",
+    "lat": 17.3785,
+    "lng": 78.4747,
+    "status": "ACTIVE",
+    "synthetic": true
+  },
+  {
+    "hospitalCode": "HOSP-BLR-INACT",
+    "hospitalName": "Shree Shanti Community Clinic (Decommissioned)",
+    "type": "Private",
+    "city": "Bengaluru",
+    "state": "Karnataka",
+    "lat": 12.9352,
+    "lng": 77.6245,
+    "status": "INACTIVE",
+    "synthetic": true
+  }
+]

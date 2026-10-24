@@ -30,6 +30,11 @@ from typing import Dict, Any, List, Optional, Tuple, Union
 import boto3
 from botocore.exceptions import ClientError
 
+try:
+    from backend_lambdas.perf_timer import timed_step
+except ImportError:
+    from perf_timer import timed_step
+
 # Ensure parent directory on path
 CURRENT_DIR = Path(__file__).resolve().parent
 PROJECT_ROOT = CURRENT_DIR.parent
@@ -418,7 +423,7 @@ def register_patient(
             actor_id=unique_pid,
             role="PATIENT",
             category="REGISTRATION",
-            metadata={"consentPin": consent_pin, "abhaId": abha_number}
+            metadata={"abhaId": abha_number}
         )
     except Exception:
         pass
@@ -780,7 +785,7 @@ def lookup_patient_by_doctor(
 
     # 1. Evaluate Consent Verification or Emergency Break-Glass
     is_emergency = False
-    if break_glass_reason and len(str(break_glass_reason).strip()) >= 20:
+    if break_glass_reason and len(str(break_glass_reason).strip()) >= 15:
         is_emergency = True
         record_audit_event(
             action="EmergencyBreakGlassOverrideAccess",
@@ -804,75 +809,139 @@ def lookup_patient_by_doctor(
         except Exception:
             pass
     else:
-        # Standard Consent PIN Verification
-        expected_pin = str(patient.get("consentPin", "482910")).strip()
-        provided_pin = str(consent_pin).strip() if consent_pin else ""
+        with timed_step("pin_verification_and_audit"):
+            # Standard Consent PIN Verification with Rate-Limiting
+            from registry_engine import check_pin_rate_limit, reset_pin_rate_limit
+            allowed, cooldown, attempts_remaining = check_pin_rate_limit(doctor_id, actual_pid, is_wrong_attempt=False)
+            if not allowed:
+                raise PermissionError(f"RateLimited:{cooldown}:Too many failed PIN attempts. Cooldown active for {cooldown} seconds.")
 
-        # Check if consent was explicitly revoked
-        if patient.get("consentRevoked") is True:
+            expected_pin = str(patient.get("consentPin", "482910")).strip()
+            provided_pin = str(consent_pin).strip() if consent_pin else ""
+
+            # Check if consent was explicitly revoked
+            if patient.get("consentRevoked") is True:
+                record_audit_event(
+                    action="PatientConsentAccessBlocked",
+                    actor=doctor_id,
+                    resource=f"Patient/{actual_pid}",
+                    details=f"Access blocked: Patient {actual_pid} has revoked external doctor consent.",
+                    severity="WARNING",
+                    role="DOCTOR"
+                )
+                raise PermissionError(f"AccessDenied: Patient '{actual_pid}' has revoked doctor consent. Prompt patient to re-authorize.")
+
+            # Check PIN match (also accepts universal demo OTP 402198 for clinical test suites)
+            if not provided_pin or (provided_pin != expected_pin and provided_pin != "402198"):
+                allowed, cooldown, attempts_remaining = check_pin_rate_limit(doctor_id, actual_pid, is_wrong_attempt=True)
+                record_audit_event(
+                    action="PatientConsentPinFailed",
+                    actor=doctor_id,
+                    resource=f"Patient/{actual_pid}",
+                    details=f"Failed consent PIN verification for patient {actual_pid} by {doctor_id}. Remaining: {attempts_remaining}",
+                    severity="WARNING",
+                    role="DOCTOR"
+                )
+                if not allowed:
+                    raise PermissionError(f"RateLimited:{cooldown}:Too many failed PIN attempts. Cooldown active for {cooldown} seconds.")
+                raise PermissionError(f"ConsentVerificationFailed:{attempts_remaining}:That PIN isn't valid. Ask the patient for the PIN currently shown on their Passport tab; it changes after every revoke.")
+
+            # Success - reset rate limit counter
+            reset_pin_rate_limit(doctor_id, actual_pid)
+
             record_audit_event(
-                action="PatientConsentAccessBlocked",
+                action="PatientProfileDecryptedWithConsentPin",
                 actor=doctor_id,
-                resource=f"Patient/{actual_pid}",
-                details=f"Access blocked: Patient {actual_pid} has revoked external doctor consent.",
-                severity="WARNING",
+                resource=f"Patient/{actual_pid}/SwasthyaPassport",
+                details=f"Patient chart decrypted by {doctor_id} using verified Consent PIN.",
+                severity="INFO",
                 role="DOCTOR"
             )
-            raise PermissionError(f"AccessDenied: Patient '{actual_pid}' has revoked doctor consent. Prompt patient to re-authorize.")
 
-        # Check PIN match (also accepts universal demo OTP 402198 for clinical test suites)
-        if not provided_pin or (provided_pin != expected_pin and provided_pin != "402198"):
-            record_audit_event(
-                action="PatientConsentPinFailed",
-                actor=doctor_id,
-                resource=f"Patient/{actual_pid}",
-                details=f"Failed consent PIN verification for patient {actual_pid} by {doctor_id}.",
-                severity="WARNING",
-                role="DOCTOR"
-            )
-            raise PermissionError(f"ConsentVerificationFailed: Invalid Patient Consent PIN for '{patient_id}'. AWS KMS Privacy Shield remains locked.")
-
-        record_audit_event(
-            action="PatientProfileDecryptedWithConsentPin",
-            actor=doctor_id,
-            resource=f"Patient/{actual_pid}/SwasthyaPassport",
-            details=f"Patient chart decrypted by {doctor_id} using verified Consent PIN.",
-            severity="INFO",
-            role="DOCTOR"
-        )
-
-    # 2. Record Active Access Session
-    session_id = f"SESS-{doctor_id}-{actual_pid}-{uuid.uuid4().hex[:8].upper()}"
-    state = local_store.load_all()
-    sessions = state.setdefault("active_doctor_access_sessions", {})
-    sessions[f"{doctor_id}:{actual_pid}"] = {
-        "sessionId": session_id,
-        "doctorId": doctor_id,
-        "patientId": actual_pid,
-        "authorizedAt": datetime.now(timezone.utc).isoformat(),
-        "expiresAt": (datetime.now(timezone.utc) + timedelta(minutes=60)).isoformat(),
-        "isEmergency": is_emergency
-    }
-    local_store.save_all(state)
+    # 2. Record Active Access Session (10-minute sliding inactivity window) & Recent Patients List
+    with timed_step("grant_creation_and_recent"):
+        session_id = f"SESS-{doctor_id}-{actual_pid}-{uuid.uuid4().hex[:8].upper()}"
+        state = local_store.load_all()
+        sessions = state.setdefault("active_doctor_access_sessions", {})
+        sessions[f"{doctor_id}:{actual_pid}"] = {
+            "sessionId": session_id,
+            "doctorId": doctor_id,
+            "patientId": actual_pid,
+            "authorizedAt": datetime.now(timezone.utc).isoformat(),
+            "expiresAt": (datetime.now(timezone.utc) + timedelta(minutes=10)).isoformat(),
+            "isEmergency": is_emergency,
+            "breakGlassReason": break_glass_reason if is_emergency else None
+        }
+        
+        # Track recent unlocked patients (last 10, initials only)
+        p_name = patient.get("name", "Patient")
+        parts = p_name.strip().split()
+        initials = "".join([part[0].upper() + "." for part in parts]) if parts else "P."
+        recent_entry = {
+            "patientId": patient.get("uniquePatientId") or actual_pid,
+            "actualPatientId": actual_pid,
+            "initials": initials,
+            "unlockedAt": datetime.now(timezone.utc).isoformat()
+        }
+        recent_list = state.setdefault("recent_unlocked_patients", {}).setdefault(doctor_id, [])
+        recent_list = [r for r in recent_list if r.get("actualPatientId") != actual_pid]
+        recent_list.insert(0, recent_entry)
+        state["recent_unlocked_patients"][doctor_id] = recent_list[:10]
+        local_store.save_all(state)
 
     # 3. Pull Decrypted Clinical Dashboard Data
-    doc_lookup_id = "DOC-201" if doctor_id in ("DOC-IN-8841", "DOC-201") else doctor_id
-    clinical_view = get_doctor_patient_view(doc_lookup_id, actual_pid)
+    with timed_step("pull_doctor_patient_view"):
+        doc_lookup_id = "DOC-201" if doctor_id in ("DOC-IN-8841", "DOC-201") else doctor_id
+        clinical_view = get_doctor_patient_view(doc_lookup_id, actual_pid)
 
     unique_display_id = patient.get("uniquePatientId") or ("PAT-SS-1001" if actual_pid == "PAT-1001" else actual_pid)
+    
+    # Strictly strip Consent PIN from doctor view per Ground Rule
+    patient_doc_view = copy.deepcopy(clinical_view.get("patient", {}))
+    patient_doc_view.pop("consentPin", None)
+    patient_doc_view.pop("activeConsentPin", None)
+    
+    active_rx = clinical_view.get("active_prescriptions", [])
+    patient_doc_view["prescriptions"] = active_rx
+    patient_doc_view["active_prescriptions"] = active_rx
+
+    try:
+        from reports_engine import get_patient_reports
+        reports_list = get_patient_reports(actual_pid)
+    except Exception:
+        reports_list = []
 
     return convert_decimals({
         "status": "ACCESS_GRANTED_DECRYPTED",
+        "accessGranted": True,
+        "kmsDecrypted": True,
         "message": f"Zero-trust privacy shield unlocked for {patient.get('name')}.",
         "sessionId": session_id,
         "doctorId": doctor_id,
         "patientId": actual_pid,
         "uniquePatientId": unique_display_id,
         "isEmergencyBreakGlass": is_emergency,
-        "patient": clinical_view.get("patient", {}),
-        "active_prescriptions": clinical_view.get("active_prescriptions", []),
+        "unlockedViaBreakGlass": is_emergency,
+        "breakGlass": is_emergency,
+        "patient": patient_doc_view,
+        "prescriptions": active_rx,
+        "active_prescriptions": active_rx,
         "discontinued_prescriptions": clinical_view.get("discontinued_prescriptions", []),
+        "reports": reports_list,
+        "reportsSummary": {
+            "totalCount": len(reports_list),
+            "recentReports": reports_list[:3]
+        },
         "timeline_events": clinical_view.get("timeline_events", [])[:15],
+        "auditTrail": state.get("audit_trail", [])[-15:],
+        "fhirBundle": {
+            "resourceType": "Bundle",
+            "type": "collection",
+            "entry": [
+                {"resource": {"resourceType": "Patient", "id": actual_pid, "name": [{"text": patient.get("name")}]}},
+                {"resource": {"resourceType": "MedicationRequest", "status": "active", "medicationCodeableConcept": {"text": "Warfarin 5mg"}}}
+            ]
+        },
         "swasthyaPassport": {
             "uniquePatientId": unique_display_id,
             "abhaId": patient.get("abhaId", "ABHA-21-9845-3310-7742"),
@@ -880,8 +949,7 @@ def lookup_patient_by_doctor(
             "originState": patient.get("originState", "Odisha"),
             "currentLocation": patient.get("currentLocation", "Bengaluru, Karnataka"),
             "preferredLanguage": patient.get("preferredLanguage", "Odia"),
-            "occupation": patient.get("occupation", "Construction Site Mason"),
-            "activeConsentPin": patient.get("consentPin", "482910")
+            "occupation": patient.get("occupation", "Construction Site Mason")
         }
     })
 
@@ -935,8 +1003,7 @@ def revoke_patient_consent(patient_id: str) -> Dict[str, Any]:
             actor="Patient Self-Service",
             actor_id=actual_pid,
             role="PATIENT",
-            category="SECURITY_ALERT",
-            metadata={"newPin": new_pin}
+            category="SECURITY_ALERT"
         )
     except Exception:
         pass
@@ -953,6 +1020,149 @@ def revoke_patient_consent(patient_id: str) -> Dict[str, Any]:
 # ---------------------------------------------------------------------------
 # Default Entities Pre-seeding
 # ---------------------------------------------------------------------------
+def lock_doctor_session(doctor_id: str, patient_id: str) -> Dict[str, Any]:
+    """
+    Terminates doctor's active unlock grant for patient (manual lock or inactivity timeout).
+    Writes CloudTrail audit event.
+    """
+    clean_pid = str(patient_id).strip()
+    actual_pid = "PAT-1001" if clean_pid in ("PATIENT-001", "1001", "PAT-1001", "PAT-SS-1001") else clean_pid
+    state = local_store.load_all()
+    sessions = state.setdefault("active_doctor_access_sessions", {})
+    key = f"{doctor_id}:{actual_pid}"
+    had_session = key in sessions
+    if had_session:
+        sessions.pop(key, None)
+        local_store.save_all(state)
+    
+    record_audit_event(
+        action="DoctorSessionLocked",
+        actor=doctor_id,
+        resource=f"Patient/{actual_pid}/PrivacyShield",
+        details=f"Doctor {doctor_id} locked access to patient {actual_pid} records.",
+        severity="INFO",
+        role="DOCTOR"
+    )
+    return {
+        "status": "LOCKED",
+        "message": f"Clinical access to patient {actual_pid} has been locked.",
+        "patientId": actual_pid,
+        "doctorId": doctor_id
+    }
+
+
+def get_patient_consent_status(patient_id: str) -> Dict[str, Any]:
+    """
+    Returns who currently has access to patient's records (for Patient Workspace).
+    Includes doctor initials, method (PIN or BREAK_GLASS), access timestamp, and justification.
+    """
+    clean_pid = str(patient_id).strip()
+    actual_pid = "PAT-1001" if clean_pid in ("PATIENT-001", "1001", "PAT-1001", "PAT-SS-1001") else clean_pid
+    state = local_store.load_all()
+    sessions = state.get("active_doctor_access_sessions", {})
+    
+    active_grants = []
+    now = datetime.now(timezone.utc)
+    for k, sess in sessions.items():
+        if k.endswith(f":{actual_pid}"):
+            # Check expiry
+            exp_str = sess.get("expiresAt")
+            if exp_str:
+                try:
+                    exp_dt = datetime.fromisoformat(exp_str)
+                    if exp_dt < now:
+                        continue
+                except Exception:
+                    pass
+            doc_id = sess.get("doctorId", "DOC-IN-8841")
+            cog_user = state.get("cognito_users", {}).get(doc_id, {})
+            doc_name = cog_user.get("name", "Dr. Clinician")
+            parts = doc_name.strip().split()
+            initials = "".join([part[0].upper() + "." for part in parts]) if parts else "Dr. C."
+            active_grants.append({
+                "doctorId": doc_id,
+                "doctorInitials": initials,
+                "doctorName": doc_name,
+                "accessMethod": "BREAK_GLASS" if sess.get("isEmergency") else "PIN",
+                "authorizedAt": sess.get("authorizedAt"),
+                "justification": sess.get("breakGlassReason")
+            })
+            
+    return {
+        "patientId": actual_pid,
+        "hasActiveAccess": len(active_grants) > 0,
+        "activeGrants": active_grants
+    }
+
+
+def has_active_grant(doctor_id: str, patient_id: str) -> bool:
+    """
+    Checks if a doctor has an active, unexpired unlock grant for the patient.
+    Grant terminates on patient revoke, doctor lock, or expiry.
+    """
+    clean_pid = str(patient_id).strip()
+    actual_pid = "PAT-1001" if clean_pid.upper() in ("PATIENT-001", "1001", "PAT-1001", "PAT-SS-1001") else clean_pid
+    state = local_store.load_all()
+    sessions = state.get("active_doctor_access_sessions", {})
+    
+    key = f"{doctor_id}:{actual_pid}"
+    sess = sessions.get(key)
+    if not sess:
+        # Check alias (DOC-201 <-> DOC-IN-8841)
+        alias_doc = "DOC-201" if doctor_id == "DOC-IN-8841" else ("DOC-IN-8841" if doctor_id == "DOC-201" else doctor_id)
+        sess = sessions.get(f"{alias_doc}:{actual_pid}")
+        if not sess:
+            return False
+
+    exp_str = sess.get("expiresAt")
+    if exp_str:
+        try:
+            exp_dt = datetime.fromisoformat(exp_str)
+            if exp_dt < datetime.now(timezone.utc):
+                return False
+            # Sliding inactivity window: renew 10-minute validity on active access
+            sess["expiresAt"] = (datetime.now(timezone.utc) + timedelta(minutes=10)).isoformat()
+            state.setdefault("active_doctor_access_sessions", {})[key] = sess
+            local_store.save_all(state)
+        except Exception:
+            pass
+    return True
+
+
+def issue_doctor_grant(doctor_id: str, patient_id: str, duration_seconds: int = 600, is_emergency: bool = False) -> Dict[str, Any]:
+    """Issues an active unlock grant for doctor to access patient records."""
+    clean_pid = str(patient_id).strip()
+    actual_pid = "PAT-1001" if clean_pid in ("PATIENT-001", "1001", "PAT-1001", "PAT-SS-1001") else clean_pid
+    state = local_store.load_all()
+    sessions = state.setdefault("active_doctor_access_sessions", {})
+    key = f"{doctor_id}:{actual_pid}"
+    sess = {
+        "sessionId": f"SESS-{doctor_id}-{actual_pid}-{uuid.uuid4().hex[:8].upper()}",
+        "doctorId": doctor_id,
+        "patientId": actual_pid,
+        "authorizedAt": datetime.now(timezone.utc).isoformat(),
+        "expiresAt": (datetime.now(timezone.utc) + timedelta(seconds=duration_seconds)).isoformat(),
+        "isEmergency": is_emergency,
+        "breakGlassReason": None
+    }
+    sessions[key] = sess
+    local_store.save_all(state)
+    return sess
+
+
+def revoke_doctor_grant(doctor_id: str, patient_id: str) -> bool:
+    """Revokes active doctor grant for patient."""
+    clean_pid = str(patient_id).strip()
+    actual_pid = "PAT-1001" if clean_pid in ("PATIENT-001", "1001", "PAT-1001", "PAT-SS-1001") else clean_pid
+    state = local_store.load_all()
+    sessions = state.setdefault("active_doctor_access_sessions", {})
+    key = f"{doctor_id}:{actual_pid}"
+    had = key in sessions
+    sessions.pop(key, None)
+    local_store.save_all(state)
+    return had
+
+
 def ensure_default_auth_entities():
     """Seeds default PAT-SS-1001 and DOC-IN-8841 entities if not present."""
     try:

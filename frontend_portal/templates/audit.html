@@ -3,25 +3,23 @@
 {% block title %}CloudTrail & KMS HIPAA Audit Ledger | MedCoord Health{% endblock %}
 
 {% block content %}
-<div class="space-y-6">
+<div class="w-full max-w-5xl mx-auto px-4 py-8 space-y-6">
 
   <!-- ======================================================================= -->
-  <!-- 1. Header & HIPAA Security Summary -->
+  <!-- 1. Header & HIPAA Security Summary                                      -->
   <!-- ======================================================================= -->
-  <div class="bg-surface-container-lowest rounded-2xl p-5 border border-surface-container-high/80 shadow-xs space-y-4">
+  <div class="card p-6 space-y-4">
     <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
       <div class="flex items-center gap-3.5">
-        <div class="w-12 h-12 rounded-2xl bg-secondary-fixed text-secondary flex items-center justify-center font-bold shadow-xs flex-shrink-0">
+        <div class="w-12 h-12 rounded-2xl bg-primary-light text-primary flex items-center justify-center font-bold flex-shrink-0">
           <span class="material-symbols-outlined text-[28px] fill-1">verified_user</span>
         </div>
         <div>
           <div class="flex items-center gap-2">
-            <h1 class="font-headline font-bold text-lg text-on-surface">CloudTrail & KMS HIPAA Audit Stream</h1>
-            <span class="px-2 py-0.5 rounded-full bg-primary-fixed text-on-primary-fixed-variant text-[11px] font-bold uppercase">
-              Tamper-Evident Ledger
-            </span>
+            <h1 class="text-xl font-bold text-main">CloudTrail & KMS HIPAA Audit Stream</h1>
+            <span class="badge badge-teal text-[10px]">TAMPER-EVIDENT</span>
           </div>
-          <p class="text-xs text-on-surface-variant mt-0.5">
+          <p class="text-xs text-muted mt-0.5">
             Cryptographically signed PHI audit trail verifying compliance across all clinical operations
           </p>
         </div>
@@ -29,12 +27,12 @@
 
       <!-- Compliance Metrics -->
       <div class="flex items-center gap-2">
-        <span class="px-3 py-1.5 rounded-xl bg-surface-container text-xs font-bold text-primary border border-surface-container-high flex items-center gap-1">
-          <span class="material-symbols-outlined text-[16px]">lock</span>
-          <span>AWS KMS (AES-256-GCM)</span>
+        <span class="badge badge-primary">
+          <span class="material-symbols-outlined text-[14px]">lock</span>
+          <span>AWS KMS (AES-256)</span>
         </span>
-        <span class="px-3 py-1.5 rounded-xl bg-surface-container text-xs font-bold text-tertiary border border-surface-container-high flex items-center gap-1">
-          <span class="material-symbols-outlined text-[16px]">shield</span>
+        <span class="badge badge-teal">
+          <span class="material-symbols-outlined text-[14px]">shield</span>
           <span>STS Authenticated</span>
         </span>
       </div>
@@ -42,38 +40,38 @@
   </div>
 
   <!-- ======================================================================= -->
-  <!-- 2. Audit Event Feed Table -->
+  <!-- 2. Audit Event Feed Table                                               -->
   <!-- ======================================================================= -->
-  <div class="bg-surface-container-lowest rounded-2xl p-5 border border-surface-container-high/80 shadow-xs space-y-4">
-    <div class="flex items-center justify-between">
-      <h2 class="font-headline font-bold text-base text-on-surface">Recent CloudTrail Security Events</h2>
-      <span class="text-xs font-bold bg-surface-container px-2.5 py-1 rounded-full text-on-surface-variant">
+  <div class="card p-6 space-y-4">
+    <div class="flex items-center justify-between border-b border-subtle pb-3">
+      <h2 class="text-base font-bold text-main">Recent CloudTrail Security Events</h2>
+      <span class="badge badge-primary text-xs">
         {{ audit_logs|length }} Events Logged
       </span>
     </div>
 
-    <div class="space-y-2.5">
+    <div class="space-y-3">
       {% for event in audit_logs %}
-      <div class="p-3.5 rounded-xl bg-surface-container-low border border-surface-container-high flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs">
+      <div class="p-3.5 rounded-xl border border-subtle bg-slate-50 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs">
         <div class="space-y-1">
           <div class="flex items-center gap-2 flex-wrap">
-            <span class="font-bold text-on-surface uppercase">{{ event.action }}</span>
-            <span class="text-[10px] font-bold px-1.5 py-0.2 rounded 
-              {% if event.severity == 'CRITICAL' %}bg-error text-white
-              {% elif event.severity == 'WARNING' %}bg-amber-600 text-white
-              {% else %}bg-primary text-white{% endif %}">
+            <span class="font-bold text-main uppercase">{{ event.action }}</span>
+            <span class="badge 
+              {% if event.severity == 'CRITICAL' %}badge-danger
+              {% elif event.severity == 'WARNING' %}badge-amber
+              {% else %}badge-teal{% endif %} text-[10px]">
               {{ event.severity }}
             </span>
-            <span class="font-mono text-[11px] text-on-surface-variant">ID: {{ event.event_id }}</span>
+            <span class="font-mono text-[11px] text-muted">ID: {{ event.event_id }}</span>
           </div>
-          <p class="text-on-surface-variant">
-            Performed by <strong class="text-on-surface">{{ event.performed_by }}</strong> on resource <strong class="text-on-surface">{{ event.resource_id }}</strong>
+          <p class="text-muted">
+            Performed by <strong class="text-main">{{ event.performed_by }}</strong> on resource <strong class="text-main">{{ event.resource_id }}</strong>
           </p>
         </div>
 
         <div class="text-right sm:flex-shrink-0">
-          <span class="text-[11px] font-mono text-on-surface-variant block">{{ event.timestamp }}</span>
-          <span class="text-[10px] font-bold text-tertiary">Verified FHIR R4 Bundle</span>
+          <span class="text-[11px] font-mono text-muted block">{{ event.timestamp }}</span>
+          <span class="text-[10px] font-bold text-teal">Verified FHIR R4 Bundle</span>
         </div>
       </div>
       {% endfor %}

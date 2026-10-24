@@ -1,0 +1,83 @@
+{
+  "results": {
+    "1_doctor_login": {
+      "status": 200,
+      "elapsed_ms": 50.78
+    },
+    "2_lookup_patient": {
+      "status": 200,
+      "elapsed_ms": 735.86
+    },
+    "3_patient_profile": {
+      "status": 200,
+      "elapsed_ms": 96.7
+    },
+    "4_modify_prescription": {
+      "status": 500,
+      "elapsed_ms": 175.32
+    }
+  },
+  "slowest_steps": [
+    {
+      "details": "",
+      "elapsed_ms": 489.75,
+      "step": "cloudtrail_audit_write",
+      "timestamp": 1792812777.9025452
+    },
+    {
+      "details": "",
+      "elapsed_ms": 351.61,
+      "step": "pull_doctor_patient_view",
+      "timestamp": 1792812469.8198917
+    },
+    {
+      "details": "",
+      "elapsed_ms": 237.31,
+      "step": "local_state_write",
+      "timestamp": 1792812471.1736968
+    },
+    {
+      "details": "",
+      "elapsed_ms": 232.53,
+      "step": "local_state_write",
+      "timestamp": 1792812469.54449
+    },
+    {
+      "details": "",
+      "elapsed_ms": 219.4,
+      "step": "local_state_write",
+      "timestamp": 1792812773.888112
+    },
+    {
+      "details": "",
+      "elapsed_ms": 215.48,
+      "step": "local_state_write",
+      "timestamp": 1792812789.8750358
+    },
+    {
+      "details": "",
+      "elapsed_ms": 215.45,
+      "step": "local_state_write",
+      "timestamp": 1792812774.6607766
+    },
+    {
+      "details": "",
+      "elapsed_ms": 215.14,
+      "step": "local_state_write",
+      "timestamp": 1792812776.9634397
+    },
+    {
+      "details": "",
+      "elapsed_ms": 206.77,
+      "step": "cloudtrail_audit_write",
+      "timestamp": 1792812471.5345318
+    },
+    {
+      "details": "",
+      "elapsed_ms": 204.83,
+      "step": "local_state_write",
+      "timestamp": 1792812774.2676127
+    }
+  ],
+  "total_flow_ms": 1058.66
+}

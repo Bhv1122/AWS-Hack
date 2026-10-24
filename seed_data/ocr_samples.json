@@ -1,0 +1,137 @@
+[
+  {
+    "id": "ODISHA_PHC_SLIP",
+    "title": "Odisha Sub-Divisional Hospital Paper Slip",
+    "facility": "Chhatrapur Sub-Divisional Hospital, Ganjam, Odisha",
+    "rawText": "GOVT OF ODISHA - SUB DIVISIONAL HOSPITAL CHHATRAPUR\nOPD REG: 44102/2023  DATE: 14/11/2023\nPATIENT: Ramesh Kumar, M/48 YRS\nRx:\n1. Tab Metformin 500mg - 1 Tab BD x 30 days\n2. Tab Ecosprin 75mg - 1 Tab OD (Aspirin)\n3. Cap Amoxyclav 625mg (Amoxicillin+Clavulanate) - 1 Cap BD x 5 days\nDr. B. K. Sahu, MBBS (Reg: OCMR-2015-44102)",
+    "ocrConfidence": 0.82,
+    "expectedMedicines": [
+      "Metformin 500mg",
+      "Ecosprin 75mg",
+      "Amoxyclav 625mg"
+    ],
+    "expectedFlags": [
+      "DRUG_INTERACTION: Aspirin (Ecosprin) + Warfarin bleeding risk",
+      "ALLERGY_CONFLICT: Amoxyclav (Penicillin class) on Penicillin allergy"
+    ],
+    "needsReview": false,
+    "synthetic": true
+  },
+  {
+    "id": "BIHAR_SADAR_LAB",
+    "title": "Bihar Sadar Hospital Inpatient Discharge Slip",
+    "facility": "Sadar Hospital, Gaya, Bihar",
+    "rawText": "SADAR HOSPITAL GAYA - DEPT OF MEDICINE\nDISCHARGE ADVICE SLIP\nPt: Rajesh Yadav, Age 36/M\nDx: Occupational Byssinosis / Bronchospasm\nRx:\n1. Asthalin Inhaler (Salbutamol 100mcg) - 2 puffs SOS\n2. Deriphyllin Retard 150mg - 1 tab BD\n3. Prednisolone 10mg - 1 tab daily x 5 days\nAdvise avoidance of raw cotton dust & use of N95 respirator.",
+    "ocrConfidence": 0.88,
+    "expectedMedicines": [
+      "Asthalin Inhaler",
+      "Deriphyllin Retard 150mg",
+      "Prednisolone 10mg"
+    ],
+    "expectedFlags": [
+      "OCCUPATIONAL_ALERT: Cotton dust byssinosis trigger"
+    ],
+    "needsReview": false,
+    "synthetic": true
+  },
+  {
+    "id": "TAMIL_NADU_CLINIC",
+    "title": "Tamil Nadu Urban Clinic Prescription",
+    "facility": "Sri Krishna Clinic, Salem, Tamil Nadu",
+    "rawText": "\u0bb8\u0bcd\u0bb0\u0bc0 \u0b95\u0bbf\u0bb0\u0bc1\u0bb7\u0bcd\u0ba3\u0bbe \u0b95\u0bbf\u0bb3\u0bbf\u0ba9\u0bbf\u0b95\u0bcd - SALEM\nPatient: Lakshmi Murugan, F/42\nRx:\n1. Tab Dolo 650mg - 1 tab SOS (Paracetamol)\n2. Tab Bactrim DS (Trimethoprim + Sulfamethoxazole) - 1 tab BD x 5 days\n3. Tab Pantocid 40mg - 1 tab OD before breakfast\nDr. S. Sundaram, MBBS",
+    "ocrConfidence": 0.85,
+    "expectedMedicines": [
+      "Dolo 650mg",
+      "Bactrim DS",
+      "Pantocid 40mg"
+    ],
+    "expectedFlags": [
+      "ALLERGY_CONFLICT: Bactrim DS (Sulfamethoxazole) matches Sulfa allergy"
+    ],
+    "needsReview": false,
+    "synthetic": true
+  },
+  {
+    "id": "SMUDGED_LOW_CONF",
+    "title": "Smudged Crumpled Construction Site Slip",
+    "facility": "Site First Aid Post, Whitefield Construction Project",
+    "rawText": "SITE FIRST AID ... Ramesh K... 48M ...\nTab Diclo... 50mg ? ... Tab Bruf... 400 ? ...\n[Smudged text: Water damage / torn edge]\n... twice daily for pain ... Dr ...",
+    "ocrConfidence": 0.48,
+    "expectedMedicines": [
+      "Diclofenac 50mg (Uncertain)",
+      "Ibuprofen 400mg (Uncertain)"
+    ],
+    "expectedFlags": [
+      "OCR_LOW_CONFIDENCE: Quality 48% - Clinical manual verification mandatory"
+    ],
+    "needsReview": true,
+    "synthetic": true
+  },
+  {
+    "id": "SULFA_DRUG_SLIP",
+    "title": "Dermatology Clinic Prescription Slip",
+    "facility": "Bangalore Skin Care Centre, Indiranagar",
+    "rawText": "BANGALORE SKIN CARE CENTRE\nPatient: Kavitha Selvam, F/33\nDx: Pyoderma / Folliculitis\nRx:\n1. Tab Co-Trimoxazole DS (Sulfamethoxazole 800mg + Trimethoprim 160mg) - 1 BD\n2. Mupirocin Ointment 2% - Apply twice daily\nDr. Rekha Rao, MD (Derm)",
+    "ocrConfidence": 0.91,
+    "expectedMedicines": [
+      "Co-Trimoxazole DS",
+      "Mupirocin Ointment 2%"
+    ],
+    "expectedFlags": [
+      "ALLERGY_CONFLICT: Co-Trimoxazole (Sulfa class) matches Sulfa allergy"
+    ],
+    "needsReview": false,
+    "synthetic": true
+  },
+  {
+    "id": "CLEAN_TYPED_DISCHARGE",
+    "title": "Typed Cardiology Discharge Summary",
+    "facility": "Manipal Hospital Heart Institute, Bengaluru",
+    "rawText": "MANIPAL HOSPITAL WHITEFIELD - CARDIOLOGY DISCHARGE SUMMARY\nPATIENT ID: PAT-SS-1001   NAME: Ramesh Kumar   AGE: 48 / M\nDIAGNOSIS: Deep Vein Thrombosis (Right Lower Extremity), Resolved\nDISCHARGE MEDICATIONS:\n1. Tab Warfarin 5mg - 1 tablet orally once daily at 20:00 (Target INR 2.0 - 3.0)\n2. Tab Metformin 500mg - 1 tablet orally twice daily with meals\n3. Tab Atorvastatin 20mg - 1 tablet orally once daily at bedtime\nCAUTION: Strict avoidance of Aspirin, NSAIDs (Ibuprofen, Diclofenac). Report bleeding immediately.",
+    "ocrConfidence": 0.98,
+    "expectedMedicines": [
+      "Warfarin 5mg",
+      "Metformin 500mg",
+      "Atorvastatin 20mg"
+    ],
+    "expectedFlags": [
+      "SAFETY_NOTICE: Warfarin anticoagulant protocol active"
+    ],
+    "needsReview": false,
+    "synthetic": true
+  },
+  {
+    "id": "PULMONOLOGY_OPD_SLIP",
+    "title": "Pulmonology Clinic Consultation Note",
+    "facility": "Apollo Clinic, Bellandur, Bengaluru",
+    "rawText": "APOLLO CLINIC BELLANDUR - PULMONOLOGY\nPt: Santosh Pradhan, M/34  Date: Today\nDx: Chronic occupational cough & reactive airway\nRx:\n1. Foracort Inhaler 200 (Budesonide 200mcg + Formoterol 6mcg) - 2 puffs BD\n2. Tab Montelukast 10mg - 1 tab at bedtime\n3. Tab Combiflam (Ibuprofen + Paracetamol) - SOS for chest wall pain\nDr. Deepa Nair, MD (Pulm)",
+    "ocrConfidence": 0.89,
+    "expectedMedicines": [
+      "Foracort Inhaler 200",
+      "Montelukast 10mg",
+      "Combiflam"
+    ],
+    "expectedFlags": [
+      "ALLERGY_CONFLICT: Combiflam contains Ibuprofen (NSAID-sensitive asthma conflict)"
+    ],
+    "needsReview": false,
+    "synthetic": true
+  },
+  {
+    "id": "ANTENATAL_CARE_SLIP",
+    "title": "PHC Antenatal Care Health Record",
+    "facility": "Govt Primary Health Centre, KR Puram, Bengaluru",
+    "rawText": "MOTHER & CHILD HEALTH CARD (MCH)\nName: Fatima Khatun, F/26 YRS  LMP: 24 weeks gestation\nRx:\n1. Iron Folic Acid (IFA) Tablets - 1 tab daily after lunch\n2. Calcium Carbonate 500mg + Vitamin D3 - 1 tab daily after breakfast\n3. Tetanus Toxoid (TT2) Injection - Administered today\nANM Nurse: Shobha Devi",
+    "ocrConfidence": 0.94,
+    "expectedMedicines": [
+      "Iron Folic Acid",
+      "Calcium Carbonate 500mg",
+      "Tetanus Toxoid"
+    ],
+    "expectedFlags": [
+      "PREGNANCY_SAFEGUARD: Safe second-trimester micronutrient regimen"
+    ],
+    "needsReview": false,
+    "synthetic": true
+  }
+]

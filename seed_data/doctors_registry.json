@@ -1,0 +1,981 @@
+[
+  {
+    "licenseNumber": "KMC-2019-88412",
+    "councilCode": "KMC",
+    "fullName": "Dr. Ananya Sharma",
+    "degree": "MBBS, MD (Cardiology)",
+    "specialty": "Cardiology",
+    "registrationYear": 2019,
+    "validTill": "2030-02-04",
+    "status": "ACTIVE",
+    "hospitalCodes": [
+      "HOSP-BLR-990",
+      "HOSP-BLR-102"
+    ],
+    "govIdLast4": "4412",
+    "languages": [
+      "Kannada",
+      "Hindi",
+      "English"
+    ],
+    "city": "Bengaluru",
+    "registered": true,
+    "doctorId": "DOC-IN-8841",
+    "scenario": "VALID_CARDIO",
+    "synthetic": true
+  },
+  {
+    "licenseNumber": "NMC-IND-55201",
+    "councilCode": "NMC",
+    "fullName": "Dr. Debabrata Nayak",
+    "degree": "MBBS, MD (Pulmonary Medicine)",
+    "specialty": "Pulmonology",
+    "registrationYear": 2018,
+    "validTill": "2030-12-01",
+    "status": "ACTIVE",
+    "hospitalCodes": [
+      "AIIMS-BBSR-101",
+      "HOSP-CTC-301"
+    ],
+    "govIdLast4": "5201",
+    "languages": [
+      "Odia",
+      "Hindi",
+      "English"
+    ],
+    "city": "Bhubaneswar",
+    "registered": false,
+    "doctorId": null,
+    "scenario": "VALID_ODISHA_UNREGISTERED",
+    "synthetic": true
+  },
+  {
+    "licenseNumber": "KMC-2016-10233",
+    "councilCode": "KMC",
+    "fullName": "Dr. Vikram Rao",
+    "degree": "MBBS, MD (General Medicine)",
+    "specialty": "General Medicine",
+    "registrationYear": 2016,
+    "validTill": "2027-08-19",
+    "status": "SUSPENDED",
+    "hospitalCodes": [
+      "HOSP-BLR-102"
+    ],
+    "govIdLast4": "1023",
+    "languages": [
+      "Kannada",
+      "English"
+    ],
+    "city": "Bengaluru",
+    "registered": false,
+    "doctorId": null,
+    "scenario": "GATE1_SUSPENDED",
+    "synthetic": true
+  },
+  {
+    "licenseNumber": "TNMC-2011-45110",
+    "councilCode": "TNMC",
+    "fullName": "Dr. Karthik Sundaram",
+    "degree": "MBBS, MS (Orthopaedics)",
+    "specialty": "Orthopaedics",
+    "registrationYear": 2011,
+    "validTill": "2026-04-26",
+    "status": "EXPIRED",
+    "hospitalCodes": [
+      "HOSP-CHN-501"
+    ],
+    "govIdLast4": "4511",
+    "languages": [
+      "Tamil",
+      "English"
+    ],
+    "city": "Chennai",
+    "registered": false,
+    "doctorId": null,
+    "scenario": "GATE1_EXPIRED",
+    "synthetic": true
+  },
+  {
+    "licenseNumber": "KMC-2018-55120",
+    "councilCode": "KMC",
+    "fullName": "Dr. Sunita Patil",
+    "degree": "MBBS, MD (Diabetology)",
+    "specialty": "Diabetology",
+    "registrationYear": 2018,
+    "validTill": "2029-07-19",
+    "status": "ACTIVE",
+    "hospitalCodes": [
+      "HOSP-MYS-201"
+    ],
+    "govIdLast4": "5512",
+    "languages": [
+      "Kannada",
+      "Hindi",
+      "English"
+    ],
+    "city": "Mysuru",
+    "registered": false,
+    "doctorId": null,
+    "scenario": "GATE2_WRONG_HOSPITAL",
+    "synthetic": true
+  },
+  {
+    "licenseNumber": "KMC-2020-77341",
+    "councilCode": "KMC",
+    "fullName": "Dr. Arvind Bhat",
+    "degree": "MBBS, MD (Occupational Health)",
+    "specialty": "Occupational Medicine",
+    "registrationYear": 2020,
+    "validTill": "2030-08-23",
+    "status": "ACTIVE",
+    "hospitalCodes": [
+      "HOSP-BLR-990"
+    ],
+    "govIdLast4": "7734",
+    "languages": [
+      "Kannada",
+      "English"
+    ],
+    "city": "Bengaluru",
+    "registered": false,
+    "doctorId": null,
+    "scenario": "GATE3_WRONG_GOVID",
+    "synthetic": true
+  },
+  {
+    "licenseNumber": "KMC-2021-66219",
+    "councilCode": "KMC",
+    "fullName": "Dr. Priya Hegde",
+    "degree": "MBBS, DNB (Family Medicine)",
+    "specialty": "Family Medicine",
+    "registrationYear": 2021,
+    "validTill": "2031-03-11",
+    "status": "ACTIVE",
+    "hospitalCodes": [
+      "HOSP-BLR-990"
+    ],
+    "govIdLast4": "6621",
+    "languages": [
+      "Kannada",
+      "Hindi",
+      "English"
+    ],
+    "city": "Bengaluru",
+    "registered": false,
+    "doctorId": null,
+    "scenario": "GATE4_WRONG_OTP",
+    "synthetic": true
+  },
+  {
+    "licenseNumber": "KMC-2023-99881",
+    "councilCode": "KMC",
+    "fullName": "Dr. Ananya Sen",
+    "degree": "MBBS, MD",
+    "specialty": "Internal Medicine",
+    "registrationYear": 2023,
+    "validTill": "2030-02-04",
+    "status": "ACTIVE",
+    "hospitalCodes": [
+      "HOSP-BLR-990"
+    ],
+    "govIdLast4": "8812",
+    "languages": [
+      "English",
+      "Hindi"
+    ],
+    "city": "Bengaluru",
+    "registered": false,
+    "doctorId": null,
+    "scenario": "CHECKLIST_REGISTER_DOC",
+    "synthetic": true
+  },
+  {
+    "licenseNumber": "KMC-2015-20101",
+    "councilCode": "KMC",
+    "fullName": "Dr. Sarah Jenkins",
+    "degree": "MBBS, MD, FACC",
+    "specialty": "Cardiology",
+    "registrationYear": 2015,
+    "validTill": "2031-09-27",
+    "status": "ACTIVE",
+    "hospitalCodes": [
+      "HOSP-BLR-990",
+      "HOSP-BLR-104"
+    ],
+    "govIdLast4": "2010",
+    "languages": [
+      "English",
+      "Hindi"
+    ],
+    "city": "Bengaluru",
+    "registered": true,
+    "doctorId": "DOC-201",
+    "scenario": "LEGACY_DOC_201",
+    "synthetic": true
+  },
+  {
+    "licenseNumber": "KMC-2017-20202",
+    "councilCode": "KMC",
+    "fullName": "Dr. Rajesh Verma",
+    "degree": "MBBS, MD, DM (Endocrinology)",
+    "specialty": "Diabetology",
+    "registrationYear": 2017,
+    "validTill": "2030-12-01",
+    "status": "ACTIVE",
+    "hospitalCodes": [
+      "HOSP-BLR-104",
+      "HOSP-BLR-990"
+    ],
+    "govIdLast4": "2020",
+    "languages": [
+      "Hindi",
+      "English",
+      "Kannada"
+    ],
+    "city": "Bengaluru",
+    "registered": true,
+    "doctorId": "DOC-202",
+    "scenario": "LEGACY_DOC_202",
+    "synthetic": true
+  },
+  {
+    "licenseNumber": "KMC-2012-93810",
+    "councilCode": "KMC",
+    "fullName": "Dr. Girish Iyer",
+    "degree": "MBBS, MS",
+    "specialty": "Nephrology",
+    "registrationYear": 2012,
+    "validTill": "2032-01-23",
+    "status": "ACTIVE",
+    "hospitalCodes": [
+      "HOSP-BLR-102"
+    ],
+    "govIdLast4": "2824",
+    "languages": [
+      "English",
+      "Hindi"
+    ],
+    "city": "Bengaluru",
+    "registered": true,
+    "doctorId": "DOC-IN-1409",
+    "scenario": "GENERAL_NEPHROLOGY",
+    "synthetic": true
+  },
+  {
+    "licenseNumber": "OCMR-2013-46048",
+    "councilCode": "OCMR",
+    "fullName": "Dr. Swati Nair",
+    "degree": "MBBS, MS",
+    "specialty": "Dermatology",
+    "registrationYear": 2013,
+    "validTill": "2028-09-07",
+    "status": "ACTIVE",
+    "hospitalCodes": [
+      "HOSP-BLR-104"
+    ],
+    "govIdLast4": "5012",
+    "languages": [
+      "Odia",
+      "English",
+      "Hindi"
+    ],
+    "city": "Bengaluru",
+    "registered": true,
+    "doctorId": "DOC-IN-4657",
+    "scenario": "GENERAL_DERMATOLOGY",
+    "synthetic": true
+  },
+  {
+    "licenseNumber": "TNMC-2014-23434",
+    "councilCode": "TNMC",
+    "fullName": "Dr. Suresh Rao",
+    "degree": "MBBS, MD (Cardiology)",
+    "specialty": "Cardiology",
+    "registrationYear": 2014,
+    "validTill": "2028-05-23",
+    "status": "ACTIVE",
+    "hospitalCodes": [
+      "HOSP-BLR-106"
+    ],
+    "govIdLast4": "9935",
+    "languages": [
+      "English",
+      "Hindi"
+    ],
+    "city": "Bengaluru",
+    "registered": false,
+    "doctorId": null,
+    "scenario": "GENERAL_CARDIOLOGY",
+    "synthetic": true
+  },
+  {
+    "licenseNumber": "TSMC-2015-87397",
+    "councilCode": "TSMC",
+    "fullName": "Dr. Nandini Shetty",
+    "degree": "MBBS, MD (General Medicine)",
+    "specialty": "General Medicine",
+    "registrationYear": 2015,
+    "validTill": "2028-01-27",
+    "status": "ACTIVE",
+    "hospitalCodes": [
+      "AIIMS-BBSR-101"
+    ],
+    "govIdLast4": "7912",
+    "languages": [
+      "English",
+      "Hindi"
+    ],
+    "city": "Bhubaneswar",
+    "registered": true,
+    "doctorId": "DOC-IN-1520",
+    "scenario": "GENERAL_GENERAL_MEDICINE",
+    "synthetic": true
+  },
+  {
+    "licenseNumber": "APMC-2016-22280",
+    "councilCode": "APMC",
+    "fullName": "Dr. Pradeep Bhat",
+    "degree": "MBBS, MD (Pulmonology)",
+    "specialty": "Pulmonology",
+    "registrationYear": 2016,
+    "validTill": "2030-09-26",
+    "status": "ACTIVE",
+    "hospitalCodes": [
+      "HOSP-CTC-301"
+    ],
+    "govIdLast4": "4582",
+    "languages": [
+      "English",
+      "Hindi"
+    ],
+    "city": "Bhubaneswar",
+    "registered": true,
+    "doctorId": "DOC-IN-4811",
+    "scenario": "GENERAL_PULMONOLOGY",
+    "synthetic": true
+  },
+  {
+    "licenseNumber": "WBMC-2017-88907",
+    "councilCode": "WBMC",
+    "fullName": "Dr. Radha Kulkarni",
+    "degree": "MBBS, MD (Occupational Medicine)",
+    "specialty": "Occupational Medicine",
+    "registrationYear": 2017,
+    "validTill": "2031-01-19",
+    "status": "ACTIVE",
+    "hospitalCodes": [
+      "HOSP-PAT-401"
+    ],
+    "govIdLast4": "1434",
+    "languages": [
+      "English",
+      "Hindi"
+    ],
+    "city": "Regional Metro",
+    "registered": false,
+    "doctorId": null,
+    "scenario": "GENERAL_OCCUPATIONAL_MEDICINE",
+    "synthetic": true
+  },
+  {
+    "licenseNumber": "BMC-2018-36062",
+    "councilCode": "BMC",
+    "fullName": "Dr. Chetan Joshi",
+    "degree": "MBBS, MS",
+    "specialty": "Diabetology",
+    "registrationYear": 2018,
+    "validTill": "2029-02-20",
+    "status": "ACTIVE",
+    "hospitalCodes": [
+      "HOSP-CHN-501"
+    ],
+    "govIdLast4": "9928",
+    "languages": [
+      "English",
+      "Hindi"
+    ],
+    "city": "Regional Metro",
+    "registered": true,
+    "doctorId": "DOC-IN-7873",
+    "scenario": "GENERAL_DIABETOLOGY",
+    "synthetic": true
+  },
+  {
+    "licenseNumber": "JMC-2019-68878",
+    "councilCode": "JMC",
+    "fullName": "Dr. Archana Das",
+    "degree": "MBBS, MS",
+    "specialty": "Paediatrics",
+    "registrationYear": 2019,
+    "validTill": "2032-02-28",
+    "status": "ACTIVE",
+    "hospitalCodes": [
+      "HOSP-HYD-601"
+    ],
+    "govIdLast4": "5557",
+    "languages": [
+      "English",
+      "Hindi"
+    ],
+    "city": "Regional Metro",
+    "registered": true,
+    "doctorId": "DOC-IN-1106",
+    "scenario": "GENERAL_PAEDIATRICS",
+    "synthetic": true
+  },
+  {
+    "licenseNumber": "DMC-2020-30926",
+    "councilCode": "DMC",
+    "fullName": "Dr. Manish Samantaray",
+    "degree": "MBBS, MS",
+    "specialty": "Obstetrics & Gynaecology",
+    "registrationYear": 2020,
+    "validTill": "2029-10-23",
+    "status": "ACTIVE",
+    "hospitalCodes": [
+      "HOSP-BLR-990"
+    ],
+    "govIdLast4": "7924",
+    "languages": [
+      "English",
+      "Hindi"
+    ],
+    "city": "Bengaluru",
+    "registered": false,
+    "doctorId": null,
+    "scenario": "GENERAL_OBSTETRICS_&_GYNAECOLOGY",
+    "synthetic": true
+  },
+  {
+    "licenseNumber": "MHMC-2021-46421",
+    "councilCode": "MHMC",
+    "fullName": "Dr. Divya Tripathy",
+    "degree": "MBBS, MS",
+    "specialty": "Orthopaedics",
+    "registrationYear": 2021,
+    "validTill": "2032-03-08",
+    "status": "ACTIVE",
+    "hospitalCodes": [
+      "HOSP-BLR-102"
+    ],
+    "govIdLast4": "3547",
+    "languages": [
+      "English",
+      "Hindi"
+    ],
+    "city": "Bengaluru",
+    "registered": true,
+    "doctorId": "DOC-IN-4527",
+    "scenario": "GENERAL_ORTHOPAEDICS",
+    "synthetic": true
+  },
+  {
+    "licenseNumber": "KMC-2012-54118",
+    "councilCode": "KMC",
+    "fullName": "Dr. Vinay Mahapatra",
+    "degree": "MBBS, MS",
+    "specialty": "Psychiatry",
+    "registrationYear": 2012,
+    "validTill": "2030-01-13",
+    "status": "ACTIVE",
+    "hospitalCodes": [
+      "HOSP-BLR-104"
+    ],
+    "govIdLast4": "2674",
+    "languages": [
+      "English",
+      "Hindi"
+    ],
+    "city": "Bengaluru",
+    "registered": true,
+    "doctorId": "DOC-IN-2519",
+    "scenario": "GENERAL_PSYCHIATRY",
+    "synthetic": true
+  },
+  {
+    "licenseNumber": "OCMR-2013-22676",
+    "councilCode": "OCMR",
+    "fullName": "Dr. Bhavna Deshmukh",
+    "degree": "MBBS, MD (Family Medicine)",
+    "specialty": "Family Medicine",
+    "registrationYear": 2013,
+    "validTill": "2031-04-16",
+    "status": "ACTIVE",
+    "hospitalCodes": [
+      "HOSP-BLR-106"
+    ],
+    "govIdLast4": "6881",
+    "languages": [
+      "Odia",
+      "English",
+      "Hindi"
+    ],
+    "city": "Bengaluru",
+    "registered": true,
+    "doctorId": "DOC-IN-6635",
+    "scenario": "GENERAL_FAMILY_MEDICINE",
+    "synthetic": true
+  },
+  {
+    "licenseNumber": "TNMC-2014-44671",
+    "councilCode": "TNMC",
+    "fullName": "Dr. Harish Nambiar",
+    "degree": "MBBS, MS",
+    "specialty": "Nephrology",
+    "registrationYear": 2014,
+    "validTill": "2030-11-29",
+    "status": "ACTIVE",
+    "hospitalCodes": [
+      "AIIMS-BBSR-101"
+    ],
+    "govIdLast4": "1711",
+    "languages": [
+      "English",
+      "Hindi"
+    ],
+    "city": "Bhubaneswar",
+    "registered": true,
+    "doctorId": "DOC-IN-8527",
+    "scenario": "GENERAL_NEPHROLOGY",
+    "synthetic": true
+  },
+  {
+    "licenseNumber": "TSMC-2015-26361",
+    "councilCode": "TSMC",
+    "fullName": "Dr. Rekha Mukherjee",
+    "degree": "MBBS, MS",
+    "specialty": "Dermatology",
+    "registrationYear": 2015,
+    "validTill": "2030-12-31",
+    "status": "ACTIVE",
+    "hospitalCodes": [
+      "HOSP-CTC-301"
+    ],
+    "govIdLast4": "7201",
+    "languages": [
+      "English",
+      "Hindi"
+    ],
+    "city": "Bhubaneswar",
+    "registered": true,
+    "doctorId": "DOC-IN-2291",
+    "scenario": "GENERAL_DERMATOLOGY",
+    "synthetic": true
+  },
+  {
+    "licenseNumber": "APMC-2016-48427",
+    "councilCode": "APMC",
+    "fullName": "Dr. Tarun Banerjee",
+    "degree": "MBBS, MD (Cardiology)",
+    "specialty": "Cardiology",
+    "registrationYear": 2016,
+    "validTill": "2031-11-08",
+    "status": "ACTIVE",
+    "hospitalCodes": [
+      "HOSP-PAT-401"
+    ],
+    "govIdLast4": "6925",
+    "languages": [
+      "English",
+      "Hindi"
+    ],
+    "city": "Regional Metro",
+    "registered": true,
+    "doctorId": "DOC-IN-4150",
+    "scenario": "GENERAL_CARDIOLOGY",
+    "synthetic": true
+  },
+  {
+    "licenseNumber": "WBMC-2017-19116",
+    "councilCode": "WBMC",
+    "fullName": "Dr. Geetha Chakraborty",
+    "degree": "MBBS, MD (General Medicine)",
+    "specialty": "General Medicine",
+    "registrationYear": 2017,
+    "validTill": "2032-03-28",
+    "status": "ACTIVE",
+    "hospitalCodes": [
+      "HOSP-CHN-501"
+    ],
+    "govIdLast4": "1750",
+    "languages": [
+      "English",
+      "Hindi"
+    ],
+    "city": "Regional Metro",
+    "registered": true,
+    "doctorId": "DOC-IN-4733",
+    "scenario": "GENERAL_GENERAL_MEDICINE",
+    "synthetic": true
+  },
+  {
+    "licenseNumber": "BMC-2018-47930",
+    "councilCode": "BMC",
+    "fullName": "Dr. Siddharth Choudhury",
+    "degree": "MBBS, MD (Pulmonology)",
+    "specialty": "Pulmonology",
+    "registrationYear": 2018,
+    "validTill": "2028-06-20",
+    "status": "ACTIVE",
+    "hospitalCodes": [
+      "HOSP-HYD-601"
+    ],
+    "govIdLast4": "2307",
+    "languages": [
+      "English",
+      "Hindi"
+    ],
+    "city": "Regional Metro",
+    "registered": true,
+    "doctorId": "DOC-IN-4814",
+    "scenario": "GENERAL_PULMONOLOGY",
+    "synthetic": true
+  },
+  {
+    "licenseNumber": "JMC-2019-59823",
+    "councilCode": "JMC",
+    "fullName": "Dr. Preeti Sinha",
+    "degree": "MBBS, MD (Occupational Medicine)",
+    "specialty": "Occupational Medicine",
+    "registrationYear": 2019,
+    "validTill": "2031-06-20",
+    "status": "ACTIVE",
+    "hospitalCodes": [
+      "HOSP-BLR-990"
+    ],
+    "govIdLast4": "5554",
+    "languages": [
+      "English",
+      "Hindi"
+    ],
+    "city": "Bengaluru",
+    "registered": true,
+    "doctorId": "DOC-IN-8428",
+    "scenario": "GENERAL_OCCUPATIONAL_MEDICINE",
+    "synthetic": true
+  },
+  {
+    "licenseNumber": "DMC-2020-57819",
+    "councilCode": "DMC",
+    "fullName": "Dr. Kiran Mishra",
+    "degree": "MBBS, MS",
+    "specialty": "Diabetology",
+    "registrationYear": 2020,
+    "validTill": "2029-11-23",
+    "status": "ACTIVE",
+    "hospitalCodes": [
+      "HOSP-BLR-102"
+    ],
+    "govIdLast4": "3664",
+    "languages": [
+      "English",
+      "Hindi"
+    ],
+    "city": "Bengaluru",
+    "registered": true,
+    "doctorId": "DOC-IN-7065",
+    "scenario": "GENERAL_DIABETOLOGY",
+    "synthetic": true
+  },
+  {
+    "licenseNumber": "MHMC-2021-37460",
+    "councilCode": "MHMC",
+    "fullName": "Dr. Sneha Patel",
+    "degree": "MBBS, MS",
+    "specialty": "Paediatrics",
+    "registrationYear": 2021,
+    "validTill": "2031-04-27",
+    "status": "ACTIVE",
+    "hospitalCodes": [
+      "HOSP-BLR-104"
+    ],
+    "govIdLast4": "5374",
+    "languages": [
+      "English",
+      "Hindi"
+    ],
+    "city": "Bengaluru",
+    "registered": true,
+    "doctorId": "DOC-IN-2169",
+    "scenario": "GENERAL_PAEDIATRICS",
+    "synthetic": true
+  },
+  {
+    "licenseNumber": "KMC-2012-93227",
+    "councilCode": "KMC",
+    "fullName": "Dr. Ashok Reddy",
+    "degree": "MBBS, MS",
+    "specialty": "Obstetrics & Gynaecology",
+    "registrationYear": 2012,
+    "validTill": "2031-12-29",
+    "status": "ACTIVE",
+    "hospitalCodes": [
+      "HOSP-BLR-106"
+    ],
+    "govIdLast4": "3803",
+    "languages": [
+      "English",
+      "Hindi"
+    ],
+    "city": "Bengaluru",
+    "registered": true,
+    "doctorId": "DOC-IN-9751",
+    "scenario": "GENERAL_OBSTETRICS_&_GYNAECOLOGY",
+    "synthetic": true
+  },
+  {
+    "licenseNumber": "OCMR-2013-42087",
+    "councilCode": "OCMR",
+    "fullName": "Dr. Pallavi Iyer",
+    "degree": "MBBS, MS",
+    "specialty": "Orthopaedics",
+    "registrationYear": 2013,
+    "validTill": "2030-01-12",
+    "status": "ACTIVE",
+    "hospitalCodes": [
+      "AIIMS-BBSR-101"
+    ],
+    "govIdLast4": "3677",
+    "languages": [
+      "Odia",
+      "English",
+      "Hindi"
+    ],
+    "city": "Bhubaneswar",
+    "registered": true,
+    "doctorId": "DOC-IN-8573",
+    "scenario": "GENERAL_ORTHOPAEDICS",
+    "synthetic": true
+  },
+  {
+    "licenseNumber": "TNMC-2014-45382",
+    "councilCode": "TNMC",
+    "fullName": "Dr. Gaurav Nair",
+    "degree": "MBBS, MS",
+    "specialty": "Psychiatry",
+    "registrationYear": 2014,
+    "validTill": "2032-03-18",
+    "status": "ACTIVE",
+    "hospitalCodes": [
+      "HOSP-CTC-301"
+    ],
+    "govIdLast4": "4598",
+    "languages": [
+      "English",
+      "Hindi"
+    ],
+    "city": "Bhubaneswar",
+    "registered": true,
+    "doctorId": "DOC-IN-6313",
+    "scenario": "GENERAL_PSYCHIATRY",
+    "synthetic": true
+  },
+  {
+    "licenseNumber": "TSMC-2015-17331",
+    "councilCode": "TSMC",
+    "fullName": "Dr. Anita Rao",
+    "degree": "MBBS, MD (Family Medicine)",
+    "specialty": "Family Medicine",
+    "registrationYear": 2015,
+    "validTill": "2029-09-03",
+    "status": "ACTIVE",
+    "hospitalCodes": [
+      "HOSP-PAT-401"
+    ],
+    "govIdLast4": "4752",
+    "languages": [
+      "English",
+      "Hindi"
+    ],
+    "city": "Regional Metro",
+    "registered": true,
+    "doctorId": "DOC-IN-1525",
+    "scenario": "GENERAL_FAMILY_MEDICINE",
+    "synthetic": true
+  },
+  {
+    "licenseNumber": "APMC-2016-62581",
+    "councilCode": "APMC",
+    "fullName": "Dr. Rohan Shetty",
+    "degree": "MBBS, MS",
+    "specialty": "Nephrology",
+    "registrationYear": 2016,
+    "validTill": "2029-02-01",
+    "status": "ACTIVE",
+    "hospitalCodes": [
+      "HOSP-CHN-501"
+    ],
+    "govIdLast4": "5386",
+    "languages": [
+      "English",
+      "Hindi"
+    ],
+    "city": "Regional Metro",
+    "registered": true,
+    "doctorId": "DOC-IN-2084",
+    "scenario": "GENERAL_NEPHROLOGY",
+    "synthetic": true
+  },
+  {
+    "licenseNumber": "WBMC-2017-84341",
+    "councilCode": "WBMC",
+    "fullName": "Dr. Pooja Bhat",
+    "degree": "MBBS, MS",
+    "specialty": "Dermatology",
+    "registrationYear": 2017,
+    "validTill": "2031-07-31",
+    "status": "ACTIVE",
+    "hospitalCodes": [
+      "HOSP-HYD-601"
+    ],
+    "govIdLast4": "6155",
+    "languages": [
+      "English",
+      "Hindi"
+    ],
+    "city": "Regional Metro",
+    "registered": true,
+    "doctorId": "DOC-IN-4483",
+    "scenario": "GENERAL_DERMATOLOGY",
+    "synthetic": true
+  },
+  {
+    "licenseNumber": "BMC-2018-75435",
+    "councilCode": "BMC",
+    "fullName": "Dr. Amit Kulkarni",
+    "degree": "MBBS, MD (Cardiology)",
+    "specialty": "Cardiology",
+    "registrationYear": 2018,
+    "validTill": "2028-09-14",
+    "status": "ACTIVE",
+    "hospitalCodes": [
+      "HOSP-BLR-990"
+    ],
+    "govIdLast4": "7482",
+    "languages": [
+      "English",
+      "Hindi"
+    ],
+    "city": "Bengaluru",
+    "registered": true,
+    "doctorId": "DOC-IN-8517",
+    "scenario": "GENERAL_CARDIOLOGY",
+    "synthetic": true
+  },
+  {
+    "licenseNumber": "JMC-2019-44718",
+    "councilCode": "JMC",
+    "fullName": "Dr. Deepa Joshi",
+    "degree": "MBBS, MD (General Medicine)",
+    "specialty": "General Medicine",
+    "registrationYear": 2019,
+    "validTill": "2032-01-30",
+    "status": "ACTIVE",
+    "hospitalCodes": [
+      "HOSP-BLR-102"
+    ],
+    "govIdLast4": "3287",
+    "languages": [
+      "English",
+      "Hindi"
+    ],
+    "city": "Bengaluru",
+    "registered": true,
+    "doctorId": "DOC-IN-5040",
+    "scenario": "GENERAL_GENERAL_MEDICINE",
+    "synthetic": true
+  },
+  {
+    "licenseNumber": "DMC-2020-83579",
+    "councilCode": "DMC",
+    "fullName": "Dr. Sanjay Das",
+    "degree": "MBBS, MD (Pulmonology)",
+    "specialty": "Pulmonology",
+    "registrationYear": 2020,
+    "validTill": "2032-02-03",
+    "status": "ACTIVE",
+    "hospitalCodes": [
+      "HOSP-BLR-104"
+    ],
+    "govIdLast4": "9830",
+    "languages": [
+      "English",
+      "Hindi"
+    ],
+    "city": "Bengaluru",
+    "registered": true,
+    "doctorId": "DOC-IN-5304",
+    "scenario": "GENERAL_PULMONOLOGY",
+    "synthetic": true
+  },
+  {
+    "licenseNumber": "MHMC-2021-86622",
+    "councilCode": "MHMC",
+    "fullName": "Dr. Meera Samantaray",
+    "degree": "MBBS, MD (Occupational Medicine)",
+    "specialty": "Occupational Medicine",
+    "registrationYear": 2021,
+    "validTill": "2029-12-07",
+    "status": "ACTIVE",
+    "hospitalCodes": [
+      "HOSP-BLR-106"
+    ],
+    "govIdLast4": "8019",
+    "languages": [
+      "English",
+      "Hindi"
+    ],
+    "city": "Bengaluru",
+    "registered": true,
+    "doctorId": "DOC-IN-7543",
+    "scenario": "GENERAL_OCCUPATIONAL_MEDICINE",
+    "synthetic": true
+  },
+  {
+    "licenseNumber": "KMC-2012-38746",
+    "councilCode": "KMC",
+    "fullName": "Dr. Alok Tripathy",
+    "degree": "MBBS, MS",
+    "specialty": "Diabetology",
+    "registrationYear": 2012,
+    "validTill": "2030-09-02",
+    "status": "ACTIVE",
+    "hospitalCodes": [
+      "AIIMS-BBSR-101"
+    ],
+    "govIdLast4": "3266",
+    "languages": [
+      "English",
+      "Hindi"
+    ],
+    "city": "Bhubaneswar",
+    "registered": true,
+    "doctorId": "DOC-IN-9348",
+    "scenario": "GENERAL_DIABETOLOGY",
+    "synthetic": true
+  },
+  {
+    "licenseNumber": "OCMR-2013-21915",
+    "councilCode": "OCMR",
+    "fullName": "Dr. Kavita Mahapatra",
+    "degree": "MBBS, MS",
+    "specialty": "Paediatrics",
+    "registrationYear": 2013,
+    "validTill": "2028-10-05",
+    "status": "ACTIVE",
+    "hospitalCodes": [
+      "HOSP-CTC-301"
+    ],
+    "govIdLast4": "1771",
+    "languages": [
+      "Odia",
+      "English",
+      "Hindi"
+    ],
+    "city": "Bhubaneswar",
+    "registered": true,
+    "doctorId": "DOC-IN-2796",
+    "scenario": "GENERAL_PAEDIATRICS",
+    "synthetic": true
+  }
+]

@@ -1,0 +1,618 @@
+[
+  {
+    "a": "Warfarin",
+    "b": "Aspirin",
+    "type": "DDI",
+    "severity": "SEVERE",
+    "mechanism": "Synergistic inhibition of coagulation factors (Warfarin) and platelet aggregation (Aspirin).",
+    "clinicalExplanation": "Combining Warfarin with Aspirin substantially magnifies the risk of major gastrointestinal and intracranial hemorrhage. Avoid concurrent administration unless strictly indicated under specialist supervision.",
+    "clinicianNote": "High bleeding diathesis hazard. If antiplatelet therapy is essential, co-prescribe a PPI and monitor INR weekly.",
+    "monitoring": "Baseline and weekly PT/INR, complete blood count, and clinical check for occult bleeding.",
+    "alternatives": [
+      "Paracetamol",
+      "Selective Paracetamol Titration"
+    ],
+    "synthetic": true
+  },
+  {
+    "a": "Warfarin",
+    "b": "Diclofenac",
+    "type": "DDI",
+    "severity": "SEVERE",
+    "mechanism": "NSAID inhibition of COX-1 impairs platelet function and induces gastrointestinal mucosal erosion while Warfarin inhibits clotting cascade.",
+    "clinicalExplanation": "Diclofenac dramatically increases gastrointestinal bleeding risks in patients anticoagulated with Warfarin. Concomitant use is contraindicated.",
+    "clinicianNote": "Severe GI ulceration and systemic bleeding risk. Diclofenac also displaces Warfarin from albumin.",
+    "monitoring": "Immediate cessation of NSAID. Check INR and stool occult blood if taken.",
+    "alternatives": [
+      "Paracetamol 650mg",
+      "Topical Analgesic Gel"
+    ],
+    "synthetic": true
+  },
+  {
+    "a": "Warfarin",
+    "b": "Ibuprofen",
+    "type": "DDI",
+    "severity": "SEVERE",
+    "mechanism": "COX-dependent platelet inhibition combined with vitamin K antagonism.",
+    "clinicalExplanation": "Ibuprofen irritates the stomach lining and impairs clotting, creating an acute hemorrhage danger with Warfarin.",
+    "clinicianNote": "Absolute contraindication in outpatient setting.",
+    "monitoring": "Evaluate for epistaxis, hematuria, or melena.",
+    "alternatives": [
+      "Paracetamol",
+      "Tramadol (short course)"
+    ],
+    "synthetic": true
+  },
+  {
+    "a": "Penicillin",
+    "b": "Amoxicillin",
+    "type": "ALLERGY",
+    "severity": "SEVERE",
+    "mechanism": "Cross-reactive beta-lactam core ring structure induces IgE-mediated type-1 hypersensitivity.",
+    "clinicalExplanation": "Amoxicillin shares the core beta-lactam ring with Penicillin and can trigger severe anaphylaxis, urticaria, or bronchospasm.",
+    "clinicianNote": "Confirmed Penicillin allergy precludes all aminopenicillins.",
+    "monitoring": "Emergency airway and epinephrine preparedness if accidental exposure occurs.",
+    "alternatives": [
+      "Azithromycin 500mg",
+      "Ciprofloxacin 500mg",
+      "Doxycycline 100mg"
+    ],
+    "synthetic": true
+  },
+  {
+    "a": "Penicillin",
+    "b": "Amoxicillin-Clavulanic Acid",
+    "type": "ALLERGY",
+    "severity": "SEVERE",
+    "mechanism": "Beta-lactam antigenicity from amoxicillin component in co-formulation.",
+    "clinicalExplanation": "Augmentin contains Amoxicillin and is strictly blocked for any patient with a verified Penicillin allergy.",
+    "clinicianNote": "Severe risk of immediate hypersensitivity and respiratory collapse.",
+    "monitoring": "Continuous telemetry if administered in ICU.",
+    "alternatives": [
+      "Cefixime (if no cephalosporin cross-allergy)",
+      "Azithromycin 500mg",
+      "Levofloxacin 500mg"
+    ],
+    "synthetic": true
+  },
+  {
+    "a": "Penicillin",
+    "b": "Ampicillin",
+    "type": "ALLERGY",
+    "severity": "SEVERE",
+    "mechanism": "Beta-lactam anaphylactic cross-reactivity.",
+    "clinicalExplanation": "Ampicillin is a penicillin derivative that will elicit an allergic reaction in penicillin-sensitized patients.",
+    "clinicianNote": "Block prescription.",
+    "monitoring": "Skin testing or in vitro specific IgE prior to desensitization.",
+    "alternatives": [
+      "Clindamycin 300mg",
+      "Erythromycin"
+    ],
+    "synthetic": true
+  },
+  {
+    "a": "Sulfa",
+    "b": "Sulfamethoxazole",
+    "type": "ALLERGY",
+    "severity": "SEVERE",
+    "mechanism": "Arylamine sulfonamide hypersensitivity mediated by reactive hydroxylamine metabolites.",
+    "clinicalExplanation": "Sulfamethoxazole can induce severe cutaneous adverse reactions including Stevens-Johnson syndrome in sulfa-allergic patients.",
+    "clinicianNote": "High risk of toxic epidermal necrolysis and DRESS syndrome.",
+    "monitoring": "Inspect skin for erythematous macules or mucosal involvement.",
+    "alternatives": [
+      "Nitrofurantoin 100mg",
+      "Ciprofloxacin 500mg"
+    ],
+    "synthetic": true
+  },
+  {
+    "a": "Sulfa",
+    "b": "Co-trimoxazole",
+    "type": "ALLERGY",
+    "severity": "SEVERE",
+    "mechanism": "Sulfonamide antimicrobial cross-reactivity.",
+    "clinicalExplanation": "Co-trimoxazole contains sulfamethoxazole and must never be prescribed to patients with documented sulfa allergy.",
+    "clinicianNote": "Prevent cutaneous and systemic allergic response.",
+    "monitoring": "Monitor for fever, rash, eosinophilia.",
+    "alternatives": [
+      "Amoxicillin (if no penicillin allergy)",
+      "Doxycycline"
+    ],
+    "synthetic": true
+  },
+  {
+    "a": "NSAIDs",
+    "b": "Aspirin",
+    "type": "ALLERGY",
+    "severity": "SEVERE",
+    "mechanism": "Inhibition of COX-1 shunts arachidonic acid to lipoxygenase pathway, causing massive leukotriene release.",
+    "clinicalExplanation": "Aspirin can precipitate life-threatening bronchospasm in patients with NSAID-sensitive asthma (Samter's Triad).",
+    "clinicianNote": "Risk of severe refractory asthma exacerbation within 1-2 hours.",
+    "monitoring": "Peak expiratory flow, oxygen saturation, nebulized bronchodilator readiness.",
+    "alternatives": [
+      "Paracetamol (up to 650mg)",
+      "Topical Capsaicin"
+    ],
+    "synthetic": true
+  },
+  {
+    "a": "NSAIDs",
+    "b": "Ibuprofen",
+    "type": "ALLERGY",
+    "severity": "SEVERE",
+    "mechanism": "Cysteinyl leukotriene overproduction from non-selective COX blockade.",
+    "clinicalExplanation": "Ibuprofen triggers acute bronchospasm and facial angioedema in NSAID-intolerant asthmatic patients.",
+    "clinicianNote": "Absolute contraindication in patients with AERD.",
+    "monitoring": "Continuous SpO2 and respiratory rate.",
+    "alternatives": [
+      "Paracetamol",
+      "Tramadol"
+    ],
+    "synthetic": true
+  },
+  {
+    "a": "Ramipril",
+    "b": "Telmisartan",
+    "type": "DUPLICATE",
+    "severity": "SEVERE",
+    "mechanism": "Dual blockade of the renin-angiotensin-aldosterone system (RAAS).",
+    "clinicalExplanation": "Combining an ACE-inhibitor with an ARB provides no additive cardiovascular benefit while significantly increasing risks of hyperkalemia, syncope, and acute kidney injury.",
+    "clinicianNote": "ONTARGET trial demonstrated increased renal adverse events without clinical benefit.",
+    "monitoring": "Serum potassium, serum creatinine, and supine/standing blood pressure.",
+    "alternatives": [
+      "Amlodipine 5mg (CCB)",
+      "Chlorthalidone 12.5mg (Diuretic)"
+    ],
+    "synthetic": true
+  },
+  {
+    "a": "Lisinopril",
+    "b": "Losartan",
+    "type": "DUPLICATE",
+    "severity": "SEVERE",
+    "mechanism": "Redundant RAAS antagonism.",
+    "clinicalExplanation": "Simultaneous use of Lisinopril and Losartan elevates potassium to dangerous levels and impairs renal glomerular perfusion.",
+    "clinicianNote": "Discontinue one agent.",
+    "monitoring": "Renal function panel within 14 days.",
+    "alternatives": [
+      "Calcium Channel Blocker",
+      "Thiazide Diuretic"
+    ],
+    "synthetic": true
+  },
+  {
+    "a": "Ramipril",
+    "b": "Spironolactone",
+    "type": "DDI",
+    "severity": "SEVERE",
+    "mechanism": "Additive potassium retention through aldosterone inhibition and mineralocorticoid receptor blockade.",
+    "clinicalExplanation": "Ramipril combined with Spironolactone poses a severe risk of lethal hyperkalemia unless closely monitored in heart failure protocols.",
+    "clinicianNote": "Potassium must be monitored at days 3, 7, and monthly.",
+    "monitoring": "Serum potassium, ECG for peaked T-waves, PR prolongation.",
+    "alternatives": [
+      "Furosemide (if loop diuretic indicated)"
+    ],
+    "synthetic": true
+  },
+  {
+    "a": "Clopidogrel",
+    "b": "Omeprazole",
+    "type": "DDI",
+    "severity": "MODERATE",
+    "mechanism": "Omeprazole competitively inhibits hepatic CYP2C19, decreasing bioactivation of Clopidogrel.",
+    "clinicalExplanation": "Omeprazole reduces the antiplatelet effectiveness of Clopidogrel, increasing thrombotic event risk in cardiac patients.",
+    "clinicianNote": "Switch proton-pump inhibitor to Pantoprazole, which exhibits minimal CYP2C19 inhibition.",
+    "monitoring": "Platelet function assay or clinical monitoring for recurrent ischemic symptoms.",
+    "alternatives": [
+      "Pantoprazole 40mg",
+      "Famotidine 20mg"
+    ],
+    "synthetic": true
+  },
+  {
+    "a": "Atorvastatin",
+    "b": "Rosuvastatin",
+    "type": "DUPLICATE",
+    "severity": "SEVERE",
+    "mechanism": "Dual competitive inhibition of HMG-CoA reductase.",
+    "clinicalExplanation": "Prescribing two statins simultaneously greatly elevates the risk of severe myopathy and rhabdomyolysis without extra therapeutic gain.",
+    "clinicianNote": "Single high-intensity statin titration preferred.",
+    "monitoring": "Serum creatine kinase (CK) and liver transaminases.",
+    "alternatives": [
+      "Ezetimibe 10mg (add-on)"
+    ],
+    "synthetic": true
+  },
+  {
+    "a": "Diclofenac",
+    "b": "Ibuprofen",
+    "type": "DUPLICATE",
+    "severity": "SEVERE",
+    "mechanism": "Additive non-selective COX-1/COX-2 inhibition.",
+    "clinicalExplanation": "Taking two NSAIDs at once doubles gastrointestinal ulceration and nephrotoxicity risks with zero additional pain relief.",
+    "clinicianNote": "Discontinue duplicate NSAID immediately.",
+    "monitoring": "Serum creatinine, BUN, hemoglobin.",
+    "alternatives": [
+      "Paracetamol",
+      "Topical Gel"
+    ],
+    "synthetic": true
+  },
+  {
+    "a": "Ketorolac",
+    "b": "Naproxen",
+    "type": "DUPLICATE",
+    "severity": "SEVERE",
+    "mechanism": "Profound suppression of renal prostacyclin synthesis.",
+    "clinicalExplanation": "Co-administration leads to acute renal insufficiency and major peptic ulcer bleeding.",
+    "clinicianNote": "Contraindicated combination.",
+    "monitoring": "Renal panel, urine output.",
+    "alternatives": [
+      "Paracetamol",
+      "Tramadol"
+    ],
+    "synthetic": true
+  },
+  {
+    "a": "Paracetamol",
+    "b": "Combiflam",
+    "type": "DUPLICATE",
+    "severity": "SEVERE",
+    "mechanism": "Unintentional cumulative acetaminophen dosing exceeding the 4g daily hepatotoxic threshold.",
+    "clinicalExplanation": "Combiflam already contains Paracetamol. Adding standalone Paracetamol risks toxic liver injury.",
+    "clinicianNote": "Calculate cumulative 24h paracetamol dose.",
+    "monitoring": "Liver function tests (ALT/AST), serum acetaminophen level if overdose suspected.",
+    "alternatives": [
+      "Ibuprofen alone",
+      "Topical Analgesic"
+    ],
+    "synthetic": true
+  },
+  {
+    "a": "Sildenafil",
+    "b": "Nitroglycerin",
+    "type": "DDI",
+    "severity": "SEVERE",
+    "mechanism": "Excessive cyclic GMP accumulation producing profound systemic vasodilation.",
+    "clinicalExplanation": "Taking Sildenafil with Nitrates causes precipitate, life-threatening hypotension and coronary hypoperfusion.",
+    "clinicianNote": "Absolute contraindication within 24-48 hours.",
+    "monitoring": "Continuous blood pressure telemetry.",
+    "alternatives": [
+      "Alternative cardiovascular angina therapy"
+    ],
+    "synthetic": true
+  },
+  {
+    "a": "Sildenafil",
+    "b": "Isosorbide Mononitrate",
+    "type": "DDI",
+    "severity": "SEVERE",
+    "mechanism": "Synergistic cGMP-mediated vascular smooth muscle relaxation.",
+    "clinicalExplanation": "Refractory cardiovascular collapse and syncope can occur.",
+    "clinicianNote": "Contraindicated combination.",
+    "monitoring": "Blood pressure and heart rate.",
+    "alternatives": [
+      "Beta-blocker",
+      "Calcium channel blocker for angina"
+    ],
+    "synthetic": true
+  },
+  {
+    "a": "Tramadol",
+    "b": "Fluoxetine",
+    "type": "DDI",
+    "severity": "SEVERE",
+    "mechanism": "Combined inhibition of serotonin reuptake plus CYP2D6 inhibition.",
+    "clinicalExplanation": "Combining Tramadol with an SSRI significantly raises the danger of Serotonin Syndrome and lowers seizure threshold.",
+    "clinicianNote": "Evaluate for hyperreflexia, clonus, and autonomic instability.",
+    "monitoring": "Neurological examination, core body temperature.",
+    "alternatives": [
+      "Paracetamol",
+      "Topical lidocaine patch"
+    ],
+    "synthetic": true
+  },
+  {
+    "a": "Tramadol",
+    "b": "Sertraline",
+    "type": "DDI",
+    "severity": "SEVERE",
+    "mechanism": "Additive central serotonergic activity.",
+    "clinicalExplanation": "Risk of toxic Serotonin Syndrome and convulsions.",
+    "clinicianNote": "Avoid co-administration.",
+    "monitoring": "Mental status and vital signs.",
+    "alternatives": [
+      "Codeine",
+      "Acetaminophen"
+    ],
+    "synthetic": true
+  },
+  {
+    "a": "Metformin",
+    "b": "Iodinated Contrast",
+    "type": "DDI",
+    "severity": "SEVERE",
+    "mechanism": "Contrast-induced acute kidney injury leads to Metformin accumulation and fatal lactic acidosis.",
+    "clinicalExplanation": "Metformin must be temporarily withheld prior to and for 48 hours after intravascular iodinated contrast administration.",
+    "clinicianNote": "Withhold Metformin on day of imaging and re-evaluate eGFR before restart.",
+    "monitoring": "Serum creatinine, eGFR, venous blood gas / lactate if symptomatic.",
+    "alternatives": [
+      "Non-contrast MRI",
+      "Hydration protocol"
+    ],
+    "synthetic": true
+  },
+  {
+    "a": "Ciprofloxacin",
+    "b": "Theophylline",
+    "type": "DDI",
+    "severity": "SEVERE",
+    "mechanism": "CYP1A2 inhibition by Ciprofloxacin reduces Theophylline clearance.",
+    "clinicalExplanation": "Theophylline toxicity (tachyarrhythmias, intractable seizures) can develop rapidly.",
+    "clinicianNote": "Dose reduction of theophylline by 50% or choose alternative antibiotic.",
+    "monitoring": "Serum theophylline concentration.",
+    "alternatives": [
+      "Azithromycin 500mg"
+    ],
+    "synthetic": true
+  },
+  {
+    "a": "Digoxin",
+    "b": "Amiodarone",
+    "type": "DDI",
+    "severity": "SEVERE",
+    "mechanism": "P-glycoprotein and renal tubular excretion inhibition increases Digoxin level 70-100%.",
+    "clinicalExplanation": "Severe Digoxin toxicity with bradycardia, heart block, and visual disturbances.",
+    "clinicianNote": "Halve Digoxin dose when initiating Amiodarone.",
+    "monitoring": "Serum digoxin trough level and ECG.",
+    "alternatives": [
+      "Beta-blocker for rate control"
+    ],
+    "synthetic": true
+  },
+  {
+    "a": "Simvastatin",
+    "b": "Clarithromycin",
+    "type": "DDI",
+    "severity": "SEVERE",
+    "mechanism": "Potent CYP3A4 inhibition increases statin AUC tenfold.",
+    "clinicalExplanation": "Acute rhabdomyolysis and myoglobinuric renal failure risk.",
+    "clinicianNote": "Suspend statin during macrolide antibiotic course.",
+    "monitoring": "Muscle tenderness, dark urine, CK levels.",
+    "alternatives": [
+      "Azithromycin (minimal CYP3A4 effect)"
+    ],
+    "synthetic": true
+  },
+  {
+    "a": "Methotrexate",
+    "b": "Ibuprofen",
+    "type": "DDI",
+    "severity": "SEVERE",
+    "mechanism": "NSAIDs reduce renal tubular secretion of Methotrexate.",
+    "clinicalExplanation": "Severe bone marrow suppression, leukopenia, and gastrointestinal toxicity.",
+    "clinicianNote": "Avoid NSAIDs in patients receiving high or moderate dose Methotrexate.",
+    "monitoring": "CBC with differential, liver enzymes.",
+    "alternatives": [
+      "Paracetamol"
+    ],
+    "synthetic": true
+  },
+  {
+    "a": "Potassium Chloride",
+    "b": "Spironolactone",
+    "type": "DDI",
+    "severity": "SEVERE",
+    "mechanism": "Direct additive potassium loading in the presence of reduced renal excretion.",
+    "clinicalExplanation": "Rapid development of severe, fatal hyperkalemia.",
+    "clinicianNote": "Contraindicated combination.",
+    "monitoring": "Immediate serum potassium check.",
+    "alternatives": [
+      "Dietary potassium monitoring without supplements"
+    ],
+    "synthetic": true
+  },
+  {
+    "a": "Warfarin",
+    "b": "Fluconazole",
+    "type": "DDI",
+    "severity": "SEVERE",
+    "mechanism": "Potent CYP2C9 inhibition decreases clearance of active S-warfarin.",
+    "clinicalExplanation": "INR can spike dramatically within 48-72 hours, precipitating internal bleeding.",
+    "clinicianNote": "Reduce Warfarin dose by 50% empirically and monitor INR closely.",
+    "monitoring": "INR at day 3 and day 7.",
+    "alternatives": [
+      "Nystatin (topical)",
+      "Terbinafine"
+    ],
+    "synthetic": true
+  },
+  {
+    "a": "Linezolid",
+    "b": "Sertraline",
+    "type": "DDI",
+    "severity": "SEVERE",
+    "mechanism": "Non-selective MAO inhibition by Linezolid combined with serotonin reuptake blockade.",
+    "clinicalExplanation": "High risk of fatal Serotonin Syndrome.",
+    "clinicianNote": "Do not administer Linezolid to patients taking serotonergic antidepressants unless urgent.",
+    "monitoring": "Autonomic signs, mental status.",
+    "alternatives": [
+      "Vancomycin",
+      "Teicoplanin"
+    ],
+    "synthetic": true
+  },
+  {
+    "a": "Lithium",
+    "b": "Enalapril",
+    "type": "DDI",
+    "severity": "SEVERE",
+    "mechanism": "Reduced glomerular filtration and sodium depletion increase Lithium reabsorption.",
+    "clinicalExplanation": "Lithium toxicity with ataxia, tremors, confusion, and renal failure.",
+    "clinicianNote": "Frequent lithium levels required if ACEI started.",
+    "monitoring": "Serum lithium level, renal panel.",
+    "alternatives": [
+      "Calcium channel blocker for hypertension"
+    ],
+    "synthetic": true
+  },
+  {
+    "a": "Allopurinol",
+    "b": "Azathioprine",
+    "type": "DDI",
+    "severity": "SEVERE",
+    "mechanism": "Xanthine oxidase inhibition blocks the primary inactivation route of 6-mercaptopurine.",
+    "clinicalExplanation": "Severe, life-threatening pancytopenia and agranulocytosis.",
+    "clinicianNote": "Reduce Azathioprine dose to 25% of standard dose or avoid.",
+    "monitoring": "Weekly CBC.",
+    "alternatives": [
+      "Febuxostat with dose titration",
+      "Colchicine"
+    ],
+    "synthetic": true
+  },
+  {
+    "a": "Carbamazepine",
+    "b": "Erythromycin",
+    "type": "DDI",
+    "severity": "SEVERE",
+    "mechanism": "CYP3A4 inhibition by Erythromycin reduces Carbamazepine clearance.",
+    "clinicalExplanation": "Neurotoxicity with diplopia, dizziness, and stupor.",
+    "clinicianNote": "Switch to azithromycin.",
+    "monitoring": "Carbamazepine plasma level.",
+    "alternatives": [
+      "Azithromycin 500mg"
+    ],
+    "synthetic": true
+  },
+  {
+    "a": "Phenytoin",
+    "b": "Ciprofloxacin",
+    "type": "DDI",
+    "severity": "MODERATE",
+    "mechanism": "Altered hepatic metabolism and lowered seizure threshold.",
+    "clinicalExplanation": "Fluctuating anticonvulsant levels and increased seizure susceptibility.",
+    "clinicianNote": "Monitor therapeutic drug levels.",
+    "monitoring": "Total and free phenytoin levels.",
+    "alternatives": [
+      "Levofloxacin",
+      "Cephalosporin"
+    ],
+    "synthetic": true
+  },
+  {
+    "a": "Amlodipine",
+    "b": "Simvastatin",
+    "type": "DDI",
+    "severity": "MODERATE",
+    "mechanism": "CYP3A4 inhibition by Amlodipine increases Simvastatin exposure.",
+    "clinicalExplanation": "Increased risk of statin-induced muscle ache and myopathy.",
+    "clinicianNote": "Limit Simvastatin dose to 20mg daily or switch to Atorvastatin/Rosuvastatin.",
+    "monitoring": "Muscle pain or elevated transaminases.",
+    "alternatives": [
+      "Atorvastatin 20mg",
+      "Rosuvastatin 10mg"
+    ],
+    "synthetic": true
+  },
+  {
+    "a": "Metoprolol",
+    "b": "Diltiazem",
+    "type": "DDI",
+    "severity": "SEVERE",
+    "mechanism": "Synergistic depression of SA and AV nodal conduction and myocardial contractility.",
+    "clinicalExplanation": "Severe symptomatic bradycardia, complete heart block, and worsening heart failure.",
+    "clinicianNote": "Avoid combination in patients with pre-existing conduction abnormalities.",
+    "monitoring": "Continuous ECG and telemetry.",
+    "alternatives": [
+      "Amlodipine (dihydropyridine CCB)"
+    ],
+    "synthetic": true
+  },
+  {
+    "a": "Warfarin",
+    "b": "Paracetamol",
+    "type": "DDI",
+    "severity": "MODERATE",
+    "mechanism": "Paracetamol metabolite NAPQI inhibits vitamin K-dependent carboxylase.",
+    "clinicalExplanation": "Regular high-dose Paracetamol (>2g/day) potentiates Warfarin and raises INR.",
+    "clinicianNote": "Use lowest effective dose of paracetamol and check INR within 3-5 days.",
+    "monitoring": "INR monitoring during sustained paracetamol use.",
+    "alternatives": [
+      "Occasional low-dose paracetamol"
+    ],
+    "synthetic": true
+  },
+  {
+    "a": "Glimepiride",
+    "b": "Ciprofloxacin",
+    "type": "DDI",
+    "severity": "SEVERE",
+    "mechanism": "Inhibition of CYP2C9 and pancreatic K-ATP channel stimulation.",
+    "clinicalExplanation": "Severe refractory hypoglycemia that may require prolonged dextrose infusion.",
+    "clinicianNote": "Instruct patient on hypoglycemia symptoms and frequent glucose testing.",
+    "monitoring": "Blood glucose 4 times daily.",
+    "alternatives": [
+      "Cephalosporin antibiotic"
+    ],
+    "synthetic": true
+  },
+  {
+    "a": "Levothyroxine",
+    "b": "Calcium Carbonate",
+    "type": "DDI",
+    "severity": "MODERATE",
+    "mechanism": "Insoluble chelation in the acidic stomach decreases Levothyroxine absorption.",
+    "clinicalExplanation": "Calcium prevents proper thyroid hormone uptake, leading to persistent hypothyroidism.",
+    "clinicianNote": "Separate administration by at least 4 hours.",
+    "monitoring": "Serum TSH after 6-8 weeks.",
+    "alternatives": [
+      "Separate dosage timing by 4 hours"
+    ],
+    "synthetic": true
+  },
+  {
+    "a": "Levothyroxine",
+    "b": "Ferrous Sulfate",
+    "type": "DDI",
+    "severity": "MODERATE",
+    "mechanism": "Ferric ion binds thyroxine to form an unabsorbable complex.",
+    "clinicalExplanation": "Iron reduces Levothyroxine absorption significantly.",
+    "clinicianNote": "Space intake by at least 4 hours.",
+    "monitoring": "Serum TSH levels.",
+    "alternatives": [
+      "Space administration by 4 hours"
+    ],
+    "synthetic": true
+  },
+  {
+    "a": "Atorvastatin",
+    "b": "Gemfibrozil",
+    "type": "DDI",
+    "severity": "SEVERE",
+    "mechanism": "Gemfibrozil inhibits statin glucuronidation and OATP1B1 hepatic uptake.",
+    "clinicalExplanation": "Major increase in statin plasma levels leading to rhabdomyolysis and acute renal failure.",
+    "clinicianNote": "Fenofibrate is preferred over Gemfibrozil if fibrate therapy is required with a statin.",
+    "monitoring": "Serum CK, renal function.",
+    "alternatives": [
+      "Fenofibrate 145mg"
+    ],
+    "synthetic": true
+  },
+  {
+    "a": "Cephalosporins",
+    "b": "Amoxicillin",
+    "type": "ALLERGY",
+    "severity": "MODERATE",
+    "mechanism": "Shared beta-lactam side chain similarities (1-3% cross-reactivity).",
+    "clinicalExplanation": "Potential cross-hypersensitivity in patients with severe first-generation cephalosporin allergy.",
+    "clinicianNote": "Exercise caution or skin-test before administration.",
+    "monitoring": "Clinical observation for cutaneous reaction.",
+    "alternatives": [
+      "Macrolide antibiotic",
+      "Fluoroquinolone"
+    ],
+    "synthetic": true
+  }
+]

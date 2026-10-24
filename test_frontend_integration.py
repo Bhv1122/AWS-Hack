@@ -20,8 +20,10 @@ if sys.platform == "win32":
         pass
 
 from frontend_portal.app import app
+from backend_lambdas.setup_db import setup_platform
 
 def run_integration_verification():
+    setup_platform()
     client = app.test_client()
     passed = 0
     total = 0

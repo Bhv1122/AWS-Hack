@@ -1,0 +1,404 @@
+[
+  {
+    "occupation": "Construction Site Mason",
+    "hazards": [
+      "Respirable crystalline silica",
+      "Hexavalent chromium in wet cement",
+      "Ergonomic lifting",
+      "Noise"
+    ],
+    "exposureYearsThresholds": {
+      "LOW": 1,
+      "MODERATE": 3,
+      "HIGH": 5
+    },
+    "symptomWeights": {
+      "Chronic dry cough": 30,
+      "Shortness of breath on exertion": 35,
+      "Cement contact dermatitis": 20,
+      "Low back pain": 15
+    },
+    "predictedConditions": [
+      "Silicosis & Accelerated Pneumoconiosis",
+      "Chronic Obstructive Pulmonary Disease (COPD)",
+      "Allergic & Irritant Contact Dermatitis ('Cement Burns')",
+      "Lumbar Disc Herniation & Musculoskeletal Strain"
+    ],
+    "recommendedScreenings": [
+      "High-Resolution Digital Chest X-Ray (ILO Pneumoconiosis Standard)",
+      "Spirometry (FEV1, FVC, FEV1/FVC ratio)",
+      "Peak Expiratory Flow Rate (PEFR)",
+      "Dermatological Patch Testing for Potassium Dichromate"
+    ],
+    "plainLanguageGuidance": "Working with cement and stone exposes lungs to fine silica dust that causes irreversible scarring. Wear an N95 or particulate respirator and use barrier creams on hands.",
+    "preventivePpeAdvice": "NIOSH-approved N95 particulate respirator, heavy-duty nitrile-coated gloves, steel-toe boots, eye protection goggles.",
+    "synthetic": true
+  },
+  {
+    "occupation": "Quarry / Stone-Crusher Worker",
+    "hazards": [
+      "Ultra-fine respirable quartz dust",
+      "Acoustic trauma (>95 dBA)",
+      "Vibration",
+      "Flying rock chips"
+    ],
+    "exposureYearsThresholds": {
+      "LOW": 1,
+      "MODERATE": 2,
+      "HIGH": 4
+    },
+    "symptomWeights": {
+      "Severe progressive dyspnea": 40,
+      "Chest tightness": 30,
+      "Persistent cough with gray sputum": 20,
+      "Tinnitus": 10
+    },
+    "predictedConditions": [
+      "Acute & Accelerated Silicosis",
+      "Silico-Tuberculosis (Tuberculosis superimposed on silicosis)",
+      "Noise-Induced Hearing Loss (NIHL)"
+    ],
+    "recommendedScreenings": [
+      "HRCT Thorax with high-resolution reconstruction",
+      "Sputum GeneXpert / AFB smear for Tuberculosis",
+      "Pure-tone audiometry"
+    ],
+    "plainLanguageGuidance": "Stone crushing produces the highest concentration of toxic quartz dust. Wet dust suppression and P100 respirators are essential to prevent fatal lung stiffening.",
+    "preventivePpeAdvice": "P100 half-face elastomeric respirator, high-attenuation earmuffs (NRR >=28 dB), full-face shield.",
+    "synthetic": true
+  },
+  {
+    "occupation": "Textile / Garment Worker",
+    "hazards": [
+      "Raw cotton bract and endotoxin dust",
+      "Synthetic azo dyes",
+      "Static sitting posture",
+      "Repetitive hand motions"
+    ],
+    "exposureYearsThresholds": {
+      "LOW": 2,
+      "MODERATE": 4,
+      "HIGH": 7
+    },
+    "symptomWeights": {
+      "Monday morning chest tightness": 40,
+      "Wheezing": 25,
+      "Chronic dry cough": 20,
+      "Carpal tunnel tingling": 15
+    },
+    "predictedConditions": [
+      "Occupational Byssinosis ('Monday Fever')",
+      "Occupational Asthma",
+      "Carpal Tunnel Syndrome & Cervical Spondylosis"
+    ],
+    "recommendedScreenings": [
+      "Cross-shift Spirometry (pre-shift vs post-shift on first day of work week)",
+      "Nerve conduction studies for median nerve compression"
+    ],
+    "plainLanguageGuidance": "Breathing cotton dust causes chest tightness that is worst on the first working day of the week (Monday Fever). Proper factory exhaust ventilation and masks are vital.",
+    "preventivePpeAdvice": "Well-fitting particulate mask, ergonomic wrist splints, regular micro-break stretching.",
+    "synthetic": true
+  },
+  {
+    "occupation": "Welder / Metal Fabricator",
+    "hazards": [
+      "Welding fumes (hexavalent chromium, nickel, manganese)",
+      "Ultraviolet & infrared radiation",
+      "Ozone",
+      "Metal sparks"
+    ],
+    "exposureYearsThresholds": {
+      "LOW": 1,
+      "MODERATE": 3,
+      "HIGH": 6
+    },
+    "symptomWeights": {
+      "Sweet metallic taste in mouth": 30,
+      "Sudden evening fever and chills": 30,
+      "Eye grittiness / Arc eye": 25,
+      "Tremors": 15
+    },
+    "predictedConditions": [
+      "Metal Fume Fever",
+      "Photokeratitis ('Arc Eye')",
+      "Chronic Manganism & Neurological Tremors",
+      "Siderosis (benign iron deposition)"
+    ],
+    "recommendedScreenings": [
+      "Chest X-Ray PA View",
+      "Slit-lamp ophthalmic examination",
+      "Serum manganese and urinary chromium levels"
+    ],
+    "plainLanguageGuidance": "Welding fumes contain vaporized toxic metals that cause sudden flu-like chills (metal fume fever) and lung damage. Always use local exhaust extraction.",
+    "preventivePpeAdvice": "Auto-darkening welding helmet (shade 10-12), fume extraction respirator, leather spats and welding gauntlets.",
+    "synthetic": true
+  },
+  {
+    "occupation": "Painter / Coating Worker",
+    "hazards": [
+      "Organic solvents (toluene, xylene)",
+      "Lead pigments",
+      "Isocyanates in polyurethane spray",
+      "Volatile organic compounds (VOC)"
+    ],
+    "exposureYearsThresholds": {
+      "LOW": 1,
+      "MODERATE": 3,
+      "HIGH": 5
+    },
+    "symptomWeights": {
+      "Lightheadedness and morning headaches": 35,
+      "Loss of appetite and abdominal colic": 30,
+      "Memory fog": 20,
+      "Skin flaking": 15
+    },
+    "predictedConditions": [
+      "Chronic Toxic Encephalopathy ('Painter's Syndrome')",
+      "Plumbism (Lead Poisoning)",
+      "Occupational Isocyanate Asthma",
+      "Peripheral Polyneuropathy"
+    ],
+    "recommendedScreenings": [
+      "Blood Lead Level (BLL)",
+      "Liver and renal function panels",
+      "Comprehensive neuro-cognitive assessment"
+    ],
+    "plainLanguageGuidance": "Paint thinners and solvents enter the bloodstream through fumes and skin, harming the brain and nervous system. Use organic vapor cartridge masks.",
+    "preventivePpeAdvice": "Dual-cartridge organic vapor respirator (OV/P95), chemical-resistant butyl gloves, safety goggles.",
+    "synthetic": true
+  },
+  {
+    "occupation": "Domestic Worker",
+    "hazards": [
+      "Sodium hypochlorite (bleach)",
+      "Caustic soda oven cleaners",
+      "Prolonged wet work",
+      "Heavy floor scrubbing posture"
+    ],
+    "exposureYearsThresholds": {
+      "LOW": 2,
+      "MODERATE": 5,
+      "HIGH": 8
+    },
+    "symptomWeights": {
+      "Hands cracking and peeling": 35,
+      "Wheezing after toilet cleaning": 30,
+      "Knee and lower back pain": 25,
+      "Eye stinging": 10
+    },
+    "predictedConditions": [
+      "Severe Irritant Hand Eczema",
+      "Reactive Airways Dysfunction Syndrome (RADS)",
+      "Prepatellar Bursitis ('Housemaid's Knee')"
+    ],
+    "recommendedScreenings": [
+      "Dermatological examination and patch test",
+      "Peak flow diary before and after cleaning shift"
+    ],
+    "plainLanguageGuidance": "Mixing household cleaning chemicals releases harmful chlorine fumes that irritate lungs. Harsh soaps strip protective skin oils.",
+    "preventivePpeAdvice": "Heavy-duty flock-lined rubber gloves, cotton under-gloves, kneepads for floor work.",
+    "synthetic": true
+  },
+  {
+    "occupation": "Security Guard",
+    "hazards": [
+      "Night shift circadian disruption",
+      "Prolonged stationary standing",
+      "Extreme outdoor temperatures",
+      "Noise"
+    ],
+    "exposureYearsThresholds": {
+      "LOW": 2,
+      "MODERATE": 6,
+      "HIGH": 10
+    },
+    "symptomWeights": {
+      "Severe leg swelling and heavy aching": 35,
+      "Insomnia and daytime fatigue": 30,
+      "Elevated blood pressure": 20,
+      "Acid reflux": 15
+    },
+    "predictedConditions": [
+      "Lower Limb Chronic Venous Insufficiency (Varicose Veins)",
+      "Shift Work Sleep Disorder",
+      "Accelerated Metabolic Syndrome & Hypertension"
+    ],
+    "recommendedScreenings": [
+      "Venous Duplex Ultrasound of lower extremities",
+      "24-Hour Ambulatory Blood Pressure Monitoring (ABPM)",
+      "Fasting lipid and glucose profile"
+    ],
+    "plainLanguageGuidance": "Standing still for 12 hours causes blood to pool in leg veins, leading to painful varicose veins and clots. Walking in place and compression socks relieve pressure.",
+    "preventivePpeAdvice": "Graduated medical compression stockings (Class II, 20-30 mmHg), cushioned orthotic insoles, high-visibility vest.",
+    "synthetic": true
+  },
+  {
+    "occupation": "Delivery Rider",
+    "hazards": [
+      "Diesel exhaust fine particulates (PM2.5)",
+      "Traffic vibration & lumbar compression",
+      "Heat stroke / dehydration",
+      "Road collision trauma"
+    ],
+    "exposureYearsThresholds": {
+      "LOW": 1,
+      "MODERATE": 3,
+      "HIGH": 5
+    },
+    "symptomWeights": {
+      "Constant burning throat and dry cough": 30,
+      "Severe tailbone / lower back stiffness": 30,
+      "Heat dizziness": 25,
+      "Shoulder spasms": 15
+    },
+    "predictedConditions": [
+      "Chronic Air Pollution Bronchitis",
+      "Whole-Body Vibration Induced Lumbago & Sciatica",
+      "Heat Exhaustion & Early Dehydration Nephropathy"
+    ],
+    "recommendedScreenings": [
+      "Lumbar spine MRI / X-ray",
+      "Spirometry",
+      "Urine specific gravity and serum electrolytes"
+    ],
+    "plainLanguageGuidance": "Riding in urban traffic exposes lungs to dangerous diesel fumes for 10 hours daily. Continuous bike vibration causes premature disc wear.",
+    "preventivePpeAdvice": "Anti-pollution activated carbon PM2.5 mask, certified DOT/ECE helmet, lumbar support belt, electrolyte water bottle.",
+    "synthetic": true
+  },
+  {
+    "occupation": "Auto Rickshaw Driver",
+    "hazards": [
+      "Continuous whole-body vibration (2-8 Hz resonance)",
+      "Roadside PM2.5 & carbon monoxide",
+      "High noise levels (>85 dBA)",
+      "Restricted leg posture"
+    ],
+    "exposureYearsThresholds": {
+      "LOW": 2,
+      "MODERATE": 5,
+      "HIGH": 10
+    },
+    "symptomWeights": {
+      "Chronic back spasm on bumpy roads": 35,
+      "Hearing loss in right ear (traffic side)": 25,
+      "Piles / hemorrhoids": 25,
+      "Chronic eye irritation": 15
+    },
+    "predictedConditions": [
+      "Accelerated Degenerative Disc Disease",
+      "Noise-Induced Asymmetrical Hearing Loss",
+      "Internal and External Hemorrhoids",
+      "Chronic Blepharitis"
+    ],
+    "recommendedScreenings": [
+      "Audiometry",
+      "Lumbosacral spine radiography",
+      "Proctological examination"
+    ],
+    "plainLanguageGuidance": "Auto driving sends continuous mechanical vibrations directly through the spine while breathing roadside exhaust. Ergonomic seat cushions protect the lower back.",
+    "preventivePpeAdvice": "High-density polyurethane vibration-dampening seat cushion, UV-protective sunglasses, earplugs in heavy traffic.",
+    "synthetic": true
+  },
+  {
+    "occupation": "Hotel Kitchen Staff",
+    "hazards": [
+      "Biomass / LPG fuel combustion gases",
+      "Cooking oil fumes (acrolein, polycyclic aromatic hydrocarbons)",
+      "Thermal scalds",
+      "Slippery wet floors"
+    ],
+    "exposureYearsThresholds": {
+      "LOW": 2,
+      "MODERATE": 4,
+      "HIGH": 8
+    },
+    "symptomWeights": {
+      "Chronic eye tearing and cough while cooking": 35,
+      "Painful foot arches (plantar fasciitis)": 25,
+      "Burn scars": 20,
+      "Leg heaviness": 20
+    },
+    "predictedConditions": [
+      "Cooking Oil Fume Induced Bronchial Hyperresponsiveness",
+      "Plantar Fasciitis",
+      "Superficial Thermal Burns",
+      "Lower Extremity Venous Varicosities"
+    ],
+    "recommendedScreenings": [
+      "Chest X-Ray PA View",
+      "Bilateral foot arch physical examination",
+      "Spirometry"
+    ],
+    "plainLanguageGuidance": "Breathing intense kitchen oil smoke for hours irritates the lungs similarly to passive smoking. Adequate exhaust hoods are mandatory.",
+    "preventivePpeAdvice": "Heat-resistant silicone aprons, slip-resistant oil-proof kitchen shoes with arch support, forearm burn guards.",
+    "synthetic": true
+  },
+  {
+    "occupation": "Sanitation Worker",
+    "hazards": [
+      "Toxic sewer gases (hydrogen sulfide, methane, ammonia)",
+      "Biological blood-borne and enteric pathogens",
+      "Sharps injury",
+      "Fecal aerosolization"
+    ],
+    "exposureYearsThresholds": {
+      "LOW": 1,
+      "MODERATE": 2,
+      "HIGH": 4
+    },
+    "symptomWeights": {
+      "Sudden dizziness or loss of smell": 40,
+      "Recurrent loose watery stools": 25,
+      "Skin boils and fungal sores": 25,
+      "Eye infection": 10
+    },
+    "predictedConditions": [
+      "Hydrogen Sulfide Asphyxiation / Toxic Encephalopathy",
+      "Leptospirosis & Enteric Bacterial Infections",
+      "Hepatitis A & B Exposure",
+      "Infectious Cutaneous Ulcers"
+    ],
+    "recommendedScreenings": [
+      "Hepatitis B Surface Antigen & Anti-HBs titer",
+      "Leptospira IgM antibody rapid test",
+      "Stool routine and microscopic examination"
+    ],
+    "plainLanguageGuidance": "Sewer gases can knock out the sense of smell and cause sudden collapse within seconds. Full body waterproof protective gear and vaccination are non-negotiable.",
+    "preventivePpeAdvice": "Multi-gas detector badge, heavy waterproof nitrile overalls, puncture-resistant decontamination gloves, full waterproof gumboots.",
+    "synthetic": true
+  },
+  {
+    "occupation": "Agricultural Farm Labourer",
+    "hazards": [
+      "Organophosphate & carbamate pesticide spray",
+      "Intense solar UV radiation (UV index >10)",
+      "Dehydration / heat cramps",
+      "Snake & insect envenomation"
+    ],
+    "exposureYearsThresholds": {
+      "LOW": 2,
+      "MODERATE": 5,
+      "HIGH": 10
+    },
+    "symptomWeights": {
+      "Pinpoint pupils, excessive saliva, nausea after spraying": 40,
+      "Dark pigmented skin patches on neck": 25,
+      "Sunburn blisters": 20,
+      "Calf cramps": 15
+    },
+    "predictedConditions": [
+      "Chronic Organophosphate Neurotoxicity",
+      "Solar Keratosis & Cutaneous Squamous Cell Carcinoma",
+      "Chronic Interstitial Nephropathy of Agricultural Communities (CINAC)",
+      "Pterygium"
+    ],
+    "recommendedScreenings": [
+      "Serum pseudocholinesterase / RBC cholinesterase levels",
+      "Serum creatinine and microalbuminuria",
+      "Full-body dermatological cancer screening"
+    ],
+    "plainLanguageGuidance": "Pesticides penetrate wet clothing and skin easily, causing nerve toxicity. Spraying must never occur against the wind and requires complete protective coveralls.",
+    "preventivePpeAdvice": "Chemical spray coverall with hood, wide-brim straw hat, chemical splash goggles, neoprene gloves, knee-high rubber boots.",
+    "synthetic": true
+  }
+]

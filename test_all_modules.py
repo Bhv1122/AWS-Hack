@@ -482,7 +482,7 @@ def lambda_handler(event: Dict[str, Any], context: Optional[Any] = None) -> Dict
         elif (
             (path_lower.startswith("/doctor/prescriptions/") or path_lower.startswith("/prescriptions/"))
             and not path_lower.endswith("/override")
-            and (method in ("PATCH", "PUT", "DELETE") or (method == "POST" and path_lower.endswith("/discontinue")))
+            and (method in ("PATCH", "PUT", "DELETE", "POST"))
         ):
             clean_path = path.replace("/discontinue", "").replace("/DISCONTINUE", "").strip("/")
             parts = clean_path.split("/")
@@ -933,7 +933,10 @@ def lambda_handler(event: Dict[str, Any], context: Optional[Any] = None) -> Dict
     except ValueError as ve:
         return build_response(400, {"error": "BadRequest", "message": str(ve)})
     except Exception as ex:
-        return build_response(500, {"error": "InternalServerError", "message": str(ex)})
+        import traceback
+        tb = traceback.format_exc()
+        logger.error(f"Lambda router unhandled exception: {tb}")
+        return build_response(500, {"error": "InternalServerError", "message": str(ex), "traceback": tb})
 
 
 # Unified Alias for backward compatibility

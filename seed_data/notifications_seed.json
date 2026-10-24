@@ -1,0 +1,31 @@
+{
+  "PAT-SS-1001": [
+    {
+      "id": "NOTIF-1001-1",
+      "channel": "SMS",
+      "timestamp": "2026-10-22T09:00:00+00:00",
+      "title": "Clinical Follow-up Reminder",
+      "message": "Dear Ramesh Kumar, your INR check at Manipal Hospital Whitefield is scheduled tomorrow at 10:00 AM. ASHA Meena Majhi (9000000301) has been notified.",
+      "read": false,
+      "synthetic": true
+    },
+    {
+      "id": "NOTIF-1001-2",
+      "channel": "WhatsApp",
+      "timestamp": "2026-10-21T20:00:00+00:00",
+      "title": "Medication Refill Alert",
+      "message": "\u0b28\u0b2e\u0b38\u0b4d\u0b15\u0b3e\u0b30 Ramesh Babu, \u0b06\u0b2a\u0b23\u0b19\u0b4d\u0b15 Metformin \u0b14\u0b37\u0b27 \u0b38\u0b30\u0b3f\u0b2c\u0b3e\u0b15\u0b41 \u0b06\u0b38\u0b3f\u0b32\u0b3e\u0b23\u0b3f\u0964 Apollo Pharmacy Whitefield \u0b30\u0b47 \u0b37\u0b4d\u0b1f\u0b15\u0b4d \u0b09\u0b2a\u0b32\u0b2c\u0b4d\u0b27 \u0b05\u0b1b\u0b3f\u0964",
+      "read": true,
+      "synthetic": true
+    },
+    {
+      "id": "NOTIF-1001-3",
+      "channel": "Pinpoint",
+      "timestamp": "2026-10-18T08:30:00+00:00",
+      "title": "Adherence Streak Notice",
+      "message": "Great job! You logged 5 consecutive doses on time this week.",
+      "read": true,
+      "synthetic": true
+    }
+  ]
+}

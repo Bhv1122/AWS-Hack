@@ -1,1463 +1,1039 @@
 {% extends "base.html" %}
 
-{% block title %}Doctor Clinical Safety Workspace | MedCoord Health{% endblock %}
+{% block title %}Doctor Clinical Safety Workspace | SwasthyaSetu & AWS Platform{% endblock %}
+
+{% block extra_head %}
+<style>
+  .fhir-json-block {
+    background-color: #0B1417;
+    color: #38BDF8;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    line-height: 1.5;
+    padding: 1rem;
+    border-radius: var(--radius-md);
+    max-height: 300px;
+    overflow-y: auto;
+  }
+  .safety-rail-sticky {
+    position: sticky;
+    top: calc(var(--topbar-height) + 16px);
+    max-height: calc(100vh - var(--topbar-height) - 32px);
+    overflow-y: auto;
+  }
+</style>
+{% endblock %}
 
 {% block content %}
-<div class="space-y-6">
+<div class="flex-1 flex flex-col">
 
-  <!-- ======================================================================= -->
-  <!-- 1. Doctor & Patient Header Bar with Switchers -->
-  <!-- ======================================================================= -->
-  <div class="bg-surface-container-lowest rounded-2xl p-5 border border-surface-container-high/80 shadow-xs space-y-4">
-    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-surface-container-low">
-      <!-- Doctor Profile -->
-      <div class="flex items-center gap-3.5">
-        <div class="w-12 h-12 rounded-2xl bg-secondary-fixed text-secondary flex items-center justify-center font-bold shadow-xs flex-shrink-0">
-          <span class="material-symbols-outlined text-[26px] fill-1">stethoscope</span>
-        </div>
-        <div>
-          <div class="flex items-center gap-2 flex-wrap">
-            <h1 class="font-headline font-bold text-lg text-on-surface leading-tight">
-              {{ data.viewing_doctor.name if data.viewing_doctor else 'Dr. Sarah Jenkins, MD, FACC' }}
-            </h1>
-            <span class="px-2.5 py-0.5 rounded-full bg-primary-fixed text-on-primary-fixed-variant text-xs font-bold uppercase tracking-wider">
-              {{ data.viewing_doctor.doctor_id if data.viewing_doctor else doctor_id }}
-            </span>
-          </div>
-          <p class="text-xs text-on-surface-variant mt-0.5">
-            {{ data.viewing_doctor.specialty if data.viewing_doctor else 'Chief of Cardiology' }} • {{ data.viewing_doctor.hospital if data.viewing_doctor else 'City Heart Clinic' }}
-          </p>
-        </div>
-      </div>
-
-      <!-- Quick Role & Patient Case Switcher & PDF Download -->
-      <div class="flex items-center gap-2 flex-wrap">
-        <label class="text-xs font-semibold text-on-surface-variant">Switch Patient:</label>
-        <select id="patient-selector" onchange="switchPatient(this.value)" class="bg-surface-container-low text-on-surface text-xs font-bold px-3 py-2 rounded-xl border border-surface-container-high outline-none cursor-pointer">
-          <option value="PAT-1001" {% if patient_id == 'PAT-1001' %}selected{% endif %}>PAT-1001: Ramesh Kumar / John Doe (68M - Cardiology)</option>
-          <option value="PAT-1002" {% if patient_id == 'PAT-1002' %}selected{% endif %}>PAT-1002: Anita Patel (54F - Hypertension)</option>
-        </select>
-        <a href="/patient/{{ patient_id }}/prescription-pdf" target="_blank" id="btn-doctor-download-pdf" class="h-9 px-3 rounded-xl bg-primary text-white text-xs font-bold flex items-center gap-1.5 shadow-xs hover:bg-primary-container transition-colors" title="Download Official Prescription & Medication History PDF">
-          <span class="material-symbols-outlined text-[16px]">picture_as_pdf</span>
-          <span>Download PDF</span>
-        </a>
-      </div>
+  <!-- ========================================================================= -->
+  <!-- EMERGENCY ACCESS ACTIVE RED BANNER (When Break-Glass is Active)           -->
+  <!-- ========================================================================= -->
+  <div id="break-glass-alert-banner" class="emergency-banner hidden">
+    <div class="flex items-center gap-2">
+      <svg class="lucide-icon text-white" viewBox="0 0 24 24"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+      <span>Emergency access active — every clinical, prescribe, and chart viewing action is being audited to CloudTrail.</span>
     </div>
-
-    <!-- ======================================================================= -->
-    <!-- ZERO-TRUST SECURE PATIENT LOOKUP & AWS KMS PRIVACY SHIELD -->
-    <!-- ======================================================================= -->
-    <div id="zero-trust-panel" class="p-4 rounded-2xl bg-gradient-to-r from-surface-container-low to-surface-container border border-primary/20 shadow-xs space-y-3">
-      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-        <div class="flex items-center gap-2.5">
-          <div class="w-9 h-9 rounded-xl bg-primary text-white flex items-center justify-center font-bold shadow-xs flex-shrink-0">
-            <span class="material-symbols-outlined text-[20px]">lock</span>
-          </div>
-          <div>
-            <div class="flex items-center gap-2 flex-wrap">
-              <span class="text-xs font-headline font-bold text-on-surface">Zero-Trust Patient Lookup & AWS KMS Privacy Shield</span>
-              <span id="privacy-status-badge" class="px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-800 text-[10px] font-bold uppercase tracking-wider flex items-center gap-1 border border-emerald-500/20">
-                <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
-                <span id="privacy-status-text">Consent Verified & Decrypted</span>
-              </span>
-            </div>
-            <p class="text-[11px] text-on-surface-variant">
-              AWS KMS envelope encryption protects PHI. Chart decryption requires Patient Unique ID + 6-digit Consent PIN.
-            </p>
-          </div>
-        </div>
-        <div class="flex items-center gap-2">
-          <a href="/login?tab=doctor" class="px-2.5 py-1 rounded-lg bg-surface-container-lowest hover:bg-white text-secondary text-xs font-bold border border-surface-container-high transition-colors flex items-center gap-1 shadow-xs">
-            <span class="material-symbols-outlined text-[15px]">badge</span>
-            <span>Doctor Badge / QR</span>
-          </a>
-        </div>
-      </div>
-
-      <!-- Lookup Input Bar -->
-      <form id="doctor-lookup-form" onsubmit="handleDoctorPatientLookup(event)" class="grid grid-cols-1 sm:grid-cols-12 gap-2 pt-1">
-        <div class="sm:col-span-4 relative">
-          <span class="material-symbols-outlined absolute left-3 top-2.5 text-[18px] text-on-surface-variant">fingerprint</span>
-          <input type="text" id="lookup-patient-id" required value="PAT-SS-1001" placeholder="Patient ID (PAT-SS-XXXX)" class="w-full pl-9 pr-3 py-2 rounded-xl border border-surface-container-high bg-white text-xs font-semibold focus:outline-none focus:ring-2 focus:ring-primary"/>
-        </div>
-
-        <div class="sm:col-span-3 relative">
-          <span class="material-symbols-outlined absolute left-3 top-2.5 text-[18px] text-yellow-600">key</span>
-          <input type="text" id="lookup-consent-pin" maxlength="6" value="482910" placeholder="6-digit PIN (e.g. 482910)" class="w-full pl-9 pr-3 py-2 rounded-xl border border-surface-container-high bg-white text-xs font-mono font-bold tracking-widest text-on-surface focus:outline-none focus:ring-2 focus:ring-primary"/>
-        </div>
-
-        <div class="sm:col-span-3">
-          <button type="submit" id="btn-decrypt-chart" class="w-full py-2 px-3 rounded-xl bg-primary hover:bg-primary-container text-white text-xs font-bold transition-all shadow-xs flex items-center justify-center gap-1.5">
-            <span class="material-symbols-outlined text-[16px]">lock_open</span>
-            <span>Decrypt Chart</span>
-          </button>
-        </div>
-
-        <div class="sm:col-span-2 flex gap-1">
-          <button type="button" onclick="triggerQrScanUpload()" class="flex-1 py-2 px-2 rounded-xl bg-white hover:bg-surface-container-low border border-surface-container-high text-on-surface text-xs font-bold transition-colors flex items-center justify-center gap-1" title="Scan or Upload Patient QR Code">
-            <span class="material-symbols-outlined text-[16px] text-tertiary">qr_code_scanner</span>
-            <span>Scan QR</span>
-          </button>
-          <button type="button" onclick="openBreakGlassModal()" class="py-2 px-2.5 rounded-xl bg-error/10 hover:bg-error/20 border border-error/30 text-error text-xs font-bold transition-colors flex items-center justify-center" title="Emergency Break-Glass Clinical Override">
-            <span class="material-symbols-outlined text-[16px]">emergency</span>
-          </button>
-        </div>
-      </form>
-    </div>
-
-    <!-- Active Patient Profile Details Bar -->
-    <div class="p-4 rounded-xl bg-surface-container-low/70 border border-surface-container-high flex flex-col md:flex-row md:items-center justify-between gap-3">
-      <div class="space-y-1">
-        <div class="flex items-center gap-2 flex-wrap">
-          <span class="text-xs font-bold text-primary uppercase tracking-wide">ACTIVE CLINICAL PROFILE:</span>
-          <span class="text-base font-bold text-on-surface">
-            {{ data.patient_demographics.name if data.patient_demographics else 'Ramesh Kumar (John Doe)' }}
-          </span>
-          <span class="text-xs font-semibold text-secondary bg-surface-container-lowest px-2 py-0.5 rounded-md border border-surface-container-high">
-            {{ patient_id }}
-          </span>
-          <span class="text-xs text-on-surface-variant font-medium">
-            ({{ data.patient_demographics.gender if data.patient_demographics else 'Male' }}, Age {{ data.patient_demographics.age if data.patient_demographics else '68' }})
-          </span>
-        </div>
-        <div class="flex items-center gap-2 text-xs text-on-surface-variant flex-wrap">
-          <span>DOB: 1956-04-12</span>
-          <span>•</span>
-          <span>Caregiver: {{ data.patient_demographics.caregiver_name if data.patient_demographics else 'Sunita Kumar' }} ({{ data.patient_demographics.caregiver_phone if data.patient_demographics else '+91-98765-43210' }})</span>
-          <span>•</span>
-          <span class="text-tertiary font-bold inline-flex items-center gap-1">
-            <span class="material-symbols-outlined text-[14px]">cell_tower</span>
-            AppSync Telemetry Stream Active
-          </span>
-        </div>
-      </div>
-
-      <!-- Quick Adherence Badge -->
-      <div class="flex items-center gap-3">
-        <div class="text-right">
-          <p class="text-[11px] font-bold text-on-surface-variant uppercase">30-Day Mean Adherence</p>
-          <p class="text-xl font-headline font-bold text-tertiary">
-            {{ data.adherence_summary.overall_adherence_rate if data.adherence_summary else '96.2%' }}
-          </p>
-        </div>
-        <div class="w-10 h-10 rounded-full bg-tertiary-fixed text-on-tertiary-fixed-variant flex items-center justify-center font-bold">
-          <span class="material-symbols-outlined text-[22px]">verified</span>
-        </div>
-      </div>
+    <div class="flex items-center gap-3">
+      <span id="break-glass-justification-badge" class="badge bg-white text-danger text-[11px] font-bold">EMERGENCY PROTOCOL</span>
+      <button type="button" onclick="lockPatientRecordNow()" class="btn btn-secondary text-xs py-1 px-3 bg-white text-danger border-none">
+        End Emergency Access
+      </button>
     </div>
   </div>
 
-  <!-- ======================================================================= -->
-  <!-- 2. Clinical Risk Sentinel (Allergies & Cross-Facility Alerts) -->
-  <!-- ======================================================================= -->
-  <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
-    <!-- Verified Allergies Card (Left 2 cols) -->
-    <div class="md:col-span-2 bg-surface-container-lowest rounded-2xl p-5 border border-surface-container-high/80 shadow-xs space-y-3.5">
-      <div class="flex items-center justify-between">
-        <div class="flex items-center gap-2">
-          <span class="material-symbols-outlined text-error text-[22px] fill-1">security</span>
-          <h2 class="font-headline font-bold text-base text-on-surface">Verified Clinical Allergies</h2>
-        </div>
-        <button onclick="toggleAllergyModal(true)" class="px-2.5 py-1 rounded-lg bg-surface-container text-xs font-bold text-primary hover:bg-surface-container-high transition-colors flex items-center gap-1">
-          <span class="material-symbols-outlined text-[16px]">add_circle</span>
-          <span>Add Allergy</span>
-        </button>
-      </div>
-
-      <!-- Allergy List -->
-      <div id="allergies-list" class="space-y-2">
-        {% if data.verified_allergies %}
-          {% for allergy in data.verified_allergies %}
-          <div class="p-3 rounded-xl bg-error-container/60 border border-error/20 flex items-start gap-2.5">
-            <span class="material-symbols-outlined text-error text-[20px] mt-0.5 fill-1">block</span>
-            <div class="flex-1 min-w-0">
-              <div class="flex items-center justify-between">
-                <p class="text-xs font-bold text-on-error-container uppercase">
-                  ALLERGY: {{ allergy.allergen if allergy.allergen else allergy.substance }}
-                </p>
-                <span class="text-[10px] font-bold px-1.5 py-0.5 rounded bg-error text-white uppercase">
-                  {{ allergy.severity if allergy.severity else 'SEVERE' }}
-                </span>
-              </div>
-              <p class="text-xs text-on-error-container/90 mt-0.5">
-                {{ allergy.reaction if allergy.reaction else 'Severe hypersensitivity reaction' }}
-              </p>
-            </div>
-          </div>
-          {% endfor %}
-        {% else %}
-          <div class="p-3 rounded-xl bg-surface-container-low text-xs text-on-surface-variant text-center">
-            No known drug allergies documented for this patient.
-          </div>
-        {% endif %}
-      </div>
+  <!-- ========================================================================= -->
+  <!-- TOP CLINICAL CONTROLS BAR (Search, Lock, Inactivity Timer, Ctrl+K)        -->
+  <!-- ========================================================================= -->
+  <div class="bg-card border-b border-subtle px-4 py-2.5 flex items-center justify-between">
+    <div class="flex items-center gap-3">
+      <button type="button" onclick="openCommandPalette()" class="btn btn-secondary text-xs px-3 py-1.5 flex items-center gap-2">
+        <svg class="lucide-icon sm" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <span>Command Palette</span>
+        <kbd class="px-1.5 py-0.5 rounded bg-bg-card-subtle border border-subtle text-[10px] font-mono">Ctrl+K</kbd>
+      </button>
+      <span class="text-xs text-muted hidden md:inline">Doctor ID: <strong class="text-main font-mono" id="doctor-display-id">{{ doctor_id or 'DOC-IN-8841' }}</strong></span>
     </div>
 
-    <!-- Active Regimen Alert Pill (Right 1 col) -->
-    <div class="bg-surface-container-lowest rounded-2xl p-5 border border-surface-container-high/80 shadow-xs flex flex-col justify-between space-y-3">
-      <div>
-        <div class="flex items-center gap-1.5 text-secondary font-bold text-xs uppercase tracking-wide">
-          <span class="material-symbols-outlined text-[18px]">crisis_alert</span>
-          <span>Multi-Doctor Overlap Sentinel</span>
+    <div class="flex items-center gap-3">
+      <!-- Inactivity Lock Countdown Chip -->
+      <div id="inactivity-countdown" class="badge badge-indigo text-xs flex items-center gap-1.5" title="Doctor workspace auto-locks on inactivity">
+        <svg class="lucide-icon sm" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        <span>Auto-lock: <strong id="countdown-timer">10:00</strong></span>
+      </div>
+
+      <!-- Lock Now Button -->
+      <button type="button" id="btn-lock-now" onclick="lockPatientRecordNow()" class="btn btn-secondary text-xs px-3 py-1.5 text-danger border-danger/30 hover:bg-danger-soft">
+        <svg class="lucide-icon sm" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+        <span data-i18n="btn_lock_now">Lock Now</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- MAIN WORKSPACE LAYOUT: NAV RAIL + CENTER WORKSPACE + SAFETY RAIL          -->
+  <!-- ========================================================================= -->
+  <div class="doctor-layout flex-1">
+    
+    <!-- LEFT NAV RAIL (DESKTOP) -->
+    <aside class="doctor-nav-rail">
+      <div class="px-4 py-2 text-xs font-extrabold uppercase tracking-wider text-muted">Clinical Modules</div>
+      {% set current_sec = request.args.get('section') or ('overview' if (request.args.get('unlocked') == '1' or is_unlocked) else 'lookup') %}
+      <nav class="space-y-1">
+        <button type="button" class="nav-rail-item {% if current_sec == 'lookup' %}active{% endif %} w-full text-left" data-section="lookup" onclick="switchDoctorSection('lookup')">
+          <svg class="lucide-icon sm" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          <span data-i18n="nav_lookup">Patient Lookup</span>
+        </button>
+
+        <button type="button" class="nav-rail-item {% if current_sec == 'overview' %}active{% endif %} w-full text-left" data-section="overview" onclick="switchDoctorSection('overview')">
+          <svg class="lucide-icon sm" viewBox="0 0 24 24"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          <span data-i18n="nav_overview">Patient Overview</span>
+        </button>
+
+        <button type="button" class="nav-rail-item {% if current_sec == 'reports' %}active{% endif %} w-full text-left" data-section="reports" onclick="switchDoctorSection('reports')">
+          <svg class="lucide-icon sm" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          <span data-i18n="nav_reports">Clinical Reports &amp; Trends</span>
+        </button>
+
+        <button type="button" class="nav-rail-item {% if current_sec == 'prescriptions' %}active{% endif %} w-full text-left" data-section="prescriptions" onclick="switchDoctorSection('prescriptions')">
+          <svg class="lucide-icon sm" viewBox="0 0 24 24"><path d="m10.5 20.5 10-10a4.95 4.95 0 1 0-7-7l-10 10a4.95 4.95 0 1 0 7 7Z"/><path d="m8.5 8.5 7 7"/></svg>
+          <span data-i18n="nav_prescriptions">Prescriptions &amp; AI Safety</span>
+        </button>
+
+        <button type="button" class="nav-rail-item {% if current_sec == 'translator' %}active{% endif %} w-full text-left" data-section="translator" onclick="switchDoctorSection('translator')">
+          <svg class="lucide-icon sm" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          <span data-i18n="nav_translator">BhashaSehat Translator</span>
+        </button>
+
+        <button type="button" class="nav-rail-item {% if current_sec == 'ocr' %}active{% endif %} w-full text-left" data-section="ocr" onclick="switchDoctorSection('ocr')">
+          <svg class="lucide-icon sm" viewBox="0 0 24 24"><path d="M3 7V5a2 2 0 0 1 2-2h2"/><path d="M17 3h2a2 2 0 0 1 2 2v2"/><path d="M21 17v2a2 2 0 0 1-2 2h-2"/><path d="M7 21H5a2 2 0 0 1-2-2v-2"/></svg>
+          <span data-i18n="nav_scanner">Document AI Scanner</span>
+        </button>
+
+        <button type="button" class="nav-rail-item {% if current_sec == 'workrisk' %}active{% endif %} w-full text-left" data-section="workrisk" onclick="switchDoctorSection('workrisk')">
+          <svg class="lucide-icon sm" viewBox="0 0 24 24"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/></svg>
+          <span data-i18n="nav_work_risk">KaamSuraksha Work-Risk</span>
+        </button>
+
+        <button type="button" class="nav-rail-item {% if current_sec == 'followup' %}active{% endif %} w-full text-left" data-section="followup" onclick="switchDoctorSection('followup')">
+          <svg class="lucide-icon sm" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <span data-i18n="nav_followup">SehatSetu Follow-up</span>
+        </button>
+
+        <button type="button" class="nav-rail-item {% if current_sec == 'audit' %}active{% endif %} w-full text-left" data-section="audit" onclick="switchDoctorSection('audit')">
+          <svg class="lucide-icon sm" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          <span data-i18n="nav_audit">CloudTrail Audit Stream</span>
+        </button>
+      </nav>
+
+      <!-- Status Footer in Nav Rail -->
+      <div class="mt-auto p-4 border-t border-subtle space-y-2">
+        <div id="unlock-indicator-badge" class="badge {% if current_sec != 'lookup' or is_unlocked %}badge-green{% else %}badge-amber{% endif %} text-xs w-full justify-center">
+          {% if current_sec != 'lookup' or is_unlocked %}UNLOCKED · ACTIVE GRANT{% else %}LOCKED · PRIVACY SHIELD{% endif %}
         </div>
-        <h3 class="font-headline font-bold text-sm text-on-surface mt-2">Cross-Hospital Coordination</h3>
-        <p class="text-xs text-on-surface-variant leading-relaxed mt-1">
-          Platform automatically monitors co-prescriptions across Cardiology and Endocrinology to prevent dangerous polypharmacy.
+      </div>
+    </aside>
+
+    <!-- CENTER WORKSPACE PANE -->
+    <main class="doctor-main-content">
+
+      <!-- =================================================================== -->
+      <!-- SECTION 1: PATIENT LOOKUP & PRIVACY SHIELD                          -->
+      <!-- =================================================================== -->
+      <div id="section-lookup" class="doctor-section-pane space-y-6 {% if current_sec != 'lookup' %}hidden{% endif %}">
+        
+        <!-- Large Lock Card (Privacy Shield Active) -->
+        <div class="lock-shield-card">
+          <div class="lock-avatar">
+            <svg class="lucide-icon xl" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          </div>
+          <h2 class="text-2xl font-extrabold text-main mb-1">Zero-Trust Privacy Shield Active</h2>
+          <p class="text-sm text-muted max-w-md mx-auto mb-6">
+            Patient health data is encrypted under AWS KMS. To unlock and view medical history, request the live 6-digit Consent PIN from the patient.
+          </p>
+
+          <!-- Hard Refresh Resume Banner (Part A2 Requirement: No PIN needed, no data visible until tapped) -->
+          <div id="resume-grant-container" class="hidden max-w-md mx-auto mb-6 p-4 rounded-xl border-2 border-primary bg-primary-soft text-center space-y-3">
+            <div class="text-sm font-bold text-primary flex items-center justify-center gap-2">
+              <svg class="lucide-icon sm text-primary" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              <span>Active Authorized Access Session Found</span>
+            </div>
+            <p class="text-xs text-muted">You have an active, unexpired grant for <span id="resume-patient-name" class="font-bold text-main">Ramesh Kumar</span>.</p>
+            <button type="button" id="btn-resume-record" onclick="resumePatientRecord()" class="btn btn-primary w-full py-2.5 font-bold shadow-md">
+              <span>Resume Ramesh Kumar's Record</span>
+            </button>
+          </div>
+
+          <!-- Patient ID Input with Paste QR Button -->
+          <div class="max-w-md mx-auto text-left space-y-4">
+            <div class="form-group">
+              <label class="form-label" data-i18n="label_patient_id">SwasthyaID (PAT-SS-XXXX)</label>
+              <div class="flex gap-2">
+                <input type="text" id="lookup-patient-id" class="form-control font-mono font-bold" placeholder="PAT-SS-1001" value="{{ patient_id or 'PAT-SS-1001' }}" required/>
+                <button type="button" onclick="pasteQrPayloadToInput()" class="btn btn-secondary text-xs px-3" title="Paste QR Code Payload">
+                  <svg class="lucide-icon sm" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                  <span>Paste QR</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Recent Patients Quick Chips (ID & Initials Only - Never Clinical Data) -->
+            <div>
+              <span class="text-[11px] font-bold text-muted uppercase tracking-wider block mb-1">Recent Patients (Click to pre-fill ID):</span>
+              <div id="recent-patients-chips" class="flex flex-wrap gap-2">
+                <button type="button" onclick="selectRecentPatient('PAT-SS-1001')" class="badge badge-teal cursor-pointer hover:bg-primary-soft">
+                  PAT-SS-1001 (R.K.)
+                </button>
+                <button type="button" onclick="selectRecentPatient('PAT-SS-1002')" class="badge badge-indigo cursor-pointer hover:bg-doctor-soft">
+                  PAT-SS-1002 (R.Y.)
+                </button>
+                <button type="button" onclick="selectRecentPatient('PAT-SS-1003')" class="badge badge-amber cursor-pointer hover:bg-warning-soft">
+                  PAT-SS-1003 (M.G.)
+                </button>
+              </div>
+            </div>
+
+            <!-- 6 PIN Digit Input Boxes (Auto-Advance, Paste Support, Shake Animation) -->
+            <div class="form-group pt-2">
+              <div class="flex items-center justify-between mb-1">
+                <label class="form-label mb-0" data-i18n="label_consent_pin">Enter 6-Digit Patient Consent PIN *</label>
+                <span class="text-xs text-muted">PIN rotates on revocation</span>
+              </div>
+              <div id="doctor-pin-container" class="pin-inputs-row">
+                <input type="password" maxlength="1" class="pin-digit-box font-mono" inputmode="numeric"/>
+                <input type="password" maxlength="1" class="pin-digit-box font-mono" inputmode="numeric"/>
+                <input type="password" maxlength="1" class="pin-digit-box font-mono" inputmode="numeric"/>
+                <input type="password" maxlength="1" class="pin-digit-box font-mono" inputmode="numeric"/>
+                <input type="password" maxlength="1" class="pin-digit-box font-mono" inputmode="numeric"/>
+                <input type="password" maxlength="1" class="pin-digit-box font-mono" inputmode="numeric"/>
+              </div>
+              <p id="pin-feedback-error" class="text-xs font-semibold text-danger text-center mt-2 hidden"></p>
+            </div>
+
+            <!-- Unlock Record Button -->
+            <button type="button" id="btn-decrypt-chart" onclick="handleDoctorUnlock()" class="btn btn-primary w-full h-12 text-base font-bold">
+              <svg class="lucide-icon sm" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 9.9-1"/></svg>
+              <span data-i18n="btn_unlock">Unlock Patient Record</span>
+            </button>
+
+            <!-- Emergency Break-Glass Button -->
+            <div class="pt-4 border-t border-subtle text-center">
+              <p class="text-xs text-muted mb-2">Patient unconscious, trauma or unresponsive?</p>
+              <button type="button" onclick="openBreakGlassModal()" class="btn btn-outline-danger w-full text-xs font-bold">
+                <svg class="lucide-icon sm" viewBox="0 0 24 24"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/></svg>
+                <span data-i18n="btn_break_glass">Emergency Break-Glass Override</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- =================================================================== -->
+      <!-- SECTION 2: PATIENT OVERVIEW (Sticky Header & Cards)                 -->
+      <!-- =================================================================== -->
+      <div id="section-overview" class="doctor-section-pane space-y-6 {% if current_sec != 'overview' %}hidden{% endif %}">
+        
+        <!-- Sticky Patient Header -->
+        <div class="card bg-card border-2 border-primary/30 p-5 shadow-sm space-y-3">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-subtle">
+            <div class="flex items-center gap-3">
+              <div class="w-12 h-12 rounded-full bg-primary-soft text-primary flex items-center justify-center font-extrabold text-lg flex-shrink-0">
+                <span id="patient-initials">RK</span>
+              </div>
+              <div>
+                <div class="flex items-center gap-2">
+                  <h2 id="patient-name-display" class="text-xl font-extrabold text-main">Ramesh Kumar</h2>
+                  <span id="patient-gender-age" class="badge badge-teal text-xs">Male, 42 yrs</span>
+                  <span id="unlock-badge-pill" class="badge badge-green text-xs">UNLOCKED</span>
+                </div>
+                <div class="flex items-center gap-3 text-xs text-muted mt-0.5">
+                  <span>ID: <code class="font-mono font-bold text-main" id="patient-id-display">PAT-SS-1001</code></span>
+                  <span>•</span>
+                  <span>ABHA: <code class="font-mono text-main" id="patient-abha-display">ABHA-21-9845-3310-7742</code></span>
+                  <span>•</span>
+                  <span>Language: <strong class="text-main" id="patient-lang-display">Odia</strong></span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Migration & Adherence Summary -->
+            <div class="flex items-center gap-4 text-xs">
+              <div class="text-right">
+                <span class="text-muted block font-semibold">Origin → Current</span>
+                <span class="font-bold text-main" id="patient-location-display">Ganjam, Odisha → Bengaluru</span>
+              </div>
+              <div class="w-10 h-10 rounded-full border-2 border-primary flex items-center justify-center font-bold text-primary text-xs" title="30-day adherence rate">
+                <span id="overview-adherence-pct">70%</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Active Allergy Chips Strip -->
+          <div class="flex items-center gap-2 flex-wrap">
+            <span class="text-xs font-bold text-danger uppercase tracking-wider flex items-center gap-1">
+              <svg class="lucide-icon sm" viewBox="0 0 24 24"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/></svg>
+              Verified Clinical Allergies:
+            </span>
+            <div id="patient-allergies-list" class="flex gap-2">
+              <span class="badge badge-red text-xs">Penicillin (Severe)</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Overview Dashboard Cards Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+          <!-- Card 1: Active Regimen -->
+          <div class="card space-y-3">
+            <div class="card-header">
+              <h3 class="card-title">
+                <svg class="lucide-icon text-primary" viewBox="0 0 24 24"><path d="m10.5 20.5 10-10a4.95 4.95 0 1 0-7-7l-10 10a4.95 4.95 0 1 0 7 7Z"/></svg>
+                <span>Active Cross-System Prescriptions (<span id="active-rx-count">3</span>)</span>
+              </h3>
+              <button type="button" onclick="switchDoctorSection('prescriptions')" class="text-xs text-primary font-bold hover:underline">Manage Rx</button>
+            </div>
+            <div id="overview-active-rx-list" class="space-y-2">
+              <!-- Rendered via doctor.js -->
+            </div>
+          </div>
+
+          <!-- Card 2: Adherence Telemetry -->
+          <div class="card space-y-3">
+            <div class="card-header">
+              <h3 class="card-title">
+                <svg class="lucide-icon text-doctor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                <span>Adherence Telemetry</span>
+              </h3>
+              <span class="badge badge-amber text-xs" id="adherence-status-tag">70% · MISSED STREAK (2)</span>
+            </div>
+            <p class="text-xs text-muted" id="adherence-telemetry-summary">
+              Patient missed evening Warfarin dose yesterday. Caregiver alert triggered.
+            </p>
+            <div class="p-3 rounded-xl bg-card-subtle border border-subtle flex items-center justify-between text-xs">
+              <span>Taken: <strong class="text-success" id="adh-taken-count">21</strong></span>
+              <span>Missed: <strong class="text-danger" id="adh-missed-count">7</strong></span>
+              <span>Streak: <strong class="text-primary" id="adh-streak-count">0 days</strong></span>
+            </div>
+          </div>
+
+          <!-- Card 3: KaamSuraksha Occupational Risk -->
+          <div class="card space-y-3">
+            <div class="card-header">
+              <h3 class="card-title">
+                <svg class="lucide-icon text-warning" viewBox="0 0 24 24"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/></svg>
+                <span>KaamSuraksha Hazard Assessment</span>
+              </h3>
+              <span id="overview-risk-badge" class="badge badge-red text-xs">HIGH RISK (Silicosis)</span>
+            </div>
+            <p class="text-xs text-muted" id="overview-risk-desc">
+              Construction mason (6 years tile &amp; stone cutting). Recommended HRCT Chest and Spirometry.
+            </p>
+            <button type="button" onclick="switchDoctorSection('workrisk')" class="btn btn-secondary text-xs w-full">
+              View Detailed Risk Protocol
+            </button>
+          </div>
+
+          <!-- Card 4: Recent Clinical Reports -->
+          <div class="card space-y-3">
+            <div class="card-header">
+              <h3 class="card-title">
+                <svg class="lucide-icon text-primary" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/></svg>
+                <span>Recent Clinical Reports</span>
+              </h3>
+              <button type="button" onclick="switchDoctorSection('reports')" class="text-xs text-primary font-bold hover:underline">View All</button>
+            </div>
+            <div id="overview-reports-preview" class="space-y-2 text-xs">
+              <!-- Rendered via doctor.js -->
+            </div>
+          </div>
+        </div>
+
+        <!-- Technical Reviewers Accordion (FHIR R4 Bundle & KMS Master Key) -->
+        <details class="card p-4 space-y-3">
+          <summary class="font-extrabold text-xs text-muted uppercase tracking-wider cursor-pointer flex items-center justify-between">
+            <span>For Technical Reviewers: FHIR R4 Bundle &amp; KMS Master Key</span>
+            <span class="badge badge-teal text-[10px]">INSPECT ARCHITECTURE</span>
+          </summary>
+          <div class="pt-3 space-y-3">
+            <div class="flex items-center justify-between text-xs">
+              <span><strong>KMS Key:</strong> <code class="font-mono text-primary">alias/MedCoord-HIPAA-MasterKey</code></span>
+              <button type="button" onclick="copyToClipboard(document.getElementById('fhir-bundle-code').innerText, 'FHIR Bundle')" class="btn btn-secondary text-xs px-2.5 py-1">
+                Copy FHIR JSON
+              </button>
+            </div>
+            <pre id="fhir-bundle-code" class="fhir-json-block"></pre>
+          </div>
+        </details>
+
+      </div>
+
+      <!-- =================================================================== -->
+      <!-- SECTION 3: CLINICAL REPORTS & TRENDS (NEW)                          -->
+      <!-- =================================================================== -->
+      <div id="section-reports" class="doctor-section-pane space-y-6 {% if current_sec != 'reports' %}hidden{% endif %}">
+        
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+          <div>
+            <h2 class="text-2xl font-extrabold text-main">Clinical Reports &amp; Longitudinal Trends</h2>
+            <p class="text-xs text-muted">Laboratory panels, chest X-rays, spirometry, and digitized paper prescription slips.</p>
+          </div>
+          <!-- Filter Tabs -->
+          <div class="flex items-center gap-2 flex-wrap">
+            <button type="button" onclick="filterReports('ALL')" class="btn btn-secondary text-xs px-3 py-1 font-bold active-filter" id="filter-rep-all">All</button>
+            <button type="button" onclick="filterReports('LAB')" class="btn btn-secondary text-xs px-3 py-1" id="filter-rep-lab">Labs</button>
+            <button type="button" onclick="filterReports('IMAGING')" class="btn btn-secondary text-xs px-3 py-1" id="filter-rep-imaging">Imaging</button>
+            <button type="button" onclick="filterReports('PULMONARY')" class="btn btn-secondary text-xs px-3 py-1" id="filter-rep-pulm">Spirometry</button>
+            <button type="button" onclick="filterReports('PAPER_PRESCRIPTION')" class="btn btn-secondary text-xs px-3 py-1" id="filter-rep-paper">Paper Scans</button>
+          </div>
+        </div>
+
+        <!-- Trends Panel: SVG Inline Sparklines & Reference Bands -->
+        <div class="card p-5 space-y-4">
+          <div class="card-header">
+            <h3 class="card-title">
+              <svg class="lucide-icon text-primary" viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+              <span>Longitudinal Clinical Metrics (SVG Trends)</span>
+            </h3>
+            <span class="text-xs text-muted">Reference Bands &amp; Deviation Detection</span>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <!-- Trend 1: HbA1c -->
+            <div class="p-4 rounded-xl border border-subtle bg-card space-y-2">
+              <div class="flex items-center justify-between">
+                <span class="font-extrabold text-xs text-main">HbA1c (% - Glycemic Control)</span>
+                <span class="badge badge-green text-xs" id="trend-hba1c-badge">Improving: 8.9 → 7.4%</span>
+              </div>
+              <div id="chart-hba1c" class="h-28 flex items-end"></div>
+            </div>
+
+            <!-- Trend 2: INR (Warfarin Monitoring) -->
+            <div class="p-4 rounded-xl border border-subtle bg-card space-y-2">
+              <div class="flex items-center justify-between">
+                <span class="font-extrabold text-xs text-main">INR (Target: 2.0 – 3.0)</span>
+                <span class="badge badge-red text-xs" id="trend-inr-badge">Alert: 3.4 Out-of-Range</span>
+              </div>
+              <div id="chart-inr" class="h-28 flex items-end"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Reports List -->
+        <div id="doctor-reports-list" class="space-y-4">
+          <!-- Rendered dynamically via doctor.js -->
+        </div>
+
+      </div>
+
+      <!-- =================================================================== -->
+      <!-- SECTION 4: PRESCRIPTIONS & AI SAFETY GATEKEEPER                     -->
+      <!-- =================================================================== -->
+      <div id="section-prescriptions" class="doctor-section-pane space-y-6 {% if current_sec != 'prescriptions' %}hidden{% endif %}">
+        
+        <div class="card p-6 space-y-4 border-2 border-primary/20">
+          <div class="card-header">
+            <h3 class="card-title">
+              <svg class="lucide-icon text-primary" viewBox="0 0 24 24"><path d="m10.5 20.5 10-10a4.95 4.95 0 1 0-7-7l-10 10a4.95 4.95 0 1 0 7 7Z"/></svg>
+              <span>Prescribe New Medication (Real-Time Safety Interception)</span>
+            </h3>
+            <span class="badge badge-teal text-xs">253,973 MEDICINES INDEXED</span>
+          </div>
+
+          <form id="prescribe-form" onsubmit="handlePrescribeSubmit(event)" class="space-y-4">
+            <!-- Server-Side Medicine Search Combobox -->
+            <div class="form-group relative">
+              <label class="form-label" data-i18n="label_search_medicine">Search Medicines by Brand or Generic Composition *</label>
+              <div class="flex gap-2">
+                <input type="text" id="prescribe-med-input" name="med-search-input" data-testid="med-search-input" class="form-control" placeholder="Type brand (e.g. Augmentin, Ecosprin, Metformin) or generic..." oninput="debounceMedicineSearch(this.value)" autocomplete="off" required/>
+                <button type="button" onclick="fillQuickAugmentin()" class="btn btn-secondary text-xs px-3 whitespace-nowrap" title="Demo Penicillin Allergy Conflict">
+                  Test Augmentin
+                </button>
+                <button type="button" onclick="fillQuickAspirin()" class="btn btn-secondary text-xs px-3 whitespace-nowrap" title="Demo Warfarin DDI Conflict">
+                  Test Aspirin
+                </button>
+              </div>
+              <!-- Dropdown Search Results Box (Maintained for legacy, Combobox renders in body portal) -->
+              <div id="med-search-results" class="hidden"></div>
+            </div>
+
+            <!-- Safety Panel directly under medicine field (Task 2) -->
+            <div id="doctor-safety-panel" class="hidden" aria-live="polite"></div>
+
+            <!-- Generic Composition Field -->
+            <div class="form-group">
+              <label class="form-label">Resolved Generic Composition / Salts</label>
+              <input type="text" id="prescribe-generics-input" class="form-control bg-bg-card-subtle font-mono text-xs" placeholder="Resolved automatically from medicine catalog" readonly/>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+              <div class="form-group">
+                <label class="form-label">Dosage *</label>
+                <input type="text" id="prescribe-dosage-input" class="form-control" placeholder="e.g. 500mg or 625 Duo" value="625 Duo" required/>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Frequency / Schedule *</label>
+                <select id="prescribe-freq-select" class="form-control" onchange="updateComputedQuantity()">
+                  <option value="ONCE_DAILY">Once Daily (Morning 08:00)</option>
+                  <option value="TWICE_DAILY" selected>Twice Daily (08:00 &amp; 20:00)</option>
+                  <option value="THRICE_DAILY">Thrice Daily (08:00, 14:00, 20:00)</option>
+                  <option value="BEDTIME">Bedtime Only (21:00)</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <div class="flex items-center justify-between mb-1">
+                  <label class="form-label mb-0">For how many days?</label>
+                  <span id="prescribe-computed-quantity" class="text-xs font-bold text-primary">About 14 tablets</span>
+                </div>
+                <div class="flex items-center gap-1.5 mb-1.5 flex-wrap">
+                  <button type="button" onclick="setPrescribeDuration(3)" class="duration-chip badge badge-indigo cursor-pointer hover:bg-doctor-soft">3d</button>
+                  <button type="button" onclick="setPrescribeDuration(5)" class="duration-chip badge badge-indigo cursor-pointer hover:bg-doctor-soft">5d</button>
+                  <button type="button" onclick="setPrescribeDuration(7)" class="duration-chip badge badge-teal cursor-pointer font-bold border-teal">7d</button>
+                  <button type="button" onclick="setPrescribeDuration(14)" class="duration-chip badge badge-indigo cursor-pointer hover:bg-doctor-soft">14d</button>
+                  <button type="button" onclick="setPrescribeDuration(30)" class="duration-chip badge badge-indigo cursor-pointer hover:bg-doctor-soft">30d</button>
+                </div>
+                <input type="number" id="prescribe-duration-input" class="form-control" placeholder="7" value="7" min="1" max="90" oninput="updateComputedQuantity()"/>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Clinical Notes &amp; Patient Instructions</label>
+              <input type="text" id="prescribe-notes-input" class="form-control" placeholder="e.g. Take with food. Do not skip doses."/>
+            </div>
+
+            <button type="submit" id="btn-submit-prescription" class="btn btn-doctor w-full h-12 text-base font-bold">
+              <svg class="lucide-icon sm" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              <span data-i18n="btn_prescribe">Run AI Safety Check & Prescribe</span>
+            </button>
+          </form>
+        </div>
+
+        <!-- Active Prescriptions List -->
+        <div class="space-y-4">
+          <div class="flex items-center justify-between">
+            <h3 class="font-extrabold text-base text-main">Current Active Regimen</h3>
+            <span class="text-xs text-muted">Audit-tracked dosage modifications and discontinuations</span>
+          </div>
+          <div id="doctor-prescriptions-list" class="space-y-3">
+            <!-- Populated via doctor.js -->
+          </div>
+        </div>
+
+      </div>
+
+      <!-- =================================================================== -->
+      <!-- SECTION 5: BHASHASEHAT CLINICAL TRANSLATOR                          -->
+      <!-- =================================================================== -->
+      <div id="section-translator" class="doctor-section-pane space-y-6 {% if current_sec != 'translator' %}hidden{% endif %}">
+        <div class="card p-6 space-y-4">
+          <div class="card-header">
+            <h3 class="card-title">
+              <svg class="lucide-icon text-primary" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+              <span>BhashaSehat Multilingual Clinical Translator</span>
+            </h3>
+            <span class="badge badge-teal text-xs">82 PHRASEBOOK ENTRIES · NATIVE SCRIPTS</span>
+          </div>
+
+          <!-- Language Selector Strip -->
+          <div class="flex items-center gap-3 p-3 rounded-xl bg-card-subtle border border-subtle">
+            <div class="flex-1">
+              <label class="text-[10px] font-bold text-muted uppercase">Source Language</label>
+              <select id="trans-source-lang" class="form-control text-xs">
+                <option value="Odia" selected>Odia (ଓଡ଼ିଆ)</option>
+                <option value="Hindi">Hindi (हिंदी)</option>
+                <option value="Kannada">Kannada (ಕನ್ನಡ)</option>
+                <option value="Tamil">Tamil (தமிழ்)</option>
+                <option value="Telugu">Telugu (తెలుగు)</option>
+                <option value="English">English</option>
+              </select>
+            </div>
+            <button type="button" onclick="swapTranslatorLanguages()" class="icon-btn mt-4" title="Swap Languages">
+              <svg class="lucide-icon sm" viewBox="0 0 24 24"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>
+            </button>
+            <div class="flex-1">
+              <label class="text-[10px] font-bold text-muted uppercase">Target Language</label>
+              <select id="trans-target-lang" class="form-control text-xs">
+                <option value="English" selected>English</option>
+                <option value="Odia">Odia (ଓଡ଼ିଆ)</option>
+                <option value="Hindi">Hindi (हिंदी)</option>
+                <option value="Kannada">Kannada (ಕನ್ನಡ)</option>
+                <option value="Tamil">Tamil (தமிழ்)</option>
+                <option value="Telugu">Telugu (తెలుగు)</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Preset Phrasebook Chips -->
+          <div>
+            <span class="text-xs font-bold text-muted uppercase tracking-wider block mb-2">Preset Clinical Phrases (Click to Translate):</span>
+            <div class="flex flex-wrap gap-2">
+              <button type="button" onclick="fillTranslatePhrase('Mo chhati re kasta heuchi', 'Odia', 'English')" class="badge badge-teal cursor-pointer">
+                "Mo chhati re kasta heuchi" (Chest pain)
+              </button>
+              <button type="button" onclick="fillTranslatePhrase('Kouthi kasta heuchi?', 'Odia', 'English')" class="badge badge-indigo cursor-pointer">
+                "Kouthi kasta heuchi?" (Where does it hurt?)
+              </button>
+              <button type="button" onclick="fillTranslatePhrase('Aapana ku kou aushadha allergy achhi ki?', 'Odia', 'English')" class="badge badge-amber cursor-pointer">
+                "Allergy achhi ki?" (Any allergies?)
+              </button>
+              <button type="button" onclick="fillTranslatePhrase('Ei aushadha dina ku dui thara khaaiba', 'Odia', 'English')" class="badge badge-green cursor-pointer">
+                "Dina ku dui thara" (Twice daily instructions)
+              </button>
+            </div>
+          </div>
+
+          <!-- Input Box with Mic Speech Button -->
+          <div class="form-group relative">
+            <label class="form-label">Clinical Input Text</label>
+            <div class="flex gap-2">
+              <textarea id="trans-input-text" class="form-control text-sm" placeholder="Type clinical symptoms in native language or English..." rows="2">Mo chhati re kasta heuchi</textarea>
+              <button type="button" onclick="startVoiceInput()" class="btn btn-secondary px-3" title="Record Voice">
+                <svg class="lucide-icon" viewBox="0 0 24 24"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="22"/></svg>
+              </button>
+            </div>
+          </div>
+
+          <button type="button" onclick="handleTranslateSubmit()" class="btn btn-primary w-full">
+            <svg class="lucide-icon sm" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/></svg>
+            <span data-i18n="btn_translate">Translate Clinical Statement</span>
+          </button>
+
+          <!-- Result Card -->
+          <div id="trans-result-box" class="p-5 rounded-2xl bg-card-subtle border border-subtle space-y-3 hidden">
+            <div class="flex items-center justify-between pb-2 border-b border-subtle">
+              <span class="text-xs font-bold text-muted">Translation Result</span>
+              <button type="button" onclick="speakText(document.getElementById('trans-output-text').innerText, 'en-US')" class="btn-read-aloud">
+                <svg class="lucide-icon sm" viewBox="0 0 24 24"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+                <span>Play Voice</span>
+              </button>
+            </div>
+            <p id="trans-output-text" class="text-lg font-extrabold text-main leading-relaxed"></p>
+            <p id="trans-phonetic-text" class="text-xs font-mono text-muted"></p>
+            <div id="trans-symptoms-chips" class="flex gap-2 flex-wrap pt-2"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- =================================================================== -->
+      <!-- SECTION 6: DOCUMENT AI SCANNER                                      -->
+      <!-- =================================================================== -->
+      <div id="section-ocr" class="doctor-section-pane space-y-6 {% if current_sec != 'ocr' %}hidden{% endif %}">
+        <div class="card p-6 space-y-5">
+          <div class="card-header">
+            <h3 class="card-title">
+              <svg class="lucide-icon text-primary" viewBox="0 0 24 24"><path d="M3 7V5a2 2 0 0 1 2-2h2"/><path d="M17 3h2a2 2 0 0 1 2 2v2"/><path d="M21 17v2a2 2 0 0 1-2 2h-2"/><path d="M7 21H5a2 2 0 0 1-2-2v-2"/></svg>
+              <span>Document AI: Historical Paper Prescription Scanner</span>
+            </h3>
+            <span class="badge badge-teal text-xs">8 CLINICAL SAMPLES · S3 VAULT</span>
+          </div>
+
+          <!-- Document AI Preset Picker -->
+          <div class="space-y-2">
+            <span class="text-xs font-bold text-muted uppercase tracking-wider">Select Sample Prescription Preset:</span>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
+              <button type="button" onclick="selectOcrSample('odisha_phc_paper_slip')" class="btn btn-secondary text-xs px-3 py-2 justify-between text-left">
+                <span>Odisha PHC Paper Slip (Warfarin &amp; Amoxyclav)</span>
+                <span class="badge badge-red text-[9px]">CONFLICT</span>
+              </button>
+              <button type="button" onclick="selectOcrSample('bihar_sadar_lab_slip')" class="btn btn-secondary text-xs px-3 py-2 justify-between text-left">
+                <span>Bihar Sadar Hospital Lab Slip</span>
+                <span class="badge badge-teal text-[9px]">LAB</span>
+              </button>
+              <button type="button" onclick="selectOcrSample('smudged_low_confidence_rx')" class="btn btn-secondary text-xs px-3 py-2 justify-between text-left">
+                <span>Smudged Low-Confidence Slip (Needs Review)</span>
+                <span class="badge badge-amber text-[9px]">LOW CONF</span>
+              </button>
+              <button type="button" onclick="selectOcrSample('clean_typed_discharge_summary')" class="btn btn-secondary text-xs px-3 py-2 justify-between text-left">
+                <span>Clean Typed Discharge Summary</span>
+                <span class="badge badge-green text-[9px]">CLEAN</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Drag and Drop Zone -->
+          <div id="ocr-dropzone" class="p-8 border-2 border-dashed border-primary/40 rounded-2xl text-center bg-card-subtle space-y-2 cursor-pointer hover:bg-card-hover transition-colors">
+            <div class="w-12 h-12 rounded-full bg-primary-soft text-primary mx-auto flex items-center justify-center">
+              <svg class="lucide-icon" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+            </div>
+            <h4 class="font-extrabold text-sm text-main">Drag and Drop Paper Prescription / Lab Slip</h4>
+            <p class="text-xs text-muted">Supports JPG, PNG, PDF up to 10MB. S3 HIPAA Encrypted.</p>
+          </div>
+
+          <button type="button" id="btn-run-ocr" onclick="executeOcrScan()" class="btn btn-doctor w-full h-12 font-bold">
+            <svg class="lucide-icon sm" viewBox="0 0 24 24"><path d="M3 7V5a2 2 0 0 1 2-2h2"/><path d="M17 3h2a2 2 0 0 1 2 2v2"/><path d="M21 17v2a2 2 0 0 1-2 2h-2"/><path d="M7 21H5a2 2 0 0 1-2-2v-2"/></svg>
+            <span data-i18n="btn_scan">Scan Slip with Amazon Textract &amp; Comprehend</span>
+          </button>
+
+          <!-- OCR Results Pane (Side-by-Side Raw OCR vs Extracted Entities) -->
+          <div id="ocr-results-container" class="space-y-4 hidden">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div class="p-4 rounded-xl border border-subtle bg-card space-y-2">
+                <span class="text-xs font-bold text-muted uppercase">Raw OCR Text Stream</span>
+                <pre id="ocr-raw-text" class="text-xs font-mono bg-bg-card-subtle p-3 rounded-lg max-h-48 overflow-y-auto whitespace-pre-wrap"></pre>
+              </div>
+              <div class="p-4 rounded-xl border border-subtle bg-card space-y-2">
+                <span class="text-xs font-bold text-muted uppercase">Structured Extracted Medicines</span>
+                <div id="ocr-medicines-list" class="space-y-2 text-xs"></div>
+              </div>
+            </div>
+            <button type="button" id="btn-ocr-add-to-profile" onclick="addOcrScanToProfile()" class="btn btn-primary w-full text-xs">
+              <svg class="lucide-icon sm" viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+              <span>Add Verified Prescriptions to Patient Profile</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- =================================================================== -->
+      <!-- SECTION 7: KAAMSURAKSHA OCCUPATIONAL WORK-RISK                      -->
+      <!-- =================================================================== -->
+      <div id="section-workrisk" class="doctor-section-pane space-y-6 {% if current_sec != 'workrisk' %}hidden{% endif %}">
+        <div class="card p-6 space-y-5">
+          <div class="card-header">
+            <h3 class="card-title">
+              <svg class="lucide-icon text-warning" viewBox="0 0 24 24"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/></svg>
+              <span>KaamSuraksha: Occupational Hazard &amp; Silicosis Screening</span>
+            </h3>
+            <span class="badge badge-amber text-xs">12 OCCUPATIONAL RISK MATRICES</span>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div class="form-group">
+              <label class="form-label" data-i18n="label_occupation">Occupation / Trade</label>
+              <select id="risk-occupation" class="form-control" onchange="recalcWorkRisk()">
+                <option value="Construction Site Mason (Tile & Silica Cutting)" selected>Construction Mason (Silica/Tile Cutting)</option>
+                <option value="Quarry / Stone Crusher Worker">Quarry / Stone Crusher Worker</option>
+                <option value="Textile Mill Machine Operator">Textile / Garment Worker (Cotton Dust)</option>
+                <option value="Welder / Metal Fabricator">Welder / Metal Fabricator</option>
+                <option value="Painter / Solvent Handler">Painter / Battery Work (Lead/Solvent)</option>
+                <option value="Domestic Worker">Domestic Worker</option>
+                <option value="Delivery Rider">Delivery Rider (Traffic Exhaust / Noise)</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <div class="flex items-center justify-between">
+                <label class="form-label" data-i18n="label_exposure_years">Exposure Duration (Years)</label>
+                <span id="exposure-years-val" class="font-bold text-primary text-xs">6 Years</span>
+              </div>
+              <input type="range" id="risk-exposure-years" min="1" max="40" value="6" class="w-full" oninput="document.getElementById('exposure-years-val').innerText = this.value + ' Years'; recalcWorkRisk()"/>
+            </div>
+          </div>
+
+          <!-- Symptoms Checklist -->
+          <div class="space-y-2">
+            <span class="text-xs font-bold text-muted uppercase tracking-wider">Reported Occupational Symptoms:</span>
+            <div class="flex flex-wrap gap-2 text-xs">
+              <label class="badge badge-teal cursor-pointer flex items-center gap-1.5 p-2">
+                <input type="checkbox" id="sym-cough" checked onchange="recalcWorkRisk()"/>
+                <span>Persistent Morning Cough</span>
+              </label>
+              <label class="badge badge-teal cursor-pointer flex items-center gap-1.5 p-2">
+                <input type="checkbox" id="sym-dyspnea" checked onchange="recalcWorkRisk()"/>
+                <span>Shortness of Breath on Exertion</span>
+              </label>
+              <label class="badge badge-teal cursor-pointer flex items-center gap-1.5 p-2">
+                <input type="checkbox" id="sym-chest-tightness" onchange="recalcWorkRisk()"/>
+                <span>Chest Tightness</span>
+              </label>
+              <label class="badge badge-teal cursor-pointer flex items-center gap-1.5 p-2">
+                <input type="checkbox" id="sym-wheezing" onchange="recalcWorkRisk()"/>
+                <span>Wheezing</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- Risk Assessment Outcome Gauge & Recommendations -->
+          <div id="risk-outcome-box" class="p-5 rounded-2xl border-2 border-danger bg-danger-soft space-y-3">
+            <div class="flex items-center justify-between pb-2 border-b border-danger/30">
+              <span class="text-xs font-bold text-danger uppercase tracking-wider">Calculated Risk Tier</span>
+              <span id="risk-tier-badge" class="badge badge-red font-bold text-xs">HIGH RISK (Silicosis)</span>
+            </div>
+            <p id="risk-clinical-guidance" class="text-sm font-semibold text-danger leading-relaxed">
+              High risk of occupational Silicosis detected due to &gt;5 years silica exposure and persistent respiratory symptoms. Mandatory screening protocol advised.
+            </p>
+            <div class="p-3 bg-white dark:bg-slate-900 rounded-xl space-y-1.5 text-xs">
+              <strong>Statutory Screening Checklist:</strong>
+              <ul class="list-disc pl-4 space-y-1 text-muted">
+                <li>High-Resolution Computed Tomography (HRCT) of Chest</li>
+                <li>Pre- and Post-Bronchodilator Spirometry (FEV1/FVC Assessment)</li>
+                <li>N95 / FFP2 Particulate Mask Mandate at Worksite</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- =================================================================== -->
+      <!-- SECTION 8: SEHATSETU FOLLOW-UP & ASHA CONTINUITY                    -->
+      <!-- =================================================================== -->
+      <div id="section-followup" class="doctor-section-pane space-y-6 hidden">
+        <div class="card p-6 space-y-5">
+          <div class="card-header">
+            <h3 class="card-title">
+              <svg class="lucide-icon text-primary" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              <span>SehatSetu: Cross-State Care Continuity &amp; ASHA Linkage</span>
+            </h3>
+            <span class="badge badge-teal text-xs">AMAZON PINPOINT &amp; SNS ALERTS</span>
+          </div>
+
+          <form id="followup-form" onsubmit="handleFollowupSubmit(event)" class="space-y-4">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div class="form-group">
+                <label class="form-label">Follow-up Target Date *</label>
+                <input type="date" id="followup-date" class="form-control" required/>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Clinic / Hospital *</label>
+                <input type="text" id="followup-clinic" class="form-control" value="Manipal Hospital Whitefield, Bengaluru" required/>
+              </div>
+            </div>
+
+            <!-- Home State ASHA Worker Selector -->
+            <div class="form-group">
+              <label class="form-label">Linked Home-State ASHA Coordinator *</label>
+              <select id="followup-asha-select" class="form-control">
+                <option value="ASHA-OD-402" selected>Minati Sethi (ASHA-OD-402) · Ganjam, Odisha (Odia)</option>
+                <option value="ASHA-OD-403">Basanti Jena (ASHA-OD-403) · Kendrapara, Odisha (Odia)</option>
+                <option value="ASHA-KA-101">Shailaja Gowda (ASHA-KA-101) · Bengaluru Urban (Kannada)</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Care Instructions for ASHA Worker</label>
+              <textarea id="followup-notes" class="form-control" placeholder="Check INR test completion and refill adherence..."></textarea>
+            </div>
+
+            <button type="submit" id="btn-schedule-followup" class="btn btn-doctor w-full h-12 text-sm font-bold">
+              <svg class="lucide-icon sm" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              <span data-i18n="btn_schedule_followup">Sync Cross-State Follow-up &amp; Dispatch SMS</span>
+            </button>
+          </form>
+
+          <!-- Bilingual SMS Phone Bubble Preview -->
+          <div id="followup-sms-preview-card" class="p-4 rounded-2xl bg-card-subtle border border-subtle space-y-2 hidden">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-bold text-muted">Bilingual SMS / WhatsApp Preview (Delivered via Pinpoint)</span>
+              <span class="badge badge-teal text-[9px]">EN / ODIA</span>
+            </div>
+            <div class="p-3 bg-white dark:bg-slate-900 rounded-xl border border-subtle font-mono text-xs text-main leading-relaxed" id="sms-preview-text"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- =================================================================== -->
+      <!-- SECTION 9: CLOUDTRAIL AUDIT STREAM                                  -->
+      <!-- =================================================================== -->
+      <div id="section-audit" class="doctor-section-pane space-y-6 hidden">
+        <div class="card p-6 space-y-4">
+          <div class="card-header">
+            <h3 class="card-title">
+              <svg class="lucide-icon text-muted" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              <span>CloudTrail Immutable Statutory Audit Stream</span>
+            </h3>
+            <span class="badge badge-teal text-xs">HIPAA COMPLIANT</span>
+          </div>
+          <div id="doctor-audit-stream-list" class="space-y-3">
+            <!-- Populated via doctor.js -->
+          </div>
+        </div>
+      </div>
+
+    </main>
+
+    <!-- RIGHT STICKY SAFETY RAIL (Desktop Only) -->
+    <aside class="doctor-safety-rail hidden xl:block">
+      <div class="safety-rail-sticky space-y-4">
+        
+        <div class="flex items-center justify-between pb-2 border-b border-subtle">
+          <div class="flex items-center gap-1.5 font-bold text-xs text-danger uppercase tracking-wider">
+            <svg class="lucide-icon sm" viewBox="0 0 24 24"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/></svg>
+            <span>Safety Rail</span>
+          </div>
+          <span class="badge badge-green text-[10px]" id="safety-rail-status">LIVE MONITORING</span>
+        </div>
+
+        <!-- 1. Allergies -->
+        <div class="p-3 rounded-xl bg-danger-soft border border-danger-border space-y-1.5">
+          <span class="text-[10px] font-extrabold text-danger uppercase block">Allergies (Severe)</span>
+          <div id="safety-rail-allergies" class="text-xs font-bold text-danger">
+            Penicillin
+          </div>
+        </div>
+
+        <!-- 2. Active Regimen Quick View -->
+        <div class="p-3 rounded-xl bg-card border border-subtle space-y-1.5">
+          <span class="text-[10px] font-extrabold text-muted uppercase block">Active Regimen</span>
+          <div id="safety-rail-medicines" class="space-y-1 text-xs">
+            <!-- Dynamic medicines -->
+          </div>
+        </div>
+
+        <!-- 3. Key Clinical Markers (INR / HbA1c) -->
+        <div class="p-3 rounded-xl bg-card border border-subtle space-y-2">
+          <span class="text-[10px] font-extrabold text-muted uppercase block">Latest Biomarkers</span>
+          <div class="flex justify-between items-center text-xs">
+            <span>HbA1c:</span>
+            <strong class="font-bold text-teal" id="rail-hba1c">7.4% (Improving)</strong>
+          </div>
+          <div class="flex justify-between items-center text-xs">
+            <span>INR:</span>
+            <strong class="font-bold text-danger" id="rail-inr">2.6 (Recent 3.4 alert)</strong>
+          </div>
+          <div class="flex justify-between items-center text-xs">
+            <span>SpO2:</span>
+            <strong class="font-bold text-main" id="rail-spo2">97%</strong>
+          </div>
+        </div>
+
+        <!-- 4. Active Safety Gate Alerts -->
+        <div class="p-3 rounded-xl bg-card border border-subtle space-y-1.5">
+          <span class="text-[10px] font-extrabold text-muted uppercase block">Safety Gatekeeper Status</span>
+          <div class="text-[11px] text-muted space-y-1">
+            <div>• Penicillin class blocked</div>
+            <div>• Warfarin interaction monitored</div>
+            <div>• Silicosis screening recommended</div>
+          </div>
+        </div>
+
+      </div>
+    </aside>
+
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- SAFETY MODAL (When Prescription is BLOCKED)                               -->
+  <!-- ========================================================================= -->
+  <div id="safety-interception-modal" class="modal-backdrop" onclick="if(event.target === this) closeModal('safety-interception-modal')">
+    <div class="modal-dialog safety-alert-dialog p-6 sm:p-8 space-y-5">
+      <div class="flex items-center gap-3 pb-3 border-b border-subtle">
+        <div class="w-12 h-12 rounded-xl bg-danger-soft text-danger flex items-center justify-center flex-shrink-0">
+          <svg class="lucide-icon lg" viewBox="0 0 24 24"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/></svg>
+        </div>
+        <div>
+          <span class="badge badge-red text-xs">CRITICAL SAFETY INTERCEPTION</span>
+          <h3 class="text-xl font-extrabold text-main mt-0.5">Prescription Blocked by Clinical Gatekeeper</h3>
+        </div>
+      </div>
+
+      <!-- Plain Language Explanation & Source -->
+      <div class="p-4 rounded-xl bg-danger-soft border border-danger-border space-y-2">
+        <div class="flex items-center justify-between text-xs">
+          <span class="font-bold text-danger">Safety Alert</span>
+          <span class="badge bg-white text-danger font-mono text-[10px]" id="safety-modal-source">RULES_ENGINE</span>
+        </div>
+        <p id="safety-modal-explanation" class="text-sm font-semibold text-danger leading-relaxed">
+          Prescription contraindicated due to verified penicillin allergy.
         </p>
       </div>
-      <div class="p-2.5 rounded-xl bg-surface-container-low text-xs space-y-1">
-        <span class="font-bold text-on-surface">Co-Managing Physicians:</span>
-        <div class="text-on-surface-variant text-[11px]">
-          • Dr. Sarah Jenkins (Cardiology, City Heart)<br/>
-          • Dr. Rajesh Verma (Endocrinology, Aster CMI)
-        </div>
-      </div>
-    </div>
-  </div>
 
-  <!-- ======================================================================= -->
-  <!-- 3. Unified Cross-System Medications Table -->
-  <!-- ======================================================================= -->
-  <div class="bg-surface-container-lowest rounded-2xl p-5 border border-surface-container-high/80 shadow-xs space-y-4">
-    {% set active_rx_list = data.active_prescriptions if data.active_prescriptions is defined and data.active_prescriptions else (data.activePrescriptions if data.activePrescriptions is defined and data.activePrescriptions else []) %}
-    {% set disc_rx_list = data.discontinued_prescriptions if data.discontinued_prescriptions is defined and data.discontinued_prescriptions else (data.discontinuedPrescriptions if data.discontinuedPrescriptions is defined and data.discontinuedPrescriptions else []) %}
-    <div class="flex items-center justify-between">
-      <div class="flex items-center gap-2.5">
-        <div class="w-8 h-8 rounded-xl bg-primary-container text-white flex items-center justify-center">
-          <span class="material-symbols-outlined text-[18px]">hub</span>
-        </div>
-        <div>
-          <h2 class="font-headline font-bold text-base text-on-surface">Active Cross-System Prescriptions</h2>
-          <p class="text-xs text-on-surface-variant">Synchronized across connected EHR health systems</p>
-        </div>
-      </div>
-      <span class="text-xs font-bold bg-surface-container px-2.5 py-1 rounded-full text-primary" id="active-rx-count-badge">
-        {{ active_rx_list|length }} Active Regimens
-      </span>
-    </div>
-
-    <!-- Active Prescriptions Grid -->
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-3.5" id="prescriptions-container">
-      {% if active_rx_list %}
-        {% for rx in active_rx_list %}
-        {% set rx_id = rx.prescription_id or rx.prescriptionId %}
-        {% set med_name = rx.medication_name or rx.medicationName %}
-        {% set prescriber = rx.prescribed_by or rx.prescribedBy or 'Attending Physician' %}
-        <div class="p-4 rounded-xl bg-surface-container-low border border-surface-container-high flex flex-col justify-between gap-3 transition-all duration-300" id="rx-card-{{ rx_id }}">
-          <div>
-            <div class="flex items-start justify-between gap-2">
-              <div>
-                <h3 class="font-headline font-bold text-sm text-on-surface flex items-center gap-1.5" id="rx-name-{{ rx_id }}">
-                  <span>{{ med_name }}</span>
-                </h3>
-                <span class="inline-block mt-0.5 text-xs font-bold text-primary bg-white px-2 py-0.5 rounded border border-surface-container-high" id="rx-dose-badge-{{ rx_id }}">
-                  {{ rx.dosage }} • {{ rx.frequency }}
-                </span>
-              </div>
-              <span class="text-[11px] font-bold px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 border border-emerald-300" id="rx-status-badge-{{ rx_id }}">
-                {{ rx.status or 'ACTIVE' }}
-              </span>
-            </div>
-            <p class="text-xs text-on-surface-variant mt-2">
-              Prescribed by <strong class="text-on-surface">{{ prescriber }}</strong>
-            </p>
-            {% if rx.instructions %}
-            <p class="text-xs text-on-surface-variant/80 italic mt-0.5" id="rx-instr-{{ rx_id }}">
-              "{{ rx.instructions }}"
-            </p>
-            {% endif %}
-          </div>
-
-          <!-- Prescription Action Buttons -->
-          <div class="flex items-center justify-between pt-2.5 border-t border-surface-container-high/60 text-xs" id="rx-actions-{{ rx_id }}">
-            <span class="text-[11px] font-mono text-on-surface-variant" id="rx-ver-{{ rx_id }}">
-              {{ rx_id }} (v{{ rx.version or 1 }})
-            </span>
-            <div class="flex items-center gap-2">
-              <button onclick="modifyRx('{{ rx_id }}', '{{ med_name }}', '{{ rx.dosage }}')" 
-                      class="px-2.5 py-1.5 rounded-lg bg-surface-container hover:bg-surface-container-high text-primary font-bold transition-all flex items-center gap-1 text-xs shadow-2xs hover:shadow-xs active:scale-95" 
-                      title="Modify Dosage" 
-                      id="btn-modify-{{ rx_id }}">
-                <span class="text-[13px]">✏️</span>
-                <span>Modify Dosage</span>
-              </button>
-              <button onclick="discontinueRx('{{ rx_id }}', '{{ med_name }}')" 
-                      class="px-2.5 py-1.5 rounded-lg bg-error-container/70 hover:bg-error hover:text-white text-error font-bold transition-all flex items-center gap-1 text-xs shadow-2xs hover:shadow-xs active:scale-95 border border-error/20" 
-                      title="Discontinue Medication" 
-                      id="btn-disc-{{ rx_id }}">
-                <span class="text-[13px]">🚫</span>
-                <span>Discontinue Medication</span>
-              </button>
-            </div>
-          </div>
-        </div>
-        {% endfor %}
-      {% else %}
-        <div class="col-span-2 p-6 rounded-xl bg-surface-container-low text-center text-xs text-on-surface-variant" id="active-rx-empty-placeholder">
-          No active prescriptions currently on file.
-        </div>
-      {% endif %}
-    </div>
-
-    <!-- Discontinued Prescriptions Archive Section -->
-    <div class="mt-4 pt-4 border-t border-surface-container-high/60" id="discontinued-section">
-      <div class="flex items-center justify-between mb-3">
-        <div class="flex items-center gap-2">
-          <span class="material-symbols-outlined text-error text-[18px]">cancel</span>
-          <h3 class="font-headline font-bold text-xs uppercase tracking-wide text-error">Discontinued Regimens & Cessation History</h3>
-        </div>
-        <span class="text-[11px] font-bold px-2 py-0.5 rounded-full bg-error-container text-error" id="disc-count-badge">
-          {{ disc_rx_list|length }} Discontinued
-        </span>
-      </div>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-3" id="discontinued-container">
-        {% if disc_rx_list %}
-          {% for rx in disc_rx_list %}
-          {% set rx_id = rx.prescription_id or rx.prescriptionId %}
-          {% set med_name = rx.medication_name or rx.medicationName %}
-          <div class="p-3.5 rounded-xl bg-error-container/20 border border-error/30 flex flex-col justify-between gap-2" id="disc-card-{{ rx_id }}">
-            <div class="flex items-start justify-between gap-2">
-              <div>
-                <h4 class="font-headline font-bold text-xs text-on-surface line-through opacity-80">
-                  {{ med_name }} ({{ rx.dosage }})
-                </h4>
-                <p class="text-[11px] text-error font-medium mt-0.5">
-                  🚫 Reason: {{ rx.discontinue_reason or rx.reason or 'Discontinued per clinical decision' }}
-                </p>
-              </div>
-              <span class="text-[10px] font-bold px-2 py-0.5 rounded bg-error text-white uppercase">
-                DISCONTINUED
-              </span>
-            </div>
-            <div class="text-[10px] text-on-surface-variant flex items-center justify-between pt-1 border-t border-error/10">
-              <span class="font-mono">{{ rx_id }} (v{{ rx.version or 1 }})</span>
-              <span>By: {{ rx.lastModifiedBy or rx.prescribed_by or 'Doctor' }}</span>
-            </div>
-          </div>
-          {% endfor %}
-        {% else %}
-          <div class="col-span-2 p-3 rounded-lg bg-surface-container-low text-center text-xs text-on-surface-variant" id="disc-empty-placeholder">
-            No discontinued medications on file.
-          </div>
-        {% endif %}
-      </div>
-    </div>
-  </div>
-
-  <!-- ======================================================================= -->
-  <!-- 4. 3-Stage AI Safety Engine & CSV Medicine Catalog Menu -->
-  <!-- ======================================================================= -->
-  <div class="bg-surface-container-lowest rounded-2xl p-5 border border-surface-container-high/80 shadow-xs space-y-4">
-    <div class="flex items-center justify-between">
-      <div class="flex items-center gap-2.5">
-        <div class="w-8 h-8 rounded-xl bg-primary text-white flex items-center justify-center">
-          <span class="material-symbols-outlined text-[18px]">verified_user</span>
-        </div>
-        <div>
-          <h2 class="font-headline font-bold text-base text-on-surface">3-Stage AI Safety Gatekeeper & Catalog Search</h2>
-          <p class="text-xs text-on-surface-variant">Comprehend Medical + Bedrock LLM + 253,973 Medicine Catalog</p>
-        </div>
-      </div>
-      <span class="text-xs font-bold text-tertiary bg-tertiary-fixed/40 px-2.5 py-1 rounded-full flex items-center gap-1">
-        <span class="material-symbols-outlined text-[14px]">bolt</span>
-        Real-Time Safety Check
-      </span>
-    </div>
-
-    <!-- Rapid Category Selector Menu -->
-    <div class="p-3 rounded-xl bg-surface-container-low border border-surface-container-high space-y-2">
-      <label class="text-xs font-bold text-on-surface-variant block">Quick Catalog Filter by Therapeutic Category:</label>
-      <div class="flex items-center gap-2 flex-wrap" id="category-chips">
-        <button onclick="selectCategory('All')" class="cat-chip px-2.5 py-1 rounded-lg bg-primary text-white text-xs font-bold transition-colors">All Categories</button>
-        <button onclick="selectCategory('Antibiotic (Penicillin / Beta-lactam)')" class="cat-chip px-2.5 py-1 rounded-lg bg-surface-container text-on-surface text-xs font-semibold hover:bg-surface-container-high transition-colors">Penicillin / Beta-lactams</button>
-        <button onclick="selectCategory('Antibiotic (Macrolide)')" class="cat-chip px-2.5 py-1 rounded-lg bg-surface-container text-on-surface text-xs font-semibold hover:bg-surface-container-high transition-colors">Macrolides (Safer Alternative)</button>
-        <button onclick="selectCategory('Cardiovascular (Antiplatelet / Anticoagulant)')" class="cat-chip px-2.5 py-1 rounded-lg bg-surface-container text-on-surface text-xs font-semibold hover:bg-surface-container-high transition-colors">Cardiovascular / Antiplatelet</button>
-        <button onclick="selectCategory('Cardiovascular (Statin / Lipid)')" class="cat-chip px-2.5 py-1 rounded-lg bg-surface-container text-on-surface text-xs font-semibold hover:bg-surface-container-high transition-colors">Statins / Lipid Lowering</button>
-        <button onclick="selectCategory('Antidiabetic')" class="cat-chip px-2.5 py-1 rounded-lg bg-surface-container text-on-surface text-xs font-semibold hover:bg-surface-container-high transition-colors">Antidiabetic</button>
-      </div>
-    </div>
-
-    <!-- Prescription Input Form -->
-    <form id="rx-form" onsubmit="event.preventDefault(); runAISafetyCheck();" class="space-y-4">
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
-        <!-- Medicine Autocomplete Search -->
-        <div class="md:col-span-2 relative">
-          <label class="block text-xs font-bold text-on-surface mb-1">
-            Search Medicine / Tablet Catalog (253k Dataset):
-          </label>
-          <div class="relative">
-            <input 
-              id="med-search-input" 
-              type="text" 
-              placeholder="Type brand or generic name (e.g. Augmentin, Aspirin, Atorva, Azithral)..." 
-              autocomplete="off"
-              oninput="onSearchInput(this.value)"
-              class="w-full h-11 px-3.5 pr-9 rounded-xl bg-surface-container-low border border-surface-container-high text-xs font-semibold text-on-surface outline-none focus:border-primary transition-colors"
-            />
-            <span class="material-symbols-outlined absolute right-2.5 top-2.5 text-on-surface-variant text-[20px]">search</span>
-          </div>
-
-          <!-- Autocomplete Dropdown List -->
-          <div id="autocomplete-list" class="hidden absolute top-full left-0 right-0 mt-1 max-h-60 overflow-y-auto bg-white rounded-xl shadow-xl border border-surface-container-high z-30 divide-y divide-surface-container-low"></div>
-        </div>
-
-        <!-- Dosage & Strength -->
-        <div>
-          <label class="block text-xs font-bold text-on-surface mb-1">Dosage / Strength:</label>
-          <input 
-            id="rx-dosage" 
-            type="text" 
-            placeholder="e.g. 500 mg or 10 mg" 
-            value="500 mg"
-            class="w-full h-11 px-3.5 rounded-xl bg-surface-container-low border border-surface-container-high text-xs font-semibold text-on-surface outline-none focus:border-primary transition-colors"
-          />
-        </div>
+      <!-- Catalog Alternatives -->
+      <div class="space-y-2">
+        <span class="text-xs font-bold text-muted uppercase tracking-wider block">Recommended Safe Catalog Alternatives:</span>
+        <div id="safety-modal-alternatives" class="flex flex-wrap gap-2 text-xs"></div>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
-        <div>
-          <label class="block text-xs font-bold text-on-surface mb-1">Dosing Frequency:</label>
-          <select id="rx-frequency" class="w-full h-11 px-3.5 rounded-xl bg-surface-container-low border border-surface-container-high text-xs font-semibold text-on-surface outline-none focus:border-primary transition-colors cursor-pointer">
-            <option value="Once daily (Morning 08:00)">Once daily (Morning 08:00)</option>
-            <option value="Twice daily (08:00 & 20:00)">Twice daily (08:00 & 20:00)</option>
-            <option value="Three times daily (08:00, 14:00, 20:00)">Three times daily (08:00, 14:00, 20:00)</option>
-            <option value="Bedtime (22:00)">Bedtime (22:00)</option>
-          </select>
-        </div>
-
-        <div>
-          <label class="block text-xs font-bold text-on-surface mb-1">Clinical Instructions / Notes:</label>
-          <input 
-            id="rx-notes" 
-            type="text" 
-            placeholder="e.g. Take with food, monitor INR" 
-            value="Take after breakfast with water"
-            class="w-full h-11 px-3.5 rounded-xl bg-surface-container-low border border-surface-container-high text-xs font-semibold text-on-surface outline-none focus:border-primary transition-colors"
-          />
-        </div>
+      <!-- Override Section with Typed Justification -->
+      <div class="p-4 rounded-xl bg-card-subtle border border-subtle space-y-3">
+        <span class="text-xs font-bold text-muted uppercase block">Doctor Clinical Override (Audited)</span>
+        <textarea id="override-justification-input" class="form-control text-xs" placeholder="Mandatory typed clinical justification (min 15 characters)..."></textarea>
       </div>
 
-      <input type="hidden" id="selected-med-id" value=""/>
-      <input type="hidden" id="selected-med-name" value=""/>
-
-      <!-- Submit Button -->
-      <button 
-        type="submit" 
-        id="btn-run-safety" 
-        class="w-full h-12 rounded-xl bg-primary hover:bg-primary-container text-white font-headline font-bold text-sm shadow-md flex items-center justify-center gap-2 active:scale-[0.99] transition-all"
-      >
-        <span class="material-symbols-outlined text-[20px]">verified_user</span>
-        <span>Run AI Safety Check & Prescribe</span>
-      </button>
-    </form>
-
-    <!-- ===================================================================== -->
-    <!-- DYNAMIC SAFETY ALERT / CONFLICT CARD (Hidden by default) -->
-    <!-- ===================================================================== -->
-    <div id="safety-alert-container" class="hidden space-y-4 pt-2">
-      <div class="rounded-2xl bg-error-container p-5 border border-error/30 shadow-md space-y-3.5">
-        <!-- Alert Header -->
-        <div class="flex items-start gap-3">
-          <div class="w-10 h-10 rounded-xl bg-error text-white flex items-center justify-center flex-shrink-0 shadow-xs">
-            <span class="material-symbols-outlined text-[24px] fill-1">dangerous</span>
-          </div>
-          <div class="flex-1 min-w-0">
-            <h3 class="font-headline font-bold text-sm text-on-error-container leading-tight" id="alert-title">
-              CRITICAL SAFETY INTERACTION DETECTED
-            </h3>
-            <p class="text-xs text-error font-bold tracking-wide uppercase mt-0.5" id="alert-subtitle">
-              AWS Bedrock & Comprehend Medical Contraindication Protocol
-            </p>
-          </div>
-        </div>
-
-        <!-- Conflict Details Box -->
-        <div class="bg-white rounded-xl p-4 border border-error/20 space-y-2 text-on-surface">
-          <div class="flex items-center justify-between text-error text-xs font-bold">
-            <span class="flex items-center gap-1">
-              <span class="material-symbols-outlined text-[16px]">sync_problem</span>
-              <span id="alert-conflict-type">Allergy / Drug Interaction</span>
-            </span>
-            <span class="bg-error/10 px-2 py-0.5 rounded" id="alert-severity">Level 1: Lethal Risk</span>
-          </div>
-          <p class="text-sm font-bold text-on-surface" id="alert-med-pair">
-            Proposed Medication + Patient Regimen
-          </p>
-          <p class="text-xs text-on-surface-variant leading-relaxed" id="alert-description">
-            Detailed clinical interaction mechanism.
-          </p>
-        </div>
-
-        <!-- Suggested Safer Alternatives from CSV Catalog -->
-        <div class="space-y-2" id="alternatives-box">
-          <span class="text-xs font-bold text-on-error-container uppercase tracking-wide flex items-center gap-1">
-            <span class="material-symbols-outlined text-[16px]">auto_awesome</span>
-            Safer Clinical Alternatives (from Catalog):
-          </span>
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2" id="alternatives-list">
-            <!-- Dynamic alternative buttons injected here -->
-          </div>
-        </div>
-
-        <!-- Accordion: Doctor Clinical Override Section -->
-        <div class="pt-2 border-t border-error/20">
-          <button 
-            type="button" 
-            onclick="toggleOverrideAccordion()" 
-            class="flex items-center justify-between w-full py-1 text-on-error-container font-headline font-bold text-xs"
-          >
-            <span class="flex items-center gap-1.5">
-              <span class="material-symbols-outlined text-[18px]">shield_person</span>
-              <span>Physician Clinical Override Protocol (CloudTrail Audited)</span>
-            </span>
-            <span class="material-symbols-outlined text-[18px] transition-transform" id="override-chevron">expand_more</span>
-          </button>
-
-          <div id="override-panel" class="hidden space-y-3 pt-3">
-            <label class="flex items-start gap-2.5 p-3 rounded-xl bg-white border border-error/20 cursor-pointer">
-              <input type="checkbox" id="override-confirm-checkbox" onchange="checkOverrideValidity()" class="mt-0.5 w-4 h-4 text-error rounded"/>
-              <span class="text-xs text-on-surface leading-tight">
-                I verify that I have evaluated the clinical contraindication, informed the patient/caregiver, and accept medical-legal responsibility for this override.
-              </span>
-            </label>
-
-            <div>
-              <label class="block text-xs font-bold text-on-error-container mb-1">
-                Mandatory Clinical Justification (>15 characters required):
-              </label>
-              <textarea 
-                id="override-justification" 
-                rows="2" 
-                oninput="checkOverrideValidity()"
-                placeholder="State clinical rationale, specialized monitoring protocol (e.g. INR check cadence), and gastroprotection..." 
-                class="w-full p-3 rounded-xl bg-white border border-error/20 text-xs font-semibold text-on-surface outline-none resize-none focus:border-error"
-              ></textarea>
-            </div>
-
-            <div class="grid grid-cols-2 gap-2">
-              <button 
-                type="button" 
-                onclick="cancelSafetyBlock()" 
-                class="h-11 rounded-xl bg-white hover:bg-surface-container text-on-surface font-bold text-xs shadow-xs transition-colors"
-              >
-                Cancel Order (Safe)
-              </button>
-              <button 
-                type="button" 
-                id="btn-submit-override" 
-                disabled 
-                onclick="submitClinicalOverride()" 
-                class="h-11 rounded-xl bg-error text-white font-bold text-xs opacity-40 cursor-not-allowed transition-all flex items-center justify-center gap-1.5"
-              >
-                <span class="material-symbols-outlined text-[16px]">warning</span>
-                <span>Authorize Override</span>
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- ======================================================================= -->
-  <!-- 5. Comprehensive Shared Activity & Clinical Audit Timeline Log -->
-  <!-- ======================================================================= -->
-  <div class="bg-surface-container-lowest rounded-2xl p-5 border border-surface-container-high/80 shadow-xs space-y-4">
-    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-      <div class="flex items-center gap-2.5">
-        <div class="w-9 h-9 rounded-xl bg-primary/10 text-primary flex items-center justify-center font-bold">
-          <span class="material-symbols-outlined text-[20px]">history_edu</span>
-        </div>
-        <div>
-          <div class="flex items-center gap-2">
-            <h2 class="font-headline font-bold text-base text-on-surface">Shared Clinical Activity & Audit Timeline</h2>
-            <span class="px-2 py-0.5 rounded-full bg-tertiary-fixed text-on-tertiary-fixed text-[10px] font-bold flex items-center gap-1">
-              <span class="w-1.5 h-1.5 rounded-full bg-tertiary animate-pulse"></span>
-              <span>Live Ledger</span>
-            </span>
-          </div>
-          <p class="text-xs text-on-surface-variant">Real-time tamper-evident chronological stream of doctor prescriptions, overrides, dosage modifications, and patient dose telemetry.</p>
-        </div>
-      </div>
-      <div class="flex items-center gap-2">
-        <button onclick="fetchDoctorTimeline()" class="h-8 px-2.5 rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface text-xs font-semibold flex items-center gap-1 transition-colors" title="Sync live timeline">
-          <span class="material-symbols-outlined text-[16px]">sync</span>
-          <span>Refresh</span>
+      <div class="flex flex-col sm:flex-row gap-3 pt-2">
+        <button type="button" id="btn-cancel-blocked" onclick="closeModal('safety-interception-modal')" class="btn btn-secondary flex-1 font-bold">
+          Cancel &amp; Select Alternative
         </button>
-        <a href="/patient/{{ patient_id }}/prescription-pdf" target="_blank" class="h-8 px-2.5 rounded-lg bg-primary/10 hover:bg-primary/20 text-primary text-xs font-bold flex items-center gap-1 transition-colors" title="Download Official PDF Record">
-          <span class="material-symbols-outlined text-[16px]">picture_as_pdf</span>
-          <span>Export Clinical PDF</span>
-        </a>
-        <a href="/audit" class="text-xs font-bold text-primary hover:underline ml-1">CloudTrail Audit →</a>
+        <button type="button" onclick="submitClinicalOverride()" class="btn btn-danger flex-1 font-bold">
+          Override with Reason
+        </button>
       </div>
     </div>
+  </div>
 
-    <!-- Filter Category Chips -->
-    <div class="flex items-center gap-2 overflow-x-auto pb-1 text-xs" id="doctor-timeline-filters">
-      <button onclick="filterDoctorTimeline('ALL', this)" class="doc-tl-chip px-3 py-1 rounded-lg bg-primary text-white font-bold transition-all">All Events</button>
-      <button onclick="filterDoctorTimeline('PRESCRIPTION', this)" class="doc-tl-chip px-3 py-1 rounded-lg bg-surface-container text-on-surface font-medium hover:bg-surface-container-high transition-all">Prescriptions</button>
-      <button onclick="filterDoctorTimeline('OVERRIDE', this)" class="doc-tl-chip px-3 py-1 rounded-lg bg-surface-container text-on-surface font-medium hover:bg-surface-container-high transition-all">Clinical Overrides</button>
-      <button onclick="filterDoctorTimeline('ADHERENCE', this)" class="doc-tl-chip px-3 py-1 rounded-lg bg-surface-container text-on-surface font-medium hover:bg-surface-container-high transition-all">Patient Adherence</button>
-      <button onclick="filterDoctorTimeline('ALLERGY', this)" class="doc-tl-chip px-3 py-1 rounded-lg bg-surface-container text-on-surface font-medium hover:bg-surface-container-high transition-all">Allergies</button>
-      <button onclick="filterDoctorTimeline('PHARMACY', this)" class="doc-tl-chip px-3 py-1 rounded-lg bg-surface-container text-on-surface font-medium hover:bg-surface-container-high transition-all">Pharmacy</button>
-    </div>
-
-    <!-- Timeline Entries Stream -->
-    <div class="relative pl-6 space-y-4 before:absolute before:left-2.5 before:top-3 before:bottom-3 before:w-0.5 before:bg-surface-container-high" id="doctor-timeline-container">
-      {% set timeline = data.timelineEvents or data.timeline_events or [] %}
-      {% if timeline %}
-        {% for item in timeline %}
-        <div class="doctor-timeline-entry relative flex flex-col gap-1" data-category="{{ item.category or 'CLINICAL' }}">
-          {% set cat = item.category or 'CLINICAL' %}
-          <div class="absolute -left-[23px] top-1.5 w-3.5 h-3.5 rounded-full ring-4 ring-white
-            {% if cat == 'PRESCRIPTION' %}bg-primary
-            {% elif cat == 'OVERRIDE' %}bg-amber-600
-            {% elif cat == 'ADHERENCE' %}bg-tertiary
-            {% elif cat == 'ALLERGY' %}bg-error
-            {% elif cat == 'PHARMACY' %}bg-secondary
-            {% else %}bg-primary{% endif %}"></div>
-          
-          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
-            <span class="text-xs font-bold text-on-surface flex items-center gap-1.5">
-              <span>{{ item.title }}</span>
-            </span>
-            <div class="flex items-center gap-2">
-              <span class="text-[10px] font-bold px-2 py-0.5 rounded-md
-                {% if cat == 'PRESCRIPTION' %}bg-primary/10 text-primary
-                {% elif cat == 'OVERRIDE' %}bg-amber-500/10 text-amber-800
-                {% elif cat == 'ADHERENCE' %}bg-tertiary/10 text-tertiary
-                {% elif cat == 'ALLERGY' %}bg-error/10 text-error
-                {% elif cat == 'PHARMACY' %}bg-secondary/10 text-secondary
-                {% else %}bg-surface-container text-on-surface-variant{% endif %}">
-                {{ item.action or cat }}
-              </span>
-              <span class="text-[11px] font-mono text-on-surface-variant whitespace-nowrap">
-                {{ item.dateFormatted or '' }} • {{ item.timeFormatted or '' }}
-              </span>
-            </div>
-          </div>
-          <p class="text-xs text-on-surface-variant leading-relaxed">
-            {{ item.details }}
-          </p>
-          <div class="text-[10px] text-on-surface-variant/80 flex items-center gap-2 pt-0.5">
-            <span>Actor: <b>{{ item.actor }}</b> ({{ item.role or 'SYSTEM' }})</span>
-            {% if item.eventId %}
-            <span>• ID: <span class="font-mono">{{ item.eventId }}</span></span>
-            {% endif %}
-          </div>
+  <!-- ========================================================================= -->
+  <!-- EMERGENCY BREAK-GLASS MODAL (Min 15-char Justification)                   -->
+  <!-- ========================================================================= -->
+  <div id="break-glass-modal" class="modal-backdrop" onclick="if(event.target === this) closeModal('break-glass-modal')">
+    <div class="modal-dialog p-6 sm:p-8 space-y-5 border-2 border-danger">
+      <div class="flex items-center gap-3 pb-3 border-b border-subtle">
+        <div class="w-12 h-12 rounded-xl bg-danger text-white flex items-center justify-center flex-shrink-0">
+          <svg class="lucide-icon lg" viewBox="0 0 24 24"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/></svg>
         </div>
-        {% endfor %}
-      {% else %}
-        <div class="text-xs text-on-surface-variant p-4 text-center">No timeline events recorded yet.</div>
-      {% endif %}
+        <div>
+          <span class="badge badge-red text-xs">EMERGENCY PROTOCOL</span>
+          <h3 class="text-xl font-extrabold text-main mt-0.5">Emergency Break-Glass Override</h3>
+        </div>
+      </div>
+
+      <p class="text-xs text-muted leading-relaxed">
+        This override allows immediate access without the patient's Consent PIN for medical emergencies. Under HIPAA &amp; ABDM statutory regulations, this action logs your identity, timestamp, and typed clinical justification to an immutable CloudTrail ledger.
+      </p>
+
+      <div class="form-group">
+        <label class="form-label">Clinical Justification (Minimum 15 Characters) *</label>
+        <textarea id="break-glass-reason" class="form-control text-sm" placeholder="e.g. Patient presented unconscious in ER with acute coronary syndrome..." rows="3" required></textarea>
+        <div class="flex justify-between text-[11px] text-muted mt-1">
+          <span>Required by statutory audit compliance</span>
+          <span id="char-count">0 / 15 min</span>
+        </div>
+      </div>
+
+      <label class="flex items-start gap-2.5 text-xs text-muted cursor-pointer">
+        <input type="checkbox" id="break-glass-confirm-check" class="mt-0.5"/>
+        <span>I attest under medical penalty that this emergency override is clinically essential for acute patient survival.</span>
+      </label>
+
+      <div class="flex gap-3 pt-2">
+        <button type="button" onclick="closeModal('break-glass-modal')" class="btn btn-secondary flex-1 text-xs">Cancel</button>
+        <button type="button" id="btn-submit-break-glass" onclick="submitBreakGlassOverride()" class="btn btn-danger flex-1 text-xs font-bold" disabled>
+          Authorize Emergency Break-Glass
+        </button>
+      </div>
     </div>
   </div>
 
-</div>
-
-<!-- ========================================================================= -->
-<!-- MODAL: ADD ALLERGY -->
-<!-- ========================================================================= -->
-<div id="allergy-modal" class="fixed inset-0 z-50 bg-black/40 backdrop-blur-xs flex items-center justify-center p-4 hidden">
-  <div class="bg-white rounded-2xl p-5 max-w-md w-full border border-surface-container-high shadow-2xl space-y-4">
-    <div class="flex items-center justify-between">
-      <h3 class="font-headline font-bold text-base text-on-surface flex items-center gap-1.5">
-        <span class="material-symbols-outlined text-error text-[20px]">block</span>
-        <span>Add Verified Patient Allergy</span>
-      </h3>
-      <button onclick="toggleAllergyModal(false)" class="text-on-surface-variant hover:text-on-surface">
-        <span class="material-symbols-outlined text-[20px]">close</span>
-      </button>
-    </div>
-
-    <div class="space-y-3">
-      <div>
-        <label class="block text-xs font-bold text-on-surface mb-1">Allergen / Substance:</label>
-        <input id="modal-allergen" type="text" placeholder="e.g. Cephalosporin, Aspirin, NSAIDs" class="w-full h-11 px-3.5 rounded-xl bg-surface-container-low border border-surface-container-high text-xs font-semibold outline-none focus:border-primary"/>
+  <!-- ========================================================================= -->
+  <!-- COMMAND PALETTE MODAL (Ctrl+K)                                            -->
+  <!-- ========================================================================= -->
+  <div id="command-palette" class="cmd-palette-backdrop" onclick="if(event.target === this) closeCommandPalette()">
+    <div class="cmd-palette-box p-4 space-y-3">
+      <div class="flex items-center gap-2 border-b border-subtle pb-3">
+        <svg class="lucide-icon text-muted sm" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input type="text" id="cmd-palette-input" class="w-full bg-transparent border-none outline-none text-sm text-main" placeholder="Type a command or jump to section (e.g. overview, rx, reports, ramesh)..."/>
+        <kbd class="px-1.5 py-0.5 rounded bg-bg-card-subtle text-[10px] text-muted">ESC</kbd>
       </div>
-      <div>
-        <label class="block text-xs font-bold text-on-surface mb-1">Reaction Description:</label>
-        <input id="modal-reaction" type="text" placeholder="e.g. Urticaria, Bronchospasm, Anaphylaxis" value="Severe cutaneous rash and hives" class="w-full h-11 px-3.5 rounded-xl bg-surface-container-low border border-surface-container-high text-xs font-semibold outline-none focus:border-primary"/>
+      <div id="cmd-palette-items" class="space-y-1 text-xs">
+        <button type="button" onclick="switchDoctorSection('overview'); closeCommandPalette();" class="w-full text-left p-2 rounded-lg hover:bg-card-hover flex items-center justify-between">
+          <span>Jump to Patient Overview</span>
+          <span class="text-muted">Overview</span>
+        </button>
+        <button type="button" onclick="switchDoctorSection('reports'); closeCommandPalette();" class="w-full text-left p-2 rounded-lg hover:bg-card-hover flex items-center justify-between">
+          <span>Jump to Clinical Reports &amp; Trends</span>
+          <span class="text-muted">Reports</span>
+        </button>
+        <button type="button" onclick="switchDoctorSection('prescriptions'); closeCommandPalette();" class="w-full text-left p-2 rounded-lg hover:bg-card-hover flex items-center justify-between">
+          <span>New Prescription / Medication Search</span>
+          <span class="text-muted">Prescribe</span>
+        </button>
+        <button type="button" onclick="switchDoctorSection('translator'); closeCommandPalette();" class="w-full text-left p-2 rounded-lg hover:bg-card-hover flex items-center justify-between">
+          <span>BhashaSehat Multilingual Translator</span>
+          <span class="text-muted">Translator</span>
+        </button>
+        <button type="button" onclick="switchDoctorSection('workrisk'); closeCommandPalette();" class="w-full text-left p-2 rounded-lg hover:bg-card-hover flex items-center justify-between">
+          <span>KaamSuraksha Workplace Hazard Assessment</span>
+          <span class="text-muted">Kaam</span>
+        </button>
       </div>
-      <div>
-        <label class="block text-xs font-bold text-on-surface mb-1">Severity:</label>
-        <select id="modal-severity" class="w-full h-11 px-3.5 rounded-xl bg-surface-container-low border border-surface-container-high text-xs font-semibold outline-none focus:border-primary">
-          <option value="SEVERE">SEVERE (Life-Threatening / Anaphylaxis)</option>
-          <option value="MODERATE">MODERATE (Urticaria / Bronchospasm)</option>
-          <option value="MILD">MILD (Mild pruritus / Rash)</option>
-        </select>
-      </div>
-    </div>
-
-    <div class="grid grid-cols-2 gap-2 pt-2">
-      <button onclick="toggleAllergyModal(false)" class="h-11 rounded-xl bg-surface-container text-xs font-bold hover:bg-surface-container-high transition-colors">
-        Cancel
-      </button>
-      <button onclick="submitNewAllergy()" class="h-11 rounded-xl bg-primary text-white text-xs font-bold shadow-md hover:bg-primary-container transition-colors">
-        Save & Check Conflict
-      </button>
     </div>
   </div>
+
 </div>
 {% endblock %}
 
 {% block scripts %}
 <script>
-  let lastBlockedPayload = null;
-  let searchDebounceTimer = null;
-
-  function switchPatient(newPid) {
-    window.location.href = `/doctor?doctor_id={{ doctor_id }}&patient_id=${newPid}`;
-  }
-
-  function toggleAllergyModal(open) {
-    document.getElementById('allergy-modal').classList.toggle('hidden', !open);
-  }
-
-  function toggleOverrideAccordion() {
-    const panel = document.getElementById('override-panel');
-    const chevron = document.getElementById('override-chevron');
-    const isHidden = panel.classList.contains('hidden');
-    panel.classList.toggle('hidden', !isHidden);
-    chevron.innerText = isHidden ? 'expand_less' : 'expand_more';
-  }
-
-  function checkOverrideValidity() {
-    const isChecked = document.getElementById('override-confirm-checkbox').checked;
-    const text = document.getElementById('override-justification').value.trim();
-    const btn = document.getElementById('btn-submit-override');
-
-    if (isChecked && text.length > 15) {
-      btn.disabled = false;
-      btn.classList.remove('opacity-40', 'cursor-not-allowed');
-      btn.classList.add('hover:bg-red-700', 'shadow-md');
-    } else {
-      btn.disabled = true;
-      btn.classList.add('opacity-40', 'cursor-not-allowed');
-      btn.classList.remove('hover:bg-red-700', 'shadow-md');
-    }
-  }
-
-  // Live Autocomplete Search against 253k CSV Medicine Catalog
-  function onSearchInput(query) {
-    clearTimeout(searchDebounceTimer);
-    const dropdown = document.getElementById('autocomplete-list');
-    
-    if (!query || query.trim().length < 2) {
-      dropdown.classList.add('hidden');
-      dropdown.innerHTML = '';
-      return;
-    }
-
-    searchDebounceTimer = setTimeout(async () => {
-      try {
-        const resp = await fetch(`/doctor/medicines/search?q=${encodeURIComponent(query.trim())}&limit=12`);
-        const data = await resp.json();
-        const results = data.matches || data.results || [];
-
-        if (results.length === 0) {
-          dropdown.innerHTML = '<div class="p-3 text-xs text-on-surface-variant text-center">No catalog matches found. You can still prescribe directly.</div>';
-          dropdown.classList.remove('hidden');
-          return;
-        }
-
-        dropdown.innerHTML = results.map(item => {
-          const id = item.med_id || item.raw_id || item.id || '';
-          const brand = (item.brand_name || '').replace(/'/g, "\\'");
-          const generic = (item.generic_composition || item.generic_name || '').replace(/'/g, "\\'");
-          const dosage = item.default_strength || item.dosage || '';
-          const price = item.unit_price || item.price_inr || 10.0;
-          const form = item.dosage_form || 'Tablet';
-          const mfg = item.manufacturer || '';
-          const tclass = item.therapeutic_class || '';
-
-          return `
-            <div class="p-3 hover:bg-surface-container-low cursor-pointer transition-colors" onclick="selectMedicine('${id}', '${brand}', '${generic}', '${dosage}')">
-              <div class="flex items-center justify-between">
-                <span class="text-xs font-bold text-on-surface">${item.brand_name || brand}</span>
-                <span class="text-[11px] font-bold text-primary">INR ${price}</span>
-              </div>
-              <p class="text-[11px] text-on-surface-variant truncate">${item.generic_composition || item.generic_name || ''}</p>
-              <div class="flex items-center gap-1.5 mt-1 text-[10px] text-on-surface-variant font-medium">
-                <span class="px-1.5 py-0.5 rounded bg-surface-container">${form}</span>
-                ${tclass ? `<span class="px-1.5 py-0.5 rounded bg-secondary-fixed/30 text-secondary">${tclass}</span>` : ''}
-                <span>${mfg}</span>
-              </div>
-            </div>
-          `;
-        }).join('');
-
-        dropdown.classList.remove('hidden');
-      } catch (err) {
-        console.error("Autocomplete search error:", err);
-      }
-    }, 200);
-  }
-
-  function selectMedicine(id, brandName, genericName, defaultDosage) {
-    document.getElementById('med-search-input').value = brandName;
-    document.getElementById('selected-med-id').value = id;
-    document.getElementById('selected-med-name').value = brandName;
-    if (defaultDosage) {
-      document.getElementById('rx-dosage').value = defaultDosage;
-    }
-    document.getElementById('autocomplete-list').classList.add('hidden');
-  }
-
-  async function selectCategory(categoryName) {
-    document.querySelectorAll('.cat-chip').forEach(c => {
-      c.classList.remove('bg-primary', 'text-white');
-      c.classList.add('bg-surface-container', 'text-on-surface');
-    });
-    if (window.event && window.event.target) {
-      window.event.target.classList.remove('bg-surface-container', 'text-on-surface');
-      window.event.target.classList.add('bg-primary', 'text-white');
-    }
-
-    const dropdown = document.getElementById('autocomplete-list');
-    dropdown.innerHTML = '<div class="p-3 text-xs text-on-surface-variant text-center"><span class="material-symbols-outlined animate-spin text-[16px] inline-block mr-1">sync</span>Loading categorized medicines from 253k catalog...</div>';
-    dropdown.classList.remove('hidden');
-
-    try {
-      const url = categoryName === 'All' 
-        ? '/doctor/medicines/menu?form=Tablet&limit=25'
-        : `/doctor/medicines/menu?category=${encodeURIComponent(categoryName)}&form=Tablet&limit=25`;
-      const resp = await fetch(url);
-      const data = await resp.json();
-      
-      const menu = data.menuByCategory || data.menu_by_category || {};
-      let items = [];
-      Object.values(menu).forEach(list => {
-        items = items.concat(list);
-      });
-
-      if (items.length > 0) {
-        dropdown.innerHTML = items.map(item => {
-          const id = item.med_id || item.raw_id || item.id || '';
-          const brand = (item.brand_name || '').replace(/'/g, "\\'");
-          const generic = (item.generic_composition || item.generic_name || '').replace(/'/g, "\\'");
-          const dosage = item.default_strength || item.dosage || '';
-          const price = item.unit_price || item.price_inr || 10.0;
-          const form = item.dosage_form || 'Tablet';
-          const mfg = item.manufacturer || '';
-          const tclass = item.therapeutic_class || '';
-
-          return `
-            <div class="p-3 hover:bg-surface-container-low cursor-pointer transition-colors" onclick="selectMedicine('${id}', '${brand}', '${generic}', '${dosage}')">
-              <div class="flex items-center justify-between">
-                <span class="text-xs font-bold text-on-surface">${item.brand_name || brand}</span>
-                <span class="text-[11px] font-bold text-primary">INR ${price}</span>
-              </div>
-              <p class="text-[11px] text-on-surface-variant truncate">${item.generic_composition || item.generic_name || ''}</p>
-              <div class="flex items-center gap-1.5 mt-1 text-[10px] text-on-surface-variant font-medium">
-                <span class="px-1.5 py-0.5 rounded bg-surface-container">${form}</span>
-                ${tclass ? `<span class="px-1.5 py-0.5 rounded bg-secondary-fixed/30 text-secondary">${tclass}</span>` : ''}
-                <span>${mfg}</span>
-              </div>
-            </div>
-          `;
-        }).join('');
-        showToast(`Loaded ${items.length} medicines for ${categoryName}`, 'success');
-      } else {
-        dropdown.innerHTML = '<div class="p-3 text-xs text-on-surface-variant text-center">No catalog medicines in this category.</div>';
-      }
-    } catch (err) {
-      console.error("Error loading category menu:", err);
-      if (categoryName.includes('Penicillin')) {
-        selectMedicine('MED-1', 'Augmentin 625 Duo Tablet', 'Amoxycillin + Clavulanic Acid', '500 mg');
-      } else if (categoryName.includes('Macrolide')) {
-        selectMedicine('MED-3', 'Azithral 500 Tablet', 'Azithromycin', '500 mg');
-      } else if (categoryName.includes('Antiplatelet')) {
-        selectMedicine('MED-13', 'Aspirin 81mg', 'Aspirin', '81 mg');
-      } else if (categoryName.includes('Statin')) {
-        selectMedicine('MED-8', 'Atorva Tablet 10mg', 'Atorvastatin', '10 mg');
-      } else if (categoryName.includes('Antidiabetic')) {
-        selectMedicine('MED-10', 'Glycomet 500 Tablet', 'Metformin', '500 mg');
-      }
-      dropdown.classList.add('hidden');
-    }
-  }
-
-  // Run AI Safety Pipeline & Prescribe
-  async function runAISafetyCheck() {
-    const medName = document.getElementById('med-search-input').value.trim();
-    const dosage = document.getElementById('rx-dosage').value.trim();
-    const frequency = document.getElementById('rx-frequency').value;
-    const notes = document.getElementById('rx-notes').value.trim();
-    const medId = document.getElementById('selected-med-id').value;
-
-    if (!medName) {
-      showToast('Please enter a medicine name or select one from catalog.', 'error');
-      return;
-    }
-
-    const btn = document.getElementById('btn-run-safety');
-    btn.innerHTML = '<span class="material-symbols-outlined animate-spin text-[20px]">sync</span><span>Analyzing with Bedrock & Comprehend Medical...</span>';
-    btn.disabled = true;
-
-    const payload = {
-      patient_id: "{{ patient_id }}",
-      doctor_id: "{{ doctor_id }}",
-      new_medicine: medName,
-      med_id: medId,
-      dosage: dosage,
-      frequency: frequency,
-      notes: notes,
-      user_role: "DOCTOR"
-    };
-
-    try {
-      const resp = await fetch('/api/doctor/prescriptions', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload)
-      });
-      const result = await resp.json();
-
-      btn.innerHTML = '<span class="material-symbols-outlined text-[20px]">verified_user</span><span>Run AI Safety Check & Prescribe</span>';
-      btn.disabled = false;
-
-      if (result.status === 'BLOCKED') {
-        // INTERCEPTION: Render AI Safety Block Card
-        lastBlockedPayload = { ...payload, block_result: result };
-        renderSafetyBlockCard(result);
-        showToast('Prescription BLOCKED by AI Safety Engine!', 'error');
-      } else if (result.status === 'ACTIVE' || result.status === 'APPROVED') {
-        // SUCCESS: Safe prescription created
-        document.getElementById('safety-alert-container').classList.add('hidden');
-        showToast(`Prescription for ${medName} created successfully (ID: ${result.prescription_id})!`, 'success');
-        setTimeout(() => window.location.reload(), 1500);
-      } else {
-        showToast(result.message || 'Error running safety pipeline.', 'error');
-      }
-    } catch (err) {
-      btn.innerHTML = '<span class="material-symbols-outlined text-[20px]">verified_user</span><span>Run AI Safety Check & Prescribe</span>';
-      btn.disabled = false;
-      showToast('Network error contacting safety engine.', 'error');
-    }
-  }
-
-  function renderSafetyBlockCard(result) {
-    const container = document.getElementById('safety-alert-container');
-    const details = result.safety_gate_details || {};
-    const conflict = details.conflict || result.safety_details || {};
-
-    document.getElementById('alert-title').innerText = details.title || 'CRITICAL SAFETY INTERACTION DETECTED';
-    document.getElementById('alert-conflict-type').innerText = details.type || 'Clinical Contraindication';
-    document.getElementById('alert-severity').innerText = details.severity || 'SEVERE RISK';
-    document.getElementById('alert-med-pair').innerText = details.medication_involved || document.getElementById('med-search-input').value;
-    document.getElementById('alert-description').innerText = details.rationale || result.reason || 'Contraindication detected by clinical safety pipeline.';
-
-    // Render Alternatives
-    const altsList = document.getElementById('alternatives-list');
-    const alternatives = details.alternatives || [];
-    
-    if (alternatives.length > 0) {
-      altsList.innerHTML = alternatives.map(alt => `
-        <button type="button" onclick="applyAlternative('${alt}')" class="p-2.5 rounded-xl bg-white hover:bg-surface-container text-left text-xs font-bold text-primary flex items-center justify-between shadow-xs border border-error/20 transition-all">
-          <span class="truncate">${alt}</span>
-          <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
-        </button>
-      `).join('');
-      document.getElementById('alternatives-box').classList.remove('hidden');
-    } else {
-      document.getElementById('alternatives-box').classList.add('hidden');
-    }
-
-    container.classList.remove('hidden');
-    container.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-  }
-
-  function applyAlternative(altText) {
-    // Extract medicine name from alternative text (e.g. "Azithral 500 Tablet (Azithromycin) - INR 132" -> "Azithral 500 Tablet")
-    let cleanName = altText.split('(')[0].trim();
-    if (cleanName.includes('-')) {
-      cleanName = cleanName.split('-')[0].trim();
-    }
-    document.getElementById('med-search-input').value = cleanName;
-    document.getElementById('safety-alert-container').classList.add('hidden');
-    showToast(`Loaded alternative: ${cleanName}. Click Run Safety Check.`, 'success');
-  }
-
-  function cancelSafetyBlock() {
-    document.getElementById('safety-alert-container').classList.add('hidden');
-    showToast('Prescription order cancelled safely.', 'success');
-  }
-
-  // Authorize Clinical Override
-  async function submitClinicalOverride() {
-    if (!lastBlockedPayload) return;
-    const justification = document.getElementById('override-justification').value.trim();
-
-    const overridePayload = {
-      patient_id: "{{ patient_id }}",
-      doctor_id: "{{ doctor_id }}",
-      prescription_data: {
-        new_medicine: lastBlockedPayload.new_medicine,
-        dosage: lastBlockedPayload.dosage,
-        frequency: lastBlockedPayload.frequency,
-        notes: lastBlockedPayload.notes
-      },
-      clinical_justification: justification,
-      monitoring_plan: "Continuous clinical telemetry and strict dosage adherence follow-up."
-    };
-
-    try {
-      const resp = await fetch('/api/doctor/prescriptions/override', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(overridePayload)
-      });
-      const data = await resp.json();
-
-      const rxId = data.prescription_id || (data.prescription && data.prescription.prescriptionId) || data.overrideId || 'APPROVED';
-      if (data.status === 'FORCE_APPROVED_BY_PHYSICIAN' || data.status === 'OVERRIDE_APPROVED' || data.prescription || data.prescription_id) {
-        showToast(`Override Authorized & Audited in CloudTrail! Prescription ID: ${rxId}`, 'warning');
-        setTimeout(() => window.location.reload(), 1800);
-      } else {
-        showToast(data.message || 'Override authorization rejected.', 'error');
-      }
-    } catch (err) {
-      showToast('Error authorizing clinical override.', 'error');
-    }
-  }
-
-  // Add Allergy
-  async function submitNewAllergy() {
-    const allergen = document.getElementById('modal-allergen').value.trim();
-    const reaction = document.getElementById('modal-reaction').value.trim();
-    const severity = document.getElementById('modal-severity').value;
-
-    if (!allergen) {
-      showToast('Please enter an allergen substance.', 'error');
-      return;
-    }
-
-    try {
-      const resp = await fetch('/api/doctor/allergies', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          patient_id: "{{ patient_id }}",
-          doctor_id: "{{ doctor_id }}",
-          action: "ADD",
-          allergen: allergen,
-          reaction: reaction,
-          severity: severity
-        })
-      });
-      const res = await resp.json();
-      toggleAllergyModal(false);
-
-      if (res.conflict_detected) {
-        showToast(`Allergy saved. WARNING: Active conflict with ${res.conflicting_prescriptions.join(', ')}!`, 'error');
-      } else {
-        showToast(`Allergy ${allergen} saved successfully.`, 'success');
-      }
-      setTimeout(() => window.location.reload(), 1500);
-    } catch (err) {
-      showToast('Failed to save allergy.', 'error');
-    }
-  }
-
-  // Discontinue Rx with Immediate DOM State Transition & Backend Sync
-  async function discontinueRx(rxId, medName) {
-    const reason = prompt(`Enter clinical justification for discontinuing ${medName}:`, "Therapy discontinued per clinical evaluation");
-    if (reason === null) return;
-    const finalReason = reason.trim() || "Therapy discontinued per clinical evaluation";
-
-    // 1. Instant UI update on card before network roundtrip finishes
-    const card = document.getElementById(`rx-card-${rxId}`);
-    const badge = document.getElementById(`rx-status-badge-${rxId}`);
-    const actions = document.getElementById(`rx-actions-${rxId}`);
-    
-    if (card) {
-      card.classList.remove('bg-surface-container-low', 'border-surface-container-high');
-      card.classList.add('bg-red-50/70', 'border-red-400', 'shadow-xs');
-    }
-    if (badge) {
-      badge.className = 'text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-error text-white uppercase animate-pulse';
-      badge.innerText = 'DISCONTINUED';
-    }
-    if (actions) {
-      actions.innerHTML = `
-        <span class="text-[11px] font-mono text-on-surface-variant">${rxId}</span>
-        <div class="flex items-center gap-1.5 text-xs text-error font-bold">
-          <span class="material-symbols-outlined text-[16px]">cancel</span>
-          <span>Discontinued: ${finalReason}</span>
-        </div>
-      `;
-    }
-
-    try {
-      const resp = await fetch(`/api/doctor/prescriptions/${rxId}`, {
-        method: 'PATCH',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          action: 'DISCONTINUE',
-          status: 'DISCONTINUED',
-          patient_id: "{{ patient_id }}",
-          doctor_id: "{{ doctor_id }}",
-          reason: finalReason
-        })
-      });
-      const res = await resp.json();
-
-      showToast(`🚫 ${medName} discontinued: ${finalReason}`, 'success');
-
-      // Update active counter
-      const activeBadge = document.getElementById('active-rx-count-badge');
-      if (activeBadge) {
-        const currentActive = parseInt(activeBadge.innerText) || 1;
-        activeBadge.innerText = `${Math.max(0, currentActive - 1)} Active Regimens`;
-      }
-
-      // Add to discontinued section
-      const discContainer = document.getElementById('discontinued-container');
-      const discEmpty = document.getElementById('disc-empty-placeholder');
-      if (discEmpty) discEmpty.remove();
-
-      if (discContainer && !document.getElementById(`disc-card-${rxId}`)) {
-        const discCard = document.createElement('div');
-        discCard.id = `disc-card-${rxId}`;
-        discCard.className = 'p-3.5 rounded-xl bg-error-container/20 border border-error/30 flex flex-col justify-between gap-2 transition-all';
-        discCard.innerHTML = `
-          <div class="flex items-start justify-between gap-2">
-            <div>
-              <h4 class="font-headline font-bold text-xs text-on-surface line-through opacity-80">
-                ${medName}
-              </h4>
-              <p class="text-[11px] text-error font-medium mt-0.5">
-                🚫 Reason: ${finalReason}
-              </p>
-            </div>
-            <span class="text-[10px] font-bold px-2 py-0.5 rounded bg-error text-white uppercase">
-              DISCONTINUED
-            </span>
-          </div>
-          <div class="text-[10px] text-on-surface-variant flex items-center justify-between pt-1 border-t border-error/10">
-            <span class="font-mono">${rxId}</span>
-            <span>By: {{ doctor_id }}</span>
-          </div>
-        `;
-        discContainer.prepend(discCard);
-      }
-
-      const discBadge = document.getElementById('disc-count-badge');
-      if (discBadge) {
-        const currentDisc = parseInt(discBadge.innerText) || 0;
-        discBadge.innerText = `${currentDisc + 1} Discontinued`;
-      }
-
-      // Live refresh doctor audit timeline
-      await fetchDoctorTimeline();
-    } catch (err) {
-      showToast('Error discontinuing prescription.', 'error');
-      console.error(err);
-    }
-  }
-
-  // Modify Dosage with Instant UI Reflection & Backend Synchronization
-  async function modifyRx(rxId, medName, currentDose) {
-    const newDose = prompt(`Modify dosage for ${medName}:`, currentDose);
-    if (!newDose || newDose.trim() === currentDose.trim()) return;
-    const finalDose = newDose.trim();
-
-    const reason = prompt(`Enter clinical justification for adjusting dosage of ${medName}:`, "Physician titration via clinical workspace");
-    if (reason === null) return;
-    const finalReason = reason.trim() || "Physician titration via clinical workspace";
-
-    // Instant UI update
-    const doseBadge = document.getElementById(`rx-dose-badge-${rxId}`);
-    const statusBadge = document.getElementById(`rx-status-badge-${rxId}`);
-    const verBadge = document.getElementById(`rx-ver-${rxId}`);
-
-    if (doseBadge) {
-      doseBadge.innerText = `${finalDose} • Titrated`;
-      doseBadge.classList.add('bg-amber-50', 'text-amber-800', 'border-amber-300');
-    }
-    if (statusBadge) {
-      statusBadge.className = 'text-[11px] font-bold px-2 py-0.5 rounded-full bg-amber-100 text-amber-800 border border-amber-300';
-      statusBadge.innerText = 'MODIFIED';
-    }
-
-    try {
-      const resp = await fetch(`/api/doctor/prescriptions/${rxId}`, {
-        method: 'PATCH',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          patient_id: "{{ patient_id }}",
-          doctor_id: "{{ doctor_id }}",
-          new_dosage: finalDose,
-          reason: finalReason
-        })
-      });
-      const res = await resp.json();
-
-      if (verBadge && res.version) {
-        verBadge.innerText = `${rxId} (v${res.version})`;
-      }
-
-      showToast(`✏️ Dosage for ${medName} updated to ${finalDose}.`, 'success');
-      await fetchDoctorTimeline();
-    } catch (err) {
-      showToast('Error updating dosage.', 'error');
-      console.error(err);
-    }
-  }
-
-  // Filter Doctor Timeline
-  function filterDoctorTimeline(category, btnEl) {
-    if (btnEl) {
-      document.querySelectorAll('#doctor-timeline-filters .doc-tl-chip').forEach(el => {
-        el.classList.remove('bg-primary', 'text-white', 'font-bold');
-        el.classList.add('bg-surface-container', 'text-on-surface', 'font-medium');
-      });
-      btnEl.classList.remove('bg-surface-container', 'text-on-surface', 'font-medium');
-      btnEl.classList.add('bg-primary', 'text-white', 'font-bold');
-    }
-
-    const entries = document.querySelectorAll('#doctor-timeline-container .doctor-timeline-entry');
-    entries.forEach(entry => {
-      const cat = entry.getAttribute('data-category');
-      if (category === 'ALL' || cat === category) {
-        entry.style.display = 'flex';
-      } else {
-        entry.style.display = 'none';
-      }
-    });
-  }
-
-  // Live Refresh Doctor Timeline from API
-  async function fetchDoctorTimeline() {
-    try {
-      const resp = await fetch('/api/patient/{{ patient_id }}/timeline?limit=50');
-      const data = await resp.json();
-      const events = data.timelineEvents || data.timeline_events || [];
-      if (!events || events.length === 0) return;
-
-      const container = document.getElementById('doctor-timeline-container');
-      let html = '';
-      events.forEach(item => {
-        const cat = item.category || 'CLINICAL';
-        let circleColor = 'bg-primary';
-        let badgeColor = 'bg-primary/10 text-primary';
-        if (cat === 'OVERRIDE') {
-          circleColor = 'bg-amber-600';
-          badgeColor = 'bg-amber-500/10 text-amber-800';
-        } else if (cat === 'ADHERENCE') {
-          circleColor = 'bg-tertiary';
-          badgeColor = 'bg-tertiary/10 text-tertiary';
-        } else if (cat === 'ALLERGY') {
-          circleColor = 'bg-error';
-          badgeColor = 'bg-error/10 text-error';
-        } else if (cat === 'PHARMACY') {
-          circleColor = 'bg-secondary';
-          badgeColor = 'bg-secondary/10 text-secondary';
-        }
-
-        html += `
-          <div class="doctor-timeline-entry relative flex flex-col gap-1" data-category="${cat}">
-            <div class="absolute -left-[23px] top-1.5 w-3.5 h-3.5 rounded-full ring-4 ring-white ${circleColor}"></div>
-            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
-              <span class="text-xs font-bold text-on-surface flex items-center gap-1.5">
-                <span>${item.title}</span>
-              </span>
-              <div class="flex items-center gap-2">
-                <span class="text-[10px] font-bold px-2 py-0.5 rounded-md ${badgeColor}">
-                  ${item.action || cat}
-                </span>
-                <span class="text-[11px] font-mono text-on-surface-variant whitespace-nowrap">
-                  ${item.dateFormatted || ''} • ${item.timeFormatted || ''}
-                </span>
-              </div>
-            </div>
-            <p class="text-xs text-on-surface-variant leading-relaxed">
-              ${item.details}
-            </p>
-            <div class="text-[10px] text-on-surface-variant/80 flex items-center gap-2 pt-0.5">
-              <span>Actor: <b>${item.actor}</b> (${item.role || 'SYSTEM'})</span>
-              ${item.eventId ? `<span>• ID: <span class="font-mono">${item.eventId}</span></span>` : ''}
-            </div>
-          </div>
-        `;
-      });
-      container.innerHTML = html;
-    } catch (err) {
-      console.warn('Error syncing doctor timeline:', err);
-    }
-  }
-
-  // Auto poll every 15 seconds
-  setInterval(fetchDoctorTimeline, 15000);
-
-  // Zero-Trust Patient Chart Lookup
-  async function handleDoctorPatientLookup(e) {
-    if (e) e.preventDefault();
-    const pid = document.getElementById('lookup-patient-id').value.trim();
-    const pin = document.getElementById('lookup-consent-pin').value.trim();
-    const docId = '{{ doctor_id }}' || 'DOC-IN-8841';
-    const btn = document.getElementById('btn-decrypt-chart');
-    const badge = document.getElementById('privacy-status-badge');
-    const badgeText = document.getElementById('privacy-status-text');
-
-    btn.disabled = true;
-    btn.innerHTML = `<span class="material-symbols-outlined text-[16px] animate-spin">refresh</span><span>Decrypting...</span>`;
-
-    try {
-      const res = await fetch('/api/auth/lookup-patient', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ doctorId: docId, patientId: pid, consentPin: pin })
-      });
-      const data = await res.json();
-      if (!res.ok) throw new Error(data.message || 'Decryption denied');
-
-      badge.className = "px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-800 text-[10px] font-bold uppercase tracking-wider flex items-center gap-1 border border-emerald-500/20";
-      badgeText.innerText = "Consent Verified & Decrypted";
-      showToast(`Zero-trust privacy shield unlocked for ${data.patient.name || pid}!`, "success");
-
-      // If viewing a different patient than currently active, switch view
-      const curPid = '{{ patient_id }}';
-      const actualPid = (pid === 'PAT-SS-1001') ? 'PAT-1001' : pid;
-      if (actualPid !== curPid && actualPid !== 'PAT-1001') {
-        window.location.href = `/doctor?doctor_id=${docId}&patient_id=${actualPid}`;
-      }
-    } catch (err) {
-      badge.className = "px-2.5 py-0.5 rounded-full bg-error-container text-error text-[10px] font-bold uppercase tracking-wider flex items-center gap-1 border border-error/30";
-      badgeText.innerText = "Locked: Invalid Consent PIN";
-      showToast(err.message, "error");
-    } finally {
-      btn.disabled = false;
-      btn.innerHTML = `<span class="material-symbols-outlined text-[16px]">lock_open</span><span>Decrypt Chart</span>`;
-    }
-  }
-
-  // Break-Glass Override Modal Handlers
-  function openBreakGlassModal() {
-    document.getElementById('break-glass-modal').classList.remove('hidden');
-  }
-
-  function closeBreakGlassModal() {
-    document.getElementById('break-glass-modal').classList.add('hidden');
-  }
-
-  async function submitBreakGlassOverride() {
-    const reason = document.getElementById('break-glass-reason').value.trim();
-    if (reason.length < 20) {
-      showToast("Clinical justification must be at least 20 characters.", "error");
-      return;
-    }
-    const pid = document.getElementById('lookup-patient-id').value.trim();
-    const docId = '{{ doctor_id }}' || 'DOC-IN-8841';
-
-    try {
-      const res = await fetch('/api/auth/lookup-patient', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ doctorId: docId, patientId: pid, breakGlassReason: reason })
-      });
-      const data = await res.json();
-      if (!res.ok) throw new Error(data.message || 'Break-glass failed');
-
-      closeBreakGlassModal();
-      const badge = document.getElementById('privacy-status-badge');
-      const badgeText = document.getElementById('privacy-status-text');
-      badge.className = "px-2.5 py-0.5 rounded-full bg-amber-500/10 text-amber-800 text-[10px] font-bold uppercase tracking-wider flex items-center gap-1 border border-amber-500/30";
-      badgeText.innerText = "Emergency Break-Glass Active";
-      showToast("CRITICAL: Emergency break-glass access granted. Logged in CloudTrail audit.", "warning");
-    } catch (err) {
-      showToast(err.message, "error");
-    }
-  }
-
-  // QR Modal Handlers
-  function triggerQrScanUpload() {
-    document.getElementById('qr-scan-modal').classList.remove('hidden');
-  }
-
-  function closeQrScanModal() {
-    document.getElementById('qr-scan-modal').classList.add('hidden');
-  }
-
-  function applyPastedQrData() {
-    const raw = document.getElementById('qr-pasted-json').value.trim();
-    try {
-      let parsed = JSON.parse(raw);
-      if (parsed.patientId) document.getElementById('lookup-patient-id').value = parsed.patientId;
-      if (parsed.consentPin) document.getElementById('lookup-consent-pin').value = parsed.consentPin;
-      closeQrScanModal();
-      showToast(`Scanned QR for ${parsed.patientId || 'Patient'}. Ready to decrypt.`, "success");
-      handleDoctorPatientLookup();
-    } catch (e) {
-      if (raw.startsWith('PAT-')) {
-        document.getElementById('lookup-patient-id').value = raw;
-        closeQrScanModal();
-        showToast(`Loaded ID: ${raw}`, "success");
-      } else {
-        showToast("Invalid QR JSON payload. Please paste valid QR data.", "error");
-      }
-    }
-  }
+  window._SERVER_UNLOCKED = {{ 'true' if is_unlocked else 'false' }};
+  window._SERVER_DOCTOR_ID = "{{ doctor_id }}";
+  window._SERVER_PATIENT_ID = "{{ patient_id }}";
 </script>
-
-<!-- Emergency Break-Glass Modal -->
-<div id="break-glass-modal" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 hidden">
-  <div class="bg-white rounded-3xl max-w-lg w-full p-6 shadow-2xl border border-error/30 space-y-4">
-    <div class="flex items-center gap-3 text-error">
-      <div class="w-10 h-10 rounded-xl bg-error/10 flex items-center justify-center font-bold">
-        <span class="material-symbols-outlined text-[24px]">emergency</span>
-      </div>
-      <div>
-        <h3 class="font-headline font-bold text-base text-on-surface">Emergency Break-Glass Override</h3>
-        <p class="text-xs text-error font-semibold">Bypasses Patient Consent PIN under Life-Threatening Conditions</p>
-      </div>
-    </div>
-    <div class="p-3 rounded-xl bg-error-container/40 border border-error/20 text-xs text-on-error-container">
-      <strong>Statutory HIPAA & ABDM Notice:</strong> This action triggers an immutable AWS CloudTrail security alert logged with your verified credentials, timestamp, and patient alert notification.
-    </div>
-    <div>
-      <label class="block text-xs font-bold text-on-surface-variant mb-1">Clinical Justification (Minimum 20 characters) *</label>
-      <textarea id="break-glass-reason" rows="3" placeholder="e.g. Patient presents with acute pulmonary distress and altered sensorium; immediate anticoagulant history required." class="w-full p-3 rounded-xl border border-surface-container-high text-xs font-medium focus:outline-none focus:ring-2 focus:ring-error"></textarea>
-    </div>
-    <div class="flex items-center justify-end gap-2 pt-2">
-      <button type="button" onclick="closeBreakGlassModal()" class="px-4 py-2 rounded-xl bg-surface-container hover:bg-surface-container-high text-xs font-bold text-on-surface transition-colors">
-        Cancel
-      </button>
-      <button type="button" onclick="submitBreakGlassOverride()" class="px-4 py-2 rounded-xl bg-error hover:bg-red-700 text-xs font-bold text-white transition-colors flex items-center gap-1.5 shadow-sm">
-        <span class="material-symbols-outlined text-[16px]">warning</span>
-        <span>Execute Break-Glass Access</span>
-      </button>
-    </div>
-  </div>
-</div>
-
-<!-- QR Scan / Paste Modal -->
-<div id="qr-scan-modal" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 hidden">
-  <div class="bg-white rounded-3xl max-w-md w-full p-6 shadow-2xl border border-surface-container-high space-y-4">
-    <div class="flex items-center gap-3">
-      <div class="w-10 h-10 rounded-xl bg-tertiary-fixed text-on-tertiary-fixed-variant flex items-center justify-center font-bold">
-        <span class="material-symbols-outlined text-[24px]">qr_code_scanner</span>
-      </div>
-      <div>
-        <h3 class="font-headline font-bold text-base text-on-surface">Scan or Paste Patient QR Payload</h3>
-        <p class="text-xs text-on-surface-variant">Instant zero-trust credentials decoding</p>
-      </div>
-    </div>
-    <div>
-      <label class="block text-xs font-bold text-on-surface-variant mb-1">Paste SwasthyaID QR JSON or Unique ID</label>
-      <textarea id="qr-pasted-json" rows="4" placeholder='{"patientId": "PAT-SS-1001", "consentPin": "482910"}' class="w-full p-3 rounded-xl border border-surface-container-high text-xs font-mono focus:outline-none focus:ring-2 focus:ring-primary"></textarea>
-    </div>
-    <div class="flex items-center justify-end gap-2 pt-2">
-      <button type="button" onclick="closeQrScanModal()" class="px-4 py-2 rounded-xl bg-surface-container hover:bg-surface-container-high text-xs font-bold text-on-surface transition-colors">
-        Cancel
-      </button>
-      <button type="button" onclick="applyPastedQrData()" class="px-4 py-2 rounded-xl bg-primary hover:bg-primary-container text-xs font-bold text-white transition-colors flex items-center gap-1.5 shadow-sm">
-        <span class="material-symbols-outlined text-[16px]">check_circle</span>
-        <span>Apply & Decrypt Chart</span>
-      </button>
-    </div>
-  </div>
-</div>
+<script src="/static/js/doctor.js?v=2.5.0"></script>
 {% endblock %}
-

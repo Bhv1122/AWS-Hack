@@ -59,7 +59,8 @@ try:
         local_store,
         dynamodb_resource,
         get_medicine_by_id,
-        load_medicine_catalog
+        load_medicine_catalog,
+        list_all_prescriptions
     )
 except ImportError:
     from aws_core import (
@@ -82,7 +83,8 @@ except ImportError:
         local_store,
         dynamodb_resource,
         get_medicine_by_id,
-        load_medicine_catalog
+        load_medicine_catalog,
+        list_all_prescriptions
     )
 
 logger = logging.getLogger("medcoord_adherence_location")
@@ -193,6 +195,61 @@ BENGALURU_PHARMACIES = [
         }
     }
 ]
+
+
+def _get_all_pharmacies_list(state: Dict[str, Any]) -> List[Dict[str, Any]]:
+    """Returns a unified list of pharmacy dictionaries with normalized coordinates, address, and inventory."""
+    pharm_pool = []
+    pharms = state.get("pharmacies")
+    if isinstance(pharms, list):
+        pharm_pool.extend([dict(p) for p in pharms if isinstance(p, dict)])
+    elif isinstance(pharms, dict):
+        pharm_pool.extend([dict(p) for p in pharms.values() if isinstance(p, dict)])
+    
+    existing_ids = {p.get("id") for p in pharm_pool}
+    for bp in BENGALURU_PHARMACIES:
+        if bp.get("id") not in existing_ids:
+            pharm_pool.append(dict(bp))
+            existing_ids.add(bp.get("id"))
+            
+    pi = state.get("pharmacy_inventory")
+    if isinstance(pi, list):
+        for p in pi:
+            if isinstance(p, dict) and p.get("id") not in existing_ids:
+                pharm_pool.append(dict(p))
+                existing_ids.add(p.get("id"))
+
+    for p in pharm_pool:
+        if "coordinates" not in p and ("lat" in p or "latitude" in p):
+            lat = p.get("lat") if "lat" in p else p.get("latitude", 13.1007)
+            lon = p.get("lng") if "lng" in p else (p.get("lon") or p.get("longitude", 77.5963))
+            p["coordinates"] = {"lat": float(lat), "lon": float(lon)}
+        if "inventory" not in p and "stock" in p and isinstance(p["stock"], dict):
+            norm_inv = {}
+            for s_name, s_data in p["stock"].items():
+                if isinstance(s_data, dict):
+                    qty = s_data.get("qty", s_data.get("quantity", 0))
+                    status = s_data.get("status", "IN_STOCK")
+                    norm_inv[s_name.lower()] = {
+                        "inStock": status == "IN_STOCK" or qty > 0,
+                        "quantity": qty,
+                        "unitPriceINR": 5.0
+                    }
+                else:
+                    norm_inv[s_name.lower()] = {
+                        "inStock": int(s_data) > 0,
+                        "quantity": int(s_data),
+                        "unitPriceINR": 5.0
+                    }
+            p["inventory"] = norm_inv
+        elif "inventory" not in p:
+            p["inventory"] = {}
+        if "address" not in p:
+            p["address"] = p.get("locality") or p.get("city") or "Bengaluru"
+        if "phoneNumber" not in p:
+            p["phoneNumber"] = p.get("phone", "+91-80-2856-1122")
+            
+    return pharm_pool
 
 
 def calculate_haversine_distance(lat1: float, lon1: float, lat2: float, lon2: float) -> float:
@@ -1331,7 +1388,7 @@ def request_prescription_refill(
 
     # CASE B: Refills remaining -> Verify pharmacy inventory
     state = local_store.load_all()
-    cached_pharmacies = state.get("pharmacy_inventory", []) or BENGALURU_PHARMACIES
+    cached_pharmacies = _get_all_pharmacies_list(state)
     target_pharmacy = next((p for p in cached_pharmacies if p.get("id") == preferred_pharmacy_id), None)
     pharmacy_name = target_pharmacy.get("name", "Preferred Pharmacy") if target_pharmacy else "Preferred Pharmacy"
 
@@ -1487,7 +1544,7 @@ def find_nearby_stocked_pharmacies(
 
     # 2. Retrieve pharmacy inventory dataset
     state_data = local_store.load_all()
-    cached_pharmacies = state_data.get("pharmacy_inventory", []) or BENGALURU_PHARMACIES
+    cached_pharmacies = _get_all_pharmacies_list(state_data)
 
     all_matched = []
     full_match_pharmacies = []
@@ -1753,18 +1810,18 @@ def reserve_medication_at_pharmacy(
 
     # 2. Retrieve pharmacy from local store
     state = local_store.load_all()
-    cached_pharmacies = state.get("pharmacy_inventory", []) or BENGALURU_PHARMACIES
-    target_pharmacy = next((p for p in cached_pharmacies if p.get("id") == pharmacy_id), None)
+    pharm_pool = _get_all_pharmacies_list(state)
+    target_pharmacy = next((p for p in pharm_pool if p.get("id") == pharmacy_id), None)
 
     if not target_pharmacy:
         raise ValueError(f"Pharmacy with ID '{pharmacy_id}' not recognized.")
 
     pharmacy_name = target_pharmacy.get("name")
-    pharmacy_address = target_pharmacy.get("address")
-    pharmacy_phone = target_pharmacy.get("phoneNumber")
+    pharmacy_address = target_pharmacy.get("address") or target_pharmacy.get("locality") or "Bengaluru"
+    pharmacy_phone = target_pharmacy.get("phoneNumber") or target_pharmacy.get("phone") or "+91-80-2856-1122"
 
     # 3. Check and lock stock in OpenSearch / inventory
-    inventory = target_pharmacy.get("inventory", {})
+    inventory = target_pharmacy.get("inventory") or target_pharmacy.get("stock") or {}
     matched_key = None
     unit_price = 5.0
     current_stock = 0
@@ -1772,8 +1829,11 @@ def reserve_medication_at_pharmacy(
     for k, v in inventory.items():
         if k.lower() in med_name.lower() or med_name.lower() in k.lower():
             matched_key = k
-            current_stock = v.get("quantity", 0)
-            unit_price = v.get("unitPriceINR", 5.0)
+            if isinstance(v, dict):
+                current_stock = v.get("quantity") if "quantity" in v else v.get("qty", 0)
+                unit_price = v.get("unitPriceINR", v.get("unit_price", 5.0))
+            else:
+                current_stock = int(v)
             break
 
     # If inventory item not found directly, check CSV catalog
@@ -1823,9 +1883,14 @@ def reserve_medication_at_pharmacy(
 
     # Decrement and lock stock with latest modified dosage
     new_stock = max(0, current_stock - dispense_quantity)
-    inventory[matched_key]["quantity"] = new_stock
-    inventory[matched_key]["dosage"] = dosage
-    inventory[matched_key]["inStock"] = (new_stock > 0)
+    if isinstance(inventory[matched_key], dict):
+        inventory[matched_key]["quantity"] = new_stock
+        inventory[matched_key]["qty"] = new_stock
+        inventory[matched_key]["dosage"] = dosage
+        inventory[matched_key]["inStock"] = (new_stock > 0)
+        inventory[matched_key]["status"] = "IN_STOCK" if new_stock > 0 else "OUT"
+    else:
+        inventory[matched_key] = {"quantity": new_stock, "qty": new_stock, "dosage": dosage, "inStock": (new_stock > 0)}
 
     # Update OpenSearch if live
     if opensearch_client:

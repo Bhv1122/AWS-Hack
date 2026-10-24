@@ -1,0 +1,185 @@
+[
+  {
+    "ashaWorkerId": "ASHA-OD-402",
+    "name": "Meena Majhi",
+    "state": "Odisha",
+    "district": "Ganjam",
+    "block": "Chhatrapur",
+    "village": "Kalyanpur",
+    "languages": [
+      "Odia",
+      "Hindi"
+    ],
+    "phone": "9000000301",
+    "linkedPatients": [
+      "PAT-SS-1001",
+      "PAT-SS-1005",
+      "PAT-SS-1011",
+      "PAT-SS-1023"
+    ],
+    "synthetic": true
+  },
+  {
+    "ashaWorkerId": "ASHA-BH-501",
+    "name": "Sunita Devi",
+    "state": "Bihar",
+    "district": "Gaya",
+    "block": "Bodh Gaya",
+    "village": "Bakrour",
+    "languages": [
+      "Hindi",
+      "Magahi"
+    ],
+    "phone": "9000000302",
+    "linkedPatients": [
+      "PAT-SS-1002",
+      "PAT-SS-1012",
+      "PAT-SS-1018"
+    ],
+    "synthetic": true
+  },
+  {
+    "ashaWorkerId": "ASHA-KA-101",
+    "name": "Parvathamma K.",
+    "state": "Karnataka",
+    "district": "Raichur",
+    "block": "Manvi",
+    "village": "Hirekotnekal",
+    "languages": [
+      "Kannada",
+      "Telugu"
+    ],
+    "phone": "9000000303",
+    "linkedPatients": [
+      "PAT-SS-1003",
+      "PAT-SS-1013",
+      "PAT-SS-1024"
+    ],
+    "synthetic": true
+  },
+  {
+    "ashaWorkerId": "ASHA-TN-301",
+    "name": "Kavitha Selvi",
+    "state": "Tamil Nadu",
+    "district": "Tirunelveli",
+    "block": "Ambasamudram",
+    "village": "Kallidaikurichi",
+    "languages": [
+      "Tamil"
+    ],
+    "phone": "9000000304",
+    "linkedPatients": [
+      "PAT-SS-1004",
+      "PAT-SS-1016"
+    ],
+    "synthetic": true
+  },
+  {
+    "ashaWorkerId": "ASHA-WB-601",
+    "name": "Jharna Das",
+    "state": "West Bengal",
+    "district": "Murshidabad",
+    "block": "Lalgola",
+    "village": "Dewansarai",
+    "languages": [
+      "Bengali",
+      "Hindi"
+    ],
+    "phone": "9000000305",
+    "linkedPatients": [
+      "PAT-SS-1006",
+      "PAT-SS-1015",
+      "PAT-SS-1021"
+    ],
+    "synthetic": true
+  },
+  {
+    "ashaWorkerId": "ASHA-JH-701",
+    "name": "Sushila Soren",
+    "state": "Jharkhand",
+    "district": "Dhanbad",
+    "block": "Govindpur",
+    "village": "Bagsuma",
+    "languages": [
+      "Hindi",
+      "Santhali"
+    ],
+    "phone": "9000000306",
+    "linkedPatients": [
+      "PAT-SS-1007",
+      "PAT-SS-1008",
+      "PAT-SS-1014"
+    ],
+    "synthetic": true
+  },
+  {
+    "ashaWorkerId": "ASHA-TS-201",
+    "name": "Lakshmi Bai",
+    "state": "Telangana",
+    "district": "Mahbubnagar",
+    "block": "Jadcherla",
+    "village": "Gollapalli",
+    "languages": [
+      "Telugu",
+      "Hindi"
+    ],
+    "phone": "9000000307",
+    "linkedPatients": [
+      "PAT-SS-1009",
+      "PAT-SS-1020"
+    ],
+    "synthetic": true
+  },
+  {
+    "ashaWorkerId": "ASHA-UP-801",
+    "name": "Geeta Yadav",
+    "state": "Uttar Pradesh",
+    "district": "Gorakhpur",
+    "block": "Pipraich",
+    "village": "Belghat",
+    "languages": [
+      "Hindi",
+      "Bhojpuri"
+    ],
+    "phone": "9000000308",
+    "linkedPatients": [
+      "PAT-SS-1010"
+    ],
+    "synthetic": true
+  },
+  {
+    "ashaWorkerId": "ASHA-AP-901",
+    "name": "Rajeswari K.",
+    "state": "Andhra Pradesh",
+    "district": "Srikakulam",
+    "block": "Tekkali",
+    "village": "Temburu",
+    "languages": [
+      "Telugu",
+      "Odia"
+    ],
+    "phone": "9000000309",
+    "linkedPatients": [
+      "PAT-SS-1017"
+    ],
+    "synthetic": true
+  },
+  {
+    "ashaWorkerId": "ASHA-OD-403",
+    "name": "Puspanjali Sahu",
+    "state": "Odisha",
+    "district": "Balasore",
+    "block": "Jaleswar",
+    "village": "Sugo",
+    "languages": [
+      "Odia",
+      "Bengali"
+    ],
+    "phone": "9000000310",
+    "linkedPatients": [
+      "PAT-SS-1019",
+      "PAT-SS-1022"
+    ],
+    "synthetic": true
+  }
+]

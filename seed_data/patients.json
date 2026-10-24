@@ -1,0 +1,807 @@
+[
+  {
+    "patientId": "PAT-SS-1001",
+    "name": "Ramesh Kumar",
+    "age": 48,
+    "gender": "Male",
+    "originState": "Odisha",
+    "originDistrict": "Ganjam",
+    "currentLocation": "Whitefield, Bengaluru",
+    "lat": 12.9716,
+    "lng": 77.7499,
+    "preferredLanguage": "Odia",
+    "occupation": "Construction Site Mason",
+    "exposureYears": 6,
+    "allergies": [
+      "Penicillin",
+      "Dust / Cement Silica"
+    ],
+    "comorbidities": [
+      "Type 2 Diabetes Mellitus",
+      "Deep Vein Thrombosis (Post-Embolic)",
+      "Hypertension"
+    ],
+    "abhaId": "ABHA-21-9845-3310-7742",
+    "mobile": "9000000001",
+    "caregiver": {
+      "name": "Sunita Kumar",
+      "mobile": "9000000002",
+      "relation": "Wife"
+    },
+    "linkedAshaWorker": "ASHA-OD-402",
+    "consent": {
+      "pin": "482910",
+      "rotatedAt": "2026-10-21T10:00:00+00:00",
+      "activeGrants": []
+    },
+    "synthetic": true
+  },
+  {
+    "patientId": "PAT-SS-1002",
+    "name": "Rajesh Yadav",
+    "age": 36,
+    "gender": "Male",
+    "originState": "Bihar",
+    "originDistrict": "Gaya",
+    "currentLocation": "Bommanahalli, Bengaluru",
+    "lat": 12.9038,
+    "lng": 77.6258,
+    "preferredLanguage": "Hindi",
+    "occupation": "Textile / Garment Worker",
+    "exposureYears": 8,
+    "allergies": [],
+    "comorbidities": [
+      "Occupational Byssinosis",
+      "Industrial Bronchitis"
+    ],
+    "abhaId": "ABHA-14-3829-1102-4491",
+    "mobile": "9000000003",
+    "caregiver": {
+      "name": "Geeta Yadav",
+      "mobile": "9000000021",
+      "relation": "Wife"
+    },
+    "linkedAshaWorker": "ASHA-BH-501",
+    "consent": {
+      "pin": "319402",
+      "rotatedAt": "2026-10-18T10:00:00+00:00",
+      "activeGrants": []
+    },
+    "synthetic": true
+  },
+  {
+    "patientId": "PAT-SS-1003",
+    "name": "Manjunath Gowda",
+    "age": 56,
+    "gender": "Male",
+    "originState": "Karnataka",
+    "originDistrict": "Raichur",
+    "currentLocation": "Peenya, Bengaluru",
+    "lat": 13.0329,
+    "lng": 77.5273,
+    "preferredLanguage": "Kannada",
+    "occupation": "Auto Rickshaw Driver",
+    "exposureYears": 14,
+    "allergies": [],
+    "comorbidities": [
+      "Knee Osteoarthritis",
+      "Essential Hypertension",
+      "Chronic Lumbar Strain"
+    ],
+    "abhaId": "ABHA-29-7102-4910-8833",
+    "mobile": "9000000004",
+    "caregiver": {
+      "name": "Sharada Gowda",
+      "mobile": "9000000022",
+      "relation": "Daughter"
+    },
+    "linkedAshaWorker": "ASHA-KA-101",
+    "consent": {
+      "pin": "772184",
+      "rotatedAt": "2026-10-13T10:00:00+00:00",
+      "activeGrants": []
+    },
+    "synthetic": true
+  },
+  {
+    "patientId": "PAT-SS-1004",
+    "name": "Lakshmi Murugan",
+    "age": 42,
+    "gender": "Female",
+    "originState": "Tamil Nadu",
+    "originDistrict": "Tirunelveli",
+    "currentLocation": "Electronic City, Bengaluru",
+    "lat": 12.8399,
+    "lng": 77.677,
+    "preferredLanguage": "Tamil",
+    "occupation": "Domestic Worker",
+    "exposureYears": 9,
+    "allergies": [
+      "Sulfa",
+      "Sulfonamides"
+    ],
+    "comorbidities": [
+      "Recurrent Urinary Tract Infections",
+      "Mild Anemia"
+    ],
+    "abhaId": "ABHA-33-8812-4019-2210",
+    "mobile": "9000000005",
+    "caregiver": {
+      "name": "Murugan S.",
+      "mobile": "9000000023",
+      "relation": "Husband"
+    },
+    "linkedAshaWorker": "ASHA-TN-301",
+    "consent": {
+      "pin": "551920",
+      "rotatedAt": "2026-10-15T10:00:00+00:00",
+      "activeGrants": []
+    },
+    "synthetic": true
+  },
+  {
+    "patientId": "PAT-SS-1005",
+    "name": "Santosh Pradhan",
+    "age": 34,
+    "gender": "Male",
+    "originState": "Odisha",
+    "originDistrict": "Balasore",
+    "currentLocation": "KR Puram, Bengaluru",
+    "lat": 13.0075,
+    "lng": 77.6959,
+    "preferredLanguage": "Odia",
+    "occupation": "Welder / Metal Fabricator",
+    "exposureYears": 7,
+    "allergies": [
+      "Aspirin",
+      "NSAIDs"
+    ],
+    "comorbidities": [
+      "Aspirin-Exacerbated Respiratory Disease (AERD)",
+      "Asthma"
+    ],
+    "abhaId": "ABHA-21-4401-9921-6677",
+    "mobile": "9000000006",
+    "caregiver": {
+      "name": "Mitali Pradhan",
+      "mobile": "9000000024",
+      "relation": "Sister"
+    },
+    "linkedAshaWorker": "ASHA-OD-402",
+    "consent": {
+      "pin": "620194",
+      "rotatedAt": "2026-10-19T10:00:00+00:00",
+      "activeGrants": []
+    },
+    "synthetic": true
+  },
+  {
+    "patientId": "PAT-SS-1006",
+    "name": "Bina Mondal",
+    "age": 29,
+    "gender": "Female",
+    "originState": "West Bengal",
+    "originDistrict": "Murshidabad",
+    "currentLocation": "Yeshwanthpur, Bengaluru",
+    "lat": 13.028,
+    "lng": 77.5404,
+    "preferredLanguage": "English",
+    "occupation": "Hotel Kitchen Staff",
+    "exposureYears": 4,
+    "allergies": [],
+    "comorbidities": [],
+    "abhaId": "ABHA-19-1029-4820-3344",
+    "mobile": "9000000007",
+    "caregiver": {
+      "name": "Tapan Mondal",
+      "mobile": "9000000025",
+      "relation": "Brother"
+    },
+    "linkedAshaWorker": "ASHA-WB-601",
+    "consent": {
+      "pin": "184029",
+      "rotatedAt": "2026-10-11T10:00:00+00:00",
+      "activeGrants": []
+    },
+    "synthetic": true
+  },
+  {
+    "patientId": "PAT-SS-1007",
+    "name": "Dharmendra Paswan",
+    "age": 52,
+    "gender": "Male",
+    "originState": "Jharkhand",
+    "originDistrict": "Dhanbad",
+    "currentLocation": "Whitefield, Bengaluru",
+    "lat": 12.9698,
+    "lng": 77.7502,
+    "preferredLanguage": "Hindi",
+    "occupation": "Quarry / Stone-Crusher Worker",
+    "exposureYears": 11,
+    "allergies": [],
+    "comorbidities": [
+      "Hypertension (Stage 2)",
+      "Accelerated Silicosis"
+    ],
+    "abhaId": "ABHA-10-8840-2219-5561",
+    "mobile": "9000000008",
+    "caregiver": {
+      "name": "Sunil Paswan",
+      "mobile": "9000000026",
+      "relation": "Son"
+    },
+    "linkedAshaWorker": "ASHA-JH-701",
+    "consent": {
+      "pin": "942103",
+      "rotatedAt": "2026-10-22T10:00:00+00:00",
+      "activeGrants": []
+    },
+    "synthetic": true
+  },
+  {
+    "patientId": "PAT-SS-1008",
+    "name": "Ankit Soren",
+    "age": 22,
+    "gender": "Male",
+    "originState": "Jharkhand",
+    "originDistrict": "Dumka",
+    "currentLocation": "Hebbal, Bengaluru",
+    "lat": 13.0358,
+    "lng": 77.597,
+    "preferredLanguage": "Hindi",
+    "occupation": "Delivery Rider",
+    "exposureYears": 0,
+    "allergies": [],
+    "comorbidities": [],
+    "abhaId": "ABHA-20-9901-3312-8822",
+    "mobile": "9000000009",
+    "caregiver": {
+      "name": "Rani Soren",
+      "mobile": "9000000027",
+      "relation": "Mother"
+    },
+    "linkedAshaWorker": "ASHA-JH-701",
+    "consent": {
+      "pin": "810294",
+      "rotatedAt": "2026-10-23T10:00:00+00:00",
+      "activeGrants": []
+    },
+    "synthetic": true
+  },
+  {
+    "patientId": "PAT-SS-1009",
+    "name": "Suresh Reddy",
+    "age": 68,
+    "gender": "Male",
+    "originState": "Telangana",
+    "originDistrict": "Mahbubnagar",
+    "currentLocation": "Bommanahalli, Bengaluru",
+    "lat": 12.905,
+    "lng": 77.627,
+    "preferredLanguage": "Telugu",
+    "occupation": "Security Guard",
+    "exposureYears": 16,
+    "allergies": [
+      "Ciprofloxacin"
+    ],
+    "comorbidities": [
+      "Coronary Artery Disease",
+      "Type 2 Diabetes Mellitus",
+      "Peripheral Neuropathy"
+    ],
+    "abhaId": "ABHA-36-5521-7788-1123",
+    "mobile": "9000000010",
+    "caregiver": {
+      "name": "Venkat Reddy",
+      "mobile": "9000000028",
+      "relation": "Son"
+    },
+    "linkedAshaWorker": "ASHA-TS-201",
+    "consent": {
+      "pin": "491023",
+      "rotatedAt": "2026-10-20T10:00:00+00:00",
+      "activeGrants": []
+    },
+    "synthetic": true
+  },
+  {
+    "patientId": "PAT-SS-1010",
+    "name": "Fatima Khatun",
+    "age": 26,
+    "gender": "Female",
+    "originState": "Uttar Pradesh",
+    "originDistrict": "Gorakhpur",
+    "currentLocation": "KR Puram, Bengaluru",
+    "lat": 13.008,
+    "lng": 77.6965,
+    "preferredLanguage": "Hindi",
+    "occupation": "Sanitation Worker",
+    "exposureYears": 3,
+    "allergies": [],
+    "comorbidities": [
+      "Pregnancy (24 Weeks Gestation)",
+      "Gestational Iron Deficiency"
+    ],
+    "abhaId": "ABHA-09-6612-4455-9988",
+    "mobile": "9000000011",
+    "caregiver": {
+      "name": "Mohammed Arif",
+      "mobile": "9000000029",
+      "relation": "Husband"
+    },
+    "linkedAshaWorker": "ASHA-UP-801",
+    "consent": {
+      "pin": "719302",
+      "rotatedAt": "2026-10-17T10:00:00+00:00",
+      "activeGrants": []
+    },
+    "synthetic": true
+  },
+  {
+    "patientId": "PAT-SS-1011",
+    "name": "Subhasis Jena",
+    "age": 41,
+    "gender": "Male",
+    "originState": "Odisha",
+    "originDistrict": "Kendrapara",
+    "currentLocation": "Whitefield, Bengaluru",
+    "lat": 12.982,
+    "lng": 77.685,
+    "preferredLanguage": "Odia",
+    "occupation": "Painter / Coating Worker",
+    "exposureYears": 8,
+    "allergies": [
+      "Penicillin"
+    ],
+    "comorbidities": [],
+    "abhaId": "ABHA-90-3621-7916-2040",
+    "mobile": "9000000011",
+    "caregiver": {
+      "name": "Family Member (Jena)",
+      "mobile": "9000000111",
+      "relation": "Kin"
+    },
+    "linkedAshaWorker": "ASHA-OD-402",
+    "consent": {
+      "pin": "503457",
+      "rotatedAt": "2026-10-12T10:00:00+00:00",
+      "activeGrants": []
+    },
+    "synthetic": true
+  },
+  {
+    "patientId": "PAT-SS-1012",
+    "name": "Priya Sharma",
+    "age": 38,
+    "gender": "Female",
+    "originState": "Bihar",
+    "originDistrict": "Patna",
+    "currentLocation": "Hebbal, Bengaluru",
+    "lat": 12.994,
+    "lng": 77.7,
+    "preferredLanguage": "Hindi",
+    "occupation": "Textile / Garment Worker",
+    "exposureYears": 5,
+    "allergies": [
+      "NSAIDs",
+      "Aspirin"
+    ],
+    "comorbidities": [],
+    "abhaId": "ABHA-58-8668-9669-5119",
+    "mobile": "9000000012",
+    "caregiver": {
+      "name": "Family Member (Sharma)",
+      "mobile": "9000000112",
+      "relation": "Kin"
+    },
+    "linkedAshaWorker": "ASHA-BH-501",
+    "consent": {
+      "pin": "680099",
+      "rotatedAt": "2026-10-11T10:00:00+00:00",
+      "activeGrants": []
+    },
+    "synthetic": true
+  },
+  {
+    "patientId": "PAT-SS-1013",
+    "name": "Basavaraj Bellad",
+    "age": 50,
+    "gender": "Male",
+    "originState": "Karnataka",
+    "originDistrict": "Kalaburagi",
+    "currentLocation": "Peenya, Bengaluru",
+    "lat": 13.006,
+    "lng": 77.715,
+    "preferredLanguage": "Kannada",
+    "occupation": "Construction Site Mason",
+    "exposureYears": 12,
+    "allergies": [],
+    "comorbidities": [
+      "Hypertension"
+    ],
+    "abhaId": "ABHA-11-2876-9797-5371",
+    "mobile": "9000000013",
+    "caregiver": {
+      "name": "Family Member (Bellad)",
+      "mobile": "9000000113",
+      "relation": "Kin"
+    },
+    "linkedAshaWorker": "ASHA-KA-101",
+    "consent": {
+      "pin": "905934",
+      "rotatedAt": "2026-10-10T10:00:00+00:00",
+      "activeGrants": []
+    },
+    "synthetic": true
+  },
+  {
+    "patientId": "PAT-SS-1014",
+    "name": "Anjali Tirkey",
+    "age": 28,
+    "gender": "Female",
+    "originState": "Jharkhand",
+    "originDistrict": "Ranchi",
+    "currentLocation": "Bommanahalli, Bengaluru",
+    "lat": 13.018,
+    "lng": 77.73,
+    "preferredLanguage": "Hindi",
+    "occupation": "Domestic Worker",
+    "exposureYears": 4,
+    "allergies": [],
+    "comorbidities": [],
+    "abhaId": "ABHA-92-6573-2827-5808",
+    "mobile": "9000000014",
+    "caregiver": {
+      "name": "Family Member (Tirkey)",
+      "mobile": "9000000114",
+      "relation": "Kin"
+    },
+    "linkedAshaWorker": "ASHA-KA-101",
+    "consent": {
+      "pin": "555884",
+      "rotatedAt": "2026-10-23T10:00:00+00:00",
+      "activeGrants": []
+    },
+    "synthetic": true
+  },
+  {
+    "patientId": "PAT-SS-1015",
+    "name": "Debabrata Das",
+    "age": 45,
+    "gender": "Male",
+    "originState": "West Bengal",
+    "originDistrict": "Bankura",
+    "currentLocation": "Yeshwanthpur, Bengaluru",
+    "lat": 13.03,
+    "lng": 77.745,
+    "preferredLanguage": "English",
+    "occupation": "Welder / Metal Fabricator",
+    "exposureYears": 9,
+    "allergies": [],
+    "comorbidities": [],
+    "abhaId": "ABHA-30-8433-1053-5315",
+    "mobile": "9000000015",
+    "caregiver": {
+      "name": "Family Member (Das)",
+      "mobile": "9000000115",
+      "relation": "Kin"
+    },
+    "linkedAshaWorker": "ASHA-KA-101",
+    "consent": {
+      "pin": "624902",
+      "rotatedAt": "2026-10-22T10:00:00+00:00",
+      "activeGrants": []
+    },
+    "synthetic": true
+  },
+  {
+    "patientId": "PAT-SS-1016",
+    "name": "Kavitha Selvam",
+    "age": 33,
+    "gender": "Female",
+    "originState": "Tamil Nadu",
+    "originDistrict": "Salem",
+    "currentLocation": "Electronic City, Bengaluru",
+    "lat": 13.042,
+    "lng": 77.76,
+    "preferredLanguage": "Tamil",
+    "occupation": "Textile / Garment Worker",
+    "exposureYears": 6,
+    "allergies": [
+      "Sulfa"
+    ],
+    "comorbidities": [],
+    "abhaId": "ABHA-32-9317-2743-5889",
+    "mobile": "9000000016",
+    "caregiver": {
+      "name": "Family Member (Selvam)",
+      "mobile": "9000000116",
+      "relation": "Kin"
+    },
+    "linkedAshaWorker": "ASHA-KA-101",
+    "consent": {
+      "pin": "982554",
+      "rotatedAt": "2026-10-21T10:00:00+00:00",
+      "activeGrants": []
+    },
+    "synthetic": true
+  },
+  {
+    "patientId": "PAT-SS-1017",
+    "name": "Narsimha Rao",
+    "age": 49,
+    "gender": "Male",
+    "originState": "Andhra Pradesh",
+    "originDistrict": "Srikakulam",
+    "currentLocation": "KR Puram, Bengaluru",
+    "lat": 13.054,
+    "lng": 77.775,
+    "preferredLanguage": "Telugu",
+    "occupation": "Sanitation Worker",
+    "exposureYears": 10,
+    "allergies": [],
+    "comorbidities": [
+      "Hypertension"
+    ],
+    "abhaId": "ABHA-91-9317-4258-3504",
+    "mobile": "9000000017",
+    "caregiver": {
+      "name": "Family Member (Rao)",
+      "mobile": "9000000117",
+      "relation": "Kin"
+    },
+    "linkedAshaWorker": "ASHA-KA-101",
+    "consent": {
+      "pin": "492077",
+      "rotatedAt": "2026-10-20T10:00:00+00:00",
+      "activeGrants": []
+    },
+    "synthetic": true
+  },
+  {
+    "patientId": "PAT-SS-1018",
+    "name": "Raju Mahato",
+    "age": 37,
+    "gender": "Male",
+    "originState": "Bihar",
+    "originDistrict": "Muzaffarpur",
+    "currentLocation": "Peenya, Bengaluru",
+    "lat": 13.066,
+    "lng": 77.79,
+    "preferredLanguage": "Hindi",
+    "occupation": "Quarry / Stone-Crusher Worker",
+    "exposureYears": 7,
+    "allergies": [],
+    "comorbidities": [],
+    "abhaId": "ABHA-30-9837-9689-1009",
+    "mobile": "9000000018",
+    "caregiver": {
+      "name": "Family Member (Mahato)",
+      "mobile": "9000000118",
+      "relation": "Kin"
+    },
+    "linkedAshaWorker": "ASHA-BH-501",
+    "consent": {
+      "pin": "728038",
+      "rotatedAt": "2026-10-19T10:00:00+00:00",
+      "activeGrants": []
+    },
+    "synthetic": true
+  },
+  {
+    "patientId": "PAT-SS-1019",
+    "name": "Santoshi Nayak",
+    "age": 31,
+    "gender": "Female",
+    "originState": "Odisha",
+    "originDistrict": "Mayurbhanj",
+    "currentLocation": "Bommanahalli, Bengaluru",
+    "lat": 13.078,
+    "lng": 77.805,
+    "preferredLanguage": "Odia",
+    "occupation": "Hotel Kitchen Staff",
+    "exposureYears": 5,
+    "allergies": [],
+    "comorbidities": [],
+    "abhaId": "ABHA-51-9005-1319-2832",
+    "mobile": "9000000019",
+    "caregiver": {
+      "name": "Family Member (Nayak)",
+      "mobile": "9000000119",
+      "relation": "Kin"
+    },
+    "linkedAshaWorker": "ASHA-OD-402",
+    "consent": {
+      "pin": "480612",
+      "rotatedAt": "2026-10-18T10:00:00+00:00",
+      "activeGrants": []
+    },
+    "synthetic": true
+  },
+  {
+    "patientId": "PAT-SS-1020",
+    "name": "Vijay Bhaskar",
+    "age": 54,
+    "gender": "Male",
+    "originState": "Telangana",
+    "originDistrict": "Nalgonda",
+    "currentLocation": "Whitefield, Bengaluru",
+    "lat": 13.09,
+    "lng": 77.82,
+    "preferredLanguage": "Telugu",
+    "occupation": "Security Guard",
+    "exposureYears": 13,
+    "allergies": [],
+    "comorbidities": [
+      "Hypertension"
+    ],
+    "abhaId": "ABHA-49-4923-1949-4946",
+    "mobile": "9000000020",
+    "caregiver": {
+      "name": "Family Member (Bhaskar)",
+      "mobile": "9000000120",
+      "relation": "Kin"
+    },
+    "linkedAshaWorker": "ASHA-KA-101",
+    "consent": {
+      "pin": "694916",
+      "rotatedAt": "2026-10-17T10:00:00+00:00",
+      "activeGrants": []
+    },
+    "synthetic": true
+  },
+  {
+    "patientId": "PAT-SS-1021",
+    "name": "Ranjit Barman",
+    "age": 40,
+    "gender": "Male",
+    "originState": "West Bengal",
+    "originDistrict": "Cooch Behar",
+    "currentLocation": "Yeshwanthpur, Bengaluru",
+    "lat": 13.102,
+    "lng": 77.835,
+    "preferredLanguage": "English",
+    "occupation": "Agricultural Farm Labourer",
+    "exposureYears": 11,
+    "allergies": [],
+    "comorbidities": [],
+    "abhaId": "ABHA-20-2403-8962-2133",
+    "mobile": "9000000021",
+    "caregiver": {
+      "name": "Family Member (Barman)",
+      "mobile": "9000000121",
+      "relation": "Kin"
+    },
+    "linkedAshaWorker": "ASHA-KA-101",
+    "consent": {
+      "pin": "897549",
+      "rotatedAt": "2026-10-16T10:00:00+00:00",
+      "activeGrants": []
+    },
+    "synthetic": true
+  },
+  {
+    "patientId": "PAT-SS-1022",
+    "name": "Meena Kumari",
+    "age": 35,
+    "gender": "Female",
+    "originState": "Bihar",
+    "originDistrict": "Samastipur",
+    "currentLocation": "Electronic City, Bengaluru",
+    "lat": 13.114,
+    "lng": 77.85,
+    "preferredLanguage": "Hindi",
+    "occupation": "Domestic Worker",
+    "exposureYears": 6,
+    "allergies": [],
+    "comorbidities": [],
+    "abhaId": "ABHA-78-3060-3103-8787",
+    "mobile": "9000000022",
+    "caregiver": {
+      "name": "Family Member (Kumari)",
+      "mobile": "9000000122",
+      "relation": "Kin"
+    },
+    "linkedAshaWorker": "ASHA-BH-501",
+    "consent": {
+      "pin": "676510",
+      "rotatedAt": "2026-10-15T10:00:00+00:00",
+      "activeGrants": []
+    },
+    "synthetic": true
+  },
+  {
+    "patientId": "PAT-SS-1023",
+    "name": "Pratap Behera",
+    "age": 46,
+    "gender": "Male",
+    "originState": "Odisha",
+    "originDistrict": "Puri",
+    "currentLocation": "KR Puram, Bengaluru",
+    "lat": 13.126,
+    "lng": 77.865,
+    "preferredLanguage": "Odia",
+    "occupation": "Delivery Rider",
+    "exposureYears": 4,
+    "allergies": [],
+    "comorbidities": [
+      "Hypertension"
+    ],
+    "abhaId": "ABHA-31-5342-9645-7932",
+    "mobile": "9000000023",
+    "caregiver": {
+      "name": "Family Member (Behera)",
+      "mobile": "9000000123",
+      "relation": "Kin"
+    },
+    "linkedAshaWorker": "ASHA-OD-402",
+    "consent": {
+      "pin": "322086",
+      "rotatedAt": "2026-10-14T10:00:00+00:00",
+      "activeGrants": []
+    },
+    "synthetic": true
+  },
+  {
+    "patientId": "PAT-SS-1024",
+    "name": "Siddappa Koli",
+    "age": 58,
+    "gender": "Male",
+    "originState": "Karnataka",
+    "originDistrict": "Vijayapura",
+    "currentLocation": "Peenya, Bengaluru",
+    "lat": 13.138,
+    "lng": 77.88,
+    "preferredLanguage": "Kannada",
+    "occupation": "Construction Site Mason",
+    "exposureYears": 15,
+    "allergies": [],
+    "comorbidities": [
+      "Hypertension"
+    ],
+    "abhaId": "ABHA-79-4295-6107-7537",
+    "mobile": "9000000024",
+    "caregiver": {
+      "name": "Family Member (Koli)",
+      "mobile": "9000000124",
+      "relation": "Kin"
+    },
+    "linkedAshaWorker": "ASHA-KA-101",
+    "consent": {
+      "pin": "804314",
+      "rotatedAt": "2026-10-13T10:00:00+00:00",
+      "activeGrants": []
+    },
+    "synthetic": true
+  },
+  {
+    "patientId": "PAT-SS-1025",
+    "name": "Afzal Ansari",
+    "age": 39,
+    "gender": "Male",
+    "originState": "Jharkhand",
+    "originDistrict": "Bokaro",
+    "currentLocation": "Hebbal, Bengaluru",
+    "lat": 13.15,
+    "lng": 77.895,
+    "preferredLanguage": "Hindi",
+    "occupation": "Welder / Metal Fabricator",
+    "exposureYears": 8,
+    "allergies": [],
+    "comorbidities": [],
+    "abhaId": "ABHA-93-7118-8177-9479",
+    "mobile": "9000000025",
+    "caregiver": {
+      "name": "Family Member (Ansari)",
+      "mobile": "9000000125",
+      "relation": "Kin"
+    },
+    "linkedAshaWorker": "ASHA-KA-101",
+    "consent": {
+      "pin": "573417",
+      "rotatedAt": "2026-10-12T10:00:00+00:00",
+      "activeGrants": []
+    },
+    "synthetic": true
+  }
+]

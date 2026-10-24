@@ -1,0 +1,6098 @@
+[
+  {
+    "id": "PHARM-BLR-01",
+    "name": "Apollo Pharmacy Whitefield",
+    "type": "Retail",
+    "locality": "Whitefield",
+    "lat": 12.9698,
+    "lng": 77.75,
+    "hours": "24 Hours / 7 Days",
+    "phone": "9000000101",
+    "is24x7": true,
+    "stock": {
+      "Metformin": {
+        "qty": 198,
+        "status": "IN_STOCK"
+      },
+      "Warfarin": {
+        "qty": 116,
+        "status": "IN_STOCK"
+      },
+      "Atorvastatin": {
+        "qty": 136,
+        "status": "IN_STOCK"
+      },
+      "Amlodipine": {
+        "qty": 192,
+        "status": "IN_STOCK"
+      },
+      "Lisinopril": {
+        "qty": 169,
+        "status": "IN_STOCK"
+      },
+      "Ramipril": {
+        "qty": 142,
+        "status": "IN_STOCK"
+      },
+      "Telmisartan": {
+        "qty": 95,
+        "status": "IN_STOCK"
+      },
+      "Paracetamol": {
+        "qty": 83,
+        "status": "IN_STOCK"
+      },
+      "Ibuprofen": {
+        "qty": 160,
+        "status": "IN_STOCK"
+      },
+      "Diclofenac": {
+        "qty": 157,
+        "status": "IN_STOCK"
+      },
+      "Azithromycin": {
+        "qty": 182,
+        "status": "IN_STOCK"
+      },
+      "Amoxicillin": {
+        "qty": 110,
+        "status": "IN_STOCK"
+      },
+      "Ciprofloxacin": {
+        "qty": 170,
+        "status": "IN_STOCK"
+      },
+      "Omeprazole": {
+        "qty": 100,
+        "status": "IN_STOCK"
+      },
+      "Pantoprazole": {
+        "qty": 119,
+        "status": "IN_STOCK"
+      },
+      "Cetirizine": {
+        "qty": 150,
+        "status": "IN_STOCK"
+      },
+      "Salbutamol": {
+        "qty": 81,
+        "status": "IN_STOCK"
+      },
+      "Deriphyllin": {
+        "qty": 150,
+        "status": "IN_STOCK"
+      },
+      "Montelukast": {
+        "qty": 132,
+        "status": "IN_STOCK"
+      },
+      "Budesonide": {
+        "qty": 91,
+        "status": "IN_STOCK"
+      },
+      "Dextromethorphan": {
+        "qty": 108,
+        "status": "IN_STOCK"
+      },
+      "Insulin Glargine": {
+        "qty": 187,
+        "status": "IN_STOCK"
+      },
+      "Glimepiride": {
+        "qty": 196,
+        "status": "IN_STOCK"
+      },
+      "Teneligliptin": {
+        "qty": 94,
+        "status": "IN_STOCK"
+      },
+      "Clopidogrel": {
+        "qty": 139,
+        "status": "IN_STOCK"
+      },
+      "Aspirin": {
+        "qty": 95,
+        "status": "IN_STOCK"
+      },
+      "Spironolactone": {
+        "qty": 162,
+        "status": "IN_STOCK"
+      },
+      "Furosemide": {
+        "qty": 186,
+        "status": "IN_STOCK"
+      },
+      "Hydrochlorothiazide": {
+        "qty": 99,
+        "status": "IN_STOCK"
+      },
+      "Levothyroxine": {
+        "qty": 143,
+        "status": "IN_STOCK"
+      },
+      "Ranitidine": {
+        "qty": 199,
+        "status": "IN_STOCK"
+      },
+      "Domperidone": {
+        "qty": 171,
+        "status": "IN_STOCK"
+      },
+      "Ondansetron": {
+        "qty": 117,
+        "status": "IN_STOCK"
+      },
+      "Metoclopramide": {
+        "qty": 145,
+        "status": "IN_STOCK"
+      },
+      "Doxycycline": {
+        "qty": 170,
+        "status": "IN_STOCK"
+      },
+      "Co-trimoxazole": {
+        "qty": 114,
+        "status": "IN_STOCK"
+      },
+      "Cephalexin": {
+        "qty": 133,
+        "status": "IN_STOCK"
+      },
+      "Cefixime": {
+        "qty": 186,
+        "status": "IN_STOCK"
+      },
+      "Ofloxacin": {
+        "qty": 141,
+        "status": "IN_STOCK"
+      },
+      "Metronidazole": {
+        "qty": 140,
+        "status": "IN_STOCK"
+      },
+      "Fluconazole": {
+        "qty": 111,
+        "status": "IN_STOCK"
+      },
+      "Terbinafine": {
+        "qty": 138,
+        "status": "IN_STOCK"
+      },
+      "Clotrimazole": {
+        "qty": 150,
+        "status": "IN_STOCK"
+      },
+      "Mupirocin": {
+        "qty": 98,
+        "status": "IN_STOCK"
+      },
+      "Silver Sulfadiazine": {
+        "qty": 129,
+        "status": "IN_STOCK"
+      },
+      "Diclofenac Gel": {
+        "qty": 104,
+        "status": "IN_STOCK"
+      },
+      "Multivitamin with Zinc": {
+        "qty": 197,
+        "status": "IN_STOCK"
+      },
+      "Calcium 500mg": {
+        "qty": 156,
+        "status": "IN_STOCK"
+      },
+      "Iron Folic Acid": {
+        "qty": 145,
+        "status": "IN_STOCK"
+      },
+      "Vitamin D3 60k": {
+        "qty": 175,
+        "status": "IN_STOCK"
+      },
+      "Oral Rehydration Salts (ORS)": {
+        "qty": 192,
+        "status": "IN_STOCK"
+      },
+      "Diazepam": {
+        "qty": 97,
+        "status": "IN_STOCK"
+      },
+      "Alprazolam": {
+        "qty": 190,
+        "status": "IN_STOCK"
+      },
+      "Clonazepam": {
+        "qty": 88,
+        "status": "IN_STOCK"
+      },
+      "Tramadol": {
+        "qty": 115,
+        "status": "IN_STOCK"
+      },
+      "Pregabalin": {
+        "qty": 178,
+        "status": "IN_STOCK"
+      },
+      "Gabapentin": {
+        "qty": 181,
+        "status": "IN_STOCK"
+      },
+      "Betahistine": {
+        "qty": 189,
+        "status": "IN_STOCK"
+      },
+      "Methylcobalamin": {
+        "qty": 133,
+        "status": "IN_STOCK"
+      },
+      "Pantocid DSR": {
+        "qty": 123,
+        "status": "IN_STOCK"
+      }
+    },
+    "synthetic": true
+  },
+  {
+    "id": "PHARM-BLR-02",
+    "name": "Apollo Pharmacy Whitefield Main Road",
+    "type": "Retail",
+    "locality": "Whitefield Main Road",
+    "lat": 12.982,
+    "lng": 77.742,
+    "hours": "08:00 AM - 10:30 PM",
+    "phone": "9000000102",
+    "is24x7": false,
+    "stock": {
+      "Metformin": {
+        "qty": 12,
+        "status": "LOW"
+      },
+      "Warfarin": {
+        "qty": 45,
+        "status": "IN_STOCK"
+      },
+      "Atorvastatin": {
+        "qty": 100,
+        "status": "IN_STOCK"
+      },
+      "Amlodipine": {
+        "qty": 64,
+        "status": "IN_STOCK"
+      },
+      "Lisinopril": {
+        "qty": 34,
+        "status": "IN_STOCK"
+      },
+      "Ramipril": {
+        "qty": 0,
+        "status": "OUT"
+      },
+      "Telmisartan": {
+        "qty": 36,
+        "status": "IN_STOCK"
+      },
+      "Paracetamol": {
+        "qty": 92,
+        "status": "IN_STOCK"
+      },
+      "Ibuprofen": {
+        "qty": 38,
+        "status": "IN_STOCK"
+      },
+      "Diclofenac": {
+        "qty": 75,
+        "status": "IN_STOCK"
+      },
+      "Azithromycin": {
+        "qty": 74,
+        "status": "IN_STOCK"
+      },
+      "Amoxicillin": {
+        "qty": 84,
+        "status": "IN_STOCK"
+      },
+      "Ciprofloxacin": {
+        "qty": 62,
+        "status": "IN_STOCK"
+      },
+      "Omeprazole": {
+        "qty": 19,
+        "status": "LOW"
+      },
+      "Pantoprazole": {
+        "qty": 57,
+        "status": "IN_STOCK"
+      },
+      "Cetirizine": {
+        "qty": 68,
+        "status": "IN_STOCK"
+      },
+      "Salbutamol": {
+        "qty": 61,
+        "status": "IN_STOCK"
+      },
+      "Deriphyllin": {
+        "qty": 44,
+        "status": "IN_STOCK"
+      },
+      "Montelukast": {
+        "qty": 42,
+        "status": "IN_STOCK"
+      },
+      "Budesonide": {
+        "qty": 70,
+        "status": "IN_STOCK"
+      },
+      "Dextromethorphan": {
+        "qty": 97,
+        "status": "IN_STOCK"
+      },
+      "Insulin Glargine": {
+        "qty": 69,
+        "status": "IN_STOCK"
+      },
+      "Glimepiride": {
+        "qty": 48,
+        "status": "IN_STOCK"
+      },
+      "Teneligliptin": {
+        "qty": 58,
+        "status": "IN_STOCK"
+      },
+      "Clopidogrel": {
+        "qty": 41,
+        "status": "IN_STOCK"
+      },
+      "Aspirin": {
+        "qty": 24,
+        "status": "IN_STOCK"
+      },
+      "Spironolactone": {
+        "qty": 89,
+        "status": "IN_STOCK"
+      },
+      "Furosemide": {
+        "qty": 30,
+        "status": "IN_STOCK"
+      },
+      "Hydrochlorothiazide": {
+        "qty": 73,
+        "status": "IN_STOCK"
+      },
+      "Levothyroxine": {
+        "qty": 49,
+        "status": "IN_STOCK"
+      },
+      "Ranitidine": {
+        "qty": 29,
+        "status": "IN_STOCK"
+      },
+      "Domperidone": {
+        "qty": 99,
+        "status": "IN_STOCK"
+      },
+      "Ondansetron": {
+        "qty": 52,
+        "status": "IN_STOCK"
+      },
+      "Metoclopramide": {
+        "qty": 5,
+        "status": "LOW"
+      },
+      "Doxycycline": {
+        "qty": 40,
+        "status": "IN_STOCK"
+      },
+      "Co-trimoxazole": {
+        "qty": 95,
+        "status": "IN_STOCK"
+      },
+      "Cephalexin": {
+        "qty": 60,
+        "status": "IN_STOCK"
+      },
+      "Cefixime": {
+        "qty": 90,
+        "status": "IN_STOCK"
+      },
+      "Ofloxacin": {
+        "qty": 48,
+        "status": "IN_STOCK"
+      },
+      "Metronidazole": {
+        "qty": 49,
+        "status": "IN_STOCK"
+      },
+      "Fluconazole": {
+        "qty": 84,
+        "status": "IN_STOCK"
+      },
+      "Terbinafine": {
+        "qty": 83,
+        "status": "IN_STOCK"
+      },
+      "Clotrimazole": {
+        "qty": 19,
+        "status": "LOW"
+      },
+      "Mupirocin": {
+        "qty": 63,
+        "status": "IN_STOCK"
+      },
+      "Silver Sulfadiazine": {
+        "qty": 4,
+        "status": "LOW"
+      },
+      "Diclofenac Gel": {
+        "qty": 16,
+        "status": "LOW"
+      },
+      "Multivitamin with Zinc": {
+        "qty": 64,
+        "status": "IN_STOCK"
+      },
+      "Calcium 500mg": {
+        "qty": 75,
+        "status": "IN_STOCK"
+      },
+      "Iron Folic Acid": {
+        "qty": 42,
+        "status": "IN_STOCK"
+      },
+      "Vitamin D3 60k": {
+        "qty": 12,
+        "status": "LOW"
+      },
+      "Oral Rehydration Salts (ORS)": {
+        "qty": 56,
+        "status": "IN_STOCK"
+      },
+      "Diazepam": {
+        "qty": 12,
+        "status": "LOW"
+      },
+      "Alprazolam": {
+        "qty": 67,
+        "status": "IN_STOCK"
+      },
+      "Clonazepam": {
+        "qty": 58,
+        "status": "IN_STOCK"
+      },
+      "Tramadol": {
+        "qty": 1,
+        "status": "LOW"
+      },
+      "Pregabalin": {
+        "qty": 92,
+        "status": "IN_STOCK"
+      },
+      "Gabapentin": {
+        "qty": 18,
+        "status": "LOW"
+      },
+      "Betahistine": {
+        "qty": 52,
+        "status": "IN_STOCK"
+      },
+      "Methylcobalamin": {
+        "qty": 83,
+        "status": "IN_STOCK"
+      },
+      "Pantocid DSR": {
+        "qty": 19,
+        "status": "LOW"
+      }
+    },
+    "synthetic": true
+  },
+  {
+    "id": "PHARM-BLR-03",
+    "name": "Pradhan Mantri Jan Aushadhi Kendra ITPL Road, Whitefield",
+    "type": "Jan Aushadhi",
+    "locality": "ITPL Road, Whitefield",
+    "lat": 12.988,
+    "lng": 77.731,
+    "hours": "08:00 AM - 10:30 PM",
+    "phone": "9000000103",
+    "is24x7": false,
+    "stock": {
+      "Metformin": {
+        "qty": 19,
+        "status": "LOW"
+      },
+      "Warfarin": {
+        "qty": 0,
+        "status": "OUT"
+      },
+      "Atorvastatin": {
+        "qty": 70,
+        "status": "IN_STOCK"
+      },
+      "Amlodipine": {
+        "qty": 110,
+        "status": "IN_STOCK"
+      },
+      "Lisinopril": {
+        "qty": 43,
+        "status": "IN_STOCK"
+      },
+      "Ramipril": {
+        "qty": 53,
+        "status": "IN_STOCK"
+      },
+      "Telmisartan": {
+        "qty": 89,
+        "status": "IN_STOCK"
+      },
+      "Paracetamol": {
+        "qty": 98,
+        "status": "IN_STOCK"
+      },
+      "Ibuprofen": {
+        "qty": 60,
+        "status": "IN_STOCK"
+      },
+      "Diclofenac": {
+        "qty": 93,
+        "status": "IN_STOCK"
+      },
+      "Azithromycin": {
+        "qty": 20,
+        "status": "LOW"
+      },
+      "Amoxicillin": {
+        "qty": 119,
+        "status": "IN_STOCK"
+      },
+      "Ciprofloxacin": {
+        "qty": 52,
+        "status": "IN_STOCK"
+      },
+      "Omeprazole": {
+        "qty": 119,
+        "status": "IN_STOCK"
+      },
+      "Pantoprazole": {
+        "qty": 96,
+        "status": "IN_STOCK"
+      },
+      "Cetirizine": {
+        "qty": 119,
+        "status": "IN_STOCK"
+      },
+      "Salbutamol": {
+        "qty": 78,
+        "status": "IN_STOCK"
+      },
+      "Deriphyllin": {
+        "qty": 58,
+        "status": "IN_STOCK"
+      },
+      "Montelukast": {
+        "qty": 50,
+        "status": "IN_STOCK"
+      },
+      "Budesonide": {
+        "qty": 90,
+        "status": "IN_STOCK"
+      },
+      "Dextromethorphan": {
+        "qty": 101,
+        "status": "IN_STOCK"
+      },
+      "Insulin Glargine": {
+        "qty": 107,
+        "status": "IN_STOCK"
+      },
+      "Glimepiride": {
+        "qty": 72,
+        "status": "IN_STOCK"
+      },
+      "Teneligliptin": {
+        "qty": 79,
+        "status": "IN_STOCK"
+      },
+      "Clopidogrel": {
+        "qty": 14,
+        "status": "LOW"
+      },
+      "Aspirin": {
+        "qty": 89,
+        "status": "IN_STOCK"
+      },
+      "Spironolactone": {
+        "qty": 18,
+        "status": "LOW"
+      },
+      "Furosemide": {
+        "qty": 40,
+        "status": "IN_STOCK"
+      },
+      "Hydrochlorothiazide": {
+        "qty": 90,
+        "status": "IN_STOCK"
+      },
+      "Levothyroxine": {
+        "qty": 97,
+        "status": "IN_STOCK"
+      },
+      "Ranitidine": {
+        "qty": 46,
+        "status": "IN_STOCK"
+      },
+      "Domperidone": {
+        "qty": 39,
+        "status": "IN_STOCK"
+      },
+      "Ondansetron": {
+        "qty": 105,
+        "status": "IN_STOCK"
+      },
+      "Metoclopramide": {
+        "qty": 21,
+        "status": "IN_STOCK"
+      },
+      "Doxycycline": {
+        "qty": 65,
+        "status": "IN_STOCK"
+      },
+      "Co-trimoxazole": {
+        "qty": 22,
+        "status": "IN_STOCK"
+      },
+      "Cephalexin": {
+        "qty": 107,
+        "status": "IN_STOCK"
+      },
+      "Cefixime": {
+        "qty": 91,
+        "status": "IN_STOCK"
+      },
+      "Ofloxacin": {
+        "qty": 100,
+        "status": "IN_STOCK"
+      },
+      "Metronidazole": {
+        "qty": 22,
+        "status": "IN_STOCK"
+      },
+      "Fluconazole": {
+        "qty": 66,
+        "status": "IN_STOCK"
+      },
+      "Terbinafine": {
+        "qty": 31,
+        "status": "IN_STOCK"
+      },
+      "Clotrimazole": {
+        "qty": 98,
+        "status": "IN_STOCK"
+      },
+      "Mupirocin": {
+        "qty": 48,
+        "status": "IN_STOCK"
+      },
+      "Silver Sulfadiazine": {
+        "qty": 13,
+        "status": "LOW"
+      },
+      "Diclofenac Gel": {
+        "qty": 15,
+        "status": "LOW"
+      },
+      "Multivitamin with Zinc": {
+        "qty": 51,
+        "status": "IN_STOCK"
+      },
+      "Calcium 500mg": {
+        "qty": 111,
+        "status": "IN_STOCK"
+      },
+      "Iron Folic Acid": {
+        "qty": 17,
+        "status": "LOW"
+      },
+      "Vitamin D3 60k": {
+        "qty": 47,
+        "status": "IN_STOCK"
+      },
+      "Oral Rehydration Salts (ORS)": {
+        "qty": 55,
+        "status": "IN_STOCK"
+      },
+      "Diazepam": {
+        "qty": 57,
+        "status": "IN_STOCK"
+      },
+      "Alprazolam": {
+        "qty": 65,
+        "status": "IN_STOCK"
+      },
+      "Clonazepam": {
+        "qty": 28,
+        "status": "IN_STOCK"
+      },
+      "Tramadol": {
+        "qty": 41,
+        "status": "IN_STOCK"
+      },
+      "Pregabalin": {
+        "qty": 77,
+        "status": "IN_STOCK"
+      },
+      "Gabapentin": {
+        "qty": 62,
+        "status": "IN_STOCK"
+      },
+      "Betahistine": {
+        "qty": 82,
+        "status": "IN_STOCK"
+      },
+      "Methylcobalamin": {
+        "qty": 97,
+        "status": "IN_STOCK"
+      },
+      "Pantocid DSR": {
+        "qty": 111,
+        "status": "IN_STOCK"
+      }
+    },
+    "synthetic": true
+  },
+  {
+    "id": "PHARM-BLR-04",
+    "name": "Manipal Hospital In-House Pharmacy Bommanahalli",
+    "type": "Hospital pharmacy",
+    "locality": "Bommanahalli",
+    "lat": 12.9038,
+    "lng": 77.6258,
+    "hours": "24 Hours / 7 Days",
+    "phone": "9000000104",
+    "is24x7": true,
+    "stock": {
+      "Metformin": {
+        "qty": 46,
+        "status": "IN_STOCK"
+      },
+      "Warfarin": {
+        "qty": 43,
+        "status": "IN_STOCK"
+      },
+      "Atorvastatin": {
+        "qty": 44,
+        "status": "IN_STOCK"
+      },
+      "Amlodipine": {
+        "qty": 20,
+        "status": "LOW"
+      },
+      "Lisinopril": {
+        "qty": 97,
+        "status": "IN_STOCK"
+      },
+      "Ramipril": {
+        "qty": 61,
+        "status": "IN_STOCK"
+      },
+      "Telmisartan": {
+        "qty": 127,
+        "status": "IN_STOCK"
+      },
+      "Paracetamol": {
+        "qty": 149,
+        "status": "IN_STOCK"
+      },
+      "Ibuprofen": {
+        "qty": 36,
+        "status": "IN_STOCK"
+      },
+      "Diclofenac": {
+        "qty": 59,
+        "status": "IN_STOCK"
+      },
+      "Azithromycin": {
+        "qty": 118,
+        "status": "IN_STOCK"
+      },
+      "Amoxicillin": {
+        "qty": 65,
+        "status": "IN_STOCK"
+      },
+      "Ciprofloxacin": {
+        "qty": 117,
+        "status": "IN_STOCK"
+      },
+      "Omeprazole": {
+        "qty": 65,
+        "status": "IN_STOCK"
+      },
+      "Pantoprazole": {
+        "qty": 2,
+        "status": "LOW"
+      },
+      "Cetirizine": {
+        "qty": 119,
+        "status": "IN_STOCK"
+      },
+      "Salbutamol": {
+        "qty": 73,
+        "status": "IN_STOCK"
+      },
+      "Deriphyllin": {
+        "qty": 139,
+        "status": "IN_STOCK"
+      },
+      "Montelukast": {
+        "qty": 40,
+        "status": "IN_STOCK"
+      },
+      "Budesonide": {
+        "qty": 18,
+        "status": "LOW"
+      },
+      "Dextromethorphan": {
+        "qty": 113,
+        "status": "IN_STOCK"
+      },
+      "Insulin Glargine": {
+        "qty": 88,
+        "status": "IN_STOCK"
+      },
+      "Glimepiride": {
+        "qty": 150,
+        "status": "IN_STOCK"
+      },
+      "Teneligliptin": {
+        "qty": 76,
+        "status": "IN_STOCK"
+      },
+      "Clopidogrel": {
+        "qty": 108,
+        "status": "IN_STOCK"
+      },
+      "Aspirin": {
+        "qty": 64,
+        "status": "IN_STOCK"
+      },
+      "Spironolactone": {
+        "qty": 116,
+        "status": "IN_STOCK"
+      },
+      "Furosemide": {
+        "qty": 77,
+        "status": "IN_STOCK"
+      },
+      "Hydrochlorothiazide": {
+        "qty": 50,
+        "status": "IN_STOCK"
+      },
+      "Levothyroxine": {
+        "qty": 98,
+        "status": "IN_STOCK"
+      },
+      "Ranitidine": {
+        "qty": 123,
+        "status": "IN_STOCK"
+      },
+      "Domperidone": {
+        "qty": 27,
+        "status": "IN_STOCK"
+      },
+      "Ondansetron": {
+        "qty": 60,
+        "status": "IN_STOCK"
+      },
+      "Metoclopramide": {
+        "qty": 97,
+        "status": "IN_STOCK"
+      },
+      "Doxycycline": {
+        "qty": 146,
+        "status": "IN_STOCK"
+      },
+      "Co-trimoxazole": {
+        "qty": 91,
+        "status": "IN_STOCK"
+      },
+      "Cephalexin": {
+        "qty": 147,
+        "status": "IN_STOCK"
+      },
+      "Cefixime": {
+        "qty": 75,
+        "status": "IN_STOCK"
+      },
+      "Ofloxacin": {
+        "qty": 75,
+        "status": "IN_STOCK"
+      },
+      "Metronidazole": {
+        "qty": 5,
+        "status": "LOW"
+      },
+      "Fluconazole": {
+        "qty": 101,
+        "status": "IN_STOCK"
+      },
+      "Terbinafine": {
+        "qty": 70,
+        "status": "IN_STOCK"
+      },
+      "Clotrimazole": {
+        "qty": 2,
+        "status": "LOW"
+      },
+      "Mupirocin": {
+        "qty": 144,
+        "status": "IN_STOCK"
+      },
+      "Silver Sulfadiazine": {
+        "qty": 12,
+        "status": "LOW"
+      },
+      "Diclofenac Gel": {
+        "qty": 127,
+        "status": "IN_STOCK"
+      },
+      "Multivitamin with Zinc": {
+        "qty": 73,
+        "status": "IN_STOCK"
+      },
+      "Calcium 500mg": {
+        "qty": 58,
+        "status": "IN_STOCK"
+      },
+      "Iron Folic Acid": {
+        "qty": 90,
+        "status": "IN_STOCK"
+      },
+      "Vitamin D3 60k": {
+        "qty": 56,
+        "status": "IN_STOCK"
+      },
+      "Oral Rehydration Salts (ORS)": {
+        "qty": 48,
+        "status": "IN_STOCK"
+      },
+      "Diazepam": {
+        "qty": 64,
+        "status": "IN_STOCK"
+      },
+      "Alprazolam": {
+        "qty": 35,
+        "status": "IN_STOCK"
+      },
+      "Clonazepam": {
+        "qty": 24,
+        "status": "LOW"
+      },
+      "Tramadol": {
+        "qty": 10,
+        "status": "LOW"
+      },
+      "Pregabalin": {
+        "qty": 79,
+        "status": "IN_STOCK"
+      },
+      "Gabapentin": {
+        "qty": 112,
+        "status": "IN_STOCK"
+      },
+      "Betahistine": {
+        "qty": 8,
+        "status": "LOW"
+      },
+      "Methylcobalamin": {
+        "qty": 148,
+        "status": "IN_STOCK"
+      },
+      "Pantocid DSR": {
+        "qty": 93,
+        "status": "IN_STOCK"
+      }
+    },
+    "synthetic": true
+  },
+  {
+    "id": "PHARM-BLR-05",
+    "name": "Apollo Pharmacy Hosur Road, Bommanahalli",
+    "type": "Retail",
+    "locality": "Hosur Road, Bommanahalli",
+    "lat": 12.908,
+    "lng": 77.628,
+    "hours": "08:00 AM - 10:30 PM",
+    "phone": "9000000105",
+    "is24x7": false,
+    "stock": {
+      "Metformin": {
+        "qty": 33,
+        "status": "IN_STOCK"
+      },
+      "Warfarin": {
+        "qty": 23,
+        "status": "LOW"
+      },
+      "Atorvastatin": {
+        "qty": 75,
+        "status": "IN_STOCK"
+      },
+      "Amlodipine": {
+        "qty": 83,
+        "status": "IN_STOCK"
+      },
+      "Lisinopril": {
+        "qty": 106,
+        "status": "IN_STOCK"
+      },
+      "Ramipril": {
+        "qty": 44,
+        "status": "IN_STOCK"
+      },
+      "Telmisartan": {
+        "qty": 51,
+        "status": "IN_STOCK"
+      },
+      "Paracetamol": {
+        "qty": 33,
+        "status": "IN_STOCK"
+      },
+      "Ibuprofen": {
+        "qty": 138,
+        "status": "IN_STOCK"
+      },
+      "Diclofenac": {
+        "qty": 93,
+        "status": "IN_STOCK"
+      },
+      "Azithromycin": {
+        "qty": 135,
+        "status": "IN_STOCK"
+      },
+      "Amoxicillin": {
+        "qty": 128,
+        "status": "IN_STOCK"
+      },
+      "Ciprofloxacin": {
+        "qty": 69,
+        "status": "IN_STOCK"
+      },
+      "Omeprazole": {
+        "qty": 42,
+        "status": "IN_STOCK"
+      },
+      "Pantoprazole": {
+        "qty": 65,
+        "status": "IN_STOCK"
+      },
+      "Cetirizine": {
+        "qty": 123,
+        "status": "IN_STOCK"
+      },
+      "Salbutamol": {
+        "qty": 75,
+        "status": "IN_STOCK"
+      },
+      "Deriphyllin": {
+        "qty": 86,
+        "status": "IN_STOCK"
+      },
+      "Montelukast": {
+        "qty": 29,
+        "status": "IN_STOCK"
+      },
+      "Budesonide": {
+        "qty": 119,
+        "status": "IN_STOCK"
+      },
+      "Dextromethorphan": {
+        "qty": 19,
+        "status": "LOW"
+      },
+      "Insulin Glargine": {
+        "qty": 36,
+        "status": "IN_STOCK"
+      },
+      "Glimepiride": {
+        "qty": 57,
+        "status": "IN_STOCK"
+      },
+      "Teneligliptin": {
+        "qty": 101,
+        "status": "IN_STOCK"
+      },
+      "Clopidogrel": {
+        "qty": 142,
+        "status": "IN_STOCK"
+      },
+      "Aspirin": {
+        "qty": 93,
+        "status": "IN_STOCK"
+      },
+      "Spironolactone": {
+        "qty": 23,
+        "status": "LOW"
+      },
+      "Furosemide": {
+        "qty": 101,
+        "status": "IN_STOCK"
+      },
+      "Hydrochlorothiazide": {
+        "qty": 3,
+        "status": "LOW"
+      },
+      "Levothyroxine": {
+        "qty": 67,
+        "status": "IN_STOCK"
+      },
+      "Ranitidine": {
+        "qty": 137,
+        "status": "IN_STOCK"
+      },
+      "Domperidone": {
+        "qty": 31,
+        "status": "IN_STOCK"
+      },
+      "Ondansetron": {
+        "qty": 116,
+        "status": "IN_STOCK"
+      },
+      "Metoclopramide": {
+        "qty": 94,
+        "status": "IN_STOCK"
+      },
+      "Doxycycline": {
+        "qty": 67,
+        "status": "IN_STOCK"
+      },
+      "Co-trimoxazole": {
+        "qty": 149,
+        "status": "IN_STOCK"
+      },
+      "Cephalexin": {
+        "qty": 97,
+        "status": "IN_STOCK"
+      },
+      "Cefixime": {
+        "qty": 95,
+        "status": "IN_STOCK"
+      },
+      "Ofloxacin": {
+        "qty": 27,
+        "status": "IN_STOCK"
+      },
+      "Metronidazole": {
+        "qty": 59,
+        "status": "IN_STOCK"
+      },
+      "Fluconazole": {
+        "qty": 120,
+        "status": "IN_STOCK"
+      },
+      "Terbinafine": {
+        "qty": 6,
+        "status": "LOW"
+      },
+      "Clotrimazole": {
+        "qty": 143,
+        "status": "IN_STOCK"
+      },
+      "Mupirocin": {
+        "qty": 83,
+        "status": "IN_STOCK"
+      },
+      "Silver Sulfadiazine": {
+        "qty": 56,
+        "status": "IN_STOCK"
+      },
+      "Diclofenac Gel": {
+        "qty": 16,
+        "status": "LOW"
+      },
+      "Multivitamin with Zinc": {
+        "qty": 118,
+        "status": "IN_STOCK"
+      },
+      "Calcium 500mg": {
+        "qty": 77,
+        "status": "IN_STOCK"
+      },
+      "Iron Folic Acid": {
+        "qty": 104,
+        "status": "IN_STOCK"
+      },
+      "Vitamin D3 60k": {
+        "qty": 29,
+        "status": "IN_STOCK"
+      },
+      "Oral Rehydration Salts (ORS)": {
+        "qty": 35,
+        "status": "IN_STOCK"
+      },
+      "Diazepam": {
+        "qty": 11,
+        "status": "LOW"
+      },
+      "Alprazolam": {
+        "qty": 9,
+        "status": "LOW"
+      },
+      "Clonazepam": {
+        "qty": 77,
+        "status": "IN_STOCK"
+      },
+      "Tramadol": {
+        "qty": 126,
+        "status": "IN_STOCK"
+      },
+      "Pregabalin": {
+        "qty": 29,
+        "status": "IN_STOCK"
+      },
+      "Gabapentin": {
+        "qty": 24,
+        "status": "LOW"
+      },
+      "Betahistine": {
+        "qty": 60,
+        "status": "IN_STOCK"
+      },
+      "Methylcobalamin": {
+        "qty": 137,
+        "status": "IN_STOCK"
+      },
+      "Pantocid DSR": {
+        "qty": 34,
+        "status": "IN_STOCK"
+      }
+    },
+    "synthetic": true
+  },
+  {
+    "id": "PHARM-BLR-06",
+    "name": "Pradhan Mantri Jan Aushadhi Kendra KR Puram",
+    "type": "Jan Aushadhi",
+    "locality": "KR Puram",
+    "lat": 13.0075,
+    "lng": 77.6959,
+    "hours": "08:00 AM - 10:30 PM",
+    "phone": "9000000106",
+    "is24x7": false,
+    "stock": {
+      "Metformin": {
+        "qty": 99,
+        "status": "IN_STOCK"
+      },
+      "Warfarin": {
+        "qty": 116,
+        "status": "IN_STOCK"
+      },
+      "Atorvastatin": {
+        "qty": 94,
+        "status": "IN_STOCK"
+      },
+      "Amlodipine": {
+        "qty": 138,
+        "status": "IN_STOCK"
+      },
+      "Lisinopril": {
+        "qty": 107,
+        "status": "IN_STOCK"
+      },
+      "Ramipril": {
+        "qty": 150,
+        "status": "IN_STOCK"
+      },
+      "Telmisartan": {
+        "qty": 39,
+        "status": "IN_STOCK"
+      },
+      "Paracetamol": {
+        "qty": 106,
+        "status": "IN_STOCK"
+      },
+      "Ibuprofen": {
+        "qty": 25,
+        "status": "IN_STOCK"
+      },
+      "Diclofenac": {
+        "qty": 125,
+        "status": "IN_STOCK"
+      },
+      "Azithromycin": {
+        "qty": 104,
+        "status": "IN_STOCK"
+      },
+      "Amoxicillin": {
+        "qty": 71,
+        "status": "IN_STOCK"
+      },
+      "Ciprofloxacin": {
+        "qty": 8,
+        "status": "LOW"
+      },
+      "Omeprazole": {
+        "qty": 94,
+        "status": "IN_STOCK"
+      },
+      "Pantoprazole": {
+        "qty": 55,
+        "status": "IN_STOCK"
+      },
+      "Cetirizine": {
+        "qty": 113,
+        "status": "IN_STOCK"
+      },
+      "Salbutamol": {
+        "qty": 113,
+        "status": "IN_STOCK"
+      },
+      "Deriphyllin": {
+        "qty": 60,
+        "status": "IN_STOCK"
+      },
+      "Montelukast": {
+        "qty": 92,
+        "status": "IN_STOCK"
+      },
+      "Budesonide": {
+        "qty": 25,
+        "status": "IN_STOCK"
+      },
+      "Dextromethorphan": {
+        "qty": 94,
+        "status": "IN_STOCK"
+      },
+      "Insulin Glargine": {
+        "qty": 139,
+        "status": "IN_STOCK"
+      },
+      "Glimepiride": {
+        "qty": 91,
+        "status": "IN_STOCK"
+      },
+      "Teneligliptin": {
+        "qty": 15,
+        "status": "LOW"
+      },
+      "Clopidogrel": {
+        "qty": 101,
+        "status": "IN_STOCK"
+      },
+      "Aspirin": {
+        "qty": 70,
+        "status": "IN_STOCK"
+      },
+      "Spironolactone": {
+        "qty": 48,
+        "status": "IN_STOCK"
+      },
+      "Furosemide": {
+        "qty": 31,
+        "status": "IN_STOCK"
+      },
+      "Hydrochlorothiazide": {
+        "qty": 116,
+        "status": "IN_STOCK"
+      },
+      "Levothyroxine": {
+        "qty": 23,
+        "status": "LOW"
+      },
+      "Ranitidine": {
+        "qty": 54,
+        "status": "IN_STOCK"
+      },
+      "Domperidone": {
+        "qty": 5,
+        "status": "LOW"
+      },
+      "Ondansetron": {
+        "qty": 12,
+        "status": "LOW"
+      },
+      "Metoclopramide": {
+        "qty": 85,
+        "status": "IN_STOCK"
+      },
+      "Doxycycline": {
+        "qty": 62,
+        "status": "IN_STOCK"
+      },
+      "Co-trimoxazole": {
+        "qty": 32,
+        "status": "IN_STOCK"
+      },
+      "Cephalexin": {
+        "qty": 144,
+        "status": "IN_STOCK"
+      },
+      "Cefixime": {
+        "qty": 52,
+        "status": "IN_STOCK"
+      },
+      "Ofloxacin": {
+        "qty": 17,
+        "status": "LOW"
+      },
+      "Metronidazole": {
+        "qty": 141,
+        "status": "IN_STOCK"
+      },
+      "Fluconazole": {
+        "qty": 53,
+        "status": "IN_STOCK"
+      },
+      "Terbinafine": {
+        "qty": 150,
+        "status": "IN_STOCK"
+      },
+      "Clotrimazole": {
+        "qty": 55,
+        "status": "IN_STOCK"
+      },
+      "Mupirocin": {
+        "qty": 59,
+        "status": "IN_STOCK"
+      },
+      "Silver Sulfadiazine": {
+        "qty": 84,
+        "status": "IN_STOCK"
+      },
+      "Diclofenac Gel": {
+        "qty": 37,
+        "status": "IN_STOCK"
+      },
+      "Multivitamin with Zinc": {
+        "qty": 0,
+        "status": "OUT"
+      },
+      "Calcium 500mg": {
+        "qty": 70,
+        "status": "IN_STOCK"
+      },
+      "Iron Folic Acid": {
+        "qty": 37,
+        "status": "IN_STOCK"
+      },
+      "Vitamin D3 60k": {
+        "qty": 33,
+        "status": "IN_STOCK"
+      },
+      "Oral Rehydration Salts (ORS)": {
+        "qty": 138,
+        "status": "IN_STOCK"
+      },
+      "Diazepam": {
+        "qty": 64,
+        "status": "IN_STOCK"
+      },
+      "Alprazolam": {
+        "qty": 44,
+        "status": "IN_STOCK"
+      },
+      "Clonazepam": {
+        "qty": 28,
+        "status": "IN_STOCK"
+      },
+      "Tramadol": {
+        "qty": 6,
+        "status": "LOW"
+      },
+      "Pregabalin": {
+        "qty": 33,
+        "status": "IN_STOCK"
+      },
+      "Gabapentin": {
+        "qty": 3,
+        "status": "LOW"
+      },
+      "Betahistine": {
+        "qty": 91,
+        "status": "IN_STOCK"
+      },
+      "Methylcobalamin": {
+        "qty": 60,
+        "status": "IN_STOCK"
+      },
+      "Pantocid DSR": {
+        "qty": 150,
+        "status": "IN_STOCK"
+      }
+    },
+    "synthetic": true
+  },
+  {
+    "id": "PHARM-BLR-07",
+    "name": "Apollo Pharmacy Old Madras Road, KR Puram",
+    "type": "Retail",
+    "locality": "Old Madras Road, KR Puram",
+    "lat": 13.011,
+    "lng": 77.702,
+    "hours": "08:00 AM - 10:30 PM",
+    "phone": "9000000107",
+    "is24x7": false,
+    "stock": {
+      "Metformin": {
+        "qty": 82,
+        "status": "IN_STOCK"
+      },
+      "Warfarin": {
+        "qty": 4,
+        "status": "LOW"
+      },
+      "Atorvastatin": {
+        "qty": 44,
+        "status": "IN_STOCK"
+      },
+      "Amlodipine": {
+        "qty": 67,
+        "status": "IN_STOCK"
+      },
+      "Lisinopril": {
+        "qty": 13,
+        "status": "LOW"
+      },
+      "Ramipril": {
+        "qty": 32,
+        "status": "IN_STOCK"
+      },
+      "Telmisartan": {
+        "qty": 107,
+        "status": "IN_STOCK"
+      },
+      "Paracetamol": {
+        "qty": 134,
+        "status": "IN_STOCK"
+      },
+      "Ibuprofen": {
+        "qty": 29,
+        "status": "IN_STOCK"
+      },
+      "Diclofenac": {
+        "qty": 16,
+        "status": "LOW"
+      },
+      "Azithromycin": {
+        "qty": 121,
+        "status": "IN_STOCK"
+      },
+      "Amoxicillin": {
+        "qty": 114,
+        "status": "IN_STOCK"
+      },
+      "Ciprofloxacin": {
+        "qty": 92,
+        "status": "IN_STOCK"
+      },
+      "Omeprazole": {
+        "qty": 131,
+        "status": "IN_STOCK"
+      },
+      "Pantoprazole": {
+        "qty": 27,
+        "status": "IN_STOCK"
+      },
+      "Cetirizine": {
+        "qty": 115,
+        "status": "IN_STOCK"
+      },
+      "Salbutamol": {
+        "qty": 128,
+        "status": "IN_STOCK"
+      },
+      "Deriphyllin": {
+        "qty": 56,
+        "status": "IN_STOCK"
+      },
+      "Montelukast": {
+        "qty": 11,
+        "status": "LOW"
+      },
+      "Budesonide": {
+        "qty": 133,
+        "status": "IN_STOCK"
+      },
+      "Dextromethorphan": {
+        "qty": 77,
+        "status": "IN_STOCK"
+      },
+      "Insulin Glargine": {
+        "qty": 117,
+        "status": "IN_STOCK"
+      },
+      "Glimepiride": {
+        "qty": 7,
+        "status": "LOW"
+      },
+      "Teneligliptin": {
+        "qty": 15,
+        "status": "LOW"
+      },
+      "Clopidogrel": {
+        "qty": 122,
+        "status": "IN_STOCK"
+      },
+      "Aspirin": {
+        "qty": 102,
+        "status": "IN_STOCK"
+      },
+      "Spironolactone": {
+        "qty": 109,
+        "status": "IN_STOCK"
+      },
+      "Furosemide": {
+        "qty": 27,
+        "status": "IN_STOCK"
+      },
+      "Hydrochlorothiazide": {
+        "qty": 125,
+        "status": "IN_STOCK"
+      },
+      "Levothyroxine": {
+        "qty": 113,
+        "status": "IN_STOCK"
+      },
+      "Ranitidine": {
+        "qty": 18,
+        "status": "LOW"
+      },
+      "Domperidone": {
+        "qty": 20,
+        "status": "LOW"
+      },
+      "Ondansetron": {
+        "qty": 82,
+        "status": "IN_STOCK"
+      },
+      "Metoclopramide": {
+        "qty": 37,
+        "status": "IN_STOCK"
+      },
+      "Doxycycline": {
+        "qty": 16,
+        "status": "LOW"
+      },
+      "Co-trimoxazole": {
+        "qty": 32,
+        "status": "IN_STOCK"
+      },
+      "Cephalexin": {
+        "qty": 70,
+        "status": "IN_STOCK"
+      },
+      "Cefixime": {
+        "qty": 149,
+        "status": "IN_STOCK"
+      },
+      "Ofloxacin": {
+        "qty": 140,
+        "status": "IN_STOCK"
+      },
+      "Metronidazole": {
+        "qty": 83,
+        "status": "IN_STOCK"
+      },
+      "Fluconazole": {
+        "qty": 97,
+        "status": "IN_STOCK"
+      },
+      "Terbinafine": {
+        "qty": 135,
+        "status": "IN_STOCK"
+      },
+      "Clotrimazole": {
+        "qty": 75,
+        "status": "IN_STOCK"
+      },
+      "Mupirocin": {
+        "qty": 116,
+        "status": "IN_STOCK"
+      },
+      "Silver Sulfadiazine": {
+        "qty": 129,
+        "status": "IN_STOCK"
+      },
+      "Diclofenac Gel": {
+        "qty": 110,
+        "status": "IN_STOCK"
+      },
+      "Multivitamin with Zinc": {
+        "qty": 25,
+        "status": "IN_STOCK"
+      },
+      "Calcium 500mg": {
+        "qty": 29,
+        "status": "IN_STOCK"
+      },
+      "Iron Folic Acid": {
+        "qty": 141,
+        "status": "IN_STOCK"
+      },
+      "Vitamin D3 60k": {
+        "qty": 55,
+        "status": "IN_STOCK"
+      },
+      "Oral Rehydration Salts (ORS)": {
+        "qty": 110,
+        "status": "IN_STOCK"
+      },
+      "Diazepam": {
+        "qty": 115,
+        "status": "IN_STOCK"
+      },
+      "Alprazolam": {
+        "qty": 58,
+        "status": "IN_STOCK"
+      },
+      "Clonazepam": {
+        "qty": 105,
+        "status": "IN_STOCK"
+      },
+      "Tramadol": {
+        "qty": 86,
+        "status": "IN_STOCK"
+      },
+      "Pregabalin": {
+        "qty": 116,
+        "status": "IN_STOCK"
+      },
+      "Gabapentin": {
+        "qty": 102,
+        "status": "IN_STOCK"
+      },
+      "Betahistine": {
+        "qty": 106,
+        "status": "IN_STOCK"
+      },
+      "Methylcobalamin": {
+        "qty": 24,
+        "status": "LOW"
+      },
+      "Pantocid DSR": {
+        "qty": 80,
+        "status": "IN_STOCK"
+      }
+    },
+    "synthetic": true
+  },
+  {
+    "id": "PHARM-BLR-08",
+    "name": "Manipal Hospital In-House Pharmacy Peenya Industrial Area",
+    "type": "Hospital pharmacy",
+    "locality": "Peenya Industrial Area",
+    "lat": 13.0329,
+    "lng": 77.5273,
+    "hours": "08:00 AM - 10:30 PM",
+    "phone": "9000000108",
+    "is24x7": false,
+    "stock": {
+      "Metformin": {
+        "qty": 109,
+        "status": "IN_STOCK"
+      },
+      "Warfarin": {
+        "qty": 80,
+        "status": "IN_STOCK"
+      },
+      "Atorvastatin": {
+        "qty": 65,
+        "status": "IN_STOCK"
+      },
+      "Amlodipine": {
+        "qty": 95,
+        "status": "IN_STOCK"
+      },
+      "Lisinopril": {
+        "qty": 39,
+        "status": "IN_STOCK"
+      },
+      "Ramipril": {
+        "qty": 121,
+        "status": "IN_STOCK"
+      },
+      "Telmisartan": {
+        "qty": 17,
+        "status": "LOW"
+      },
+      "Paracetamol": {
+        "qty": 23,
+        "status": "LOW"
+      },
+      "Ibuprofen": {
+        "qty": 21,
+        "status": "LOW"
+      },
+      "Diclofenac": {
+        "qty": 23,
+        "status": "LOW"
+      },
+      "Azithromycin": {
+        "qty": 110,
+        "status": "IN_STOCK"
+      },
+      "Amoxicillin": {
+        "qty": 24,
+        "status": "LOW"
+      },
+      "Ciprofloxacin": {
+        "qty": 95,
+        "status": "IN_STOCK"
+      },
+      "Omeprazole": {
+        "qty": 33,
+        "status": "IN_STOCK"
+      },
+      "Pantoprazole": {
+        "qty": 142,
+        "status": "IN_STOCK"
+      },
+      "Cetirizine": {
+        "qty": 15,
+        "status": "LOW"
+      },
+      "Salbutamol": {
+        "qty": 150,
+        "status": "IN_STOCK"
+      },
+      "Deriphyllin": {
+        "qty": 143,
+        "status": "IN_STOCK"
+      },
+      "Montelukast": {
+        "qty": 143,
+        "status": "IN_STOCK"
+      },
+      "Budesonide": {
+        "qty": 84,
+        "status": "IN_STOCK"
+      },
+      "Dextromethorphan": {
+        "qty": 31,
+        "status": "IN_STOCK"
+      },
+      "Insulin Glargine": {
+        "qty": 105,
+        "status": "IN_STOCK"
+      },
+      "Glimepiride": {
+        "qty": 90,
+        "status": "IN_STOCK"
+      },
+      "Teneligliptin": {
+        "qty": 108,
+        "status": "IN_STOCK"
+      },
+      "Clopidogrel": {
+        "qty": 13,
+        "status": "LOW"
+      },
+      "Aspirin": {
+        "qty": 73,
+        "status": "IN_STOCK"
+      },
+      "Spironolactone": {
+        "qty": 79,
+        "status": "IN_STOCK"
+      },
+      "Furosemide": {
+        "qty": 90,
+        "status": "IN_STOCK"
+      },
+      "Hydrochlorothiazide": {
+        "qty": 26,
+        "status": "IN_STOCK"
+      },
+      "Levothyroxine": {
+        "qty": 147,
+        "status": "IN_STOCK"
+      },
+      "Ranitidine": {
+        "qty": 129,
+        "status": "IN_STOCK"
+      },
+      "Domperidone": {
+        "qty": 54,
+        "status": "IN_STOCK"
+      },
+      "Ondansetron": {
+        "qty": 39,
+        "status": "IN_STOCK"
+      },
+      "Metoclopramide": {
+        "qty": 123,
+        "status": "IN_STOCK"
+      },
+      "Doxycycline": {
+        "qty": 57,
+        "status": "IN_STOCK"
+      },
+      "Co-trimoxazole": {
+        "qty": 27,
+        "status": "IN_STOCK"
+      },
+      "Cephalexin": {
+        "qty": 89,
+        "status": "IN_STOCK"
+      },
+      "Cefixime": {
+        "qty": 142,
+        "status": "IN_STOCK"
+      },
+      "Ofloxacin": {
+        "qty": 94,
+        "status": "IN_STOCK"
+      },
+      "Metronidazole": {
+        "qty": 29,
+        "status": "IN_STOCK"
+      },
+      "Fluconazole": {
+        "qty": 71,
+        "status": "IN_STOCK"
+      },
+      "Terbinafine": {
+        "qty": 146,
+        "status": "IN_STOCK"
+      },
+      "Clotrimazole": {
+        "qty": 57,
+        "status": "IN_STOCK"
+      },
+      "Mupirocin": {
+        "qty": 109,
+        "status": "IN_STOCK"
+      },
+      "Silver Sulfadiazine": {
+        "qty": 143,
+        "status": "IN_STOCK"
+      },
+      "Diclofenac Gel": {
+        "qty": 142,
+        "status": "IN_STOCK"
+      },
+      "Multivitamin with Zinc": {
+        "qty": 6,
+        "status": "LOW"
+      },
+      "Calcium 500mg": {
+        "qty": 68,
+        "status": "IN_STOCK"
+      },
+      "Iron Folic Acid": {
+        "qty": 7,
+        "status": "LOW"
+      },
+      "Vitamin D3 60k": {
+        "qty": 46,
+        "status": "IN_STOCK"
+      },
+      "Oral Rehydration Salts (ORS)": {
+        "qty": 69,
+        "status": "IN_STOCK"
+      },
+      "Diazepam": {
+        "qty": 79,
+        "status": "IN_STOCK"
+      },
+      "Alprazolam": {
+        "qty": 86,
+        "status": "IN_STOCK"
+      },
+      "Clonazepam": {
+        "qty": 89,
+        "status": "IN_STOCK"
+      },
+      "Tramadol": {
+        "qty": 1,
+        "status": "LOW"
+      },
+      "Pregabalin": {
+        "qty": 46,
+        "status": "IN_STOCK"
+      },
+      "Gabapentin": {
+        "qty": 36,
+        "status": "IN_STOCK"
+      },
+      "Betahistine": {
+        "qty": 144,
+        "status": "IN_STOCK"
+      },
+      "Methylcobalamin": {
+        "qty": 102,
+        "status": "IN_STOCK"
+      },
+      "Pantocid DSR": {
+        "qty": 17,
+        "status": "LOW"
+      }
+    },
+    "synthetic": true
+  },
+  {
+    "id": "PHARM-BLR-09",
+    "name": "Pradhan Mantri Jan Aushadhi Kendra Peenya 1st Stage",
+    "type": "Jan Aushadhi",
+    "locality": "Peenya 1st Stage",
+    "lat": 13.029,
+    "lng": 77.518,
+    "hours": "08:00 AM - 10:30 PM",
+    "phone": "9000000109",
+    "is24x7": false,
+    "stock": {
+      "Metformin": {
+        "qty": 36,
+        "status": "IN_STOCK"
+      },
+      "Warfarin": {
+        "qty": 7,
+        "status": "LOW"
+      },
+      "Atorvastatin": {
+        "qty": 23,
+        "status": "LOW"
+      },
+      "Amlodipine": {
+        "qty": 135,
+        "status": "IN_STOCK"
+      },
+      "Lisinopril": {
+        "qty": 55,
+        "status": "IN_STOCK"
+      },
+      "Ramipril": {
+        "qty": 96,
+        "status": "IN_STOCK"
+      },
+      "Telmisartan": {
+        "qty": 107,
+        "status": "IN_STOCK"
+      },
+      "Paracetamol": {
+        "qty": 116,
+        "status": "IN_STOCK"
+      },
+      "Ibuprofen": {
+        "qty": 87,
+        "status": "IN_STOCK"
+      },
+      "Diclofenac": {
+        "qty": 40,
+        "status": "IN_STOCK"
+      },
+      "Azithromycin": {
+        "qty": 94,
+        "status": "IN_STOCK"
+      },
+      "Amoxicillin": {
+        "qty": 79,
+        "status": "IN_STOCK"
+      },
+      "Ciprofloxacin": {
+        "qty": 83,
+        "status": "IN_STOCK"
+      },
+      "Omeprazole": {
+        "qty": 145,
+        "status": "IN_STOCK"
+      },
+      "Pantoprazole": {
+        "qty": 21,
+        "status": "LOW"
+      },
+      "Cetirizine": {
+        "qty": 13,
+        "status": "LOW"
+      },
+      "Salbutamol": {
+        "qty": 39,
+        "status": "IN_STOCK"
+      },
+      "Deriphyllin": {
+        "qty": 40,
+        "status": "IN_STOCK"
+      },
+      "Montelukast": {
+        "qty": 12,
+        "status": "LOW"
+      },
+      "Budesonide": {
+        "qty": 20,
+        "status": "LOW"
+      },
+      "Dextromethorphan": {
+        "qty": 69,
+        "status": "IN_STOCK"
+      },
+      "Insulin Glargine": {
+        "qty": 113,
+        "status": "IN_STOCK"
+      },
+      "Glimepiride": {
+        "qty": 108,
+        "status": "IN_STOCK"
+      },
+      "Teneligliptin": {
+        "qty": 124,
+        "status": "IN_STOCK"
+      },
+      "Clopidogrel": {
+        "qty": 113,
+        "status": "IN_STOCK"
+      },
+      "Aspirin": {
+        "qty": 106,
+        "status": "IN_STOCK"
+      },
+      "Spironolactone": {
+        "qty": 69,
+        "status": "IN_STOCK"
+      },
+      "Furosemide": {
+        "qty": 55,
+        "status": "IN_STOCK"
+      },
+      "Hydrochlorothiazide": {
+        "qty": 131,
+        "status": "IN_STOCK"
+      },
+      "Levothyroxine": {
+        "qty": 29,
+        "status": "IN_STOCK"
+      },
+      "Ranitidine": {
+        "qty": 88,
+        "status": "IN_STOCK"
+      },
+      "Domperidone": {
+        "qty": 110,
+        "status": "IN_STOCK"
+      },
+      "Ondansetron": {
+        "qty": 28,
+        "status": "IN_STOCK"
+      },
+      "Metoclopramide": {
+        "qty": 72,
+        "status": "IN_STOCK"
+      },
+      "Doxycycline": {
+        "qty": 124,
+        "status": "IN_STOCK"
+      },
+      "Co-trimoxazole": {
+        "qty": 134,
+        "status": "IN_STOCK"
+      },
+      "Cephalexin": {
+        "qty": 78,
+        "status": "IN_STOCK"
+      },
+      "Cefixime": {
+        "qty": 11,
+        "status": "LOW"
+      },
+      "Ofloxacin": {
+        "qty": 56,
+        "status": "IN_STOCK"
+      },
+      "Metronidazole": {
+        "qty": 101,
+        "status": "IN_STOCK"
+      },
+      "Fluconazole": {
+        "qty": 14,
+        "status": "LOW"
+      },
+      "Terbinafine": {
+        "qty": 1,
+        "status": "LOW"
+      },
+      "Clotrimazole": {
+        "qty": 52,
+        "status": "IN_STOCK"
+      },
+      "Mupirocin": {
+        "qty": 77,
+        "status": "IN_STOCK"
+      },
+      "Silver Sulfadiazine": {
+        "qty": 54,
+        "status": "IN_STOCK"
+      },
+      "Diclofenac Gel": {
+        "qty": 35,
+        "status": "IN_STOCK"
+      },
+      "Multivitamin with Zinc": {
+        "qty": 65,
+        "status": "IN_STOCK"
+      },
+      "Calcium 500mg": {
+        "qty": 74,
+        "status": "IN_STOCK"
+      },
+      "Iron Folic Acid": {
+        "qty": 83,
+        "status": "IN_STOCK"
+      },
+      "Vitamin D3 60k": {
+        "qty": 30,
+        "status": "IN_STOCK"
+      },
+      "Oral Rehydration Salts (ORS)": {
+        "qty": 1,
+        "status": "LOW"
+      },
+      "Diazepam": {
+        "qty": 127,
+        "status": "IN_STOCK"
+      },
+      "Alprazolam": {
+        "qty": 110,
+        "status": "IN_STOCK"
+      },
+      "Clonazepam": {
+        "qty": 44,
+        "status": "IN_STOCK"
+      },
+      "Tramadol": {
+        "qty": 33,
+        "status": "IN_STOCK"
+      },
+      "Pregabalin": {
+        "qty": 97,
+        "status": "IN_STOCK"
+      },
+      "Gabapentin": {
+        "qty": 136,
+        "status": "IN_STOCK"
+      },
+      "Betahistine": {
+        "qty": 58,
+        "status": "IN_STOCK"
+      },
+      "Methylcobalamin": {
+        "qty": 128,
+        "status": "IN_STOCK"
+      },
+      "Pantocid DSR": {
+        "qty": 143,
+        "status": "IN_STOCK"
+      }
+    },
+    "synthetic": true
+  },
+  {
+    "id": "PHARM-BLR-10",
+    "name": "Apollo Pharmacy Electronic City Phase 1",
+    "type": "Retail",
+    "locality": "Electronic City Phase 1",
+    "lat": 12.8399,
+    "lng": 77.677,
+    "hours": "24 Hours / 7 Days",
+    "phone": "9000000110",
+    "is24x7": true,
+    "stock": {
+      "Metformin": {
+        "qty": 90,
+        "status": "IN_STOCK"
+      },
+      "Warfarin": {
+        "qty": 18,
+        "status": "LOW"
+      },
+      "Atorvastatin": {
+        "qty": 101,
+        "status": "IN_STOCK"
+      },
+      "Amlodipine": {
+        "qty": 10,
+        "status": "LOW"
+      },
+      "Lisinopril": {
+        "qty": 111,
+        "status": "IN_STOCK"
+      },
+      "Ramipril": {
+        "qty": 4,
+        "status": "LOW"
+      },
+      "Telmisartan": {
+        "qty": 117,
+        "status": "IN_STOCK"
+      },
+      "Paracetamol": {
+        "qty": 19,
+        "status": "LOW"
+      },
+      "Ibuprofen": {
+        "qty": 80,
+        "status": "IN_STOCK"
+      },
+      "Diclofenac": {
+        "qty": 147,
+        "status": "IN_STOCK"
+      },
+      "Azithromycin": {
+        "qty": 109,
+        "status": "IN_STOCK"
+      },
+      "Amoxicillin": {
+        "qty": 146,
+        "status": "IN_STOCK"
+      },
+      "Ciprofloxacin": {
+        "qty": 103,
+        "status": "IN_STOCK"
+      },
+      "Omeprazole": {
+        "qty": 106,
+        "status": "IN_STOCK"
+      },
+      "Pantoprazole": {
+        "qty": 74,
+        "status": "IN_STOCK"
+      },
+      "Cetirizine": {
+        "qty": 29,
+        "status": "IN_STOCK"
+      },
+      "Salbutamol": {
+        "qty": 103,
+        "status": "IN_STOCK"
+      },
+      "Deriphyllin": {
+        "qty": 5,
+        "status": "LOW"
+      },
+      "Montelukast": {
+        "qty": 83,
+        "status": "IN_STOCK"
+      },
+      "Budesonide": {
+        "qty": 43,
+        "status": "IN_STOCK"
+      },
+      "Dextromethorphan": {
+        "qty": 117,
+        "status": "IN_STOCK"
+      },
+      "Insulin Glargine": {
+        "qty": 92,
+        "status": "IN_STOCK"
+      },
+      "Glimepiride": {
+        "qty": 22,
+        "status": "LOW"
+      },
+      "Teneligliptin": {
+        "qty": 111,
+        "status": "IN_STOCK"
+      },
+      "Clopidogrel": {
+        "qty": 27,
+        "status": "IN_STOCK"
+      },
+      "Aspirin": {
+        "qty": 62,
+        "status": "IN_STOCK"
+      },
+      "Spironolactone": {
+        "qty": 111,
+        "status": "IN_STOCK"
+      },
+      "Furosemide": {
+        "qty": 150,
+        "status": "IN_STOCK"
+      },
+      "Hydrochlorothiazide": {
+        "qty": 102,
+        "status": "IN_STOCK"
+      },
+      "Levothyroxine": {
+        "qty": 134,
+        "status": "IN_STOCK"
+      },
+      "Ranitidine": {
+        "qty": 20,
+        "status": "LOW"
+      },
+      "Domperidone": {
+        "qty": 101,
+        "status": "IN_STOCK"
+      },
+      "Ondansetron": {
+        "qty": 79,
+        "status": "IN_STOCK"
+      },
+      "Metoclopramide": {
+        "qty": 86,
+        "status": "IN_STOCK"
+      },
+      "Doxycycline": {
+        "qty": 56,
+        "status": "IN_STOCK"
+      },
+      "Co-trimoxazole": {
+        "qty": 85,
+        "status": "IN_STOCK"
+      },
+      "Cephalexin": {
+        "qty": 43,
+        "status": "IN_STOCK"
+      },
+      "Cefixime": {
+        "qty": 19,
+        "status": "LOW"
+      },
+      "Ofloxacin": {
+        "qty": 130,
+        "status": "IN_STOCK"
+      },
+      "Metronidazole": {
+        "qty": 29,
+        "status": "IN_STOCK"
+      },
+      "Fluconazole": {
+        "qty": 135,
+        "status": "IN_STOCK"
+      },
+      "Terbinafine": {
+        "qty": 130,
+        "status": "IN_STOCK"
+      },
+      "Clotrimazole": {
+        "qty": 49,
+        "status": "IN_STOCK"
+      },
+      "Mupirocin": {
+        "qty": 89,
+        "status": "IN_STOCK"
+      },
+      "Silver Sulfadiazine": {
+        "qty": 89,
+        "status": "IN_STOCK"
+      },
+      "Diclofenac Gel": {
+        "qty": 37,
+        "status": "IN_STOCK"
+      },
+      "Multivitamin with Zinc": {
+        "qty": 60,
+        "status": "IN_STOCK"
+      },
+      "Calcium 500mg": {
+        "qty": 26,
+        "status": "IN_STOCK"
+      },
+      "Iron Folic Acid": {
+        "qty": 37,
+        "status": "IN_STOCK"
+      },
+      "Vitamin D3 60k": {
+        "qty": 65,
+        "status": "IN_STOCK"
+      },
+      "Oral Rehydration Salts (ORS)": {
+        "qty": 50,
+        "status": "IN_STOCK"
+      },
+      "Diazepam": {
+        "qty": 44,
+        "status": "IN_STOCK"
+      },
+      "Alprazolam": {
+        "qty": 39,
+        "status": "IN_STOCK"
+      },
+      "Clonazepam": {
+        "qty": 19,
+        "status": "LOW"
+      },
+      "Tramadol": {
+        "qty": 45,
+        "status": "IN_STOCK"
+      },
+      "Pregabalin": {
+        "qty": 126,
+        "status": "IN_STOCK"
+      },
+      "Gabapentin": {
+        "qty": 118,
+        "status": "IN_STOCK"
+      },
+      "Betahistine": {
+        "qty": 144,
+        "status": "IN_STOCK"
+      },
+      "Methylcobalamin": {
+        "qty": 148,
+        "status": "IN_STOCK"
+      },
+      "Pantocid DSR": {
+        "qty": 114,
+        "status": "IN_STOCK"
+      }
+    },
+    "synthetic": true
+  },
+  {
+    "id": "PHARM-BLR-11",
+    "name": "Apollo Pharmacy Electronic City Phase 2",
+    "type": "Retail",
+    "locality": "Electronic City Phase 2",
+    "lat": 12.845,
+    "lng": 77.689,
+    "hours": "08:00 AM - 10:30 PM",
+    "phone": "9000000111",
+    "is24x7": false,
+    "stock": {
+      "Metformin": {
+        "qty": 144,
+        "status": "IN_STOCK"
+      },
+      "Warfarin": {
+        "qty": 82,
+        "status": "IN_STOCK"
+      },
+      "Atorvastatin": {
+        "qty": 80,
+        "status": "IN_STOCK"
+      },
+      "Amlodipine": {
+        "qty": 38,
+        "status": "IN_STOCK"
+      },
+      "Lisinopril": {
+        "qty": 112,
+        "status": "IN_STOCK"
+      },
+      "Ramipril": {
+        "qty": 17,
+        "status": "LOW"
+      },
+      "Telmisartan": {
+        "qty": 120,
+        "status": "IN_STOCK"
+      },
+      "Paracetamol": {
+        "qty": 113,
+        "status": "IN_STOCK"
+      },
+      "Ibuprofen": {
+        "qty": 77,
+        "status": "IN_STOCK"
+      },
+      "Diclofenac": {
+        "qty": 70,
+        "status": "IN_STOCK"
+      },
+      "Azithromycin": {
+        "qty": 14,
+        "status": "LOW"
+      },
+      "Amoxicillin": {
+        "qty": 90,
+        "status": "IN_STOCK"
+      },
+      "Ciprofloxacin": {
+        "qty": 129,
+        "status": "IN_STOCK"
+      },
+      "Omeprazole": {
+        "qty": 18,
+        "status": "LOW"
+      },
+      "Pantoprazole": {
+        "qty": 79,
+        "status": "IN_STOCK"
+      },
+      "Cetirizine": {
+        "qty": 118,
+        "status": "IN_STOCK"
+      },
+      "Salbutamol": {
+        "qty": 115,
+        "status": "IN_STOCK"
+      },
+      "Deriphyllin": {
+        "qty": 9,
+        "status": "LOW"
+      },
+      "Montelukast": {
+        "qty": 14,
+        "status": "LOW"
+      },
+      "Budesonide": {
+        "qty": 94,
+        "status": "IN_STOCK"
+      },
+      "Dextromethorphan": {
+        "qty": 73,
+        "status": "IN_STOCK"
+      },
+      "Insulin Glargine": {
+        "qty": 19,
+        "status": "LOW"
+      },
+      "Glimepiride": {
+        "qty": 23,
+        "status": "LOW"
+      },
+      "Teneligliptin": {
+        "qty": 129,
+        "status": "IN_STOCK"
+      },
+      "Clopidogrel": {
+        "qty": 98,
+        "status": "IN_STOCK"
+      },
+      "Aspirin": {
+        "qty": 118,
+        "status": "IN_STOCK"
+      },
+      "Spironolactone": {
+        "qty": 148,
+        "status": "IN_STOCK"
+      },
+      "Furosemide": {
+        "qty": 141,
+        "status": "IN_STOCK"
+      },
+      "Hydrochlorothiazide": {
+        "qty": 10,
+        "status": "LOW"
+      },
+      "Levothyroxine": {
+        "qty": 115,
+        "status": "IN_STOCK"
+      },
+      "Ranitidine": {
+        "qty": 146,
+        "status": "IN_STOCK"
+      },
+      "Domperidone": {
+        "qty": 48,
+        "status": "IN_STOCK"
+      },
+      "Ondansetron": {
+        "qty": 82,
+        "status": "IN_STOCK"
+      },
+      "Metoclopramide": {
+        "qty": 121,
+        "status": "IN_STOCK"
+      },
+      "Doxycycline": {
+        "qty": 128,
+        "status": "IN_STOCK"
+      },
+      "Co-trimoxazole": {
+        "qty": 38,
+        "status": "IN_STOCK"
+      },
+      "Cephalexin": {
+        "qty": 15,
+        "status": "LOW"
+      },
+      "Cefixime": {
+        "qty": 115,
+        "status": "IN_STOCK"
+      },
+      "Ofloxacin": {
+        "qty": 26,
+        "status": "IN_STOCK"
+      },
+      "Metronidazole": {
+        "qty": 87,
+        "status": "IN_STOCK"
+      },
+      "Fluconazole": {
+        "qty": 21,
+        "status": "LOW"
+      },
+      "Terbinafine": {
+        "qty": 129,
+        "status": "IN_STOCK"
+      },
+      "Clotrimazole": {
+        "qty": 44,
+        "status": "IN_STOCK"
+      },
+      "Mupirocin": {
+        "qty": 10,
+        "status": "LOW"
+      },
+      "Silver Sulfadiazine": {
+        "qty": 63,
+        "status": "IN_STOCK"
+      },
+      "Diclofenac Gel": {
+        "qty": 112,
+        "status": "IN_STOCK"
+      },
+      "Multivitamin with Zinc": {
+        "qty": 112,
+        "status": "IN_STOCK"
+      },
+      "Calcium 500mg": {
+        "qty": 134,
+        "status": "IN_STOCK"
+      },
+      "Iron Folic Acid": {
+        "qty": 133,
+        "status": "IN_STOCK"
+      },
+      "Vitamin D3 60k": {
+        "qty": 40,
+        "status": "IN_STOCK"
+      },
+      "Oral Rehydration Salts (ORS)": {
+        "qty": 93,
+        "status": "IN_STOCK"
+      },
+      "Diazepam": {
+        "qty": 95,
+        "status": "IN_STOCK"
+      },
+      "Alprazolam": {
+        "qty": 72,
+        "status": "IN_STOCK"
+      },
+      "Clonazepam": {
+        "qty": 99,
+        "status": "IN_STOCK"
+      },
+      "Tramadol": {
+        "qty": 104,
+        "status": "IN_STOCK"
+      },
+      "Pregabalin": {
+        "qty": 86,
+        "status": "IN_STOCK"
+      },
+      "Gabapentin": {
+        "qty": 13,
+        "status": "LOW"
+      },
+      "Betahistine": {
+        "qty": 85,
+        "status": "IN_STOCK"
+      },
+      "Methylcobalamin": {
+        "qty": 16,
+        "status": "LOW"
+      },
+      "Pantocid DSR": {
+        "qty": 84,
+        "status": "IN_STOCK"
+      }
+    },
+    "synthetic": true
+  },
+  {
+    "id": "PHARM-BLR-12",
+    "name": "Pradhan Mantri Jan Aushadhi Kendra Yeshwanthpur",
+    "type": "Jan Aushadhi",
+    "locality": "Yeshwanthpur",
+    "lat": 13.028,
+    "lng": 77.5404,
+    "hours": "08:00 AM - 10:30 PM",
+    "phone": "9000000112",
+    "is24x7": false,
+    "stock": {
+      "Metformin": {
+        "qty": 24,
+        "status": "LOW"
+      },
+      "Warfarin": {
+        "qty": 142,
+        "status": "IN_STOCK"
+      },
+      "Atorvastatin": {
+        "qty": 98,
+        "status": "IN_STOCK"
+      },
+      "Amlodipine": {
+        "qty": 72,
+        "status": "IN_STOCK"
+      },
+      "Lisinopril": {
+        "qty": 64,
+        "status": "IN_STOCK"
+      },
+      "Ramipril": {
+        "qty": 38,
+        "status": "IN_STOCK"
+      },
+      "Telmisartan": {
+        "qty": 85,
+        "status": "IN_STOCK"
+      },
+      "Paracetamol": {
+        "qty": 20,
+        "status": "LOW"
+      },
+      "Ibuprofen": {
+        "qty": 149,
+        "status": "IN_STOCK"
+      },
+      "Diclofenac": {
+        "qty": 36,
+        "status": "IN_STOCK"
+      },
+      "Azithromycin": {
+        "qty": 89,
+        "status": "IN_STOCK"
+      },
+      "Amoxicillin": {
+        "qty": 79,
+        "status": "IN_STOCK"
+      },
+      "Ciprofloxacin": {
+        "qty": 100,
+        "status": "IN_STOCK"
+      },
+      "Omeprazole": {
+        "qty": 33,
+        "status": "IN_STOCK"
+      },
+      "Pantoprazole": {
+        "qty": 21,
+        "status": "LOW"
+      },
+      "Cetirizine": {
+        "qty": 79,
+        "status": "IN_STOCK"
+      },
+      "Salbutamol": {
+        "qty": 143,
+        "status": "IN_STOCK"
+      },
+      "Deriphyllin": {
+        "qty": 96,
+        "status": "IN_STOCK"
+      },
+      "Montelukast": {
+        "qty": 84,
+        "status": "IN_STOCK"
+      },
+      "Budesonide": {
+        "qty": 32,
+        "status": "IN_STOCK"
+      },
+      "Dextromethorphan": {
+        "qty": 134,
+        "status": "IN_STOCK"
+      },
+      "Insulin Glargine": {
+        "qty": 23,
+        "status": "LOW"
+      },
+      "Glimepiride": {
+        "qty": 108,
+        "status": "IN_STOCK"
+      },
+      "Teneligliptin": {
+        "qty": 130,
+        "status": "IN_STOCK"
+      },
+      "Clopidogrel": {
+        "qty": 92,
+        "status": "IN_STOCK"
+      },
+      "Aspirin": {
+        "qty": 4,
+        "status": "LOW"
+      },
+      "Spironolactone": {
+        "qty": 92,
+        "status": "IN_STOCK"
+      },
+      "Furosemide": {
+        "qty": 79,
+        "status": "IN_STOCK"
+      },
+      "Hydrochlorothiazide": {
+        "qty": 46,
+        "status": "IN_STOCK"
+      },
+      "Levothyroxine": {
+        "qty": 54,
+        "status": "IN_STOCK"
+      },
+      "Ranitidine": {
+        "qty": 87,
+        "status": "IN_STOCK"
+      },
+      "Domperidone": {
+        "qty": 124,
+        "status": "IN_STOCK"
+      },
+      "Ondansetron": {
+        "qty": 49,
+        "status": "IN_STOCK"
+      },
+      "Metoclopramide": {
+        "qty": 57,
+        "status": "IN_STOCK"
+      },
+      "Doxycycline": {
+        "qty": 35,
+        "status": "IN_STOCK"
+      },
+      "Co-trimoxazole": {
+        "qty": 39,
+        "status": "IN_STOCK"
+      },
+      "Cephalexin": {
+        "qty": 19,
+        "status": "LOW"
+      },
+      "Cefixime": {
+        "qty": 75,
+        "status": "IN_STOCK"
+      },
+      "Ofloxacin": {
+        "qty": 25,
+        "status": "IN_STOCK"
+      },
+      "Metronidazole": {
+        "qty": 129,
+        "status": "IN_STOCK"
+      },
+      "Fluconazole": {
+        "qty": 138,
+        "status": "IN_STOCK"
+      },
+      "Terbinafine": {
+        "qty": 134,
+        "status": "IN_STOCK"
+      },
+      "Clotrimazole": {
+        "qty": 9,
+        "status": "LOW"
+      },
+      "Mupirocin": {
+        "qty": 86,
+        "status": "IN_STOCK"
+      },
+      "Silver Sulfadiazine": {
+        "qty": 33,
+        "status": "IN_STOCK"
+      },
+      "Diclofenac Gel": {
+        "qty": 96,
+        "status": "IN_STOCK"
+      },
+      "Multivitamin with Zinc": {
+        "qty": 39,
+        "status": "IN_STOCK"
+      },
+      "Calcium 500mg": {
+        "qty": 41,
+        "status": "IN_STOCK"
+      },
+      "Iron Folic Acid": {
+        "qty": 46,
+        "status": "IN_STOCK"
+      },
+      "Vitamin D3 60k": {
+        "qty": 42,
+        "status": "IN_STOCK"
+      },
+      "Oral Rehydration Salts (ORS)": {
+        "qty": 112,
+        "status": "IN_STOCK"
+      },
+      "Diazepam": {
+        "qty": 11,
+        "status": "LOW"
+      },
+      "Alprazolam": {
+        "qty": 105,
+        "status": "IN_STOCK"
+      },
+      "Clonazepam": {
+        "qty": 93,
+        "status": "IN_STOCK"
+      },
+      "Tramadol": {
+        "qty": 60,
+        "status": "IN_STOCK"
+      },
+      "Pregabalin": {
+        "qty": 113,
+        "status": "IN_STOCK"
+      },
+      "Gabapentin": {
+        "qty": 72,
+        "status": "IN_STOCK"
+      },
+      "Betahistine": {
+        "qty": 114,
+        "status": "IN_STOCK"
+      },
+      "Methylcobalamin": {
+        "qty": 59,
+        "status": "IN_STOCK"
+      },
+      "Pantocid DSR": {
+        "qty": 136,
+        "status": "IN_STOCK"
+      }
+    },
+    "synthetic": true
+  },
+  {
+    "id": "PHARM-BLR-13",
+    "name": "Apollo Pharmacy Yeshwanthpur TTMC",
+    "type": "Retail",
+    "locality": "Yeshwanthpur TTMC",
+    "lat": 13.021,
+    "lng": 77.548,
+    "hours": "08:00 AM - 10:30 PM",
+    "phone": "9000000113",
+    "is24x7": false,
+    "stock": {
+      "Metformin": {
+        "qty": 61,
+        "status": "IN_STOCK"
+      },
+      "Warfarin": {
+        "qty": 79,
+        "status": "IN_STOCK"
+      },
+      "Atorvastatin": {
+        "qty": 120,
+        "status": "IN_STOCK"
+      },
+      "Amlodipine": {
+        "qty": 49,
+        "status": "IN_STOCK"
+      },
+      "Lisinopril": {
+        "qty": 94,
+        "status": "IN_STOCK"
+      },
+      "Ramipril": {
+        "qty": 146,
+        "status": "IN_STOCK"
+      },
+      "Telmisartan": {
+        "qty": 112,
+        "status": "IN_STOCK"
+      },
+      "Paracetamol": {
+        "qty": 118,
+        "status": "IN_STOCK"
+      },
+      "Ibuprofen": {
+        "qty": 72,
+        "status": "IN_STOCK"
+      },
+      "Diclofenac": {
+        "qty": 97,
+        "status": "IN_STOCK"
+      },
+      "Azithromycin": {
+        "qty": 128,
+        "status": "IN_STOCK"
+      },
+      "Amoxicillin": {
+        "qty": 135,
+        "status": "IN_STOCK"
+      },
+      "Ciprofloxacin": {
+        "qty": 107,
+        "status": "IN_STOCK"
+      },
+      "Omeprazole": {
+        "qty": 41,
+        "status": "IN_STOCK"
+      },
+      "Pantoprazole": {
+        "qty": 51,
+        "status": "IN_STOCK"
+      },
+      "Cetirizine": {
+        "qty": 35,
+        "status": "IN_STOCK"
+      },
+      "Salbutamol": {
+        "qty": 64,
+        "status": "IN_STOCK"
+      },
+      "Deriphyllin": {
+        "qty": 13,
+        "status": "LOW"
+      },
+      "Montelukast": {
+        "qty": 123,
+        "status": "IN_STOCK"
+      },
+      "Budesonide": {
+        "qty": 95,
+        "status": "IN_STOCK"
+      },
+      "Dextromethorphan": {
+        "qty": 141,
+        "status": "IN_STOCK"
+      },
+      "Insulin Glargine": {
+        "qty": 26,
+        "status": "IN_STOCK"
+      },
+      "Glimepiride": {
+        "qty": 132,
+        "status": "IN_STOCK"
+      },
+      "Teneligliptin": {
+        "qty": 31,
+        "status": "IN_STOCK"
+      },
+      "Clopidogrel": {
+        "qty": 72,
+        "status": "IN_STOCK"
+      },
+      "Aspirin": {
+        "qty": 21,
+        "status": "LOW"
+      },
+      "Spironolactone": {
+        "qty": 41,
+        "status": "IN_STOCK"
+      },
+      "Furosemide": {
+        "qty": 69,
+        "status": "IN_STOCK"
+      },
+      "Hydrochlorothiazide": {
+        "qty": 115,
+        "status": "IN_STOCK"
+      },
+      "Levothyroxine": {
+        "qty": 131,
+        "status": "IN_STOCK"
+      },
+      "Ranitidine": {
+        "qty": 37,
+        "status": "IN_STOCK"
+      },
+      "Domperidone": {
+        "qty": 111,
+        "status": "IN_STOCK"
+      },
+      "Ondansetron": {
+        "qty": 23,
+        "status": "LOW"
+      },
+      "Metoclopramide": {
+        "qty": 56,
+        "status": "IN_STOCK"
+      },
+      "Doxycycline": {
+        "qty": 115,
+        "status": "IN_STOCK"
+      },
+      "Co-trimoxazole": {
+        "qty": 89,
+        "status": "IN_STOCK"
+      },
+      "Cephalexin": {
+        "qty": 6,
+        "status": "LOW"
+      },
+      "Cefixime": {
+        "qty": 106,
+        "status": "IN_STOCK"
+      },
+      "Ofloxacin": {
+        "qty": 13,
+        "status": "LOW"
+      },
+      "Metronidazole": {
+        "qty": 101,
+        "status": "IN_STOCK"
+      },
+      "Fluconazole": {
+        "qty": 128,
+        "status": "IN_STOCK"
+      },
+      "Terbinafine": {
+        "qty": 95,
+        "status": "IN_STOCK"
+      },
+      "Clotrimazole": {
+        "qty": 60,
+        "status": "IN_STOCK"
+      },
+      "Mupirocin": {
+        "qty": 98,
+        "status": "IN_STOCK"
+      },
+      "Silver Sulfadiazine": {
+        "qty": 20,
+        "status": "LOW"
+      },
+      "Diclofenac Gel": {
+        "qty": 95,
+        "status": "IN_STOCK"
+      },
+      "Multivitamin with Zinc": {
+        "qty": 57,
+        "status": "IN_STOCK"
+      },
+      "Calcium 500mg": {
+        "qty": 7,
+        "status": "LOW"
+      },
+      "Iron Folic Acid": {
+        "qty": 81,
+        "status": "IN_STOCK"
+      },
+      "Vitamin D3 60k": {
+        "qty": 25,
+        "status": "IN_STOCK"
+      },
+      "Oral Rehydration Salts (ORS)": {
+        "qty": 85,
+        "status": "IN_STOCK"
+      },
+      "Diazepam": {
+        "qty": 37,
+        "status": "IN_STOCK"
+      },
+      "Alprazolam": {
+        "qty": 35,
+        "status": "IN_STOCK"
+      },
+      "Clonazepam": {
+        "qty": 9,
+        "status": "LOW"
+      },
+      "Tramadol": {
+        "qty": 73,
+        "status": "IN_STOCK"
+      },
+      "Pregabalin": {
+        "qty": 120,
+        "status": "IN_STOCK"
+      },
+      "Gabapentin": {
+        "qty": 35,
+        "status": "IN_STOCK"
+      },
+      "Betahistine": {
+        "qty": 120,
+        "status": "IN_STOCK"
+      },
+      "Methylcobalamin": {
+        "qty": 114,
+        "status": "IN_STOCK"
+      },
+      "Pantocid DSR": {
+        "qty": 1,
+        "status": "LOW"
+      }
+    },
+    "synthetic": true
+  },
+  {
+    "id": "PHARM-BLR-14",
+    "name": "Apollo Pharmacy Hebbal",
+    "type": "Retail",
+    "locality": "Hebbal",
+    "lat": 13.0358,
+    "lng": 77.597,
+    "hours": "08:00 AM - 10:30 PM",
+    "phone": "9000000114",
+    "is24x7": false,
+    "stock": {
+      "Metformin": {
+        "qty": 20,
+        "status": "LOW"
+      },
+      "Warfarin": {
+        "qty": 4,
+        "status": "LOW"
+      },
+      "Atorvastatin": {
+        "qty": 65,
+        "status": "IN_STOCK"
+      },
+      "Amlodipine": {
+        "qty": 55,
+        "status": "IN_STOCK"
+      },
+      "Lisinopril": {
+        "qty": 38,
+        "status": "IN_STOCK"
+      },
+      "Ramipril": {
+        "qty": 140,
+        "status": "IN_STOCK"
+      },
+      "Telmisartan": {
+        "qty": 135,
+        "status": "IN_STOCK"
+      },
+      "Paracetamol": {
+        "qty": 108,
+        "status": "IN_STOCK"
+      },
+      "Ibuprofen": {
+        "qty": 28,
+        "status": "IN_STOCK"
+      },
+      "Diclofenac": {
+        "qty": 73,
+        "status": "IN_STOCK"
+      },
+      "Azithromycin": {
+        "qty": 60,
+        "status": "IN_STOCK"
+      },
+      "Amoxicillin": {
+        "qty": 77,
+        "status": "IN_STOCK"
+      },
+      "Ciprofloxacin": {
+        "qty": 31,
+        "status": "IN_STOCK"
+      },
+      "Omeprazole": {
+        "qty": 12,
+        "status": "LOW"
+      },
+      "Pantoprazole": {
+        "qty": 61,
+        "status": "IN_STOCK"
+      },
+      "Cetirizine": {
+        "qty": 107,
+        "status": "IN_STOCK"
+      },
+      "Salbutamol": {
+        "qty": 117,
+        "status": "IN_STOCK"
+      },
+      "Deriphyllin": {
+        "qty": 16,
+        "status": "LOW"
+      },
+      "Montelukast": {
+        "qty": 28,
+        "status": "IN_STOCK"
+      },
+      "Budesonide": {
+        "qty": 127,
+        "status": "IN_STOCK"
+      },
+      "Dextromethorphan": {
+        "qty": 137,
+        "status": "IN_STOCK"
+      },
+      "Insulin Glargine": {
+        "qty": 4,
+        "status": "LOW"
+      },
+      "Glimepiride": {
+        "qty": 131,
+        "status": "IN_STOCK"
+      },
+      "Teneligliptin": {
+        "qty": 147,
+        "status": "IN_STOCK"
+      },
+      "Clopidogrel": {
+        "qty": 61,
+        "status": "IN_STOCK"
+      },
+      "Aspirin": {
+        "qty": 36,
+        "status": "IN_STOCK"
+      },
+      "Spironolactone": {
+        "qty": 74,
+        "status": "IN_STOCK"
+      },
+      "Furosemide": {
+        "qty": 109,
+        "status": "IN_STOCK"
+      },
+      "Hydrochlorothiazide": {
+        "qty": 0,
+        "status": "OUT"
+      },
+      "Levothyroxine": {
+        "qty": 90,
+        "status": "IN_STOCK"
+      },
+      "Ranitidine": {
+        "qty": 61,
+        "status": "IN_STOCK"
+      },
+      "Domperidone": {
+        "qty": 146,
+        "status": "IN_STOCK"
+      },
+      "Ondansetron": {
+        "qty": 106,
+        "status": "IN_STOCK"
+      },
+      "Metoclopramide": {
+        "qty": 47,
+        "status": "IN_STOCK"
+      },
+      "Doxycycline": {
+        "qty": 21,
+        "status": "LOW"
+      },
+      "Co-trimoxazole": {
+        "qty": 134,
+        "status": "IN_STOCK"
+      },
+      "Cephalexin": {
+        "qty": 92,
+        "status": "IN_STOCK"
+      },
+      "Cefixime": {
+        "qty": 17,
+        "status": "LOW"
+      },
+      "Ofloxacin": {
+        "qty": 134,
+        "status": "IN_STOCK"
+      },
+      "Metronidazole": {
+        "qty": 139,
+        "status": "IN_STOCK"
+      },
+      "Fluconazole": {
+        "qty": 129,
+        "status": "IN_STOCK"
+      },
+      "Terbinafine": {
+        "qty": 129,
+        "status": "IN_STOCK"
+      },
+      "Clotrimazole": {
+        "qty": 141,
+        "status": "IN_STOCK"
+      },
+      "Mupirocin": {
+        "qty": 5,
+        "status": "LOW"
+      },
+      "Silver Sulfadiazine": {
+        "qty": 99,
+        "status": "IN_STOCK"
+      },
+      "Diclofenac Gel": {
+        "qty": 120,
+        "status": "IN_STOCK"
+      },
+      "Multivitamin with Zinc": {
+        "qty": 11,
+        "status": "LOW"
+      },
+      "Calcium 500mg": {
+        "qty": 99,
+        "status": "IN_STOCK"
+      },
+      "Iron Folic Acid": {
+        "qty": 95,
+        "status": "IN_STOCK"
+      },
+      "Vitamin D3 60k": {
+        "qty": 64,
+        "status": "IN_STOCK"
+      },
+      "Oral Rehydration Salts (ORS)": {
+        "qty": 4,
+        "status": "LOW"
+      },
+      "Diazepam": {
+        "qty": 91,
+        "status": "IN_STOCK"
+      },
+      "Alprazolam": {
+        "qty": 17,
+        "status": "LOW"
+      },
+      "Clonazepam": {
+        "qty": 88,
+        "status": "IN_STOCK"
+      },
+      "Tramadol": {
+        "qty": 61,
+        "status": "IN_STOCK"
+      },
+      "Pregabalin": {
+        "qty": 26,
+        "status": "IN_STOCK"
+      },
+      "Gabapentin": {
+        "qty": 148,
+        "status": "IN_STOCK"
+      },
+      "Betahistine": {
+        "qty": 85,
+        "status": "IN_STOCK"
+      },
+      "Methylcobalamin": {
+        "qty": 34,
+        "status": "IN_STOCK"
+      },
+      "Pantocid DSR": {
+        "qty": 11,
+        "status": "LOW"
+      }
+    },
+    "synthetic": true
+  },
+  {
+    "id": "PHARM-BLR-15",
+    "name": "Pradhan Mantri Jan Aushadhi Kendra Hebbal Kempapura",
+    "type": "Jan Aushadhi",
+    "locality": "Hebbal Kempapura",
+    "lat": 13.045,
+    "lng": 77.592,
+    "hours": "08:00 AM - 10:30 PM",
+    "phone": "9000000115",
+    "is24x7": false,
+    "stock": {
+      "Metformin": {
+        "qty": 90,
+        "status": "IN_STOCK"
+      },
+      "Warfarin": {
+        "qty": 139,
+        "status": "IN_STOCK"
+      },
+      "Atorvastatin": {
+        "qty": 86,
+        "status": "IN_STOCK"
+      },
+      "Amlodipine": {
+        "qty": 44,
+        "status": "IN_STOCK"
+      },
+      "Lisinopril": {
+        "qty": 118,
+        "status": "IN_STOCK"
+      },
+      "Ramipril": {
+        "qty": 122,
+        "status": "IN_STOCK"
+      },
+      "Telmisartan": {
+        "qty": 46,
+        "status": "IN_STOCK"
+      },
+      "Paracetamol": {
+        "qty": 34,
+        "status": "IN_STOCK"
+      },
+      "Ibuprofen": {
+        "qty": 16,
+        "status": "LOW"
+      },
+      "Diclofenac": {
+        "qty": 117,
+        "status": "IN_STOCK"
+      },
+      "Azithromycin": {
+        "qty": 9,
+        "status": "LOW"
+      },
+      "Amoxicillin": {
+        "qty": 75,
+        "status": "IN_STOCK"
+      },
+      "Ciprofloxacin": {
+        "qty": 51,
+        "status": "IN_STOCK"
+      },
+      "Omeprazole": {
+        "qty": 11,
+        "status": "LOW"
+      },
+      "Pantoprazole": {
+        "qty": 51,
+        "status": "IN_STOCK"
+      },
+      "Cetirizine": {
+        "qty": 10,
+        "status": "LOW"
+      },
+      "Salbutamol": {
+        "qty": 80,
+        "status": "IN_STOCK"
+      },
+      "Deriphyllin": {
+        "qty": 79,
+        "status": "IN_STOCK"
+      },
+      "Montelukast": {
+        "qty": 131,
+        "status": "IN_STOCK"
+      },
+      "Budesonide": {
+        "qty": 101,
+        "status": "IN_STOCK"
+      },
+      "Dextromethorphan": {
+        "qty": 139,
+        "status": "IN_STOCK"
+      },
+      "Insulin Glargine": {
+        "qty": 121,
+        "status": "IN_STOCK"
+      },
+      "Glimepiride": {
+        "qty": 64,
+        "status": "IN_STOCK"
+      },
+      "Teneligliptin": {
+        "qty": 9,
+        "status": "LOW"
+      },
+      "Clopidogrel": {
+        "qty": 48,
+        "status": "IN_STOCK"
+      },
+      "Aspirin": {
+        "qty": 73,
+        "status": "IN_STOCK"
+      },
+      "Spironolactone": {
+        "qty": 91,
+        "status": "IN_STOCK"
+      },
+      "Furosemide": {
+        "qty": 12,
+        "status": "LOW"
+      },
+      "Hydrochlorothiazide": {
+        "qty": 84,
+        "status": "IN_STOCK"
+      },
+      "Levothyroxine": {
+        "qty": 69,
+        "status": "IN_STOCK"
+      },
+      "Ranitidine": {
+        "qty": 31,
+        "status": "IN_STOCK"
+      },
+      "Domperidone": {
+        "qty": 94,
+        "status": "IN_STOCK"
+      },
+      "Ondansetron": {
+        "qty": 111,
+        "status": "IN_STOCK"
+      },
+      "Metoclopramide": {
+        "qty": 102,
+        "status": "IN_STOCK"
+      },
+      "Doxycycline": {
+        "qty": 112,
+        "status": "IN_STOCK"
+      },
+      "Co-trimoxazole": {
+        "qty": 98,
+        "status": "IN_STOCK"
+      },
+      "Cephalexin": {
+        "qty": 86,
+        "status": "IN_STOCK"
+      },
+      "Cefixime": {
+        "qty": 47,
+        "status": "IN_STOCK"
+      },
+      "Ofloxacin": {
+        "qty": 127,
+        "status": "IN_STOCK"
+      },
+      "Metronidazole": {
+        "qty": 127,
+        "status": "IN_STOCK"
+      },
+      "Fluconazole": {
+        "qty": 94,
+        "status": "IN_STOCK"
+      },
+      "Terbinafine": {
+        "qty": 132,
+        "status": "IN_STOCK"
+      },
+      "Clotrimazole": {
+        "qty": 68,
+        "status": "IN_STOCK"
+      },
+      "Mupirocin": {
+        "qty": 21,
+        "status": "LOW"
+      },
+      "Silver Sulfadiazine": {
+        "qty": 108,
+        "status": "IN_STOCK"
+      },
+      "Diclofenac Gel": {
+        "qty": 20,
+        "status": "LOW"
+      },
+      "Multivitamin with Zinc": {
+        "qty": 110,
+        "status": "IN_STOCK"
+      },
+      "Calcium 500mg": {
+        "qty": 46,
+        "status": "IN_STOCK"
+      },
+      "Iron Folic Acid": {
+        "qty": 139,
+        "status": "IN_STOCK"
+      },
+      "Vitamin D3 60k": {
+        "qty": 75,
+        "status": "IN_STOCK"
+      },
+      "Oral Rehydration Salts (ORS)": {
+        "qty": 82,
+        "status": "IN_STOCK"
+      },
+      "Diazepam": {
+        "qty": 26,
+        "status": "IN_STOCK"
+      },
+      "Alprazolam": {
+        "qty": 20,
+        "status": "LOW"
+      },
+      "Clonazepam": {
+        "qty": 83,
+        "status": "IN_STOCK"
+      },
+      "Tramadol": {
+        "qty": 75,
+        "status": "IN_STOCK"
+      },
+      "Pregabalin": {
+        "qty": 78,
+        "status": "IN_STOCK"
+      },
+      "Gabapentin": {
+        "qty": 114,
+        "status": "IN_STOCK"
+      },
+      "Betahistine": {
+        "qty": 109,
+        "status": "IN_STOCK"
+      },
+      "Methylcobalamin": {
+        "qty": 42,
+        "status": "IN_STOCK"
+      },
+      "Pantocid DSR": {
+        "qty": 113,
+        "status": "IN_STOCK"
+      }
+    },
+    "synthetic": true
+  },
+  {
+    "id": "PHARM-BLR-16",
+    "name": "Manipal Hospital In-House Pharmacy Indiranagar 100ft Road",
+    "type": "Hospital pharmacy",
+    "locality": "Indiranagar 100ft Road",
+    "lat": 12.9719,
+    "lng": 77.6412,
+    "hours": "24 Hours / 7 Days",
+    "phone": "9000000116",
+    "is24x7": true,
+    "stock": {
+      "Metformin": {
+        "qty": 89,
+        "status": "IN_STOCK"
+      },
+      "Warfarin": {
+        "qty": 114,
+        "status": "IN_STOCK"
+      },
+      "Atorvastatin": {
+        "qty": 10,
+        "status": "LOW"
+      },
+      "Amlodipine": {
+        "qty": 90,
+        "status": "IN_STOCK"
+      },
+      "Lisinopril": {
+        "qty": 111,
+        "status": "IN_STOCK"
+      },
+      "Ramipril": {
+        "qty": 70,
+        "status": "IN_STOCK"
+      },
+      "Telmisartan": {
+        "qty": 14,
+        "status": "LOW"
+      },
+      "Paracetamol": {
+        "qty": 19,
+        "status": "LOW"
+      },
+      "Ibuprofen": {
+        "qty": 103,
+        "status": "IN_STOCK"
+      },
+      "Diclofenac": {
+        "qty": 93,
+        "status": "IN_STOCK"
+      },
+      "Azithromycin": {
+        "qty": 131,
+        "status": "IN_STOCK"
+      },
+      "Amoxicillin": {
+        "qty": 40,
+        "status": "IN_STOCK"
+      },
+      "Ciprofloxacin": {
+        "qty": 7,
+        "status": "LOW"
+      },
+      "Omeprazole": {
+        "qty": 36,
+        "status": "IN_STOCK"
+      },
+      "Pantoprazole": {
+        "qty": 112,
+        "status": "IN_STOCK"
+      },
+      "Cetirizine": {
+        "qty": 8,
+        "status": "LOW"
+      },
+      "Salbutamol": {
+        "qty": 32,
+        "status": "IN_STOCK"
+      },
+      "Deriphyllin": {
+        "qty": 17,
+        "status": "LOW"
+      },
+      "Montelukast": {
+        "qty": 60,
+        "status": "IN_STOCK"
+      },
+      "Budesonide": {
+        "qty": 93,
+        "status": "IN_STOCK"
+      },
+      "Dextromethorphan": {
+        "qty": 92,
+        "status": "IN_STOCK"
+      },
+      "Insulin Glargine": {
+        "qty": 98,
+        "status": "IN_STOCK"
+      },
+      "Glimepiride": {
+        "qty": 145,
+        "status": "IN_STOCK"
+      },
+      "Teneligliptin": {
+        "qty": 8,
+        "status": "LOW"
+      },
+      "Clopidogrel": {
+        "qty": 39,
+        "status": "IN_STOCK"
+      },
+      "Aspirin": {
+        "qty": 115,
+        "status": "IN_STOCK"
+      },
+      "Spironolactone": {
+        "qty": 94,
+        "status": "IN_STOCK"
+      },
+      "Furosemide": {
+        "qty": 95,
+        "status": "IN_STOCK"
+      },
+      "Hydrochlorothiazide": {
+        "qty": 113,
+        "status": "IN_STOCK"
+      },
+      "Levothyroxine": {
+        "qty": 19,
+        "status": "LOW"
+      },
+      "Ranitidine": {
+        "qty": 146,
+        "status": "IN_STOCK"
+      },
+      "Domperidone": {
+        "qty": 35,
+        "status": "IN_STOCK"
+      },
+      "Ondansetron": {
+        "qty": 135,
+        "status": "IN_STOCK"
+      },
+      "Metoclopramide": {
+        "qty": 93,
+        "status": "IN_STOCK"
+      },
+      "Doxycycline": {
+        "qty": 101,
+        "status": "IN_STOCK"
+      },
+      "Co-trimoxazole": {
+        "qty": 80,
+        "status": "IN_STOCK"
+      },
+      "Cephalexin": {
+        "qty": 71,
+        "status": "IN_STOCK"
+      },
+      "Cefixime": {
+        "qty": 63,
+        "status": "IN_STOCK"
+      },
+      "Ofloxacin": {
+        "qty": 29,
+        "status": "IN_STOCK"
+      },
+      "Metronidazole": {
+        "qty": 6,
+        "status": "LOW"
+      },
+      "Fluconazole": {
+        "qty": 47,
+        "status": "IN_STOCK"
+      },
+      "Terbinafine": {
+        "qty": 127,
+        "status": "IN_STOCK"
+      },
+      "Clotrimazole": {
+        "qty": 132,
+        "status": "IN_STOCK"
+      },
+      "Mupirocin": {
+        "qty": 99,
+        "status": "IN_STOCK"
+      },
+      "Silver Sulfadiazine": {
+        "qty": 143,
+        "status": "IN_STOCK"
+      },
+      "Diclofenac Gel": {
+        "qty": 30,
+        "status": "IN_STOCK"
+      },
+      "Multivitamin with Zinc": {
+        "qty": 67,
+        "status": "IN_STOCK"
+      },
+      "Calcium 500mg": {
+        "qty": 66,
+        "status": "IN_STOCK"
+      },
+      "Iron Folic Acid": {
+        "qty": 114,
+        "status": "IN_STOCK"
+      },
+      "Vitamin D3 60k": {
+        "qty": 54,
+        "status": "IN_STOCK"
+      },
+      "Oral Rehydration Salts (ORS)": {
+        "qty": 73,
+        "status": "IN_STOCK"
+      },
+      "Diazepam": {
+        "qty": 125,
+        "status": "IN_STOCK"
+      },
+      "Alprazolam": {
+        "qty": 51,
+        "status": "IN_STOCK"
+      },
+      "Clonazepam": {
+        "qty": 31,
+        "status": "IN_STOCK"
+      },
+      "Tramadol": {
+        "qty": 34,
+        "status": "IN_STOCK"
+      },
+      "Pregabalin": {
+        "qty": 18,
+        "status": "LOW"
+      },
+      "Gabapentin": {
+        "qty": 115,
+        "status": "IN_STOCK"
+      },
+      "Betahistine": {
+        "qty": 44,
+        "status": "IN_STOCK"
+      },
+      "Methylcobalamin": {
+        "qty": 113,
+        "status": "IN_STOCK"
+      },
+      "Pantocid DSR": {
+        "qty": 22,
+        "status": "LOW"
+      }
+    },
+    "synthetic": true
+  },
+  {
+    "id": "PHARM-BLR-17",
+    "name": "Apollo Pharmacy Jayanagar 4th Block",
+    "type": "Retail",
+    "locality": "Jayanagar 4th Block",
+    "lat": 12.9299,
+    "lng": 77.5833,
+    "hours": "08:00 AM - 10:30 PM",
+    "phone": "9000000117",
+    "is24x7": false,
+    "stock": {
+      "Metformin": {
+        "qty": 81,
+        "status": "IN_STOCK"
+      },
+      "Warfarin": {
+        "qty": 88,
+        "status": "IN_STOCK"
+      },
+      "Atorvastatin": {
+        "qty": 16,
+        "status": "LOW"
+      },
+      "Amlodipine": {
+        "qty": 140,
+        "status": "IN_STOCK"
+      },
+      "Lisinopril": {
+        "qty": 138,
+        "status": "IN_STOCK"
+      },
+      "Ramipril": {
+        "qty": 74,
+        "status": "IN_STOCK"
+      },
+      "Telmisartan": {
+        "qty": 76,
+        "status": "IN_STOCK"
+      },
+      "Paracetamol": {
+        "qty": 40,
+        "status": "IN_STOCK"
+      },
+      "Ibuprofen": {
+        "qty": 44,
+        "status": "IN_STOCK"
+      },
+      "Diclofenac": {
+        "qty": 92,
+        "status": "IN_STOCK"
+      },
+      "Azithromycin": {
+        "qty": 130,
+        "status": "IN_STOCK"
+      },
+      "Amoxicillin": {
+        "qty": 57,
+        "status": "IN_STOCK"
+      },
+      "Ciprofloxacin": {
+        "qty": 31,
+        "status": "IN_STOCK"
+      },
+      "Omeprazole": {
+        "qty": 51,
+        "status": "IN_STOCK"
+      },
+      "Pantoprazole": {
+        "qty": 35,
+        "status": "IN_STOCK"
+      },
+      "Cetirizine": {
+        "qty": 60,
+        "status": "IN_STOCK"
+      },
+      "Salbutamol": {
+        "qty": 126,
+        "status": "IN_STOCK"
+      },
+      "Deriphyllin": {
+        "qty": 6,
+        "status": "LOW"
+      },
+      "Montelukast": {
+        "qty": 92,
+        "status": "IN_STOCK"
+      },
+      "Budesonide": {
+        "qty": 141,
+        "status": "IN_STOCK"
+      },
+      "Dextromethorphan": {
+        "qty": 146,
+        "status": "IN_STOCK"
+      },
+      "Insulin Glargine": {
+        "qty": 94,
+        "status": "IN_STOCK"
+      },
+      "Glimepiride": {
+        "qty": 119,
+        "status": "IN_STOCK"
+      },
+      "Teneligliptin": {
+        "qty": 141,
+        "status": "IN_STOCK"
+      },
+      "Clopidogrel": {
+        "qty": 33,
+        "status": "IN_STOCK"
+      },
+      "Aspirin": {
+        "qty": 22,
+        "status": "LOW"
+      },
+      "Spironolactone": {
+        "qty": 16,
+        "status": "LOW"
+      },
+      "Furosemide": {
+        "qty": 79,
+        "status": "IN_STOCK"
+      },
+      "Hydrochlorothiazide": {
+        "qty": 101,
+        "status": "IN_STOCK"
+      },
+      "Levothyroxine": {
+        "qty": 122,
+        "status": "IN_STOCK"
+      },
+      "Ranitidine": {
+        "qty": 134,
+        "status": "IN_STOCK"
+      },
+      "Domperidone": {
+        "qty": 105,
+        "status": "IN_STOCK"
+      },
+      "Ondansetron": {
+        "qty": 104,
+        "status": "IN_STOCK"
+      },
+      "Metoclopramide": {
+        "qty": 147,
+        "status": "IN_STOCK"
+      },
+      "Doxycycline": {
+        "qty": 18,
+        "status": "LOW"
+      },
+      "Co-trimoxazole": {
+        "qty": 32,
+        "status": "IN_STOCK"
+      },
+      "Cephalexin": {
+        "qty": 81,
+        "status": "IN_STOCK"
+      },
+      "Cefixime": {
+        "qty": 18,
+        "status": "LOW"
+      },
+      "Ofloxacin": {
+        "qty": 115,
+        "status": "IN_STOCK"
+      },
+      "Metronidazole": {
+        "qty": 119,
+        "status": "IN_STOCK"
+      },
+      "Fluconazole": {
+        "qty": 132,
+        "status": "IN_STOCK"
+      },
+      "Terbinafine": {
+        "qty": 88,
+        "status": "IN_STOCK"
+      },
+      "Clotrimazole": {
+        "qty": 32,
+        "status": "IN_STOCK"
+      },
+      "Mupirocin": {
+        "qty": 141,
+        "status": "IN_STOCK"
+      },
+      "Silver Sulfadiazine": {
+        "qty": 150,
+        "status": "IN_STOCK"
+      },
+      "Diclofenac Gel": {
+        "qty": 46,
+        "status": "IN_STOCK"
+      },
+      "Multivitamin with Zinc": {
+        "qty": 33,
+        "status": "IN_STOCK"
+      },
+      "Calcium 500mg": {
+        "qty": 110,
+        "status": "IN_STOCK"
+      },
+      "Iron Folic Acid": {
+        "qty": 128,
+        "status": "IN_STOCK"
+      },
+      "Vitamin D3 60k": {
+        "qty": 14,
+        "status": "LOW"
+      },
+      "Oral Rehydration Salts (ORS)": {
+        "qty": 31,
+        "status": "IN_STOCK"
+      },
+      "Diazepam": {
+        "qty": 132,
+        "status": "IN_STOCK"
+      },
+      "Alprazolam": {
+        "qty": 39,
+        "status": "IN_STOCK"
+      },
+      "Clonazepam": {
+        "qty": 77,
+        "status": "IN_STOCK"
+      },
+      "Tramadol": {
+        "qty": 42,
+        "status": "IN_STOCK"
+      },
+      "Pregabalin": {
+        "qty": 41,
+        "status": "IN_STOCK"
+      },
+      "Gabapentin": {
+        "qty": 82,
+        "status": "IN_STOCK"
+      },
+      "Betahistine": {
+        "qty": 57,
+        "status": "IN_STOCK"
+      },
+      "Methylcobalamin": {
+        "qty": 88,
+        "status": "IN_STOCK"
+      },
+      "Pantocid DSR": {
+        "qty": 132,
+        "status": "IN_STOCK"
+      }
+    },
+    "synthetic": true
+  },
+  {
+    "id": "PHARM-BLR-18",
+    "name": "Pradhan Mantri Jan Aushadhi Kendra Marathahalli Bridge",
+    "type": "Jan Aushadhi",
+    "locality": "Marathahalli Bridge",
+    "lat": 12.9569,
+    "lng": 77.7011,
+    "hours": "08:00 AM - 10:30 PM",
+    "phone": "9000000118",
+    "is24x7": false,
+    "stock": {
+      "Metformin": {
+        "qty": 72,
+        "status": "IN_STOCK"
+      },
+      "Warfarin": {
+        "qty": 20,
+        "status": "LOW"
+      },
+      "Atorvastatin": {
+        "qty": 64,
+        "status": "IN_STOCK"
+      },
+      "Amlodipine": {
+        "qty": 50,
+        "status": "IN_STOCK"
+      },
+      "Lisinopril": {
+        "qty": 141,
+        "status": "IN_STOCK"
+      },
+      "Ramipril": {
+        "qty": 70,
+        "status": "IN_STOCK"
+      },
+      "Telmisartan": {
+        "qty": 32,
+        "status": "IN_STOCK"
+      },
+      "Paracetamol": {
+        "qty": 77,
+        "status": "IN_STOCK"
+      },
+      "Ibuprofen": {
+        "qty": 136,
+        "status": "IN_STOCK"
+      },
+      "Diclofenac": {
+        "qty": 23,
+        "status": "LOW"
+      },
+      "Azithromycin": {
+        "qty": 128,
+        "status": "IN_STOCK"
+      },
+      "Amoxicillin": {
+        "qty": 43,
+        "status": "IN_STOCK"
+      },
+      "Ciprofloxacin": {
+        "qty": 148,
+        "status": "IN_STOCK"
+      },
+      "Omeprazole": {
+        "qty": 39,
+        "status": "IN_STOCK"
+      },
+      "Pantoprazole": {
+        "qty": 43,
+        "status": "IN_STOCK"
+      },
+      "Cetirizine": {
+        "qty": 86,
+        "status": "IN_STOCK"
+      },
+      "Salbutamol": {
+        "qty": 144,
+        "status": "IN_STOCK"
+      },
+      "Deriphyllin": {
+        "qty": 10,
+        "status": "LOW"
+      },
+      "Montelukast": {
+        "qty": 7,
+        "status": "LOW"
+      },
+      "Budesonide": {
+        "qty": 20,
+        "status": "LOW"
+      },
+      "Dextromethorphan": {
+        "qty": 11,
+        "status": "LOW"
+      },
+      "Insulin Glargine": {
+        "qty": 147,
+        "status": "IN_STOCK"
+      },
+      "Glimepiride": {
+        "qty": 67,
+        "status": "IN_STOCK"
+      },
+      "Teneligliptin": {
+        "qty": 53,
+        "status": "IN_STOCK"
+      },
+      "Clopidogrel": {
+        "qty": 146,
+        "status": "IN_STOCK"
+      },
+      "Aspirin": {
+        "qty": 106,
+        "status": "IN_STOCK"
+      },
+      "Spironolactone": {
+        "qty": 7,
+        "status": "LOW"
+      },
+      "Furosemide": {
+        "qty": 127,
+        "status": "IN_STOCK"
+      },
+      "Hydrochlorothiazide": {
+        "qty": 139,
+        "status": "IN_STOCK"
+      },
+      "Levothyroxine": {
+        "qty": 74,
+        "status": "IN_STOCK"
+      },
+      "Ranitidine": {
+        "qty": 77,
+        "status": "IN_STOCK"
+      },
+      "Domperidone": {
+        "qty": 123,
+        "status": "IN_STOCK"
+      },
+      "Ondansetron": {
+        "qty": 62,
+        "status": "IN_STOCK"
+      },
+      "Metoclopramide": {
+        "qty": 103,
+        "status": "IN_STOCK"
+      },
+      "Doxycycline": {
+        "qty": 76,
+        "status": "IN_STOCK"
+      },
+      "Co-trimoxazole": {
+        "qty": 116,
+        "status": "IN_STOCK"
+      },
+      "Cephalexin": {
+        "qty": 18,
+        "status": "LOW"
+      },
+      "Cefixime": {
+        "qty": 15,
+        "status": "LOW"
+      },
+      "Ofloxacin": {
+        "qty": 40,
+        "status": "IN_STOCK"
+      },
+      "Metronidazole": {
+        "qty": 112,
+        "status": "IN_STOCK"
+      },
+      "Fluconazole": {
+        "qty": 106,
+        "status": "IN_STOCK"
+      },
+      "Terbinafine": {
+        "qty": 123,
+        "status": "IN_STOCK"
+      },
+      "Clotrimazole": {
+        "qty": 118,
+        "status": "IN_STOCK"
+      },
+      "Mupirocin": {
+        "qty": 52,
+        "status": "IN_STOCK"
+      },
+      "Silver Sulfadiazine": {
+        "qty": 87,
+        "status": "IN_STOCK"
+      },
+      "Diclofenac Gel": {
+        "qty": 36,
+        "status": "IN_STOCK"
+      },
+      "Multivitamin with Zinc": {
+        "qty": 80,
+        "status": "IN_STOCK"
+      },
+      "Calcium 500mg": {
+        "qty": 81,
+        "status": "IN_STOCK"
+      },
+      "Iron Folic Acid": {
+        "qty": 88,
+        "status": "IN_STOCK"
+      },
+      "Vitamin D3 60k": {
+        "qty": 102,
+        "status": "IN_STOCK"
+      },
+      "Oral Rehydration Salts (ORS)": {
+        "qty": 33,
+        "status": "IN_STOCK"
+      },
+      "Diazepam": {
+        "qty": 94,
+        "status": "IN_STOCK"
+      },
+      "Alprazolam": {
+        "qty": 131,
+        "status": "IN_STOCK"
+      },
+      "Clonazepam": {
+        "qty": 143,
+        "status": "IN_STOCK"
+      },
+      "Tramadol": {
+        "qty": 27,
+        "status": "IN_STOCK"
+      },
+      "Pregabalin": {
+        "qty": 81,
+        "status": "IN_STOCK"
+      },
+      "Gabapentin": {
+        "qty": 61,
+        "status": "IN_STOCK"
+      },
+      "Betahistine": {
+        "qty": 119,
+        "status": "IN_STOCK"
+      },
+      "Methylcobalamin": {
+        "qty": 31,
+        "status": "IN_STOCK"
+      },
+      "Pantocid DSR": {
+        "qty": 68,
+        "status": "IN_STOCK"
+      }
+    },
+    "synthetic": true
+  },
+  {
+    "id": "PHARM-BLR-19",
+    "name": "Apollo Pharmacy Koramangala 5th Block",
+    "type": "Retail",
+    "locality": "Koramangala 5th Block",
+    "lat": 12.9352,
+    "lng": 77.6245,
+    "hours": "08:00 AM - 10:30 PM",
+    "phone": "9000000119",
+    "is24x7": false,
+    "stock": {
+      "Metformin": {
+        "qty": 115,
+        "status": "IN_STOCK"
+      },
+      "Warfarin": {
+        "qty": 63,
+        "status": "IN_STOCK"
+      },
+      "Atorvastatin": {
+        "qty": 36,
+        "status": "IN_STOCK"
+      },
+      "Amlodipine": {
+        "qty": 24,
+        "status": "LOW"
+      },
+      "Lisinopril": {
+        "qty": 12,
+        "status": "LOW"
+      },
+      "Ramipril": {
+        "qty": 74,
+        "status": "IN_STOCK"
+      },
+      "Telmisartan": {
+        "qty": 98,
+        "status": "IN_STOCK"
+      },
+      "Paracetamol": {
+        "qty": 107,
+        "status": "IN_STOCK"
+      },
+      "Ibuprofen": {
+        "qty": 63,
+        "status": "IN_STOCK"
+      },
+      "Diclofenac": {
+        "qty": 40,
+        "status": "IN_STOCK"
+      },
+      "Azithromycin": {
+        "qty": 83,
+        "status": "IN_STOCK"
+      },
+      "Amoxicillin": {
+        "qty": 147,
+        "status": "IN_STOCK"
+      },
+      "Ciprofloxacin": {
+        "qty": 80,
+        "status": "IN_STOCK"
+      },
+      "Omeprazole": {
+        "qty": 48,
+        "status": "IN_STOCK"
+      },
+      "Pantoprazole": {
+        "qty": 40,
+        "status": "IN_STOCK"
+      },
+      "Cetirizine": {
+        "qty": 127,
+        "status": "IN_STOCK"
+      },
+      "Salbutamol": {
+        "qty": 131,
+        "status": "IN_STOCK"
+      },
+      "Deriphyllin": {
+        "qty": 119,
+        "status": "IN_STOCK"
+      },
+      "Montelukast": {
+        "qty": 127,
+        "status": "IN_STOCK"
+      },
+      "Budesonide": {
+        "qty": 78,
+        "status": "IN_STOCK"
+      },
+      "Dextromethorphan": {
+        "qty": 127,
+        "status": "IN_STOCK"
+      },
+      "Insulin Glargine": {
+        "qty": 5,
+        "status": "LOW"
+      },
+      "Glimepiride": {
+        "qty": 23,
+        "status": "LOW"
+      },
+      "Teneligliptin": {
+        "qty": 100,
+        "status": "IN_STOCK"
+      },
+      "Clopidogrel": {
+        "qty": 129,
+        "status": "IN_STOCK"
+      },
+      "Aspirin": {
+        "qty": 117,
+        "status": "IN_STOCK"
+      },
+      "Spironolactone": {
+        "qty": 61,
+        "status": "IN_STOCK"
+      },
+      "Furosemide": {
+        "qty": 55,
+        "status": "IN_STOCK"
+      },
+      "Hydrochlorothiazide": {
+        "qty": 149,
+        "status": "IN_STOCK"
+      },
+      "Levothyroxine": {
+        "qty": 90,
+        "status": "IN_STOCK"
+      },
+      "Ranitidine": {
+        "qty": 12,
+        "status": "LOW"
+      },
+      "Domperidone": {
+        "qty": 12,
+        "status": "LOW"
+      },
+      "Ondansetron": {
+        "qty": 72,
+        "status": "IN_STOCK"
+      },
+      "Metoclopramide": {
+        "qty": 126,
+        "status": "IN_STOCK"
+      },
+      "Doxycycline": {
+        "qty": 120,
+        "status": "IN_STOCK"
+      },
+      "Co-trimoxazole": {
+        "qty": 73,
+        "status": "IN_STOCK"
+      },
+      "Cephalexin": {
+        "qty": 137,
+        "status": "IN_STOCK"
+      },
+      "Cefixime": {
+        "qty": 2,
+        "status": "LOW"
+      },
+      "Ofloxacin": {
+        "qty": 27,
+        "status": "IN_STOCK"
+      },
+      "Metronidazole": {
+        "qty": 110,
+        "status": "IN_STOCK"
+      },
+      "Fluconazole": {
+        "qty": 34,
+        "status": "IN_STOCK"
+      },
+      "Terbinafine": {
+        "qty": 67,
+        "status": "IN_STOCK"
+      },
+      "Clotrimazole": {
+        "qty": 93,
+        "status": "IN_STOCK"
+      },
+      "Mupirocin": {
+        "qty": 103,
+        "status": "IN_STOCK"
+      },
+      "Silver Sulfadiazine": {
+        "qty": 93,
+        "status": "IN_STOCK"
+      },
+      "Diclofenac Gel": {
+        "qty": 11,
+        "status": "LOW"
+      },
+      "Multivitamin with Zinc": {
+        "qty": 102,
+        "status": "IN_STOCK"
+      },
+      "Calcium 500mg": {
+        "qty": 13,
+        "status": "LOW"
+      },
+      "Iron Folic Acid": {
+        "qty": 145,
+        "status": "IN_STOCK"
+      },
+      "Vitamin D3 60k": {
+        "qty": 143,
+        "status": "IN_STOCK"
+      },
+      "Oral Rehydration Salts (ORS)": {
+        "qty": 49,
+        "status": "IN_STOCK"
+      },
+      "Diazepam": {
+        "qty": 92,
+        "status": "IN_STOCK"
+      },
+      "Alprazolam": {
+        "qty": 141,
+        "status": "IN_STOCK"
+      },
+      "Clonazepam": {
+        "qty": 73,
+        "status": "IN_STOCK"
+      },
+      "Tramadol": {
+        "qty": 18,
+        "status": "LOW"
+      },
+      "Pregabalin": {
+        "qty": 98,
+        "status": "IN_STOCK"
+      },
+      "Gabapentin": {
+        "qty": 129,
+        "status": "IN_STOCK"
+      },
+      "Betahistine": {
+        "qty": 115,
+        "status": "IN_STOCK"
+      },
+      "Methylcobalamin": {
+        "qty": 140,
+        "status": "IN_STOCK"
+      },
+      "Pantocid DSR": {
+        "qty": 71,
+        "status": "IN_STOCK"
+      }
+    },
+    "synthetic": true
+  },
+  {
+    "id": "PHARM-BLR-20",
+    "name": "Manipal Hospital In-House Pharmacy Yelahanka New Town",
+    "type": "Hospital pharmacy",
+    "locality": "Yelahanka New Town",
+    "lat": 13.1007,
+    "lng": 77.5963,
+    "hours": "08:00 AM - 10:30 PM",
+    "phone": "9000000120",
+    "is24x7": false,
+    "stock": {
+      "Metformin": {
+        "qty": 30,
+        "status": "IN_STOCK"
+      },
+      "Warfarin": {
+        "qty": 32,
+        "status": "IN_STOCK"
+      },
+      "Atorvastatin": {
+        "qty": 24,
+        "status": "LOW"
+      },
+      "Amlodipine": {
+        "qty": 100,
+        "status": "IN_STOCK"
+      },
+      "Lisinopril": {
+        "qty": 95,
+        "status": "IN_STOCK"
+      },
+      "Ramipril": {
+        "qty": 86,
+        "status": "IN_STOCK"
+      },
+      "Telmisartan": {
+        "qty": 142,
+        "status": "IN_STOCK"
+      },
+      "Paracetamol": {
+        "qty": 93,
+        "status": "IN_STOCK"
+      },
+      "Ibuprofen": {
+        "qty": 36,
+        "status": "IN_STOCK"
+      },
+      "Diclofenac": {
+        "qty": 50,
+        "status": "IN_STOCK"
+      },
+      "Azithromycin": {
+        "qty": 130,
+        "status": "IN_STOCK"
+      },
+      "Amoxicillin": {
+        "qty": 102,
+        "status": "IN_STOCK"
+      },
+      "Ciprofloxacin": {
+        "qty": 128,
+        "status": "IN_STOCK"
+      },
+      "Omeprazole": {
+        "qty": 10,
+        "status": "LOW"
+      },
+      "Pantoprazole": {
+        "qty": 11,
+        "status": "LOW"
+      },
+      "Cetirizine": {
+        "qty": 9,
+        "status": "LOW"
+      },
+      "Salbutamol": {
+        "qty": 35,
+        "status": "IN_STOCK"
+      },
+      "Deriphyllin": {
+        "qty": 85,
+        "status": "IN_STOCK"
+      },
+      "Montelukast": {
+        "qty": 121,
+        "status": "IN_STOCK"
+      },
+      "Budesonide": {
+        "qty": 132,
+        "status": "IN_STOCK"
+      },
+      "Dextromethorphan": {
+        "qty": 116,
+        "status": "IN_STOCK"
+      },
+      "Insulin Glargine": {
+        "qty": 38,
+        "status": "IN_STOCK"
+      },
+      "Glimepiride": {
+        "qty": 131,
+        "status": "IN_STOCK"
+      },
+      "Teneligliptin": {
+        "qty": 35,
+        "status": "IN_STOCK"
+      },
+      "Clopidogrel": {
+        "qty": 83,
+        "status": "IN_STOCK"
+      },
+      "Aspirin": {
+        "qty": 81,
+        "status": "IN_STOCK"
+      },
+      "Spironolactone": {
+        "qty": 41,
+        "status": "IN_STOCK"
+      },
+      "Furosemide": {
+        "qty": 100,
+        "status": "IN_STOCK"
+      },
+      "Hydrochlorothiazide": {
+        "qty": 76,
+        "status": "IN_STOCK"
+      },
+      "Levothyroxine": {
+        "qty": 86,
+        "status": "IN_STOCK"
+      },
+      "Ranitidine": {
+        "qty": 129,
+        "status": "IN_STOCK"
+      },
+      "Domperidone": {
+        "qty": 130,
+        "status": "IN_STOCK"
+      },
+      "Ondansetron": {
+        "qty": 136,
+        "status": "IN_STOCK"
+      },
+      "Metoclopramide": {
+        "qty": 125,
+        "status": "IN_STOCK"
+      },
+      "Doxycycline": {
+        "qty": 144,
+        "status": "IN_STOCK"
+      },
+      "Co-trimoxazole": {
+        "qty": 76,
+        "status": "IN_STOCK"
+      },
+      "Cephalexin": {
+        "qty": 121,
+        "status": "IN_STOCK"
+      },
+      "Cefixime": {
+        "qty": 4,
+        "status": "LOW"
+      },
+      "Ofloxacin": {
+        "qty": 94,
+        "status": "IN_STOCK"
+      },
+      "Metronidazole": {
+        "qty": 84,
+        "status": "IN_STOCK"
+      },
+      "Fluconazole": {
+        "qty": 28,
+        "status": "IN_STOCK"
+      },
+      "Terbinafine": {
+        "qty": 106,
+        "status": "IN_STOCK"
+      },
+      "Clotrimazole": {
+        "qty": 149,
+        "status": "IN_STOCK"
+      },
+      "Mupirocin": {
+        "qty": 78,
+        "status": "IN_STOCK"
+      },
+      "Silver Sulfadiazine": {
+        "qty": 6,
+        "status": "LOW"
+      },
+      "Diclofenac Gel": {
+        "qty": 121,
+        "status": "IN_STOCK"
+      },
+      "Multivitamin with Zinc": {
+        "qty": 67,
+        "status": "IN_STOCK"
+      },
+      "Calcium 500mg": {
+        "qty": 148,
+        "status": "IN_STOCK"
+      },
+      "Iron Folic Acid": {
+        "qty": 147,
+        "status": "IN_STOCK"
+      },
+      "Vitamin D3 60k": {
+        "qty": 58,
+        "status": "IN_STOCK"
+      },
+      "Oral Rehydration Salts (ORS)": {
+        "qty": 13,
+        "status": "LOW"
+      },
+      "Diazepam": {
+        "qty": 149,
+        "status": "IN_STOCK"
+      },
+      "Alprazolam": {
+        "qty": 122,
+        "status": "IN_STOCK"
+      },
+      "Clonazepam": {
+        "qty": 43,
+        "status": "IN_STOCK"
+      },
+      "Tramadol": {
+        "qty": 134,
+        "status": "IN_STOCK"
+      },
+      "Pregabalin": {
+        "qty": 97,
+        "status": "IN_STOCK"
+      },
+      "Gabapentin": {
+        "qty": 37,
+        "status": "IN_STOCK"
+      },
+      "Betahistine": {
+        "qty": 62,
+        "status": "IN_STOCK"
+      },
+      "Methylcobalamin": {
+        "qty": 8,
+        "status": "LOW"
+      },
+      "Pantocid DSR": {
+        "qty": 146,
+        "status": "IN_STOCK"
+      }
+    },
+    "synthetic": true
+  },
+  {
+    "id": "PHARM-OD-01",
+    "name": "Utkal Health Pharmacy - Berhampur Medical Square, Ganjam",
+    "type": "Retail",
+    "locality": "Berhampur Medical Square, Ganjam",
+    "lat": 19.3149,
+    "lng": 84.7941,
+    "hours": "08:00 AM - 09:30 PM",
+    "phone": "9000000201",
+    "is24x7": false,
+    "stock": {
+      "Metformin": {
+        "qty": 58,
+        "status": "IN_STOCK"
+      },
+      "Warfarin": {
+        "qty": 78,
+        "status": "IN_STOCK"
+      },
+      "Atorvastatin": {
+        "qty": 34,
+        "status": "IN_STOCK"
+      },
+      "Amlodipine": {
+        "qty": 142,
+        "status": "IN_STOCK"
+      },
+      "Lisinopril": {
+        "qty": 110,
+        "status": "IN_STOCK"
+      },
+      "Ramipril": {
+        "qty": 137,
+        "status": "IN_STOCK"
+      },
+      "Telmisartan": {
+        "qty": 68,
+        "status": "IN_STOCK"
+      },
+      "Paracetamol": {
+        "qty": 135,
+        "status": "IN_STOCK"
+      },
+      "Ibuprofen": {
+        "qty": 82,
+        "status": "IN_STOCK"
+      },
+      "Diclofenac": {
+        "qty": 135,
+        "status": "IN_STOCK"
+      },
+      "Azithromycin": {
+        "qty": 158,
+        "status": "IN_STOCK"
+      },
+      "Amoxicillin": {
+        "qty": 150,
+        "status": "IN_STOCK"
+      },
+      "Ciprofloxacin": {
+        "qty": 45,
+        "status": "IN_STOCK"
+      },
+      "Omeprazole": {
+        "qty": 65,
+        "status": "IN_STOCK"
+      },
+      "Pantoprazole": {
+        "qty": 162,
+        "status": "IN_STOCK"
+      },
+      "Cetirizine": {
+        "qty": 83,
+        "status": "IN_STOCK"
+      },
+      "Salbutamol": {
+        "qty": 173,
+        "status": "IN_STOCK"
+      },
+      "Deriphyllin": {
+        "qty": 113,
+        "status": "IN_STOCK"
+      },
+      "Montelukast": {
+        "qty": 152,
+        "status": "IN_STOCK"
+      },
+      "Budesonide": {
+        "qty": 164,
+        "status": "IN_STOCK"
+      },
+      "Dextromethorphan": {
+        "qty": 126,
+        "status": "IN_STOCK"
+      },
+      "Insulin Glargine": {
+        "qty": 110,
+        "status": "IN_STOCK"
+      },
+      "Glimepiride": {
+        "qty": 74,
+        "status": "IN_STOCK"
+      },
+      "Teneligliptin": {
+        "qty": 147,
+        "status": "IN_STOCK"
+      },
+      "Clopidogrel": {
+        "qty": 166,
+        "status": "IN_STOCK"
+      },
+      "Aspirin": {
+        "qty": 117,
+        "status": "IN_STOCK"
+      },
+      "Spironolactone": {
+        "qty": 169,
+        "status": "IN_STOCK"
+      },
+      "Furosemide": {
+        "qty": 120,
+        "status": "IN_STOCK"
+      },
+      "Hydrochlorothiazide": {
+        "qty": 97,
+        "status": "IN_STOCK"
+      },
+      "Levothyroxine": {
+        "qty": 153,
+        "status": "IN_STOCK"
+      },
+      "Ranitidine": {
+        "qty": 79,
+        "status": "IN_STOCK"
+      },
+      "Domperidone": {
+        "qty": 93,
+        "status": "IN_STOCK"
+      },
+      "Ondansetron": {
+        "qty": 101,
+        "status": "IN_STOCK"
+      },
+      "Metoclopramide": {
+        "qty": 172,
+        "status": "IN_STOCK"
+      },
+      "Doxycycline": {
+        "qty": 106,
+        "status": "IN_STOCK"
+      },
+      "Co-trimoxazole": {
+        "qty": 87,
+        "status": "IN_STOCK"
+      },
+      "Cephalexin": {
+        "qty": 106,
+        "status": "IN_STOCK"
+      },
+      "Cefixime": {
+        "qty": 103,
+        "status": "IN_STOCK"
+      },
+      "Ofloxacin": {
+        "qty": 83,
+        "status": "IN_STOCK"
+      },
+      "Metronidazole": {
+        "qty": 155,
+        "status": "IN_STOCK"
+      },
+      "Fluconazole": {
+        "qty": 111,
+        "status": "IN_STOCK"
+      },
+      "Terbinafine": {
+        "qty": 152,
+        "status": "IN_STOCK"
+      },
+      "Clotrimazole": {
+        "qty": 119,
+        "status": "IN_STOCK"
+      },
+      "Mupirocin": {
+        "qty": 173,
+        "status": "IN_STOCK"
+      },
+      "Silver Sulfadiazine": {
+        "qty": 100,
+        "status": "IN_STOCK"
+      },
+      "Diclofenac Gel": {
+        "qty": 103,
+        "status": "IN_STOCK"
+      },
+      "Multivitamin with Zinc": {
+        "qty": 61,
+        "status": "IN_STOCK"
+      },
+      "Calcium 500mg": {
+        "qty": 176,
+        "status": "IN_STOCK"
+      },
+      "Iron Folic Acid": {
+        "qty": 169,
+        "status": "IN_STOCK"
+      },
+      "Vitamin D3 60k": {
+        "qty": 127,
+        "status": "IN_STOCK"
+      },
+      "Oral Rehydration Salts (ORS)": {
+        "qty": 131,
+        "status": "IN_STOCK"
+      },
+      "Diazepam": {
+        "qty": 118,
+        "status": "IN_STOCK"
+      },
+      "Alprazolam": {
+        "qty": 67,
+        "status": "IN_STOCK"
+      },
+      "Clonazepam": {
+        "qty": 104,
+        "status": "IN_STOCK"
+      },
+      "Tramadol": {
+        "qty": 40,
+        "status": "IN_STOCK"
+      },
+      "Pregabalin": {
+        "qty": 103,
+        "status": "IN_STOCK"
+      },
+      "Gabapentin": {
+        "qty": 50,
+        "status": "IN_STOCK"
+      },
+      "Betahistine": {
+        "qty": 118,
+        "status": "IN_STOCK"
+      },
+      "Methylcobalamin": {
+        "qty": 143,
+        "status": "IN_STOCK"
+      },
+      "Pantocid DSR": {
+        "qty": 95,
+        "status": "IN_STOCK"
+      }
+    },
+    "synthetic": true
+  },
+  {
+    "id": "PHARM-OD-02",
+    "name": "Utkal Health Pharmacy - Chhatrapur Main Road, Ganjam",
+    "type": "Jan Aushadhi",
+    "locality": "Chhatrapur Main Road, Ganjam",
+    "lat": 19.356,
+    "lng": 84.992,
+    "hours": "08:00 AM - 09:30 PM",
+    "phone": "9000000202",
+    "is24x7": false,
+    "stock": {
+      "Metformin": {
+        "qty": 152,
+        "status": "IN_STOCK"
+      },
+      "Warfarin": {
+        "qty": 84,
+        "status": "IN_STOCK"
+      },
+      "Atorvastatin": {
+        "qty": 81,
+        "status": "IN_STOCK"
+      },
+      "Amlodipine": {
+        "qty": 167,
+        "status": "IN_STOCK"
+      },
+      "Lisinopril": {
+        "qty": 99,
+        "status": "IN_STOCK"
+      },
+      "Ramipril": {
+        "qty": 173,
+        "status": "IN_STOCK"
+      },
+      "Telmisartan": {
+        "qty": 99,
+        "status": "IN_STOCK"
+      },
+      "Paracetamol": {
+        "qty": 65,
+        "status": "IN_STOCK"
+      },
+      "Ibuprofen": {
+        "qty": 57,
+        "status": "IN_STOCK"
+      },
+      "Diclofenac": {
+        "qty": 180,
+        "status": "IN_STOCK"
+      },
+      "Azithromycin": {
+        "qty": 91,
+        "status": "IN_STOCK"
+      },
+      "Amoxicillin": {
+        "qty": 92,
+        "status": "IN_STOCK"
+      },
+      "Ciprofloxacin": {
+        "qty": 42,
+        "status": "IN_STOCK"
+      },
+      "Omeprazole": {
+        "qty": 165,
+        "status": "IN_STOCK"
+      },
+      "Pantoprazole": {
+        "qty": 87,
+        "status": "IN_STOCK"
+      },
+      "Cetirizine": {
+        "qty": 89,
+        "status": "IN_STOCK"
+      },
+      "Salbutamol": {
+        "qty": 43,
+        "status": "IN_STOCK"
+      },
+      "Deriphyllin": {
+        "qty": 55,
+        "status": "IN_STOCK"
+      },
+      "Montelukast": {
+        "qty": 135,
+        "status": "IN_STOCK"
+      },
+      "Budesonide": {
+        "qty": 114,
+        "status": "IN_STOCK"
+      },
+      "Dextromethorphan": {
+        "qty": 150,
+        "status": "IN_STOCK"
+      },
+      "Insulin Glargine": {
+        "qty": 55,
+        "status": "IN_STOCK"
+      },
+      "Glimepiride": {
+        "qty": 65,
+        "status": "IN_STOCK"
+      },
+      "Teneligliptin": {
+        "qty": 31,
+        "status": "IN_STOCK"
+      },
+      "Clopidogrel": {
+        "qty": 170,
+        "status": "IN_STOCK"
+      },
+      "Aspirin": {
+        "qty": 70,
+        "status": "IN_STOCK"
+      },
+      "Spironolactone": {
+        "qty": 134,
+        "status": "IN_STOCK"
+      },
+      "Furosemide": {
+        "qty": 151,
+        "status": "IN_STOCK"
+      },
+      "Hydrochlorothiazide": {
+        "qty": 152,
+        "status": "IN_STOCK"
+      },
+      "Levothyroxine": {
+        "qty": 81,
+        "status": "IN_STOCK"
+      },
+      "Ranitidine": {
+        "qty": 103,
+        "status": "IN_STOCK"
+      },
+      "Domperidone": {
+        "qty": 112,
+        "status": "IN_STOCK"
+      },
+      "Ondansetron": {
+        "qty": 103,
+        "status": "IN_STOCK"
+      },
+      "Metoclopramide": {
+        "qty": 45,
+        "status": "IN_STOCK"
+      },
+      "Doxycycline": {
+        "qty": 52,
+        "status": "IN_STOCK"
+      },
+      "Co-trimoxazole": {
+        "qty": 176,
+        "status": "IN_STOCK"
+      },
+      "Cephalexin": {
+        "qty": 89,
+        "status": "IN_STOCK"
+      },
+      "Cefixime": {
+        "qty": 166,
+        "status": "IN_STOCK"
+      },
+      "Ofloxacin": {
+        "qty": 39,
+        "status": "IN_STOCK"
+      },
+      "Metronidazole": {
+        "qty": 74,
+        "status": "IN_STOCK"
+      },
+      "Fluconazole": {
+        "qty": 136,
+        "status": "IN_STOCK"
+      },
+      "Terbinafine": {
+        "qty": 75,
+        "status": "IN_STOCK"
+      },
+      "Clotrimazole": {
+        "qty": 39,
+        "status": "IN_STOCK"
+      },
+      "Mupirocin": {
+        "qty": 131,
+        "status": "IN_STOCK"
+      },
+      "Silver Sulfadiazine": {
+        "qty": 156,
+        "status": "IN_STOCK"
+      },
+      "Diclofenac Gel": {
+        "qty": 77,
+        "status": "IN_STOCK"
+      },
+      "Multivitamin with Zinc": {
+        "qty": 104,
+        "status": "IN_STOCK"
+      },
+      "Calcium 500mg": {
+        "qty": 39,
+        "status": "IN_STOCK"
+      },
+      "Iron Folic Acid": {
+        "qty": 32,
+        "status": "IN_STOCK"
+      },
+      "Vitamin D3 60k": {
+        "qty": 106,
+        "status": "IN_STOCK"
+      },
+      "Oral Rehydration Salts (ORS)": {
+        "qty": 175,
+        "status": "IN_STOCK"
+      },
+      "Diazepam": {
+        "qty": 57,
+        "status": "IN_STOCK"
+      },
+      "Alprazolam": {
+        "qty": 115,
+        "status": "IN_STOCK"
+      },
+      "Clonazepam": {
+        "qty": 102,
+        "status": "IN_STOCK"
+      },
+      "Tramadol": {
+        "qty": 146,
+        "status": "IN_STOCK"
+      },
+      "Pregabalin": {
+        "qty": 169,
+        "status": "IN_STOCK"
+      },
+      "Gabapentin": {
+        "qty": 164,
+        "status": "IN_STOCK"
+      },
+      "Betahistine": {
+        "qty": 156,
+        "status": "IN_STOCK"
+      },
+      "Methylcobalamin": {
+        "qty": 64,
+        "status": "IN_STOCK"
+      },
+      "Pantocid DSR": {
+        "qty": 159,
+        "status": "IN_STOCK"
+      }
+    },
+    "synthetic": true
+  },
+  {
+    "id": "PHARM-OD-03",
+    "name": "Utkal Health Pharmacy - AIIMS Campus, Bhubaneswar",
+    "type": "Retail",
+    "locality": "AIIMS Campus, Bhubaneswar",
+    "lat": 20.2312,
+    "lng": 85.7761,
+    "hours": "24 Hours",
+    "phone": "9000000203",
+    "is24x7": true,
+    "stock": {
+      "Metformin": {
+        "qty": 149,
+        "status": "IN_STOCK"
+      },
+      "Warfarin": {
+        "qty": 99,
+        "status": "IN_STOCK"
+      },
+      "Atorvastatin": {
+        "qty": 79,
+        "status": "IN_STOCK"
+      },
+      "Amlodipine": {
+        "qty": 58,
+        "status": "IN_STOCK"
+      },
+      "Lisinopril": {
+        "qty": 114,
+        "status": "IN_STOCK"
+      },
+      "Ramipril": {
+        "qty": 71,
+        "status": "IN_STOCK"
+      },
+      "Telmisartan": {
+        "qty": 147,
+        "status": "IN_STOCK"
+      },
+      "Paracetamol": {
+        "qty": 95,
+        "status": "IN_STOCK"
+      },
+      "Ibuprofen": {
+        "qty": 77,
+        "status": "IN_STOCK"
+      },
+      "Diclofenac": {
+        "qty": 33,
+        "status": "IN_STOCK"
+      },
+      "Azithromycin": {
+        "qty": 116,
+        "status": "IN_STOCK"
+      },
+      "Amoxicillin": {
+        "qty": 105,
+        "status": "IN_STOCK"
+      },
+      "Ciprofloxacin": {
+        "qty": 175,
+        "status": "IN_STOCK"
+      },
+      "Omeprazole": {
+        "qty": 79,
+        "status": "IN_STOCK"
+      },
+      "Pantoprazole": {
+        "qty": 74,
+        "status": "IN_STOCK"
+      },
+      "Cetirizine": {
+        "qty": 133,
+        "status": "IN_STOCK"
+      },
+      "Salbutamol": {
+        "qty": 139,
+        "status": "IN_STOCK"
+      },
+      "Deriphyllin": {
+        "qty": 161,
+        "status": "IN_STOCK"
+      },
+      "Montelukast": {
+        "qty": 113,
+        "status": "IN_STOCK"
+      },
+      "Budesonide": {
+        "qty": 52,
+        "status": "IN_STOCK"
+      },
+      "Dextromethorphan": {
+        "qty": 132,
+        "status": "IN_STOCK"
+      },
+      "Insulin Glargine": {
+        "qty": 54,
+        "status": "IN_STOCK"
+      },
+      "Glimepiride": {
+        "qty": 77,
+        "status": "IN_STOCK"
+      },
+      "Teneligliptin": {
+        "qty": 65,
+        "status": "IN_STOCK"
+      },
+      "Clopidogrel": {
+        "qty": 152,
+        "status": "IN_STOCK"
+      },
+      "Aspirin": {
+        "qty": 112,
+        "status": "IN_STOCK"
+      },
+      "Spironolactone": {
+        "qty": 93,
+        "status": "IN_STOCK"
+      },
+      "Furosemide": {
+        "qty": 31,
+        "status": "IN_STOCK"
+      },
+      "Hydrochlorothiazide": {
+        "qty": 96,
+        "status": "IN_STOCK"
+      },
+      "Levothyroxine": {
+        "qty": 128,
+        "status": "IN_STOCK"
+      },
+      "Ranitidine": {
+        "qty": 90,
+        "status": "IN_STOCK"
+      },
+      "Domperidone": {
+        "qty": 144,
+        "status": "IN_STOCK"
+      },
+      "Ondansetron": {
+        "qty": 98,
+        "status": "IN_STOCK"
+      },
+      "Metoclopramide": {
+        "qty": 114,
+        "status": "IN_STOCK"
+      },
+      "Doxycycline": {
+        "qty": 107,
+        "status": "IN_STOCK"
+      },
+      "Co-trimoxazole": {
+        "qty": 179,
+        "status": "IN_STOCK"
+      },
+      "Cephalexin": {
+        "qty": 176,
+        "status": "IN_STOCK"
+      },
+      "Cefixime": {
+        "qty": 32,
+        "status": "IN_STOCK"
+      },
+      "Ofloxacin": {
+        "qty": 96,
+        "status": "IN_STOCK"
+      },
+      "Metronidazole": {
+        "qty": 122,
+        "status": "IN_STOCK"
+      },
+      "Fluconazole": {
+        "qty": 90,
+        "status": "IN_STOCK"
+      },
+      "Terbinafine": {
+        "qty": 45,
+        "status": "IN_STOCK"
+      },
+      "Clotrimazole": {
+        "qty": 60,
+        "status": "IN_STOCK"
+      },
+      "Mupirocin": {
+        "qty": 149,
+        "status": "IN_STOCK"
+      },
+      "Silver Sulfadiazine": {
+        "qty": 108,
+        "status": "IN_STOCK"
+      },
+      "Diclofenac Gel": {
+        "qty": 70,
+        "status": "IN_STOCK"
+      },
+      "Multivitamin with Zinc": {
+        "qty": 133,
+        "status": "IN_STOCK"
+      },
+      "Calcium 500mg": {
+        "qty": 158,
+        "status": "IN_STOCK"
+      },
+      "Iron Folic Acid": {
+        "qty": 109,
+        "status": "IN_STOCK"
+      },
+      "Vitamin D3 60k": {
+        "qty": 60,
+        "status": "IN_STOCK"
+      },
+      "Oral Rehydration Salts (ORS)": {
+        "qty": 105,
+        "status": "IN_STOCK"
+      },
+      "Diazepam": {
+        "qty": 124,
+        "status": "IN_STOCK"
+      },
+      "Alprazolam": {
+        "qty": 86,
+        "status": "IN_STOCK"
+      },
+      "Clonazepam": {
+        "qty": 86,
+        "status": "IN_STOCK"
+      },
+      "Tramadol": {
+        "qty": 64,
+        "status": "IN_STOCK"
+      },
+      "Pregabalin": {
+        "qty": 152,
+        "status": "IN_STOCK"
+      },
+      "Gabapentin": {
+        "qty": 69,
+        "status": "IN_STOCK"
+      },
+      "Betahistine": {
+        "qty": 146,
+        "status": "IN_STOCK"
+      },
+      "Methylcobalamin": {
+        "qty": 125,
+        "status": "IN_STOCK"
+      },
+      "Pantocid DSR": {
+        "qty": 136,
+        "status": "IN_STOCK"
+      }
+    },
+    "synthetic": true
+  },
+  {
+    "id": "PHARM-OD-04",
+    "name": "Utkal Health Pharmacy - Mangalabag, Cuttack",
+    "type": "Jan Aushadhi",
+    "locality": "Mangalabag, Cuttack",
+    "lat": 20.4789,
+    "lng": 85.8824,
+    "hours": "08:00 AM - 09:30 PM",
+    "phone": "9000000204",
+    "is24x7": false,
+    "stock": {
+      "Metformin": {
+        "qty": 170,
+        "status": "IN_STOCK"
+      },
+      "Warfarin": {
+        "qty": 150,
+        "status": "IN_STOCK"
+      },
+      "Atorvastatin": {
+        "qty": 167,
+        "status": "IN_STOCK"
+      },
+      "Amlodipine": {
+        "qty": 85,
+        "status": "IN_STOCK"
+      },
+      "Lisinopril": {
+        "qty": 93,
+        "status": "IN_STOCK"
+      },
+      "Ramipril": {
+        "qty": 50,
+        "status": "IN_STOCK"
+      },
+      "Telmisartan": {
+        "qty": 164,
+        "status": "IN_STOCK"
+      },
+      "Paracetamol": {
+        "qty": 144,
+        "status": "IN_STOCK"
+      },
+      "Ibuprofen": {
+        "qty": 165,
+        "status": "IN_STOCK"
+      },
+      "Diclofenac": {
+        "qty": 122,
+        "status": "IN_STOCK"
+      },
+      "Azithromycin": {
+        "qty": 49,
+        "status": "IN_STOCK"
+      },
+      "Amoxicillin": {
+        "qty": 174,
+        "status": "IN_STOCK"
+      },
+      "Ciprofloxacin": {
+        "qty": 58,
+        "status": "IN_STOCK"
+      },
+      "Omeprazole": {
+        "qty": 45,
+        "status": "IN_STOCK"
+      },
+      "Pantoprazole": {
+        "qty": 170,
+        "status": "IN_STOCK"
+      },
+      "Cetirizine": {
+        "qty": 159,
+        "status": "IN_STOCK"
+      },
+      "Salbutamol": {
+        "qty": 81,
+        "status": "IN_STOCK"
+      },
+      "Deriphyllin": {
+        "qty": 176,
+        "status": "IN_STOCK"
+      },
+      "Montelukast": {
+        "qty": 167,
+        "status": "IN_STOCK"
+      },
+      "Budesonide": {
+        "qty": 68,
+        "status": "IN_STOCK"
+      },
+      "Dextromethorphan": {
+        "qty": 72,
+        "status": "IN_STOCK"
+      },
+      "Insulin Glargine": {
+        "qty": 113,
+        "status": "IN_STOCK"
+      },
+      "Glimepiride": {
+        "qty": 163,
+        "status": "IN_STOCK"
+      },
+      "Teneligliptin": {
+        "qty": 143,
+        "status": "IN_STOCK"
+      },
+      "Clopidogrel": {
+        "qty": 59,
+        "status": "IN_STOCK"
+      },
+      "Aspirin": {
+        "qty": 82,
+        "status": "IN_STOCK"
+      },
+      "Spironolactone": {
+        "qty": 179,
+        "status": "IN_STOCK"
+      },
+      "Furosemide": {
+        "qty": 155,
+        "status": "IN_STOCK"
+      },
+      "Hydrochlorothiazide": {
+        "qty": 53,
+        "status": "IN_STOCK"
+      },
+      "Levothyroxine": {
+        "qty": 160,
+        "status": "IN_STOCK"
+      },
+      "Ranitidine": {
+        "qty": 144,
+        "status": "IN_STOCK"
+      },
+      "Domperidone": {
+        "qty": 44,
+        "status": "IN_STOCK"
+      },
+      "Ondansetron": {
+        "qty": 146,
+        "status": "IN_STOCK"
+      },
+      "Metoclopramide": {
+        "qty": 63,
+        "status": "IN_STOCK"
+      },
+      "Doxycycline": {
+        "qty": 161,
+        "status": "IN_STOCK"
+      },
+      "Co-trimoxazole": {
+        "qty": 136,
+        "status": "IN_STOCK"
+      },
+      "Cephalexin": {
+        "qty": 146,
+        "status": "IN_STOCK"
+      },
+      "Cefixime": {
+        "qty": 174,
+        "status": "IN_STOCK"
+      },
+      "Ofloxacin": {
+        "qty": 44,
+        "status": "IN_STOCK"
+      },
+      "Metronidazole": {
+        "qty": 173,
+        "status": "IN_STOCK"
+      },
+      "Fluconazole": {
+        "qty": 148,
+        "status": "IN_STOCK"
+      },
+      "Terbinafine": {
+        "qty": 108,
+        "status": "IN_STOCK"
+      },
+      "Clotrimazole": {
+        "qty": 35,
+        "status": "IN_STOCK"
+      },
+      "Mupirocin": {
+        "qty": 131,
+        "status": "IN_STOCK"
+      },
+      "Silver Sulfadiazine": {
+        "qty": 95,
+        "status": "IN_STOCK"
+      },
+      "Diclofenac Gel": {
+        "qty": 30,
+        "status": "IN_STOCK"
+      },
+      "Multivitamin with Zinc": {
+        "qty": 85,
+        "status": "IN_STOCK"
+      },
+      "Calcium 500mg": {
+        "qty": 178,
+        "status": "IN_STOCK"
+      },
+      "Iron Folic Acid": {
+        "qty": 48,
+        "status": "IN_STOCK"
+      },
+      "Vitamin D3 60k": {
+        "qty": 41,
+        "status": "IN_STOCK"
+      },
+      "Oral Rehydration Salts (ORS)": {
+        "qty": 138,
+        "status": "IN_STOCK"
+      },
+      "Diazepam": {
+        "qty": 118,
+        "status": "IN_STOCK"
+      },
+      "Alprazolam": {
+        "qty": 46,
+        "status": "IN_STOCK"
+      },
+      "Clonazepam": {
+        "qty": 168,
+        "status": "IN_STOCK"
+      },
+      "Tramadol": {
+        "qty": 45,
+        "status": "IN_STOCK"
+      },
+      "Pregabalin": {
+        "qty": 47,
+        "status": "IN_STOCK"
+      },
+      "Gabapentin": {
+        "qty": 150,
+        "status": "IN_STOCK"
+      },
+      "Betahistine": {
+        "qty": 38,
+        "status": "IN_STOCK"
+      },
+      "Methylcobalamin": {
+        "qty": 103,
+        "status": "IN_STOCK"
+      },
+      "Pantocid DSR": {
+        "qty": 134,
+        "status": "IN_STOCK"
+      }
+    },
+    "synthetic": true
+  }
+]
